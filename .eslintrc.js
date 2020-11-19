@@ -1,0 +1,31 @@
+module.exports = {
+  extends: [
+    'airbnb',
+    'prettier',
+    'prettier/react',
+    'plugin:import/errors',
+    'plugin:import/warnings',
+  ],
+  plugins: ['react', 'jsx-a11y', 'react-hooks', 'prettier', 'import'],
+  rules: {
+    'import/no-unresolved': 0,
+    'import/extensions': 0,
+    'import/order': ['error', { 'newlines-between': 'always' }],
+    'import/no-extraneous-dependencies': 0,
+    'import/no-named-as-default': 'off',
+    'react-hooks/exhaustive-deps': 'warn',
+    'react-hooks/rules-of-hooks': 'error',
+    'react/forbid-prop-types': 0,
+    'react/jsx-filename-extension': 0,
+    'react/jsx-one-expression-per-line': 0,
+    'react/jsx-props-no-spreading': 0,
+    'react/no-unescaped-entities': 0,
+    'react/no-unused-prop-types': 1,
+    'react/react-in-jsx-scope': 'off',
+    'react/require-default-props': 0,
+    'prettier/prettier': 'error',
+    // Next.js <Link> component doesn't play nice with anchor validation
+    'jsx-a11y/anchor-is-valid': 0,
+    'jsx-a11y/anchor-has-content': 0,
+  },
+}

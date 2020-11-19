@@ -1,0 +1,27 @@
+@tailwind base;
+
+/* Write your own custom base styles here */
+
+@font-face {
+  font-family: 'ZS Sans';
+  src: url(/fonts/Manrope[wght].ttf) format('truetype-variations');
+  font-style: normal;
+  font-variation-settings: 'wght' 500;
+  font-variation-ligatures: normal;
+  font-weight: 500 800;
+  unicode-range: 'U+E000, U+E002-E081, U+E093-E097, U+E0A5-E0E7, U+E0F3-E11D, U+E11E-E165, U+EE01, U+F6C3';
+}
+
+/* Start purging... */
+@tailwind components;
+
+/* Stop purging. */
+
+/* Write your own custom component styles here */
+
+/* Start purging... */
+@tailwind utilities;
+
+/* Stop purging. */
+
+/* Your own custom utilities */
