@@ -30,7 +30,7 @@ export default function Home() {
                   </div>
                 </aside>
               </div>
-              <div className="text-white">
+              <div className="text-white text-opacity-90">
                 <h2 className="font-extrabold text-5xl">Hi, I'm Zach</h2>
               </div>
             </div>
