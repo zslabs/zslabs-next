@@ -10,7 +10,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head />
-        <body className="antialiased min-h-screen bg-gray-100">
+        <body className="antialiased min-h-screen bg-gradient-to-b from-gray-100 to-gray-200">
           <Main />
           <NextScript />
         </body>
