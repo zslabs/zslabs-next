@@ -23,7 +23,7 @@ export default function Code({ codeString, language, wrapperClassName }) {
             <div className="w-3 h-3 border-2 rounded-full border-green-500" />
           </header>
           <pre className={className}>
-            <div className="grid grid-flow-col auto-cols-min">
+            <div className="grid grid-flow-col auto-cols-min overflow-auto">
               <div className="p-4 bg-gray-900 rounded-bl-lg border-r border-white border-opacity-10 text-right text-white text-opacity-75 select-none sticky left-0 z-10">
                 {tokens.map((line, i) => (
                   <div key={line}>{i + 1}</div>

@@ -28,7 +28,7 @@ export default function Home() {
               className="absolute inset-0 z-0"
               style={{ backgroundImage: `url(${diagonalLines})` }}
             />
-            <div className="p-8 grid gap-8 md:gap-16 md:grid-cols-2 relative z-10">
+            <div className="p-8 grid gap-8 grid-cols-1 md:gap-16 md:grid-cols-2 relative z-10">
               <div>
                 <Code
                   codeString={exampleCode}
