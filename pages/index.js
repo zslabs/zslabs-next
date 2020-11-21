@@ -1,6 +1,18 @@
 import Head from 'next/head'
 
+import Code from '~components/Code'
 import diagonalLines from '~media/diagonal-lines.svg'
+
+const exampleCode = `const test = {
+  hello: 'there asldfkaj flk ajsfdlka jflkd sajflk asjlk dfajfs',
+  this: 'is',
+  a: 'nother',
+  line: 'for',
+  this: 'thing',
+  and: 'we',
+  are: 'done',
+  finally: 'yay!'
+}`
 
 export default function Home() {
   return (
@@ -18,23 +30,11 @@ export default function Home() {
             />
             <div className="p-8 grid gap-8 md:gap-16 md:grid-cols-2 relative z-10">
               <div>
-                <aside className="rounded-lg bg-gray-800 ring-4 ring-white ring-opacity-10 font-mono transform -rotate-2">
-                  <header className="p-4 border-b-2 border-white border-opacity-10 grid gap-2 auto-cols-max grid-flow-col">
-                    <div className="w-3 h-3 border-2 rounded-full border-red-500" />
-                    <div className="w-3 h-3 border-2 rounded-full border-yellow-500" />
-                    <div className="w-3 h-3 border-2 rounded-full border-green-500" />
-                  </header>
-                  <div className="grid grid-flow-col auto-cols-max">
-                    <div className="p-4 bg-gray-900 rounded-bl-lg border-r border-white border-opacity-10 text-right text-white text-opacity-75 select-none">
-                      {Array.from({ length: 10 }, (_, i) => i + 1).map(
-                        (line) => (
-                          <div>{line}</div>
-                        )
-                      )}
-                    </div>
-                    <div className="text-white p-4">code</div>
-                  </div>
-                </aside>
+                <Code
+                  codeString={exampleCode}
+                  wrapperClassName="transform -rotate-2"
+                  language="javascript"
+                />
               </div>
               <div className="text-white text-opacity-90">
                 <h2 className="font-extrabold text-5xl">Hi, I'm Zach</h2>

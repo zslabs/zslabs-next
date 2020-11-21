@@ -34,6 +34,7 @@
     "nextjs-fonts": "0.22.0",
     "postcss": "8.1.8",
     "prettier": "2.2.0",
+    "prism-react-renderer": "1.1.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "tailwindcss": "2.0.1"

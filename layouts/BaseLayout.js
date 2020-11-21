@@ -6,7 +6,7 @@ import Container from '~components/Container'
 
 export default function BaseLayout({ children }) {
   return (
-    <Container>
+    <Container className="my-4 md:my-8">
       <header className="grid gap-4 auto-cols-fr grid-flow-col items-center">
         <Link href="/">
           <a className="justify-self-start">
