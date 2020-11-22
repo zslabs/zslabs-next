@@ -1,8 +1,13 @@
+/* eslint-disable global-require */
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
   darkMode: 'class', // 'media' when in prod
   theme: {
+    filter: {
+      none: 'none',
+      grayscale: 'grayscale(1)',
+    },
     extend: {
       fontFamily: {
         sans: ['ZS Sans', ...defaultTheme.fontFamily.sans],
@@ -25,8 +30,11 @@ module.exports = {
     ],
   },
   variants: {
+    filter: ['hover'],
     extend: {
       backgroundOpacity: ['dark'],
+      scale: ['group-hover'],
     },
   },
+  plugins: [require('tailwindcss-filters')],
 }

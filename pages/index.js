@@ -1,5 +1,6 @@
 import Head from 'next/head'
 
+import ArticleTeaser from '~components/ArticleTeaser'
 import Code from '~components/Code'
 import diagonalLines from '~media/diagonal-lines.svg'
 
@@ -20,7 +21,7 @@ export default function Home() {
       <Head>
         <title>Zach Schnackel</title>
       </Head>
-      <div className="mt-8">
+      <div className="space-y-16">
         <section className="relative">
           <div className="absolute inset-0 transform -rotate-2 bg-gray-300 dark:bg-white dark:bg-opacity-10 rounded-3xl" />
           <section className="relative z-10 bg-gradient-to-br from-blue-500 to-indigo-700 rounded-3xl">
@@ -36,10 +37,13 @@ export default function Home() {
                   codeString={exampleCode}
                   wrapperClassName="transform -rotate-2"
                   language="javascript"
+                  filename="profile.js"
                 />
               </div>
               <div className="text-gray-100">
-                <h2 className="font-extrabold text-5xl">Hi, I'm Zach</h2>
+                <h2 className="font-extrabold text-6xl text-center md:text-left">
+                  Hi, I'm Zach
+                </h2>
                 <p className="mt-8 md:text-lg">
                   My passions are pushing the limits of what we can build on the
                   backend and how we can experience it on the frontend.
@@ -47,6 +51,11 @@ export default function Home() {
               </div>
             </div>
           </section>
+        </section>
+        <section>
+          <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            <ArticleTeaser />
+          </div>
         </section>
       </div>
     </>
