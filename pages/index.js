@@ -22,7 +22,7 @@ export default function Home() {
       </Head>
       <div className="mt-8">
         <section className="relative">
-          <div className="absolute inset-0 transform -rotate-2 bg-gray-200 rounded-3xl" />
+          <div className="absolute inset-0 transform -rotate-2 bg-gray-300 dark:bg-white dark:bg-opacity-10 rounded-3xl" />
           <section className="relative z-10 bg-gradient-to-br from-blue-500 to-indigo-700 rounded-3xl">
             <div
               className="absolute inset-0 z-0"
@@ -38,7 +38,7 @@ export default function Home() {
                   language="javascript"
                 />
               </div>
-              <div className="text-white text-opacity-90">
+              <div className="text-gray-100">
                 <h2 className="font-extrabold text-5xl">Hi, I'm Zach</h2>
                 <p className="mt-8 md:text-lg">
                   My passions are pushing the limits of what we can build on the

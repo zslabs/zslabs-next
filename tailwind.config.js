@@ -1,7 +1,7 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
-  darkMode: 'media',
+  darkMode: 'class', // 'media' when in prod
   theme: {
     extend: {
       fontFamily: {
@@ -23,5 +23,10 @@ module.exports = {
       './media/**/*.{js,ts,jsx,tsx}',
       './pages/**/*.{js,ts,jsx,tsx}',
     ],
+  },
+  variants: {
+    extend: {
+      backgroundOpacity: ['dark'],
+    },
   },
 }
