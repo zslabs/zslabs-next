@@ -4,10 +4,6 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 module.exports = {
   darkMode: 'class', // 'media' when in prod
   theme: {
-    filter: {
-      none: 'none',
-      grayscale: 'grayscale(1)',
-    },
     extend: {
       fontFamily: {
         sans: ['ZS Sans', ...defaultTheme.fontFamily.sans],
@@ -21,6 +17,9 @@ module.exports = {
       transitionTimingFunction: {
         bounce: 'cubic-bezier(0.680, -0.550, 0.265, 1.550)',
       },
+      zIndex: {
+        '-1': '-1',
+      },
     },
     purge: [
       './components/**/*.{js,ts,jsx,tsx}',
@@ -30,11 +29,10 @@ module.exports = {
     ],
   },
   variants: {
-    filter: ['hover'],
     extend: {
       backgroundOpacity: ['dark'],
       scale: ['group-hover'],
+      rotate: ['group-hover'],
     },
   },
-  plugins: [require('tailwindcss-filters')],
 }

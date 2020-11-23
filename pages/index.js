@@ -2,6 +2,7 @@ import Head from 'next/head'
 
 import ArticleTeaser from '~components/ArticleTeaser'
 import Code from '~components/Code'
+import Skew from '~components/Skew'
 import diagonalLines from '~media/diagonal-lines.svg'
 
 const exampleCode = `const test = {
@@ -23,7 +24,7 @@ export default function Home() {
       </Head>
       <div className="space-y-16">
         <section className="relative">
-          <div className="absolute inset-0 transform -rotate-2 bg-gray-300 dark:bg-white dark:bg-opacity-10 rounded-3xl" />
+          <Skew size="3xl" />
           <section className="relative z-10 bg-gradient-to-br from-blue-500 to-indigo-700 rounded-3xl">
             <div
               className="absolute inset-0 z-0"
@@ -54,7 +55,15 @@ export default function Home() {
         </section>
         <section>
           <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-            <ArticleTeaser />
+            <ArticleTeaser count={1} />
+            <ArticleTeaser count={2} />
+            <ArticleTeaser count={3} />
+            <ArticleTeaser count={4} />
+            <ArticleTeaser count={5} />
+            <ArticleTeaser count={6} />
+            <ArticleTeaser count={7} />
+            <ArticleTeaser count={8} />
+            <ArticleTeaser count={9} />
           </div>
         </section>
       </div>
