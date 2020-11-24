@@ -18,11 +18,11 @@ export default function Code({
       {({ className, tokens, getLineProps, getTokenProps }) => (
         <aside
           className={clsx(
-            'rounded-lg bg-gradient-to-br from-gray-700 to-gray-800 ring-4 ring-white ring-opacity-10 font-mono',
+            'rounded-lg bg-gray-800 ring-4 ring-gray-900 dark:ring-white ring-opacity-10 font-mono',
             wrapperClassName
           )}
         >
-          <header className="border-b-2 border-gray-600 grid auto-cols-min grid-flow-col content-center">
+          <header className="border-b-2 bg-gray-900 rounded-t-lg border-gray-600 grid auto-cols-min grid-flow-col content-center">
             <div className="p-4 grid gap-2 auto-cols-max grid-flow-col self-center">
               <div className="w-3 h-3 border-2 rounded-full border-red-500" />
               <div className="w-3 h-3 border-2 rounded-full border-yellow-500" />
@@ -37,8 +37,8 @@ export default function Code({
             )}
           </header>
           <pre className={className}>
-            <div className="grid grid-flow-col auto-cols-min overflow-auto">
-              <div className="p-4 bg-gray-900 rounded-bl-lg border-r-2 border-gray-600 text-right text-white text-opacity-40 select-none sticky left-0 z-10">
+            <div className="grid grid-flow-col rounded-bl-lg auto-cols-min overflow-auto">
+              <div className="p-4 bg-gray-800 border-r-2 border-gray-600 text-right text-white text-opacity-40 select-none sticky left-0 z-10">
                 {tokens.map((line, i) => (
                   <div key={line}>{i + 1}</div>
                 ))}
