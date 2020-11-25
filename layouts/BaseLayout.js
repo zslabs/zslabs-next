@@ -9,7 +9,7 @@ export default function BaseLayout({ children }) {
     <Container className="my-4 md:my-8">
       <header className="grid gap-4 auto-cols-fr grid-flow-col items-center mb-16">
         <Link href="/">
-          <a className="justify-self-start transform duration-200 hover:scale-110 ease-bounce dark:text-gray-100">
+          <a className="justify-self-start transform duration-200 hover:scale-110 ease-bounce text-gray-900 dark:text-gray-100">
             <LogoSVG className="h-12" />
           </a>
         </Link>

@@ -3,7 +3,7 @@ import Link from 'next/link'
 export default function ArticleTeaser(props) {
   return (
     <article
-      className="relative duration-300 ease-bounce transform hover:scale-105 p-4 group"
+      className="relative duration-300 ease-bounce transform hover:scale-105 p-4 group text-gray-900"
       {...props}
     >
       <div className="relative z-10 grid gap-4 grid-cols-1">
@@ -12,7 +12,7 @@ export default function ArticleTeaser(props) {
           07.24.2020
         </div>
       </div>
-      <div className="absolute -z-1 inset-0 transform -skew-x-6 -translate-x-2 translate-y-2 bg-gradient-to-br from-blue-500 to-indigo-700" />
+      <div className="absolute -z-1 inset-0 transform -skew-x-6 -translate-x-2 translate-y-2 bg-gradient-to-br from-blue-500 to-indigo-700 filter-gray-900 group-hover:filter-none" />
       <div className="absolute -z-1 inset-0 transform -skew-x-6 bg-gradient-to-br from-white to-gray-100 shadow-md" />
       <Link href="/test">
         <a className="absolute inset-0 z-20" />

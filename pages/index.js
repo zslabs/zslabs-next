@@ -26,22 +26,22 @@ export default function Home() {
             <div className="uppercase text-gray-500 font-extrabold tracking-widest md:text-lg">
               Full-stack/motion developer
             </div>
-            <h1 className="text-6xl md:text-7xl font-extrabold tracking-tight">
+            <h1 className="text-6xl md:text-7xl font-extrabold tracking-tight text-gray-900">
               Zach Schnackel
             </h1>
           </div>
         </section>
         <section>
           <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-            <ArticleTeaser count={1} />
-            <ArticleTeaser count={2} />
-            <ArticleTeaser count={3} />
-            <ArticleTeaser count={4} />
-            <ArticleTeaser count={5} />
-            <ArticleTeaser count={6} />
-            <ArticleTeaser count={7} />
-            <ArticleTeaser count={8} />
-            <ArticleTeaser count={9} />
+            <ArticleTeaser />
+            <ArticleTeaser />
+            <ArticleTeaser />
+            <ArticleTeaser />
+            <ArticleTeaser />
+            <ArticleTeaser />
+            <ArticleTeaser />
+            <ArticleTeaser />
+            <ArticleTeaser />
           </div>
         </section>
         <section>
