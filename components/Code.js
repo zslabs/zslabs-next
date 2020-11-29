@@ -17,7 +17,10 @@ export default function Code({
     >
       {({ className, tokens, getLineProps, getTokenProps }) => (
         <aside
-          className={clsx('relative bg-gray-800 font-mono', wrapperClassName)}
+          className={clsx(
+            'relative bg-gray-800 font-mono rounded-lg overflow-hidden',
+            wrapperClassName
+          )}
         >
           <header className="border-b-2 bg-gray-900 border-gray-600 grid auto-cols-min grid-flow-col content-center">
             <div className="p-4 grid gap-2 auto-cols-max grid-flow-col self-center">
@@ -38,22 +41,27 @@ export default function Code({
           <pre className={className}>
             <div className="grid grid-flow-col auto-cols-min overflow-auto">
               <div className="p-4 bg-gray-800 border-r-2 border-gray-600 text-right text-white text-opacity-40 select-none sticky left-0 z-10">
-                {tokens.map((line, i) => (
-                  <div key={line}>{i + 1}</div>
-                ))}
+                {tokens.map((line, i) => {
+                  const lineKey = `line-${i}`
+
+                  return <div key={lineKey}>{i + 1}</div>
+                })}
               </div>
               <div className="text-white p-4">
-                {tokens.map((line, i) => (
-                  <div {...getLineProps({ line, key: i })}>
-                    {line.map((token, key) => (
-                      <span {...getTokenProps({ token, key })} />
-                    ))}
-                  </div>
-                ))}
+                {tokens.map((line, i) => {
+                  const lineKey = `line-${i}`
+
+                  return (
+                    <div key={lineKey} {...getLineProps({ line, key: i })}>
+                      {line.map((token, key) => (
+                        <span {...getTokenProps({ token, key })} />
+                      ))}
+                    </div>
+                  )
+                })}
               </div>
             </div>
           </pre>
-          <div className="absolute -z-1 inset-0 transform -translate-x-2 translate-y-2 bg-gradient-to-br from-blue-500 to-indigo-700" />
         </aside>
       )}
     </Highlight>
