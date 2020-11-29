@@ -1,14 +1,17 @@
 import Head from 'next/head'
 import Image from 'next/image'
 
-import BubbleList from '~components/BubbleList'
+import BubbleList, { BubbleListItem } from '~components/BubbleList'
 import Button from '~components/Button'
 import Code from '~components/Code'
+import { ReactComponent as CodeSvg } from '~icons/code.svg'
+import { ReactComponent as ReactSvg } from '~icons/react.svg'
+import { ReactComponent as FramerMotionSvg } from '~icons/framer-motion.svg'
+import { ReactComponent as GatsbySvg } from '~icons/gatsby.svg'
 
-const exampleCode = `const test = {
+const profileCode = `export const attributes = {
   name: 'Zach Schnackel',
-  title: '',
-  location: 'is',
+  location: 'Boone, NC',
 }`
 
 export default function Home() {
@@ -35,7 +38,7 @@ export default function Home() {
         <section className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
           <div className="relative">
             <Code
-              codeString={exampleCode}
+              codeString={profileCode}
               language="javascript"
               filename="profile.js"
             />
@@ -48,10 +51,49 @@ export default function Home() {
               />
             </div>
           </div>
-          <div>test</div>
+          <div className="text-lg">
+            I create buttons, borders, and other groovy things at Gremlin. I
+            work with techologies like <span className="sr-only">React</span>
+            <ReactSvg className="inline-block w-6 h-6 align-text-bottom" />,{' '}
+            <span className="sr-only">Gatsby</span>
+            <GatsbySvg className="inline-block w-6 h-6 align-text-bottom" />,
+            Next.js, and Node. <span className="sr-only">Framer Motion</span>
+            <FramerMotionSvg className="inline-block w-6 h-6 align-text-bottom" />{' '}
+            is my go-to animation utility.
+          </div>
         </section>
         <section className="grid grid-cols-1 md:grid-cols-3/4 justify-center">
-          <BubbleList />
+          <BubbleList>
+            <BubbleListItem title="List" link="https://list.zslabs.com/">
+              The best eBay toolkit for gauging market-prices, trends, and
+              activity on multiple search terms.
+            </BubbleListItem>
+            <BubbleListItem
+              title="ChaosKit"
+              link="https://chaoskit.netlify.app/"
+            >
+              A lightweight and modular front-end framework for developing fast
+              and powerful web interfaces within Gremlin.{' '}
+              <a
+                href="https://www.github.com/gremlin/chaoskit"
+                className="inline-block ml-1 ring-2 ring-gray-300 dark:ring-gray-600 rounded-full bg-gray-300 dark:bg-gray-600 transform hover:scale-105 ease-bounce duration-300"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="View source"
+              >
+                <CodeSvg className="w-4 h-4" />
+              </a>
+            </BubbleListItem>
+            <BubbleListItem title="Gremlin" link="https://www.gremlin.com/">
+              Marketing site for Chaos.
+            </BubbleListItem>
+            <BubbleListItem
+              title="Saos Capital"
+              link="https://www.saoscapital.com/"
+            >
+              Financial planning and advisory services to the stars.
+            </BubbleListItem>
+          </BubbleList>
         </section>
       </div>
     </>
