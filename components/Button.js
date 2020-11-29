@@ -8,7 +8,7 @@ export default function Button({ children, variation = 'primary', ...rest }) {
     <button
       type="button"
       className={clsx(
-        'relative inline-block h-12 px-6 bg-gradient-to-br rounded-full text-white tracking-widest uppercase font-extrabold text-sm shadow-lg duration-200 ease-bounce transform hover:scale-105 ring-4 ring-opacity-10 focus:outline-none focus:ring-opacity-20',
+        'relative inline-block h-12 px-6 bg-gradient-to-br rounded-full text-white tracking-widest uppercase font-extrabold text-sm shadow-lg duration-300 ease-bounce transform hover:scale-105 ring-4 ring-opacity-10 focus:outline-none focus:ring-opacity-20',
         {
           'from-indigo-700 to-blue-500 ring-indigo-700':
             variation === 'primary',

@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 
+import BubbleList from '~components/BubbleList'
 import Button from '~components/Button'
 import Code from '~components/Code'
 
@@ -22,7 +23,7 @@ export default function Home() {
             <div className="uppercase text-gray-500 dark:text-gray-300 font-extrabold tracking-widest md:text-lg">
               Full-stack/motion developer
             </div>
-            <h1 className="text-6xl md:text-7xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100">
+            <h1 className="text-6xl md:text-7xl font-extrabold">
               Zach Schnackel
             </h1>
             <div className="grid justify-items-center auto-cols-auto grid-flow-col gap-4 mt-4">
@@ -38,7 +39,7 @@ export default function Home() {
               language="javascript"
               filename="profile.js"
             />
-            <div className="absolute -right-4 -bottom-4 ring-2 ring-gray-100 z-10 rounded-full overflow-hidden w-16 h-16">
+            <div className="absolute -right-4 -bottom-4 ring-2 ring-gray-100 dark:ring-gray-900 z-10 rounded-full overflow-hidden w-16 h-16">
               <Image
                 src="/me.png"
                 width="64"
@@ -48,6 +49,9 @@ export default function Home() {
             </div>
           </div>
           <div>test</div>
+        </section>
+        <section className="grid grid-cols-1 md:grid-cols-3/4 justify-center">
+          <BubbleList />
         </section>
       </div>
     </>
