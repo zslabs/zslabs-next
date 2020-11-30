@@ -5,13 +5,17 @@ import BubbleList, { BubbleListItem } from '~components/BubbleList'
 import Button from '~components/Button'
 import Code from '~components/Code'
 import { ReactComponent as CodeSvg } from '~icons/code.svg'
-import { ReactComponent as ReactSvg } from '~icons/react.svg'
-import { ReactComponent as FramerMotionSvg } from '~icons/framer-motion.svg'
-import { ReactComponent as GatsbySvg } from '~icons/gatsby.svg'
 
 const profileCode = `export const attributes = {
   name: 'Zach Schnackel',
+  title: 'Full-stack/motion developer',
   location: 'Boone, NC',
+  technologies: [
+    'React',
+    'Gatsby',
+    'Next.Js',
+    'Framer Motion'
+  ]
 }`
 
 export default function Home() {
@@ -35,7 +39,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+        <section>
           <div className="relative">
             <Code
               codeString={profileCode}
@@ -50,16 +54,6 @@ export default function Home() {
                 className="object-fill"
               />
             </div>
-          </div>
-          <div className="text-lg">
-            I create buttons, borders, and other groovy things at Gremlin. I
-            work with techologies like <span className="sr-only">React</span>
-            <ReactSvg className="inline-block w-6 h-6 align-text-bottom" />,{' '}
-            <span className="sr-only">Gatsby</span>
-            <GatsbySvg className="inline-block w-6 h-6 align-text-bottom" />,
-            Next.js, and Node. <span className="sr-only">Framer Motion</span>
-            <FramerMotionSvg className="inline-block w-6 h-6 align-text-bottom" />{' '}
-            is my go-to animation utility.
           </div>
         </section>
         <section className="grid grid-cols-1 md:grid-cols-3/4 justify-center">
