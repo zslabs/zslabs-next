@@ -1,3 +1,5 @@
+const path = require('path')
+
 const withPlugins = require('next-compose-plugins')
 const withFonts = require('nextjs-fonts')
 
@@ -16,6 +18,12 @@ const nextConfig = {
         },
       })
     }
+
+    config.module.rules.push({
+      test: /\.svg$/,
+      include: [path.resolve(__dirname, 'icons')],
+      use: ['@svgr/webpack?+icon,+ref', 'url-loader'],
+    })
 
     config.module.rules.push({
       test: /\.svg$/,

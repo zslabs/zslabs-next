@@ -7,10 +7,15 @@ module.exports = {
   darkMode: 'class', // 'media' when in prod
   theme: {
     extend: {
+      backgroundSize: {
+        '0/8': '0% 8px',
+        '100/8': '100% 8px',
+      },
       colors: {
         transparent: 'transparent',
         current: 'currentColor',
         cyan: colors.cyan,
+        orange: colors.orange,
       },
       fontFamily: {
         sans: ['ZS Sans', ...defaultTheme.fontFamily.sans],
@@ -23,11 +28,20 @@ module.exports = {
         '1/2': '0.5fr',
         '3/4': '0.75fr',
       },
+      height: {
+        0.5: '0.125rem',
+      },
+      strokeWidth: {
+        1.5: '1.5',
+      },
       transitionProperty: {
-        filter: 'filter',
+        'background-size': 'background-size',
       },
       transitionTimingFunction: {
         bounce: 'cubic-bezier(0.680, -0.550, 0.265, 1.550)',
+      },
+      width: {
+        0.5: '0.125rem',
       },
       zIndex: {
         '-1': '-1',
@@ -43,6 +57,7 @@ module.exports = {
   variants: {
     extend: {
       backgroundOpacity: ['dark'],
+      backgroundSize: ['hover'],
       scale: ['group-hover'],
     },
   },
