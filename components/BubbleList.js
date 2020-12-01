@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types'
 
+import TextLink from './TextLink'
+
 export function BubbleListItem({ title, children, link, ...rest }) {
   return (
     <div
@@ -10,14 +12,12 @@ export function BubbleListItem({ title, children, link, ...rest }) {
       <div className="space-y-1 h-">
         <h3 className="font-extrabold text-2xl">
           {link ? (
-            <a
+            <TextLink
               href={link}
-              target="_blank"
-              rel="noopener noreferrer"
               className="bg-gradient-to-r from-gray-200 to-gray-200 duration-150 ease-linear transition-background-size bg-left-bottom bg-no-repeat bg-0/8 hover:bg-100/8"
             >
               {title}
-            </a>
+            </TextLink>
           ) : (
             title
           )}

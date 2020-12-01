@@ -3,6 +3,7 @@ import Head from 'next/head'
 import BubbleList, { BubbleListItem } from '~components/BubbleList'
 import Button from '~components/Button'
 import SectionTitle, { SectionTitleSkew } from '~components/SectionTitle'
+import TextLink from '~components/TextLink'
 import { ReactComponent as CodeSvg } from '~icons/code.svg'
 
 export default function Home() {
@@ -27,8 +28,8 @@ export default function Home() {
           </div>
         </section>
         <section className="grid grid-cols-1 justify-items-center">
-          <a
-            href="#"
+          <TextLink
+            href="/test"
             className="relative py-6 px-12 text-center transform hover:scale-105 ease-bounce duration-300"
           >
             <div className="absolute -top-2 -left-2 w-full h-full z-0 bg-gradient-to-br from-indigo-700 via-green-400 to-blue-500 opacity-25 transform -skew-x-12" />
@@ -39,7 +40,7 @@ export default function Home() {
                 MDX previews in Netlify CMS
               </div>
             </div>
-          </a>
+          </TextLink>
         </section>
         <section className="grid grid-cols-1 md:grid-cols-3/4 justify-center">
           <SectionTitle className="flex justify-self-center">
