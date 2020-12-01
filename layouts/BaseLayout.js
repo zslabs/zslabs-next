@@ -8,11 +8,15 @@ import { ReactComponent as ListLogoSvg } from '~icons/list-logo.svg'
 import Container from '~components/Container'
 import LinkUnderline from '~components/LinkUnderline'
 import TextLink from '~components/TextLink'
+import Section from '~components/Section'
 
 export default function BaseLayout({ children }) {
   return (
-    <Container className="my-4 md:my-8">
-      <header className="grid gap-4 auto-cols-fr grid-flow-col items-center mb-16 md:mb-20">
+    <Container>
+      <Section
+        as="header"
+        className="grid gap-4 auto-cols-fr grid-flow-col items-center"
+      >
         <Link href="/">
           <a className="justify-self-start transform duration-300 hover:scale-110 ease-bounce">
             <LogoSvg className="h-12 from-indigo-700 to-blue-500" />
@@ -34,9 +38,9 @@ export default function BaseLayout({ children }) {
             <Image src="/me.png" width="48" height="48" />
           </button>
         </div>
-      </header>
+      </Section>
       {children}
-      <footer className="mt-16 md:mt-20">
+      <Section as="footer">
         <div className="grid grid-cols-1 gap-4 justify-items-center">
           <div className="bg-gradient-to-tr from-indigo-700 to-blue-500 w-2/4 rounded-full h-0.5" />
           <div className="bg-gradient-to-tr from-indigo-700 to-blue-500 w-2/6 rounded-full h-0.5" />
@@ -62,7 +66,7 @@ export default function BaseLayout({ children }) {
             </div>
           </div>
         </div>
-      </footer>
+      </Section>
     </Container>
   )
 }
