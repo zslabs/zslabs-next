@@ -76,15 +76,13 @@ export default function Home() {
           <BubbleListItem title="ChaosKit" link="https://chaoskit.netlify.app/">
             A lightweight and modular front-end framework for developing fast
             and powerful interfaces within Gremlin.{' '}
-            <a
+            <TextLink
               href="https://www.github.com/gremlin/chaoskit"
               className="inline-block ml-1 ring-2 ring-gray-300 dark:ring-gray-600 rounded-full bg-gray-300 dark:bg-gray-600 transform hover:scale-105 ease-bounce duration-300"
-              target="_blank"
-              rel="noopener noreferrer"
               title="View source"
             >
               <CodeSvg className="md:text-lg" />
-            </a>
+            </TextLink>
           </BubbleListItem>
           <BubbleListItem title="Gremlin" link="https://www.gremlin.com/">
             Marketing site for Chaos.

@@ -33,9 +33,8 @@ export default function ArticleOffCanvas() {
           <BubbleListItem
             title="MDX article title"
             link="https://list.zslabs.com/"
-          >
-            Stuffz
-          </BubbleListItem>
+            sub={<>Stuff</>}
+          />
         </BubbleList>
       </OffCanvas>
     </>

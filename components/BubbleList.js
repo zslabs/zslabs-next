@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 
 import LinkUnderline from './LinkUnderline'
 
-export function BubbleListItem({ title, children, link, ...rest }) {
+export function BubbleListItem({ title, children, sub, link, ...rest }) {
   return (
     <div
       className="relative z-20 grid grid-flow-col auto-cols-auto gap-6 items-center justify-start group"
@@ -13,6 +13,7 @@ export function BubbleListItem({ title, children, link, ...rest }) {
         <h3 className="font-extrabold text-2xl">
           {link ? <LinkUnderline href={link}>{title}</LinkUnderline> : title}
         </h3>
+        {sub && <div className="text-gray-500">{sub}</div>}
         <div className="md:text-lg">{children}</div>
       </div>
     </div>
@@ -23,6 +24,7 @@ BubbleListItem.propTypes = {
   children: PropTypes.node.isRequired,
   title: PropTypes.string.isRequired,
   link: PropTypes.string,
+  sub: PropTypes.node,
 }
 
 export default function BubbleList({ children, ...rest }) {
