@@ -68,7 +68,7 @@ const OffCanvas = ({ children, open, setIsOpen, ...rest }) => {
             animate="visible"
             exit="hidden"
             ref={offCanvasRef}
-            className="fixed inset-0 bg-gray-900 bg-opacity-75 z-10 pr-4"
+            className="fixed inset-0 bg-gray-900 bg-opacity-75 z-50 pr-4"
             {...rest}
           >
             <motion.aside
@@ -77,7 +77,7 @@ const OffCanvas = ({ children, open, setIsOpen, ...rest }) => {
               animate="visible"
               exit="hidden"
               ref={offCanvasDialogRef}
-              className="overflow-auto bg-white rounded-tr-2xl shadow-lg z-20 relative top-0 left-0 h-full w-full md:max-w-xs p-8"
+              className="overflow-auto bg-gray-100 dark:bg-gray-800 rounded-tr-2xl shadow-lg z-20 relative top-0 left-0 h-full w-full md:max-w-xs p-8"
               transition={{ x: { stiffness: 1000 } }}
             >
               <button

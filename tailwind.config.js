@@ -10,6 +10,7 @@ module.exports = {
       backgroundSize: {
         '0/8': '0% 8px',
         '100/8': '100% 8px',
+        'auto/8': 'auto 8px',
       },
       colors: {
         transparent: 'transparent',
@@ -30,6 +31,9 @@ module.exports = {
       },
       height: {
         0.5: '0.125rem',
+      },
+      margin: {
+        '-1/2-screen': '-50vw',
       },
       strokeWidth: {
         1.5: '1.5',

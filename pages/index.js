@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 
 import BubbleList, { BubbleListItem } from '~components/BubbleList'
 import Button from '~components/Button'
@@ -7,6 +8,7 @@ import SectionTitle, { SectionTitleSkew } from '~components/SectionTitle'
 import TextLink from '~components/TextLink'
 import { ReactComponent as CodeSvg } from '~icons/code.svg'
 import diagonalLines from '~media/diagonal-lines.svg'
+import dots from '~media/dots.svg'
 
 export default function Home() {
   return (
@@ -24,7 +26,11 @@ export default function Home() {
           </h1>
           <div className="grid justify-items-center auto-cols-auto grid-flow-col gap-6 mt-4">
             <Button>Articles</Button>
-            <Button variation="secondary">Experience</Button>
+            <Link href="/experience">
+              <a>
+                <Button variation="secondary">Experience</Button>
+              </a>
+            </Link>
           </div>
         </div>
       </Section>
@@ -34,7 +40,7 @@ export default function Home() {
           className="relative py-6 px-12 text-center transform hover:scale-105 ease-bounce duration-300"
         >
           <div className="absolute -top-2 -left-2 w-full h-full transform -skew-x-12 z-0">
-            <div className="absolute inset-0 bg-gradient-to-r from-indigo-700 to-blue-500 opacity-50" />
+            <div className="absolute inset-0 bg-gradient-to-r from-indigo-700 to-blue-500 opacity-80" />
             <span
               className="absolute inset-0"
               style={{ backgroundImage: `url(${diagonalLines})` }}
@@ -50,7 +56,11 @@ export default function Home() {
           </div>
         </TextLink>
       </Section>
-      <Section className="grid grid-cols-1 md:grid-cols-3/4 justify-center">
+      <Section className="grid grid-cols-1 md:grid-cols-3/4 justify-center relative">
+        <span
+          className="absolute top-0 bottom-0 w-screen left-1/2 right-1/2 -mx-1/2-screen -z-1 opacity-5 bg-auto/8"
+          style={{ backgroundImage: `url(${dots})` }}
+        />
         <SectionTitle className="flex justify-self-center">
           <SectionTitleSkew
             className="from-orange-400 to-pink-600"

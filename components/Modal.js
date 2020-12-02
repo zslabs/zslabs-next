@@ -68,7 +68,7 @@ const Modal = ({ children, open, setIsOpen, ...rest }) => {
             animate="visible"
             exit="hidden"
             ref={modalRef}
-            className="overflow-auto fixed inset-0 bg-gray-900 bg-opacity-75 z-10 px-4"
+            className="overflow-auto fixed inset-0 bg-gray-900 bg-opacity-75 z-50 px-4"
             {...rest}
           >
             <motion.div
@@ -77,7 +77,7 @@ const Modal = ({ children, open, setIsOpen, ...rest }) => {
               animate="visible"
               exit="hidden"
               ref={modalDialogRef}
-              className="bg-white rounded-lg shadow-lg z-20 my-4 md:my-8 mx-auto max-w-xl relative p-8"
+              className="bg-gray-100 dark:bg-gray-800 rounded-lg shadow-lg z-20 my-4 md:my-8 mx-auto max-w-xl relative p-8"
             >
               <button
                 type="button"
