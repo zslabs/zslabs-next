@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types'
 import Link from 'next/link'
-import Image from 'next/image'
 
 import { ReactComponent as LogoSvg } from '~media/logo.svg'
-import { ReactComponent as MenuSvg } from '~icons/menu.svg'
 import { ReactComponent as ListLogoSvg } from '~icons/list-logo.svg'
 import Container from '~components/Container'
 import LinkUnderline from '~components/LinkUnderline'
 import TextLink from '~components/TextLink'
 import Section from '~components/Section'
+import AboutModal from '~components/AboutModal'
+import ArticleOffCanvas from '~components/ArticleOffCanvas'
 
 export default function BaseLayout({ children }) {
   return (
@@ -23,20 +23,10 @@ export default function BaseLayout({ children }) {
           </a>
         </Link>
         <div className="justify-self-center">
-          <button
-            type="button"
-            className="block transform duration-300 hover:scale-110 ease-bounce focus:outline-none"
-          >
-            <MenuSvg className="h-10 w-10 stroke-1.5" />
-          </button>
+          <ArticleOffCanvas />
         </div>
         <div className="justify-self-end">
-          <button
-            type="button"
-            className="block w-12 h-12 overflow-hidden rounded-full shadow-md transform duration-300 hover:scale-110 hover:shadow-lg focus:outline-none ease-bounce"
-          >
-            <Image src="/me.png" width="48" height="48" />
-          </button>
+          <AboutModal />
         </div>
       </Section>
       {children}

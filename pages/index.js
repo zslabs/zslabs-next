@@ -6,6 +6,7 @@ import Section from '~components/Section'
 import SectionTitle, { SectionTitleSkew } from '~components/SectionTitle'
 import TextLink from '~components/TextLink'
 import { ReactComponent as CodeSvg } from '~icons/code.svg'
+import diagonalLines from '~media/diagonal-lines.svg'
 
 export default function Home() {
   return (
@@ -21,7 +22,7 @@ export default function Home() {
           <h1 className="text-6xl md:text-7xl font-extrabold">
             Zach Schnackel
           </h1>
-          <div className="grid justify-items-center auto-cols-auto grid-flow-col gap-4 mt-4">
+          <div className="grid justify-items-center auto-cols-auto grid-flow-col gap-6 mt-4">
             <Button>Articles</Button>
             <Button variation="secondary">Experience</Button>
           </div>
@@ -32,8 +33,15 @@ export default function Home() {
           href="/test"
           className="relative py-6 px-12 text-center transform hover:scale-105 ease-bounce duration-300"
         >
-          <div className="absolute -top-2 -left-2 w-full h-full z-0 bg-gradient-to-br from-indigo-700 via-green-400 to-blue-500 opacity-25 transform -skew-x-12" />
-          <div className="absolute inset-0 z-0 bg-gradient-to-br from-gray-100 to-gray-200 transform -skew-x-12" />
+          <div className="absolute -top-2 -left-2 w-full h-full transform -skew-x-12 z-0">
+            <div className="absolute inset-0 bg-gradient-to-r from-indigo-700 to-blue-500 opacity-50" />
+            <span
+              className="absolute inset-0"
+              style={{ backgroundImage: `url(${diagonalLines})` }}
+            />
+          </div>
+
+          <div className="absolute inset-0 z-0 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 transform -skew-x-12" />
           <div className="relative z-10 space-y-1">
             <div>🎉 Check out my latest article:</div>
             <div className="font-extrabold text-lg">
