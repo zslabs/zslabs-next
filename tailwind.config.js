@@ -77,6 +77,9 @@ module.exports = {
         h3: {
           letterSpacing: config('theme.letterSpacing.tight'),
         },
+        h4: {
+          letterSpacing: config('theme.letterSpacing.tight'),
+        },
       })
     }),
   ],

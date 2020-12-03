@@ -25,7 +25,7 @@ export default function Home() {
             Zach Schnackel
           </h1>
           <div className="grid justify-items-center auto-cols-auto grid-flow-col gap-6 mt-4">
-            <Button>Articles</Button>
+            <Button variation="primary">Articles</Button>
             <Link href="/experience">
               <a>
                 <Button variation="secondary">Experience</Button>
