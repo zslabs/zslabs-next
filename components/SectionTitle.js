@@ -5,7 +5,7 @@ export function SectionTitleSkew({ className, ...rest }) {
   return (
     <span
       className={clsx(
-        '-z-1 absolute transform -translate-x-2 block bg-gradient-to-br w-8 h-8',
+        '-z-1 absolute transform -translate-x-3 block bg-gradient-to-br w-8 h-8',
         className
       )}
       {...rest}
