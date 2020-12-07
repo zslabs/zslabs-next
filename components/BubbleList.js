@@ -30,7 +30,7 @@ export function BubbleListItem({
           )}
         </div>
         {sub && <div className="text-gray-500">{sub}</div>}
-        <div className="md:text-lg">{children}</div>
+        {children && <div className="md:text-lg">{children}</div>}
       </div>
     </div>
   )
@@ -38,7 +38,7 @@ export function BubbleListItem({
 
 BubbleListItem.propTypes = {
   badge: PropTypes.node,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   title: PropTypes.string.isRequired,
   link: PropTypes.string,
   sub: PropTypes.node,
