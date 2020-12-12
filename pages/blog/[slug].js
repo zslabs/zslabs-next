@@ -25,6 +25,8 @@ export default function Post() {
         <li>List item 2</li>
         <li>List item 3</li>
       </ol>
+      <code>hello</code>
+      <pre>this is something</pre>
     </div>
   )
 }
