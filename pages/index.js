@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import Head from 'next/head'
 import Link from 'next/link'
 
@@ -10,9 +11,12 @@ import { ReactComponent as CodeSvg } from '~icons/code.svg'
 import diagonalLines from '~media/diagonal-lines.svg'
 import dots from '~media/dots.svg'
 import useArticlesOffCanvasState from '~hooks/useArticlesOffCanvasState'
+import { getAllPosts } from '~lib/api'
 
-export default function Home() {
+export default function Home({ allPosts }) {
   const toggle = useArticlesOffCanvasState((state) => state.toggle)
+
+  console.log(allPosts)
 
   return (
     <>
@@ -102,4 +106,16 @@ export default function Home() {
       </Section>
     </>
   )
+}
+
+Home.propTypes = {
+  allPosts: PropTypes.array.isRequired,
+}
+
+export async function getStaticProps() {
+  const allPosts = await getAllPosts(['title', 'date', 'slug', 'excerpt'])
+
+  return {
+    props: { allPosts },
+  }
 }

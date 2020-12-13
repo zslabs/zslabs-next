@@ -1,11 +1,14 @@
 ---
 title: Hello there
+date: 10/21/2020
 ---
 
-This is a test!
+Some changes
 
 - hello
 - there
+
+Yep! Here is some more content.
 
 ```javascript
 const test = 'hello'

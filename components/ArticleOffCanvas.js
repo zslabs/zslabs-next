@@ -2,7 +2,6 @@ import OffCanvas from './OffCanvas'
 import SectionTitle, { SectionTitleSkew } from './SectionTitle'
 import BubbleList, { BubbleListItem } from './BubbleList'
 
-import { getAllPosts } from '~lib/api'
 import useArticlesOffCanvasState from '~hooks/useArticlesOffCanvasState'
 import { ReactComponent as MenuSvg } from '~icons/menu.svg'
 

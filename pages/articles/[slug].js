@@ -1,6 +1,21 @@
-export default function Post() {
+import PropTypes from 'prop-types'
+import renderToString from 'next-mdx-remote/render-to-string'
+import hydrate from 'next-mdx-remote/hydrate'
+
+import { getAllPosts, getPostBySlug } from '~lib/api'
+
+const Test = () => <div>test custom component</div>
+const components = { Test }
+
+export default function Post({ post }) {
+  console.log(post)
+
+  const content = hydrate(post.source, { components })
+
   return (
     <div className="prose">
+      {content}
+
       <h2>Hello</h2>
       <h3>Hello</h3>
       <h4>Hello</h4>
@@ -40,4 +55,38 @@ export default function Post() {
       <pre>this is something</pre>
     </div>
   )
+}
+
+Post.propTypes = {
+  post: PropTypes.object.isRequired,
+}
+
+export async function getStaticProps({ params }) {
+  const post = getPostBySlug(params.slug, ['title', 'date', 'slug', 'content'])
+
+  const mdxSource = await renderToString(post.content, { components })
+
+  return {
+    props: {
+      post: {
+        ...post,
+        source: mdxSource,
+      },
+    },
+  }
+}
+
+export async function getStaticPaths() {
+  const posts = getAllPosts(['slug'])
+
+  return {
+    paths: posts.map((post) => {
+      return {
+        params: {
+          slug: post.slug,
+        },
+      }
+    }),
+    fallback: false,
+  }
 }
