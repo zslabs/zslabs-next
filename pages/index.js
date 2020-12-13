@@ -9,8 +9,11 @@ import TextLink from '~components/TextLink'
 import { ReactComponent as CodeSvg } from '~icons/code.svg'
 import diagonalLines from '~media/diagonal-lines.svg'
 import dots from '~media/dots.svg'
+import useArticlesOffCanvasState from '~hooks/useArticlesOffCanvasState'
 
 export default function Home() {
+  const toggle = useArticlesOffCanvasState((state) => state.toggle)
+
   return (
     <>
       <Head>
@@ -25,7 +28,9 @@ export default function Home() {
             Zach Schnackel
           </h1>
           <div className="grid justify-items-center auto-cols-auto grid-flow-col gap-6 mt-4">
-            <Button variation="primary">Articles</Button>
+            <Button variation="primary" onClick={toggle}>
+              Articles
+            </Button>
             <Link href="/experience">
               <a>
                 <Button variation="secondary">Experience</Button>

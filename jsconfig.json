@@ -3,8 +3,10 @@
     "baseUrl": ".",
     "paths": {
       "~components/*": ["components/*"],
+      "~hooks/*": ["hooks/*"],
       "~icons/*": ["icons/*"],
       "~layouts/*": ["layouts/*"],
+      "~lib/*": ["lib/*"],
       "~media/*": ["media/*"],
       "~styles/*": ["styles/*"]
     }

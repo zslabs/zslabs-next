@@ -8866,6 +8866,11 @@ yargs-parser@^20.2.3:
   resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-20.2.4.tgz#b42890f14566796f85ae8e3a25290d205f154a54"
   integrity sha512-WOkpgNhPTlE73h4VFAFsOnomJVaovO8VqLDzy5saChRBFQFBoMYirowyW+Q9HB4HFF4Z7VZTiG3iSzJJA29yRA==
 
+zustand@3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/zustand/-/zustand-3.2.0.tgz#a718a964440796d44edda3073b69e78b95f4c8f5"
+  integrity sha512-MBYFrnUdgFVi38tdQNSzVN9cPpRDf7w2HhdHGDSgBRHN7vIbUGUR3aBdVQykelXzSFR7iVj3YNBuq7B9ceMI5w==
+
 zwitch@^1.0.0:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/zwitch/-/zwitch-1.0.5.tgz#d11d7381ffed16b742f6af7b3f223d5cd9fe9920"
