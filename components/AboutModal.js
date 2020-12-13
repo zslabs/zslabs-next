@@ -9,14 +9,6 @@ import { ReactComponent as TwitterSvg } from '~icons/twitter.svg'
 import { ReactComponent as GitHubSvg } from '~icons/github.svg'
 import { ReactComponent as CodePenSvg } from '~icons/codepen.svg'
 
-function ModalLink(props) {
-  return <TextLink className="underline" {...props} />
-}
-
-function ModalSectionTitle(props) {
-  return <h4 className="font-extrabold text-3xl mt-8 mb-4" {...props} /> // eslint-disable-line jsx-a11y/heading-has-content
-}
-
 export default function AboutModal() {
   const [open, setIsOpen] = React.useState(false)
 
@@ -59,39 +51,35 @@ export default function AboutModal() {
             </Button>
           </TextLink>
         </div>
-        <p>
-          I create buttons, borders, and other groovy things at{' '}
-          <ModalLink href="https://www.gremlin.com">Gremlin</ModalLink>. I work
-          with techologies like{' '}
-          <ModalLink href="https://reactjs.org">React</ModalLink>,{' '}
-          <ModalLink href="https://gatsbyjs.org">Gatsby</ModalLink>,{' '}
-          <ModalLink href="https://nextjs.org">Next.js</ModalLink>, and{' '}
-          <ModalLink href="https://nodejs.org">Node</ModalLink>.{' '}
-          <ModalLink href="https://www.framer.com/motion/">
-            Framer Motion
-          </ModalLink>{' '}
-          and <ModalLink href="https://greensock.com/">GSAP</ModalLink> are my
-          go-to animation utilities.
-        </p>
-        <p className="mt-4">
-          My background involves pushing the limits of what we can build on the
-          backend and how we can experience it on the frontend. My passions are
-          perfecting process and educating those around me.
-        </p>
-        <ModalSectionTitle>Speaking/consulting</ModalSectionTitle>
-        <p>
-          Have a project you'd like me to be part of?{' '}
-          <ModalLink href="#">Let's chat</ModalLink>.
-        </p>
-        <ModalSectionTitle>How'd you build this site?</ModalSectionTitle>
-        <p>
-          Because I love open-source&mdash;it's available for anyone to use.
-          Find a bug? Report it!{' '}
-          <ModalLink href="https://github.com/zslabs/zslabs.com">
-            View source
-          </ModalLink>
-          .
-        </p>
+        <div className="prose">
+          <p>
+            I create buttons, borders, and other groovy things at{' '}
+            <a href="https://www.gremlin.com">Gremlin</a>. I work with
+            techologies like <a href="https://reactjs.org">React</a>,{' '}
+            <a href="https://gatsbyjs.org">Gatsby</a>,{' '}
+            <a href="https://nextjs.org">Next.js</a>, and{' '}
+            <a href="https://nodejs.org">Node</a>.{' '}
+            <a href="https://www.framer.com/motion/">Framer Motion</a> and{' '}
+            <a href="https://greensock.com/">GSAP</a> are my go-to animation
+            utilities.
+          </p>
+          <p className="mt-4">
+            My background involves pushing the limits of what we can build on
+            the backend and how we can experience it on the frontend. My
+            passions are perfecting process and educating those around me.
+          </p>
+          <h3>Speaking/consulting</h3>
+          <p>
+            Have a project you'd like me to be part of?{' '}
+            <a href="#">Let's chat</a>.
+          </p>
+          <h3>How'd you build this site?</h3>
+          <p>
+            Because I love open-source&mdash;it's available for anyone to use.
+            Find a bug? Report it!{' '}
+            <a href="https://github.com/zslabs/zslabs.com">View source</a>.
+          </p>
+        </div>
       </Modal>
     </>
   )

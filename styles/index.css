@@ -14,4 +14,18 @@
     font-weight: 500 800;
     unicode-range: 'U+E000, U+E002-E081, U+E093-E097, U+E0A5-E0E7, U+E0F3-E11D, U+E11E-E165, U+EE01, U+F6C3';
   }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply tracking-tight;
+  }
+}
+
+@layer utilities {
+  .underline {
+    text-decoration: underline;
+    text-decoration-skip-ink: auto;
+  }
 }

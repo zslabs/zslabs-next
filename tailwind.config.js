@@ -1,5 +1,4 @@
 /* eslint-disable global-require */
-const plugin = require('tailwindcss/plugin')
 const defaultTheme = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
 
@@ -11,6 +10,9 @@ module.exports = {
         '0/8': '0% 8px',
         '100/8': '100% 8px',
         'auto/8': 'auto 8px',
+      },
+      borderColor: {
+        current: 'currentColor',
       },
       colors: {
         transparent: 'transparent',
@@ -65,23 +67,5 @@ module.exports = {
       scale: ['group-hover'],
     },
   },
-  plugins: [
-    require('@tailwindcss/forms'),
-    plugin(({ addBase, config }) => {
-      addBase({
-        h1: {
-          letterSpacing: config('theme.letterSpacing.tight'),
-        },
-        h2: {
-          letterSpacing: config('theme.letterSpacing.tight'),
-        },
-        h3: {
-          letterSpacing: config('theme.letterSpacing.tight'),
-        },
-        h4: {
-          letterSpacing: config('theme.letterSpacing.tight'),
-        },
-      })
-    }),
-  ],
+  plugins: [require('@tailwindcss/forms')],
 }
