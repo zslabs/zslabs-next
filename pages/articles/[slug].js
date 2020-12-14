@@ -16,7 +16,7 @@ export default function Post({ post }) {
     <div className="prose">
       {content}
 
-      <h2>Hello</h2>
+      <h2>Hello!!</h2>
       <h3>Hello</h3>
       <h4>Hello</h4>
       <h5>Hello</h5>
@@ -63,6 +63,8 @@ Post.propTypes = {
 
 export async function getStaticProps({ params }) {
   const post = getPostBySlug(params.slug, ['title', 'date', 'slug', 'content'])
+
+  console.log(post)
 
   const mdxSource = await renderToString(post.content, { components })
 

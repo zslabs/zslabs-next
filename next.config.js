@@ -3,7 +3,7 @@ const path = require('path')
 const withPlugins = require('next-compose-plugins')
 const withFonts = require('nextjs-fonts')
 const withMDX = require('@next/mdx')({
-  extension: /\.md$/,
+  extension: /\.mdx?$/,
 })
 
 const nextConfig = {
@@ -37,4 +37,4 @@ const nextConfig = {
   },
 }
 
-module.exports = withPlugins([withFonts, withMDX], nextConfig)
+module.exports = withPlugins([withMDX, withFonts], nextConfig)
