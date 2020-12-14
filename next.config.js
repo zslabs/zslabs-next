@@ -2,9 +2,6 @@ const path = require('path')
 
 const withPlugins = require('next-compose-plugins')
 const withFonts = require('nextjs-fonts')
-const withMDX = require('@next/mdx')({
-  extension: /\.mdx?$/,
-})
 
 const nextConfig = {
   webpack: (config, { dev }) => {
@@ -37,4 +34,4 @@ const nextConfig = {
   },
 }
 
-module.exports = withPlugins([withMDX, withFonts], nextConfig)
+module.exports = withPlugins([withFonts], nextConfig)
