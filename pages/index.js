@@ -68,7 +68,11 @@ function BlogPosts({ data }) {
       </SectionTitle>
       <BubbleList>
         {data.map((post) => (
-          <BubbleListItem title={post.title} link={`/articles/${post.slug}`}>
+          <BubbleListItem
+            key={post.title}
+            title={post.title}
+            link={`/articles/${post.slug}`}
+          >
             {post.date}
           </BubbleListItem>
         ))}
