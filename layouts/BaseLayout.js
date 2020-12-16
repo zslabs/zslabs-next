@@ -3,6 +3,8 @@ import Link from 'next/link'
 
 import { ReactComponent as LogoSvg } from '~media/logo.svg'
 import { ReactComponent as ListLogoSvg } from '~icons/list-logo.svg'
+import { ReactComponent as DarkSvg } from '~icons/dark.svg'
+import { ReactComponent as LightSvg } from '~icons/light.svg'
 import Container from '~components/Container'
 import LinkUnderline from '~components/LinkUnderline'
 import TextLink from '~components/TextLink'
@@ -23,6 +25,8 @@ export default function BaseLayout({ children }) {
           </a>
         </Link>
         <div className="justify-self-center">
+          <DarkSvg className="h-10 w-10 stroke-1.5" />
+          <LightSvg className="h-10 w-10 stroke-1.5" />
           <ArticleOffCanvas />
         </div>
         <div className="justify-self-end">

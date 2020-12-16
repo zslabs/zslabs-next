@@ -19,15 +19,11 @@ SectionTitleSkew.propTypes = {
 
 export default function SectionTitle({ children, className, ...rest }) {
   return (
-    <h2
-      className={clsx(
-        'relative text-4xl md:text-5xl font-extrabold mb-12',
-        className
-      )}
-      {...rest}
-    >
-      {children}
-    </h2>
+    <div className={clsx('mb-12', className)}>
+      <h2 className="relative text-4xl md:text-5xl font-extrabold" {...rest}>
+        {children}
+      </h2>
+    </div>
   )
 }
 SectionTitle.propTypes = {

@@ -43,7 +43,7 @@ const data = [
 export default function Experience() {
   return (
     <Section className="grid grid-cols-1 md:grid-cols-3/4 justify-center relative">
-      <SectionTitle className="flex justify-self-center">
+      <SectionTitle className="grid place-items-center">
         <SectionTitleSkew
           className="from-indigo-200 to-purple-700"
           style={{

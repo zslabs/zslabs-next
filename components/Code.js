@@ -37,14 +37,14 @@ export default function Code({
           </header>
           <pre className={className}>
             <div className="grid grid-flow-col auto-cols-min overflow-auto">
-              <div className="p-4 bg-gray-800 border-r-2 border-gray-600 text-right text-white text-opacity-40 select-none sticky left-0 z-10">
+              <div className="p-4 bg-gray-800 border-r-2 border-gray-600 text-right text-gray-100 text-opacity-40 select-none sticky left-0 z-10">
                 {tokens.map((line, i) => {
                   const lineKey = `line-${i}`
 
                   return <div key={lineKey}>{i + 1}</div>
                 })}
               </div>
-              <div className="text-white p-4">
+              <div className="text-gray-100 p-4">
                 {tokens.map((line, i) => {
                   const lineKey = `line-${i}`
 

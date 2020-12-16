@@ -48,6 +48,7 @@
     "react-use": "15.3.4",
     "slugify": "1.4.6",
     "tailwindcss": "2.0.2",
+    "tailwindcss-filters": "3.0.0",
     "zustand": "3.2.0"
   },
   "devDependencies": {

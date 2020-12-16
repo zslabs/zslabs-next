@@ -4,6 +4,7 @@ import hydrate from 'next-mdx-remote/hydrate'
 
 import { getAllPosts, getPostBySlug } from '~lib/api'
 import AutoLinkHeader from '~components/AutoLinkHeader'
+import TextLink from '~components/TextLink'
 
 const Test = () => (
   <div>
@@ -12,6 +13,7 @@ const Test = () => (
 )
 const components = {
   Test,
+  a: (props) => <TextLink {...props} />,
   h1: (props) => <AutoLinkHeader as="h1" {...props} />,
   h2: (props) => <AutoLinkHeader as="h2" {...props} />,
   h3: (props) => <AutoLinkHeader as="h3" {...props} />,

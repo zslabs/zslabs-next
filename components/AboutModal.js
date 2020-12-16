@@ -54,16 +54,19 @@ export default function AboutModal() {
         <div className="prose">
           <p>
             I create buttons, borders, and other groovy things at{' '}
-            <a href="https://www.gremlin.com">Gremlin</a>. I work with
-            techologies like <a href="https://reactjs.org">React</a>,{' '}
-            <a href="https://gatsbyjs.org">Gatsby</a>,{' '}
-            <a href="https://nextjs.org">Next.js</a>, and{' '}
-            <a href="https://nodejs.org">Node</a>.{' '}
-            <a href="https://www.framer.com/motion/">Framer Motion</a> and{' '}
-            <a href="https://greensock.com/">GSAP</a> are my go-to animation
-            utilities.
+            <TextLink href="https://www.gremlin.com">Gremlin</TextLink>. I work
+            with techologies like{' '}
+            <TextLink href="https://reactjs.org">React</TextLink>,{' '}
+            <TextLink href="https://gatsbyjs.org">Gatsby</TextLink>,{' '}
+            <TextLink href="https://nextjs.org">Next.js</TextLink>, and{' '}
+            <TextLink href="https://nodejs.org">Node</TextLink>.{' '}
+            <TextLink href="https://www.framer.com/motion/">
+              Framer Motion
+            </TextLink>{' '}
+            and <TextLink href="https://greensock.com/">GSAP</TextLink> are my
+            go-to animation utilities.
           </p>
-          <p className="mt-4">
+          <p>
             My background involves pushing the limits of what we can build on
             the backend and how we can experience it on the frontend. My
             passions are perfecting process and educating those around me.
@@ -71,13 +74,16 @@ export default function AboutModal() {
           <h3>Speaking/consulting</h3>
           <p>
             Have a project you'd like me to be part of?{' '}
-            <a href="#">Let's chat</a>.
+            <TextLink href="/contact">Let's chat</TextLink>.
           </p>
           <h3>How'd you build this site?</h3>
           <p>
             Because I love open-source&mdash;it's available for anyone to use.
             Find a bug? Report it!{' '}
-            <a href="https://github.com/zslabs/zslabs.com">View source</a>.
+            <TextLink href="https://github.com/zslabs/zslabs.com">
+              View source
+            </TextLink>
+            .
           </p>
         </div>
       </Modal>

@@ -5,6 +5,9 @@ const colors = require('tailwindcss/colors')
 module.exports = {
   darkMode: 'class', // 'media' when in prod
   theme: {
+    filter: {
+      invert: 'invert(1)',
+    },
     extend: {
       backgroundSize: {
         '0/8': '0% 8px',
@@ -61,11 +64,12 @@ module.exports = {
     ],
   },
   variants: {
+    filter: ['dark'],
     extend: {
       backgroundOpacity: ['dark'],
       backgroundSize: ['hover'],
       scale: ['group-hover'],
     },
   },
-  plugins: [require('@tailwindcss/forms')],
+  plugins: [require('tailwindcss-filters'), require('@tailwindcss/forms')],
 }

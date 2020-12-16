@@ -10,7 +10,7 @@ export default function Badge({
   return (
     <div
       className={clsx(
-        'inline-block select-none rounded-full text-xs uppercase text-white font-extrabold whitespace-nowrap tracking-wide ring-2 ring-opacity-10 bg-gradient-to-tr py-1 px-2',
+        'inline-block select-none rounded-full text-xs uppercase text-gray-100 font-extrabold whitespace-nowrap tracking-wide ring-2 ring-opacity-10 bg-gradient-to-tr py-1 px-2',
         className,
         {
           'from-indigo-700 to-blue-500 ring-indigo-700':

@@ -29,7 +29,7 @@ export function BubbleListItem({
             </div>
           )}
         </div>
-        {sub && <div className="text-gray-500">{sub}</div>}
+        {sub && <div className="text-gray-500 dark:text-gray-400">{sub}</div>}
         {children && <div className="md:text-lg">{children}</div>}
       </div>
     </div>
