@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Modal from './Modal'
 import TextLink from './TextLink'
 import Button from './Button'
+import Prose from './Prose'
 
 import { ReactComponent as TwitterSvg } from '~icons/twitter.svg'
 import { ReactComponent as GitHubSvg } from '~icons/github.svg'
@@ -51,7 +52,7 @@ export default function AboutModal() {
             </Button>
           </TextLink>
         </div>
-        <div className="prose">
+        <Prose>
           <p>
             I create buttons, borders, and other groovy things at{' '}
             <TextLink href="https://www.gremlin.com">Gremlin</TextLink>. I work
@@ -85,7 +86,7 @@ export default function AboutModal() {
             </TextLink>
             .
           </p>
-        </div>
+        </Prose>
       </Modal>
     </>
   )

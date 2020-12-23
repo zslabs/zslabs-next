@@ -3,7 +3,7 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-  darkMode: 'class', // 'media' when in prod
+  darkMode: 'class',
   theme: {
     filter: {
       invert: 'invert(1)',

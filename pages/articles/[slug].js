@@ -5,6 +5,7 @@ import hydrate from 'next-mdx-remote/hydrate'
 import { getAllPosts, getPostBySlug } from '~lib/api'
 import AutoLinkHeader from '~components/AutoLinkHeader'
 import TextLink from '~components/TextLink'
+import Prose from '~components/Prose'
 
 const Test = () => (
   <div>
@@ -26,7 +27,7 @@ export default function Post({ post }) {
 
   const content = hydrate(post.source, { components })
 
-  return <div className="prose">{content}</div>
+  return <Prose>{content}</Prose>
 }
 
 Post.propTypes = {

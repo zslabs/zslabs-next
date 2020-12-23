@@ -20,7 +20,7 @@
   }
 
   & a:not([class]) {
-    @apply dark:from-gray-600 dark:to-gray-600 dark:text-gray-100 font-extrabold text-blue-500 duration-150 bg-gradient-to-r from-blue-100 to-blue-100 transition-all bg-left-bottom bg-no-repeat bg-100/8;
+    @apply font-extrabold text-blue-500 duration-150 bg-gradient-to-r from-blue-100 to-blue-100 transition-all bg-left-bottom bg-no-repeat bg-100/8;
   }
 
   & h2,
@@ -69,7 +69,7 @@
   & ol > li::before {
     content: counter(list-counter) '.';
 
-    @apply dark:text-gray-500 absolute left-1 font-extrabold text-blue-500;
+    @apply absolute left-1 font-extrabold text-blue-500;
   }
 
   & li {
@@ -83,7 +83,7 @@
   & ul > li::before {
     content: '';
 
-    @apply dark:bg-gray-500 dark:ring-gray-700 absolute left-1 top-2 w-2 h-2 bg-blue-500 ring-2 ring-blue-200 rounded-full;
+    @apply absolute left-1 top-2 w-2 h-2 bg-blue-500 ring-2 ring-blue-200 rounded-full;
   }
 
   /* Revert any elements with custom classes to their base styles; most likely is a React component */
@@ -92,3 +92,19 @@
     all: inherit;
   }
 }
+
+/* @NOTE Workaround for some screwy PostCSS and dark mode styles inside of prose */
+
+/* stylelint-disable no-duplicate-selectors */
+.prose a:not([class]) {
+  @apply dark:from-gray-600 dark:to-gray-600 dark:text-gray-100;
+}
+
+.prose ul > li::before {
+  @apply dark:bg-gray-500 dark:ring-gray-700;
+}
+
+.prose ol > li::before {
+  @apply dark:text-gray-500;
+}
+/* stylelint-enable no-duplicate-selectors */

@@ -1,5 +1,7 @@
+import * as React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
+import { useTheme } from 'next-themes'
 
 import { ReactComponent as LogoSvg } from '~media/logo.svg'
 import { ReactComponent as ListLogoSvg } from '~icons/list-logo.svg'
@@ -10,9 +12,14 @@ import LinkUnderline from '~components/LinkUnderline'
 import TextLink from '~components/TextLink'
 import Section from '~components/Section'
 import AboutModal from '~components/AboutModal'
-import ArticleOffCanvas from '~components/ArticleOffCanvas'
 
 export default function BaseLayout({ children }) {
+  const [mounted, setMounted] = React.useState(false)
+  const { theme, setTheme } = useTheme()
+
+  // After mounting, we have access to the theme
+  React.useEffect(() => setMounted(true), [])
+
   return (
     <Container>
       <Section
@@ -25,9 +32,20 @@ export default function BaseLayout({ children }) {
           </a>
         </Link>
         <div className="justify-self-center">
-          <DarkSvg className="h-10 w-10 stroke-1.5" />
-          <LightSvg className="h-10 w-10 stroke-1.5" />
-          <ArticleOffCanvas />
+          {mounted && (
+            <button
+              title="Toggle dark mode"
+              className="focus:outline-none transform duration-300 hover:scale-110 ease-bounce"
+              type="button"
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            >
+              {theme === 'light' ? (
+                <DarkSvg className="h-8 w-8 stroke-1.5" />
+              ) : (
+                <LightSvg className="h-8 w-8 stroke-1.5" />
+              )}
+            </button>
+          )}
         </div>
         <div className="justify-self-end">
           <AboutModal />
