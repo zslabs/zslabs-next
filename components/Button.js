@@ -40,7 +40,7 @@ export default function Button({
         {children}
       </span>
       <span
-        className="absolute z-0 inset-0"
+        className="absolute z-0 inset-1"
         style={{ backgroundImage: `url(${diagonalLines})` }}
       />
     </button>

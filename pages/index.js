@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
 import Head from 'next/head'
-import Link from 'next/link'
 
 import BubbleList, { BubbleListItem } from '~components/BubbleList'
 import Button from '~components/Button'
@@ -10,7 +9,6 @@ import TextLink from '~components/TextLink'
 import { ReactComponent as CodeSvg } from '~icons/code.svg'
 import diagonalLines from '~media/diagonal-lines.svg'
 import dots from '~media/dots.svg'
-import useArticlesOffCanvasState from '~hooks/useArticlesOffCanvasState'
 import { getAllPosts } from '~lib/api'
 
 function RecentProjects() {
@@ -55,7 +53,7 @@ function RecentProjects() {
 
 function BlogPosts({ data }) {
   return (
-    <div>
+    <div id="articles">
       <SectionTitle className="grid place-items-center">
         <SectionTitleSkew
           className="from-green-400 to-cyan-500 ring-green-400"
@@ -72,9 +70,8 @@ function BlogPosts({ data }) {
             key={post.title}
             title={post.title}
             link={`/articles/${post.slug}`}
-          >
-            {post.date}
-          </BubbleListItem>
+            sub={<>{post.date}</>}
+          />
         ))}
       </BubbleList>
     </div>
@@ -86,8 +83,6 @@ BlogPosts.propTypes = {
 }
 
 export default function Home({ allPosts }) {
-  const toggle = useArticlesOffCanvasState((state) => state.toggle)
-
   return (
     <>
       <Head>
@@ -102,14 +97,12 @@ export default function Home({ allPosts }) {
             Zach Schnackel
           </h1>
           <div className="grid justify-items-center auto-cols-auto grid-flow-col gap-6 mt-4">
-            <Button variation="primary" onClick={toggle}>
-              Articles
-            </Button>
-            <Link href="/experience">
-              <a>
-                <Button variation="secondary">Experience</Button>
-              </a>
-            </Link>
+            <TextLink href="#articles">
+              <Button variation="primary">Articles</Button>
+            </TextLink>
+            <TextLink href="/experience">
+              <Button variation="secondary">Experience</Button>
+            </TextLink>
           </div>
         </div>
       </Section>

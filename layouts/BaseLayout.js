@@ -1,6 +1,5 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import Link from 'next/link'
 import { useTheme } from 'next-themes'
 
 import { ReactComponent as LogoSvg } from '~media/logo.svg'
@@ -26,11 +25,12 @@ export default function BaseLayout({ children }) {
         as="header"
         className="grid gap-4 auto-cols-fr grid-flow-col items-center"
       >
-        <Link href="/">
-          <a className="justify-self-start transform duration-300 hover:scale-110 ease-bounce">
-            <LogoSvg className="h-12 from-indigo-700 to-blue-500" />
-          </a>
-        </Link>
+        <TextLink
+          href="/"
+          className="justify-self-start transform duration-300 hover:scale-110 ease-bounce"
+        >
+          <LogoSvg className="h-12 from-indigo-700 to-blue-500" />
+        </TextLink>
         <div className="justify-self-center">
           {mounted && (
             <button

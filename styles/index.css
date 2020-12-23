@@ -5,6 +5,10 @@
 @import './prose.css';
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   @font-face {
     font-family: 'ZS Sans';
     src: url(/fonts/Manrope[wght].ttf) format('truetype-variations');

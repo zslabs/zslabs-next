@@ -4,7 +4,7 @@
   & * + ol,
   & * + dl,
   & * + blockquote,
-  & * + pre,
+  & * + pre:not([class]),
   & * + address,
   & * + fieldset,
   & * + figure {

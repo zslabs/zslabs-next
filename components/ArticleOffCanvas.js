@@ -30,11 +30,7 @@ export default function ArticleOffCanvas() {
           Articles
         </SectionTitle>
         <BubbleList>
-          <BubbleListItem
-            title="MDX article title"
-            link="https://list.zslabs.com/"
-            sub={<>Stuff</>}
-          />
+          <BubbleListItem title="Article title" link="/" sub={<>Stuff</>} />
         </BubbleList>
       </OffCanvas>
     </>

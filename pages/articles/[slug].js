@@ -1,11 +1,14 @@
 import PropTypes from 'prop-types'
 import renderToString from 'next-mdx-remote/render-to-string'
 import hydrate from 'next-mdx-remote/hydrate'
+import { preToCodeBlock } from 'mdx-utils'
 
 import { getAllPosts, getPostBySlug } from '~lib/api'
 import AutoLinkHeader from '~components/AutoLinkHeader'
 import TextLink from '~components/TextLink'
 import Prose from '~components/Prose'
+import ScrollIndicator from '~components/ScrollIndicator'
+import Code from '~components/Code'
 
 const Test = () => (
   <div>
@@ -20,14 +23,26 @@ const components = {
   h3: (props) => <AutoLinkHeader as="h3" {...props} />,
   h4: (props) => <AutoLinkHeader as="h4" {...props} />,
   h5: (props) => <AutoLinkHeader as="h5" {...props} />,
+  pre: (preProps) => {
+    const props = preToCodeBlock(preProps)
+    // If there's a codeString and some props, we passed the test
+    if (props) {
+      return <Code {...props} wrapperClassName="my-8" />
+    }
+    // It's possible to have a pre without a code in it
+    return <pre {...preProps} />
+  },
 }
 
 export default function Post({ post }) {
-  console.log(post)
-
   const content = hydrate(post.source, { components })
 
-  return <Prose>{content}</Prose>
+  return (
+    <Prose>
+      <ScrollIndicator className="fixed hidden md:block top-1 left-1 w-8 h-8 text-blue-500" />
+      {content}
+    </Prose>
+  )
 }
 
 Post.propTypes = {
@@ -36,8 +51,6 @@ Post.propTypes = {
 
 export async function getStaticProps({ params }) {
   const post = getPostBySlug(params.slug, ['title', 'date', 'slug', 'content'])
-
-  console.log(post)
 
   const mdxSource = await renderToString(post.content, { components })
 
