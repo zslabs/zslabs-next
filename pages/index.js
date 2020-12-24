@@ -112,14 +112,14 @@ export default function Home({ allPosts }) {
           className="relative py-6 px-12 text-center transform hover:scale-105 ease-bounce duration-300"
         >
           <div className="absolute -top-2 -left-2 w-full h-full transform -skew-x-12 z-0">
-            <div className="absolute inset-0 bg-gradient-to-r from-indigo-700 to-blue-500 opacity-80" />
+            <div className="absolute inset-0 bg-gradient-to-r from-indigo-700 to-blue-500 opacity-80 rounded" />
             <span
               className="absolute inset-0"
               style={{ backgroundImage: `url(${diagonalLines})` }}
             />
           </div>
 
-          <div className="absolute inset-0 z-0 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 transform -skew-x-12" />
+          <div className="absolute inset-0 z-0 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 transform -skew-x-12 shadow rounded" />
           <div className="relative z-10 space-y-1">
             <div>🎉 Check out my latest article:</div>
             <div className="font-extrabold text-lg">{allPosts[0].title}</div>

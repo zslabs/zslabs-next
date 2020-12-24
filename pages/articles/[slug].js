@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import renderToString from 'next-mdx-remote/render-to-string'
 import hydrate from 'next-mdx-remote/hydrate'
 import { preToCodeBlock } from 'mdx-utils'
+import { CodePen, Tweet } from 'mdx-embed'
 
 import { getAllPosts, getPostBySlug } from '~lib/api'
 import AutoLinkHeader from '~components/AutoLinkHeader'
@@ -17,6 +18,8 @@ const Test = () => (
 )
 const components = {
   Test,
+  CodePen,
+  Tweet,
   a: (props) => <TextLink {...props} />,
   h1: (props) => <AutoLinkHeader as="h1" {...props} />,
   h2: (props) => <AutoLinkHeader as="h2" {...props} />,

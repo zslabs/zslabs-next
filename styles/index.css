@@ -26,6 +26,11 @@
   h5 {
     @apply tracking-tight;
   }
+
+  /* MDX Embed */
+  .mdx-embed {
+    @apply my-8;
+  }
 }
 
 @layer utilities {
