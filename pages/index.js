@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import Head from 'next/head'
+import dayjs from 'dayjs'
 
 import BubbleList, { BubbleListItem } from '~components/BubbleList'
 import Button from '~components/Button'
@@ -70,7 +71,7 @@ function BlogPosts({ data }) {
             key={post.title}
             title={post.title}
             link={`/articles/${post.slug}`}
-            sub={<>{post.date}</>}
+            sub={<>{dayjs(post.date).format('MMMM D, YYYY')}</>}
           />
         ))}
       </BubbleList>

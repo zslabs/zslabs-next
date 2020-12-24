@@ -1,4 +1,6 @@
 .prose {
+  @apply md:text-lg;
+
   & * + p,
   & * + ul,
   & * + ol,
@@ -83,7 +85,7 @@
   & ul > li::before {
     content: '';
 
-    @apply absolute left-1 top-2 w-2 h-2 bg-blue-500 ring-2 ring-blue-200 rounded-full;
+    @apply absolute left-1 top-2 w-2 h-2 md:top-3 bg-blue-500 ring-2 ring-blue-200 rounded-full;
   }
 
   /* Revert any elements with custom classes to their base styles; most likely is a React component */

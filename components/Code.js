@@ -50,6 +50,9 @@ export default function Code({
 
                   return (
                     <div key={lineKey} {...getLineProps({ line, key: i })}>
+                      {line.length === 1 && line[0].empty === true && (
+                        <span>&#8203;</span>
+                      )}
                       {line.map((token, key) => (
                         <span {...getTokenProps({ token, key })} />
                       ))}
