@@ -1,0 +1,62 @@
+---
+title: Netlify CMS and Cloudinary
+date: 2019/06/08
+---
+
+With [Netlify CMS](https://www.netlifycms.org/) bundled alongside [Netlify](https://www.netlify.com); the service is able to directly converse with your GitHub repo, making it an incredibly powerful way to create and manage content. This includes managing dependencies, environment variables, posts, pages, media - basically anything you can throw at it.
+
+With my normal go-to website framework of choice; [Gatsby](https://www.gatsbyjs.org/), building a production-version of my projects is pretty seamless. In a recent project however, I realized I was frequently going over Netlify's 15 minute build-time limit; which caused deploy failures. Because this project had a variety of collection-types and contributors, the types of content (and media) were pretty diverse. After a bit of investigation, I determined the reason being over 100MB of media stored directly in the repo; which was being populated by Netlify CMS's built-in file uploader. This meant:
+
+1. Pulling down the repo was a pretty resource-intensive task for the Netlify service to do; wasting time.
+1. Transforming each image through Gatsby; while decently fast, also added build-time.
+1. Netlify's default file system does not provide much validation or any optimization; so images were being uploaded at their full, often enormous, sizes.
+
+With the help of [gatsby-transformer-sharp](https://www.gatsbyjs.org/packages/gatsby-transformer-sharp/) we weren't feeling the effects on the production-site, but it was clear this was an unsustainable way to manage media.
+
+After [bringing a bit more sanity to Netlify CMS configuration](/articles/consolidating-netlify-cms/), it was clear I needed to look into other media providers that could work alongside Netlify CMS. Luckily, [Cloudinary](https://cloudinary.com/invites/lpov9zyyucivvxsnalc5/ixrpudbpiex8vwuwzdnp?kind=twitter&t=demo); a service I've used for several years, also has an [integration with Netlify CMS](https://www.netlifycms.org/docs/cloudinary/). Cloudinary not only provides cloud storage and CDN delivery for your media, but also has a powerful, on-demand transformation service.
+
+Setting up Cloudinary was very straight-forward:
+
+```js
+import CMS from 'netlify-cms-app';
+import cloudinary from 'netlify-cms-media-library-cloudinary';
+
+CMS.registerMediaLibrary(cloudinary);
+
+CMS.init({
+  config: {
+    load_config_file: false,
+    backend: {
+      name: 'github',
+      repo: 'your/repo',
+      branch: 'master',
+      squash_merges: true, // @NOTE Beta feature
+    },
+    media_library: {
+      name: 'cloudinary',
+      config: {
+        cloud_name: 'your_name',
+        api_key: 'YOUR_API_KEY_HERE',
+        default_transformations: [
+          [
+            {
+              width: 2000,
+              quality: 80,
+              crop: 'limit',
+            },
+          ],
+        ],
+      },
+    },
+    media_folder: '/static/uploads',
+    public_folder: '/uploads',
+    collections: [
+      ...
+    ]
+  },
+});
+```
+
+I was also able to setup default transformations that would be applied to images chosen from the built-in interface within the Netlify CMS. To help with optimizations on upload, I also created an [upload preset](https://support.cloudinary.com/hc/en-us/articles/360004967272-Upload-Preset-Configuration); which keeps my usage of the Cloudinary service as small as possible. This also meant that less training was needed for contributors about optimizing images before upload; as well as the service fitting perfectly within the Netlify CMS interface.
+
+After moving the existing media over, I was able to **decrease build-times from 15-20 minutes to about 4-5 minutes**. This not only solves the issue of intermittent build failures, but also allows content contributors to preview and publish their work faster.

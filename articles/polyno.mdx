@@ -1,0 +1,45 @@
+---
+title: PolyNo?
+date: 2015/11/15
+---
+
+Let's run through a story you may already be familiar with.
+
+You're beginning development on the latest, greatest JavaScript component. You've done your research, laid out a plan of attack and get started. You come to a point in your component that; for the sake of this article, requires you to run a small calculation at very frequent intervals. After vetting a few different options, you cross paths with a function you're unfamiliar with; [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame). This function does EXACTLY what you need it to do - NOOICE! After a bit more digging, you come to the often dreaded browser support table. Damn, IE10 and up, but this needs to work in IE9 as well.
+
+Being the quick-thinking, problem solver you are, you immediately start digging into work-arounds to still be able to use what you just vested your heart and soul into. Normally, this path leads us to what is often referred to as a polyfill. A polyfill, simply put - is a snippet of code that extends the browser to support what we expect for it to provide to us natively. So, how does this normally look? Below is a basic example of what we'd do to "plug" browsers that don't support `requestAnimationFrame`:
+
+```js
+if (!window.requestAnimationFrame) {
+  // Do the dew
+}
+```
+
+Pretty simple, right? When adding polyfills to your project, there's two ways this can be handled:
+
+1. **Bundle them directly in your dependencies.** If you're checking for native support before plugging, there's certainly nothing wrong with this. The "bloat" you add is all based on the number of polyfills and their complexity.
+2. **Browser-specific files.** If you're targeting specific browsers, then building bundles of polyfills is a great way to further control what is being served up to your visitors in smaller chunks.
+
+For me, the above two options feel more like "choose your own poison" that really aren't that appealing at the end of the day. With either, you're left with another layer of manual upkeep. And let's face it, you may be able to use HTML comments for IE conditionals to target those browser versions, but especially in the product world, your site is used by a vast array of browsers with LOTS of deficiencies.
+
+Your response might be, "look - I grabbed a polyfill and have checked it in the required browsers. It works, done, finito." Now, let's take that same idea and scale our little JavaScript component to an open-source library that is consumed by others. "Eh, that's not too bad. I've done the research and know this is the best way to provide support for this function across all targeted browsers". Fair enough.
+
+Now, let's move outside of your library and think about another library that you don't control that is also being used by an end-user. The developer of the other library came across a similar issue just as you have, did their research and implemented what they felt would get them them to the finish line. Wait a second, so we now have two polyfills for `requestAnimationFrame`? How does that work? Well, here's where it starts to break down. If another library polyfills a specific function before yours is parsed, then that function will appear "native" to the browser at this point, meaning your polyfill is never read. What's the harm in that? Potentially - lots. You may have done your homework, but what if the function they included isn't really solving the problem? Or, what if it ultimately does the same thing, but accomplishes it in a very resource-intensive way?
+
+As we start to dig deeper into this, layers upon layers of polyfills within an open-source community can be frustrating at times. How do you not only vet these polyfill solutions you depend on; sometimes unknowingly, but also make sure you don't have competing solutions from 3rd party vendors?
+
+No "one" person can manage the vastness that is new JavaScript functionality and still provide a layer of protection for older browsers alongside a team that wants to continue to push forward. This is starting to sound like a team effort.
+
+Upon doing a deeper dive into the user-base across the product I work on, we discovered a very large percentage of our JavaScript errors were coming from browsers that we didn't even realize were being used. We had polyfills for the functions that were throwing errors, but the browser itself fell into a "gray" area for support; which unfortunately meant we were not capturing those opportunities based on these errors. This is where it gets cool.
+
+Remember the options we had above for manually including polyfills in our project? What if there was a resource that not only sent down community-vetted polyfills, but also only sent down the polyfills needed based on the browser that was visiting the site at that time? There is.
+
+[Polyfill.io](http://polyfill.io) is a service that (taken from their docs):
+
+> selectively bundles browser polyfills based on the User-Agent header supplied in a request, with the intention of allowing JavaScript and CSS developers to use modern standards in legacy user agents that do not natively support the standard. Think of it like a pair of glasses for your aging browser.
+
+The implementation is dead-simple too. Simply add the JavaScript resource to the `<head>` of your page, and it does the rest, automatically. The reason it's included sooner than where you'd normally stick JavaScript resources is so it can intercept other polyfills with it's own. The [Browsers and features](https://cdn.polyfill.io/v2/docs/features/) page also details what is included by default, and provides an easy-way to pull-in optional dependencies when your project depends on them. Best of all? What's sent down is small. The IE9 bundle for example comes in at 3.0KB gzipped.
+
+Now, at the end of the day, code is written by humans. Could the polyfills they send down not be as performant as others? Potentially. The great thing is, this is an ever-growing library that [you can contribute to](https://github.com/Financial-Times/polyfill-service)! Submit issues, ask questions and if you know of a better way to do things, then suggest it!
+
+Moving forward, I'm removing the polyfills I used to bundle in each library and letting the user decide the browsers they want to support. If you'd like to use the awesome service I just mentioned - great! If not, that's cool too. You make the decision based on what you need. I'll certainly be including a link to Polyfill.io in each project README to better educate the community on this service and what it means moving forward.

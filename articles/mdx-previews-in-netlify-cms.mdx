@@ -1,0 +1,168 @@
+---
+title: MDX previews in Netlify CMS
+date: 2020/07/23
+---
+
+[MDX](https://mdxjs.com/) is an incredible toolkit that allows you to write [JSX](https://reactjs.org/docs/introducing-jsx.html) in your Markdown files; creating opportunities for more dynamic and interactive experiences in your content.
+
+What's even better than the technology itself, is the ability it provides content-contributors to work alongside these advanced components within the articles they're crafting. When coupled with GUI interfaces like [Netlify CMS](https://www.netlifycms.org/), we're able to provide an abstraction-layer for whatever technology we're using.
+
+> Technology is only as good as the simplicity it introduces.
+
+### The problem
+
+While Netlify CMS provides a wealth of features upfront that makes setup and creating collection-types easy, an assumption it doesn't make is within its preview-panel.
+
+<Image
+  src="/uploads/netlify-admin-before.png"
+  alt="Netlify CMS: Before"
+  width="2400"
+  height="1956"
+/>
+
+This normally wouldn't be a huge deal. We're able to see the fields and parsed Markdown - albeit rough. But, as we look closer at the article, we can see some MDX components that either don't show anything at all or present a vastly different experience than what would be expected within the preview panel.
+
+### The solution
+
+Luckily, Netlify CMS is [pluggable](https://www.netlifycms.org/docs/customization/), and allows us to hook into and generate our own previews per collection-type:
+
+```js filename=cms.js
+import CMS from 'netlify-cms-app'
+
+... // CMS.init() functionality
+
+CMS.registerPreviewTemplate('posts', withEmotion(ArticlePreview))
+```
+
+In my case, I also wanted to wrap the iFrame that powers the preview and utilize [Emotion](https://emotion.sh/), so a [HOC](https://reactjs.org/docs/higher-order-components.html) was created to target and provide that scope:
+
+```js filename=withEmotion.js
+import { CacheProvider, Global } from '@emotion/core'
+import createCache from '@emotion/cache'
+import weakMemoize from '@emotion/weak-memoize'
+import { ThemeProvider } from 'emotion-theming'
+import { theme } from 'chaoskit/src/assets/styles/theme'
+import { globalStyles } from 'chaoskit/src/assets/styles/global'
+import { Container } from 'chaoskit/src/components'
+
+const memoizedCreateCacheWithContainer = weakMemoize((container) => {
+  const newCache = createCache({ container })
+
+  return newCache
+})
+
+export default (Component) => (props) => {
+  const iframe = document.querySelector('#nc-root iframe')
+  const iframeHeadElem = iframe && iframe.contentDocument.head
+
+  if (!iframeHeadElem) {
+    return null
+  }
+
+  return (
+    <CacheProvider value={memoizedCreateCacheWithContainer(iframeHeadElem)}>
+      <ThemeProvider theme={theme}>
+        <Global styles={[globalStyles(theme)]} />
+        <Container
+          css={{
+            paddingTop: theme.space.base,
+            paddingBottom: theme.space.base,
+          }}
+        >
+          <Component {...props} />
+        </Container>
+      </ThemeProvider>
+    </CacheProvider>
+  )
+}
+```
+
+Finally, we are ready to tackle the preview render:
+
+```js filename=MDXPreview.js
+import MDX from 'mdx-scoped-runtime'
+
+const MDXPreview = ({ entry }) => {
+  const theme = useTheme()
+
+  return (
+    <MDX
+      components={
+        {
+          // DOM element + React component overrides
+        }
+      }
+    >
+      {entry.getIn(['data', 'body'])}
+    </MDX>
+  )
+}
+
+MDXPreview.propTypes = {
+  entry: PropTypes.object.isRequired,
+}
+
+export default MDXPreview
+```
+
+[`mdx-scoped-runtime`](https://www.npmjs.com/package/mdx-scoped-runtime) comes to the rescue with the ability to parse MDX on-the-fly. We can then use this component alongside any other fields we want to display within our preview.
+
+```js filename=ArticlePreview.js
+import MDXPreview from './MDXPreview'
+
+const ArticlePreview = ({ entry }) => <MDXPreview entry={entry} />
+
+ArticlePreview.propTypes = {
+  entry: PropTypes.object.isRequired,
+}
+
+export default ArticlePreview
+```
+
+<Image
+  src="/uploads/netlify-admin-after.png"
+  alt="Netlify CMS: After"
+  width="2400"
+  height="1956"
+/>
+
+### Gatsby tip
+
+For scenarios where you may have components that use a bit more [Gatsby](https://www.gatsbyjs.org/) magic than what `mdx-scoped-runtime` can provide; like [graphql](https://graphql.org/), you can override the default behavior to provide a fallback component as needed to avoid compilation errors:
+
+```js filename=MDXPreview.js
+import MDX from 'mdx-scoped-runtime'
+
+const UnsupportedComponent = ({ label, ...rest }) => (
+  <div {...rest}>
+    <code>{label}</code> requires a bit more magic than we are able to display
+    in the CMS.
+  </div>
+)
+
+UnsupportedComponent.propTypes = {
+  label: PropTypes.string.isRequired,
+}
+
+const MDXPreview = ({ entry }) => {
+  const theme = useTheme()
+
+  return (
+    <MDX
+      components={{
+        SuperSpecialGatsbyComponent: () => (
+          <UnsupportedComponent label="SuperSpecialGatsbyComponent" />
+        ),
+      }}
+    >
+      {entry.getIn(['data', 'body'])}
+    </MDX>
+  )
+}
+
+MDXPreview.propTypes = {
+  entry: PropTypes.object.isRequired,
+}
+
+export default MDXPreview
+```

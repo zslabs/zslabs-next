@@ -1,0 +1,92 @@
+---
+title: MDX link routing in Gatsby
+slug: mdx-link-routing-in-gatsby
+date: 2020/04/03
+dateModified: 2020/04/15
+---
+
+In my [last article](/articles/mdx-frontmatter-in-gatsby/), I wrote about how I was able to parse frontmatter through MDX in Gatsby for a more powerful writing/developer experience. I also mentioned a few [remark](https://github.com/remarkjs/remark) plugins I brought in-house. Today, I'll walkthrough how I was able to remove three dependencies for just a few lines of code.
+
+Creating links in Markdown is fairly straightfoward:
+
+```md
+[Link](https://www.zslabs.com)
+```
+
+With the help of a few plugins, we're able to make these links do a bit more for us automagically:
+
+1. [`remark-external-links`](https://github.com/remarkjs/remark-external-links): Automatically adds `target` and `rel` attributes to external links.
+2. [`remark-relative-links`](https://github.com/zslabs/remark-relative-links): Rewrites absolute URLs to relative ones.
+3. [`gatsby-plugin-catch-links`](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-catch-links_): Intercepts local links and replaces their behavior with that of the `gatsby-link` [navigate](https://www.gatsbyjs.org/docs/gatsby-link/#how-to-use-the-navigate-helper-function).
+
+With MDX's ability to override normal DOM elements, I was able to encapsulate the logic from all three of these plugins into a handy snippet:
+
+```js filename=MarkdownLink.js
+import PropTypes from 'prop-types'
+import { Link as GatsbyLink } from 'gatsby'
+
+// Checks against absolute URLs that share 👇 so we can still pass it along to Gatsby's internal link component
+const domainRegex = /http[s]*:\/\/[www.]*YOURDOMAIN\.com[/]?/
+// @NOTE We can use a REGEX like this for URLs we want to be treated as external which could be used for Netlify redirects
+// /http[s]*:\/\/[www.]*YOURDOMAIN\.com(?!\/i-am-external|\/me-too)[/]?/
+
+const MarkdownLink = ({ href, ...rest }) => {
+  const sameDomain = domainRegex.test(href)
+
+  if (sameDomain) {
+    href = href.replace(domainRegex, '/')
+  }
+
+  if (href.startsWith('/')) {
+    return <GatsbyLink data-link-internal to={href} {...rest} />
+  }
+
+  // Treat urls that aren't web protocols as "normal" links
+  if (!href.startsWith('http')) {
+    return <a href={href} {...rest} /> // eslint-disable-line jsx-a11y/anchor-has-content
+  }
+
+  return (
+    <a
+      data-link-external
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer nofollow"
+      {...rest}
+    />
+  )
+}
+
+MarkdownLink.propTypes = {
+  href: PropTypes.string.isRequired,
+}
+
+export default MarkdownLink
+```
+
+This can then be passed into `<MDXProvider />` to override default links:
+
+```js filename=Article.js
+import { MDXProvider } from '@mdx-js/react'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
+
+import MarkdownLink from '../components/MarkdownLink'
+
+const Article = ({ frontmatter, body }) => (
+  <MDXProvider
+    components={[
+      {
+        a: (props) => <MarkdownLink {...props} />,
+      },
+    ]}
+  >
+    <div>
+      <h1>{frontmatter.title}</h1>
+
+      <MDXRenderer>{body}</MDXRenderer>
+    </div>
+  </MDXProvider>
+)
+```
+
+Since our Markdown links are now powered by a React component, we can apply any other special formatting or logic as needed. Take a look at this one and others I've added to my own site in my [shortcodes file](https://github.com/zslabs/zslabs.com/blob/master/src/components/mdxShortcodes.js). 🎉

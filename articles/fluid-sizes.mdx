@@ -1,0 +1,96 @@
+---
+title: Fluid Sizes
+date: 2019/02/22
+---
+
+Often times when working with responsive projects, we tend to forget that typography doesn't automatically scale down on smaller screens. While there are other solutions out there; like `rem` to universally control this, having more flexibility can be warranted.
+
+I came across a pretty great mixin for Sass that allowed me to attach this functionality to specific selectors:
+
+```scss
+///
+/// @param {variable} $min-font-size [12px] - Minimum font size
+/// @param {variable} $max-font-size [24px] - Maximum font size
+/// @param {variable} $lower-range [480px] - Stop scaling font smaller at this screen resolution
+/// @param {variable} $upper-range [960px] - Stop scaling font larger at this screen resolution
+/// @source https://madebymike.com.au/writing/precise-control-responsive-typography/
+///
+@mixin fluid-type(
+  $min-font-size: 12px,
+  $max-font-size: 24px,
+  $lower-range: 480px,
+  $upper-range: 960px
+) {
+  font-size:
+    calc(
+      #{$min-font-size} + #{(
+        ($max-font-size / ($max-font-size * 0 + 1)) -
+        ($min-font-size / ($min-font-size * 0 + 1))
+      )} * ((100vw - #{$lower-range}) / #{(
+        ($upper-range / ($upper-range * 0 + 1)) -
+        ($lower-range / ($lower-range * 0 + 1))
+      )})
+    );
+
+  @media (max-width: $lower-range) {
+    font-size: $min-font-size !important;
+  }
+
+  @media (min-width: $upper-range) {
+    font-size: $max-font-size !important;
+  }
+
+// Example
+.selector {
+  @include fluid-type(
+    15px,
+    20px
+  );
+}
+```
+
+The above snippet had me thinking about how I could apply this to any property that I wanted to have scalable values. Thus, the below was created:
+
+```scss
+///
+/// @param {variable} $property [font-size]
+/// @param {variable} $min-size [12px]
+/// @param {variable} $max-size [24px]
+/// @param {variable} $lower-range [480px] - Stop scaling smaller at this screen resolution
+/// @param {variable} $upper-range [960px] - Stop scaling larger at this screen resolution
+///
+@mixin fluid-size(
+  $property: 'font-size',
+  $min-size: 12px,
+  $max-size: 24px,
+  $lower-range: 480px,
+  $upper-range: 960px
+) {
+  #{$property}: calc(
+    #{$min-size} + #{(
+        ($max-size / ($max-size * 0 + 1)) - ($min-size / ($min-size * 0 + 1))
+      )} *
+      (
+        (100vw - #{$lower-range}) / #{(
+            ($upper-range / ($upper-range * 0 + 1)) - ($lower-range /
+                  ($lower-range * 0 + 1))
+          )}
+      )
+  );
+
+  @media (max-width: $lower-range) {
+    #{$property}: $min-size !important;
+  }
+
+  @media (min-width: $upper-range) {
+    #{$property}: $max-size !important;
+  }
+}
+
+// Example
+.selector {
+  @include fluid-size('padding', 100px, 200px);
+}
+```
+
+This helps clean up common UI elements even further; making my source a bit cleaner as well. Huzzah!

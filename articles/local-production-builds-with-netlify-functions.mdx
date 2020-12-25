@@ -1,0 +1,68 @@
+---
+title: Local Gatsby Production Builds with Netlify Functions
+date: 2019/04/04
+---
+
+With my framework of choice, [GatsbyJS](https://www.gatsbyjs.org), I've become a huge fan of the [gatsby-cli](https://www.gatsbyjs.org/docs/gatsby-cli/) to manage local projects. This, coupled with [Netlify](https://www.netlify.com) as my hosting provider and my new-found love for [Netlify Functions](https://www.netlify.com/docs/functions/) -- I've never felt so empowered to create new things.
+
+When developing locally, Gatsby provides access to a `developMiddleware` method that allows me to proxy requests to Netlify functions on-top of their [netlify-lambda](https://github.com/netlify/netlify-lambda) package:
+
+```js filename=gatsby-config.js
+const proxy = require('http-proxy-middleware')
+
+module.exports = {
+  developMiddleware: (app) => {
+    app.use(
+      '/.netlify/functions/',
+      proxy({
+        target: 'http://localhost:9000',
+        pathRewrite: {
+          '/.netlify/functions/': '',
+        },
+      })
+    )
+  },
+}
+```
+
+To start up both my functions and Gatsby site in unison, my local development script takes advantage of the [concurrently](https://www.npmjs.com/package/concurrently) package to start them up at the same time:
+
+```json filename=package.json
+"scripts": {
+  "start:lambda": "netlify-lambda serve src/functions",
+  "develop": "concurrently \"yarn start:lambda\" \"gatsby develop --open\""
+}
+```
+
+To get around the typical "works locally, but not in production" issue, I normally use `gatsby build && gatsby serve` to create a production-ready version of my site and run a small server locally to see how things will react in the wild. When running that command alongside Netlify functions, we lose access to the proxy that was created for us during development; meaning that our local production builds are about as useful as a wet tissue.
+
+To get around this, I turned to [light-server](https://www.npmjs.com/package/light-server). I normally reach for [serve](https://www.npmjs.com/package/serve) for quick spin-ups, but unfortunately they don't provide access to proxying absolute URLs.
+
+First, I created a `light-server.json` file that included the proxy:
+
+```json filename=light-server.json
+{
+  "port": 8000,
+  "proxy": "http://localhost:9000",
+  "proxypaths": ["/.netlify/functions"]
+}
+```
+
+And then, instead of using `gatsby build && gatsby serve`, my local production server command was updated to take advantage of light-server:
+
+```json filename=package.json
+"scripts": {
+  "start:lambda": "netlify-lambda serve src/functions",
+  "build:lambda": "netlify-lambda build src/functions",
+  "build": "concurrently \"yarn build:lambda\" \"gatsby build\"",
+  "build-serve": "yarn build && concurrently \"yarn start:lambda\" \"light-server -s public/ --config light-server.json --open\""
+}
+```
+
+The above `build-serve` command does the following:
+
+1. Builds a production version of both my functions directory (to catch any build failures) and my Gatsby site.
+2. Starts up the lambda service (as if I'm developing locally)
+3. Spins up light-server, pointing to the `/public` directory with the config we created earlier.
+
+Now, my local production builds can take advantage of proxying through Netlify functions alongside my production-ready Gatsby site. Huzzah!

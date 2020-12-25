@@ -71,5 +71,9 @@ module.exports = {
       scale: ['group-hover'],
     },
   },
-  plugins: [require('tailwindcss-filters'), require('@tailwindcss/forms')],
+  plugins: [
+    require('tailwindcss-filters'),
+    require('@tailwindcss/forms'),
+    require('tailwind-gradient-mask-image'),
+  ],
 }

@@ -1,0 +1,122 @@
+---
+title: Consolidating Netlify CMS
+date: 2019/05/11
+---
+
+[Netlify CMS](https://www.netlifycms.org/) is a powerful, pluggable content management system for static site generators that removes the need for building your own backend. My favorite way to utilize it is combined with [Netlify](https://www.netlify.com/) and [GatsbyJS](https://www.gatsbyjs.org/); that both provide even easier ways to get up and running.
+
+With the power of a centralized `config.yml` file, you are able to pass through information to the CMS that prescribe repo integration, permission settings, collections, fields, and more.
+
+```yaml filename=config.yml
+# Connect to your datastore
+backend:
+  name: github
+  repo: username/repo
+  branch: master
+# Permissions for "how" content is pushed to your repo
+publish_mode: editorial_workflow
+# Configure media upload destinations
+media_folder: /static/uploads
+public_folder: /uploads
+# Content
+collections:
+  - label: 'Posts'
+    name: 'posts'
+    folder: 'src/posts'
+    create: true
+    fields:
+      - { label: 'SEO Title', name: 'seoTitle', widget: 'string' }
+      - { label: 'Meta Description', name: 'description', widget: 'string' }
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Date', name: 'date', widget: 'date', format: 'YYYY-MM-DD' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+```
+
+With the config above, we're able to populate the Netlify CMS with a CRUD interface for creating blog posts that can talk to our GitHub repo.
+
+Unfortunately, this all starts crumbling alongside complex projects with a myriad of collection and fields. A recent project had reached almost 1,500 lines of config; which presented a few issues:
+
+1. Was incredibly hard to visually grep.
+1. Since YAML is indention-dependent, complex collections were fragile to modify and add fields.
+1. Extending from or creating reusable partials is not an option.
+1. Extending the Netlify CMS with additional plugins/custom widgets is unclear and/or impossible.
+
+When it was time to add yet another collection-type, I decided to take a step back and look into alternative options. Enter [Manual Initialization](https://www.netlifycms.org/docs/beta-features/#manual-initialization). This allows us to write our CMS init with standard JS that gives us more flexibility on "how" we write our configuration. Let's take a look at how we might accomplish the same thing using manual initialization.
+
+```js filename=cms.js
+// This global flag enables manual initialization.
+window.CMS_MANUAL_INIT = true
+
+import CMS from 'netlify-cms-app'
+
+import { posts } from './collections/posts'
+
+CMS.init({
+  config: {
+    load_config_file: false,
+    backend: {
+      name: 'github',
+      repo: 'username/repo',
+      branch: 'master',
+    },
+    publish_mode: 'editorial_workflow',
+    media_folder: '/static/uploads',
+    public_folder: '/uploads',
+    collections: [posts],
+  },
+})
+```
+
+```js filename=posts.js
+import { seo } from '../partials/seo'
+
+export const posts = {
+  label: 'Posts',
+  name: 'posts',
+  folder: 'src/posts',
+  create: true,
+  fields: [
+    ...seo,
+    {
+      label: 'Title',
+      name: 'title',
+      widget: 'string',
+    },
+    {
+      label: 'Date',
+      name: 'date',
+      widget: 'date',
+      format: 'YYYY-MM-DD',
+    },
+    {
+      label: 'Body',
+      name: 'body',
+      widget: 'markdown',
+    },
+  ],
+}
+```
+
+```js filename=seo.js
+export const seo = [
+  {
+    label: 'SEO Title',
+    name: 'title',
+    widget: 'string',
+  },
+  {
+    label: 'Meta Description',
+    name: 'description',
+    widget: 'string',
+  },
+]
+```
+
+What are we able to solve with the above?
+
+1. Consolidated init file that can continue to grow as project complexity does.
+2. Utilize packages like [eslint](https://eslint.org/) and [prettier](https://prettier.io/) to maintain code-quality.
+3. Create reusable partials by using native JS object functionality.
+4. Open platform to modify core behavior and add in custom widgets/plugins.
+
+Why would Netlify CMS have `config.yml` then if manual initialization gives us so much power? Because not all projects will be complex. Not all projects will have needs that extend from what a single-file config can provide. The single-file config also removes a barrier to entry for users that may not want to add this complexity to their project. What it means for me, is having a platform that provides me with either option.

@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import NextImage from 'next/image'
 import renderToString from 'next-mdx-remote/render-to-string'
 import hydrate from 'next-mdx-remote/hydrate'
 import { preToCodeBlock } from 'mdx-utils'
@@ -18,10 +19,19 @@ const Test = () => (
     test custom <h2 className="relative no-prose">Something</h2>
   </div>
 )
+
+const Image = (props) => (
+  <div className="my-8">
+    <NextImage {...props} />
+  </div>
+)
+
 const components = {
   Test,
+  Image,
   CodePen,
   Tweet,
+  TextLink,
   a: (props) => <TextLink {...props} />,
   h1: (props) => <AutoLinkHeader as="h1" {...props} />,
   h2: (props) => <AutoLinkHeader as="h2" {...props} />,

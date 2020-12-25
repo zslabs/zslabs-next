@@ -1,0 +1,45 @@
+---
+title: 'List: eBay search toolkit'
+date: 2019/09/15
+---
+
+Gone are the days sending money orders and dealing with sketchy sellers, [eBay](https://ebay.com) has become a bonified buying/selling platform, that both individuals and businesses use to market their items.
+
+As both a buyer and seller, I understand the importance of making your items as easy to find as possible - by using proper keywords, clear pictures, and competitive prices.
+
+When buying, I do my fair share of shopping-around; which can mean having multiple searches saved within my account. While the eBay mobile app is not the worst, I found getting a birds-eye view pretty challenging; as well as taking multiple clicks to sort and apply filters.
+
+Having used a few external tools that attempt to solve issues that plague the native app; that ultimately fall-short - I decided to take on this challenge myself. I recently launched [List](https://list.zslabs.com) - the best eBay toolkit for gauging market-prices, trends, and activity on multiple search terms.
+
+<TextLink href="https://list.zslabs.com">
+  <Image src="/uploads/list.png" width="1900" height="1456" />
+</TextLink>
+
+### Features
+
+- **Mobile-first experience:** I wanted List to have a great user experience - no matter the device.
+- **Minimal design, smooth animations:** Subtle animations and whitespace-driven design throughout provide a great user experience without being too distractive.
+- **Reorder** search terms via a convenient drag ’n drop.
+- **Inline search-term editing and refresh:** Each search panel has a settings menu that allows you to edit, refresh, sort, or delete. I felt this was a great way to add more power to each term.
+- **Local-storage persistence:** Search terms are saved to a user’s device, so that later visits will always bring you right back to where you left off.
+- **Changelog and feedback form:** I want this tool to be a community-driven effort, so making visitors aware of new features and providing a way for them to leave feedback was incredibly important to me.
+
+### Tech
+
+- **React:** My frontend technology of choice was an easy decision to ensure the project was fast, interactive, and easy to iterrate on over time. While I do love tweaking build-pipelines, utilizing [CRA](https://github.com/facebook/create-react-app) alongside [customize-cra](https://github.com/arackaf/customize-cra) was a perfect-pairing to start developing as quickly as possible.
+- **Component library:** The [Emotion](https://emotion.sh) branch of [ChaosKit](https://github.com/gremlin/chaoskit) that I've been working on is becoming more and more stable each day. With this being the first project I've implemented it in the wild, I'm even more confident this was a worthy endevour.
+- **API:** Having used [Netlify functions](https://www.netlify.com/docs/functions/) previously, I knew using them alongside the eBay API would be a perfect-match. A single-endpoint has provided me a wide-array of options to gather results.
+
+### Pro
+
+While I originally built List as a toolkit for myself, the feedback I've received so far has made it apparent this is a viable service that others have found immensely useful.
+
+I'm already working on a Pro version of List that will provide an additional layer of features:
+
+- Synced searches across devices; aided by a user profile.
+- Dark mode theme
+- Trending graphs
+
+### Future
+
+What started off as a passion-project, has me really excited to continue to add features to. I love being able to build tools that others find useful; it gives me the drive to make them better.

@@ -1,0 +1,149 @@
+---
+title: Onward and upward
+date: 2017/01/21
+---
+
+Today's GSAP case-study will be into another animation I did for [DigitalOcean](https://www.digitalocean.com). The goal was to illustrate the growth of the company since its infancy.
+
+Let's take a look at the illustration I was given:
+
+<Image
+  src="/uploads/onward-and-upward--illustration.png"
+  width="2752"
+  height="1196"
+/>
+
+Breaking this down, there were a few different pieces to this animation:
+
+1. A main graph stroke that we want to draw starting from the left.
+1. Dotted-lines with Droplets that will stagger in and have the Droplets pop-in when each completes.
+1. Smaller dots that will follow the upper-portion of the graph, fade away, and start over again.
+
+### Task 1
+
+Thinking back a few years ago, drawing in a path is something that would seem like pure magic&mdash;in a lot of ways it still does. Nowadays, it's just another tool at our disposal. Chris Coyier wrote [an article](https://css-tricks.com/svg-line-animation-works/) explaining the ins-and-outs of this phenomenon, including a great example to get you started. With the power of GSAP, we can actually make that part of intricate timelines easily with their [DrawSVG plugin](https://greensock.com/drawSVG).
+
+```js
+const featuresGraphTimeline = new TimelineMax()
+
+featuresGraphTimeline
+  // Draw blue line
+  .fromTo(
+    '#Features-blueLine .Features-blueStroke',
+    2.5,
+    {
+      drawSVG: '100% 100%',
+    },
+    {
+      drawSVG: '0 100%',
+      ease: Power0.easeNone,
+    },
+    'droplet-lines'
+  )
+```
+
+### Task 2
+
+We have several "background Droplets" with dotted lines that we'd like to stagger in to represent milestones along the way for the company. My first-pass at this was to draw these dotted lines on the graph just as the main stroke was. Unfortunately, [due to how DrawSVG is calculated](https://greensock.com/forums/topic/13364-draw-svg-and-dashed-line-problem/?p=55538), that's easier said than done. While there are some workarounds, our use-case was a little more involved since there wasn't a solid background. So, identifying that these milestone-markers were straight lines, I instead went the route of animating their `y` position instead; same effect - MUCH easier.
+
+```js
+featuresGraphTimeline.staggerFrom(
+  '.Features-dropletLineGroup',
+  0.5,
+  {
+    delay: 0.5,
+    y: '100%',
+  },
+  0.25,
+  'droplet-lines'
+)
+```
+
+For the Droplets located at "the end of the road" for each milestone, I used a combination of [GSAP labels](https://greensock.com/position-parameter) and delays to get the timing just right.
+
+```js
+featuresGraphTimeline.staggerFrom(
+  '.Features-dropletLineGroup .Features-blueStroke',
+  0.25,
+  {
+    delay: 1.75,
+    scale: 0,
+    opacity: 0,
+    transformOrigin: 'center center',
+  },
+  0.25,
+  'droplet-lines'
+)
+```
+
+### Task 3
+
+Similar to my [last case study](/articles/round-n-round#task-3), I started this with a typical "deer in headlights" look on how to best approach this.
+
+<img src="https://media1.tenor.com/images/0e051c3a14969b241594d58512fc9465/tenor.gif?itemid=5364621" />
+
+First-off, did you know that this [will be possible](https://css-tricks.com/motion-along-path-in-css/) in the future?! Pretty cool stuff. Now, back to the reality of old browsers and pop-up ads. Unlike my other case study, this was a perfect candidate for the [Bezier plugin](https://greensock.com/BezierPlugin-JS) to shine. With the power of [MorphSVG](https://greensock.com/morphSVG) and its `pathDataToBezier()` function, I was able to feed it the coordinates of the main graph stroke path. Then, by determining the speed and length of time it would take for each dot to reach the end, adjusting both the delay and opacity fit perfectly. Since there were multiple dots that we'd be moving at the same time, creating a mini-timeline for each required a loop.
+
+```js
+// Iterate through DOM nodes
+function forEach(array, callback, scope) {
+  for (let i = 0; i < array.length; i++) {
+    callback.call(scope, i, array[i]) // passes back stuff we need
+  }
+}
+
+// Return random integer from interval
+function randomIntFromInterval(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
+forEach(document.querySelectorAll('.Features-dot'), (index, value) => {
+  const tl = new TimelineMax({
+    repeat: -1,
+    delay: index + randomIntFromInterval(1, 3),
+  })
+
+  tl.to(
+    value,
+    1,
+    {
+      opacity: 1,
+    },
+    'dot-path'
+  )
+    .to(
+      value,
+      20,
+      {
+        bezier: {
+          values: graphPath,
+          type: 'cubic',
+        },
+        ease: Power0.easeNone,
+      },
+      'dot-path'
+    )
+    .to(
+      value,
+      1,
+      {
+        delay: 19,
+        opacity: 0,
+      },
+      'dot-path'
+    )
+})
+```
+
+Having this run on "init" of the animation took only wrapping the above in a function and having it called on the timeline's `onStart()` callback.
+
+```js
+const featuresGraphTimeline = new TimelineMax({
+  // Fire dot motion while blue line is being drawn
+  onStart: dotMotion(),
+})
+```
+
+Below is the finished product. Let me know what you think!
+
+<CodePen codePenId="EZyLgG" />

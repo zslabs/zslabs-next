@@ -1,0 +1,60 @@
+---
+title: Extendable switch statements
+date: 2013/02/09
+---
+
+While creating an extensible parent-theme, I was hell-bent on creating a DRY logic that was intuitive enough to handle the most complex setups, while not being too convoluted for the average user to get up and running. Inspired by [Scribu's article on theme wrappers](http://scribu.net/wordpress/theme-wrappers.html), I found several areas in my theme that ~~should be~~ needed to be pluggable.
+
+One of my biggest crutches against WordPress' template system is the cluster-fuck of files that it takes to create a view. But it's the separation of these files that gives WordPress its flexibility and hierarchy system. So - I needed to bridge the gap.
+
+One such example is `single.php`. This file is shows up pretty far-down the [template hierarchy](http://codex.wordpress.org/Template_Hierarchy#Visual_Overview) list and as expected, can be overridden with a plethora of different combinations/use-cases. One thing we can almost all agree on -- the surrounding containers for single-views rarely change throughout different post types. So, why don't we combine them into one? Yes, I completely understand a big list of if statements in a single file would be ridiculous; especially with all of the different types of content that can come with a single-view, but that's not my argument. My argument is about separating logic from function. Take the following example:
+
+```php
+while (have_posts()) : the_post();
+  switch($post->post_type) {
+    case 'post':
+      echo single_post();
+    break;
+
+    default:
+      echo single_default();
+    break;
+  }
+endwhile;
+```
+
+By calling the above inside of `single.php`, we're able to create different "cases" for each post type. This cuts down on duplicating wrapper HTML. "Great - less files. But where's the output stored?" Elsewhere - because what we're doing here is laying down a foundation for our views, not outputting them. In my parent-theme, there is a separate `output.php` file that is used for this exact purpose. Let's take the above example a bit further.
+
+As mentioned, I was building a parent-theme; which means it isn't mean to be modified directly, but built on-top of. So where does that leave us with our `single.php` switch statements? The above example is pretty static. Although it gives us a bit more flexibility, any new custom post types we create are not included in this logic (and would ultimately fall-into the default case). That's where an extremely handy function called [`has_action`](http://codex.wordpress.org/Function_Reference/has_action) comes into play. By combining this check with our original case statement, we are able to create a pluggable switch statement:
+
+```php
+while ( have_posts() ) : the_post();
+  switch( $post->post_type ) {
+    case has_action( "loop_single_{$post->post_type}" ) :
+      do_action( "loop_single_{$post->post_type}" );
+    break;
+
+    case 'post':
+      echo single_post();
+    break;
+
+    default:
+      echo single_default();
+    break;
+  }
+endwhile;
+```
+
+What the above does is check for the existence of an action that follows the format of `loop_single_YOUR_POST_TYPE` and if it finds it, perform that action.
+
+Let's say you had a post type called `movies`. What you can now do is create a function like the following to handle your single-view for movies:
+
+```php
+function loop_single_movies_output() {
+  echo '<h1>' . get_the_title() . '</h1>';
+  the_content();
+}
+add_action( 'loop_single_movies', 'loop_single_movies_output' );
+```
+
+The following logic can be extended to other places in your template, like `archive.php`, creating reusable archive pages for different post types. The intricacies of design don't always allow these to be as clear-cut, but this has come in-handy during quite a few large site builds where reusable code was a must.

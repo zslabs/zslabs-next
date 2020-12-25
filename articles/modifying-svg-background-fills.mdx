@@ -1,0 +1,150 @@
+---
+title: Modifying SVG background fills
+slug: svg-background-fills
+date: 2014/09/29
+dateModified: 2019/02/22
+---
+
+Working with generated SVG-sprites provide access to individual symbols like so:
+
+```markup
+<svg class="icon">
+  <use xlink:href="sprite.svg#list"></use>
+</svg>
+```
+
+Since the sprites are added statically within the document; we get the benefit of saving that data in cache. Using `fill: currentColor`, we're also able to inherit any font-colors attached to the element; which automatically updates the SVG fill color as well - awesome!
+
+As with most things I dive into with too much optimism - I ran into a snag. Inline SVGs work great, but when specifying a specific SVG as a background, I ran into a couple of issues:
+
+1. You can't specify `xlink:href` attributes within CSS; so I'd need to reference an individual SVG - no biggy.
+1. You can't modify the fill color the same as you would an icon font (with a simple `color` attribute).
+
+Aside from the first; which I could deal with, not being able to modify the fill color of a SVG specified as a background-image seemed like a deal-breaker to me. Here's a few solutions to the issue.
+
+### Less
+
+```less
+/**
+ * @src          The path to your SVG file
+ * @fill-default The default fill value of your referenced SVG
+ * @fill-new     The fill value you would like to replace it with
+ */
+.icon-replace-fill(@src, @fill-default, @fill-new) {
+  @escape-fill-default: escape(@fill-default);
+  @escape-fill-new: escape(@fill-new);
+  @data-uri: data-uri('image/svg+xml;charset=UTF-8', '@{src}');
+  @replace-src: replace(
+    '@{data-uri}',
+    '@{escape-fill-default}',
+    '@{escape-fill-new}'
+  );
+  background-image: e(@replace-src);
+}
+```
+
+Within the function, we are:
+
+1. Escaping both the `@fill-default` and `@fill-new` values (you can write them as normal HEX values this way in your mixin call)
+1. Using the [`data-uri()`](http://lesscss.org/functions/#misc-functions-data-uri) function to grab the data-uri version of your SVG; also setting the MIME type appopriately.
+1. Using the [`replace()`](http://lesscss.org/functions/#string-functions-replace) function to substitute the default fill-color with your new color.
+1. Escaping the final data-uri and returning a `background-image` property with that value set.
+
+##### Original
+
+<img class="svgBackground-example" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0yNDEgMzMzIDEyOCAxMjgiPjx0aXRsZT5BcGVydHVyZTwvdGl0bGU+PHBhdGggZmlsbD0iIzgwQjIzQyIgZD0iTS0xOTIgNDE5bC0zNS40LTYxLjRjLTguNSAxMC45LTEzLjYgMjQuNS0xMy42IDM5LjQgMCA3LjcgMS40IDE1LjEgMy45IDIyaDQ1LjF6Ii8+PHBhdGggZmlsbD0iIzJBOTFBOCIgZD0iTS0xNjUuNSA0MjFoLTcwLjljOC4yIDIwLjIgMjYuMyAzNS4yIDQ4LjMgMzlsMjIuNi0zOXoiLz48cGF0aCBmaWxsPSIjNEE0NkFBIiBkPSJNLTE1MC40IDM5OWwtMzUuNCA2MS40YzIuOS40IDUuOS42IDguOS42IDE5LjcgMCAzNy40LTguOSA0OS4xLTIzbC0yMi42LTM5eiIvPjxwYXRoIGZpbGw9IiNEQTNBMzUiIGQ9Ik0tMTYyIDM3NWwzNS40IDYxLjRjOC41LTEwLjkgMTMuNi0yNC41IDEzLjYtMzkuNCAwLTcuNy0xLjQtMTUuMS0zLjktMjJILTE2MnoiLz48cGF0aCBmaWxsPSIjRjE2NTIyIiBkPSJNLTE4OC41IDM3M2g3MC45Yy04LjItMjAuMi0yNi4zLTM1LjItNDguMy0zOS0uMSAwLTIyLjYgMzktMjIuNiAzOXoiLz48cGF0aCBmaWxsPSIjRkNCNDAwIiBkPSJNLTIwMy42IDM5NWwzNS40LTYxLjRjLTIuOS0uNC01LjktLjYtOC45LS42LTE5LjcgMC0zNy40IDguOS00OS4xIDIzbDIyLjYgMzl6Ii8+PC9zdmc+" />
+
+##### With Mixin
+
+<img class="svgBackground-example" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0yNDEgMzMzIDEyOCAxMjgiPjx0aXRsZT5BcGVydHVyZTwvdGl0bGU+PHBhdGggZmlsbD0iIzgwQjIzQyIgZD0iTS0xOTIgNDE5bC0zNS40LTYxLjRjLTguNSAxMC45LTEzLjYgMjQuNS0xMy42IDM5LjQgMCA3LjcgMS40IDE1LjEgMy45IDIyaDQ1LjF6Ii8+PHBhdGggZmlsbD0iIzAwRkZGRiIgZD0iTS0xNjUuNSA0MjFoLTcwLjljOC4yIDIwLjIgMjYuMyAzNS4yIDQ4LjMgMzlsMjIuNi0zOXoiLz48cGF0aCBmaWxsPSIjNEE0NkFBIiBkPSJNLTE1MC40IDM5OWwtMzUuNCA2MS40YzIuOS40IDUuOS42IDguOS42IDE5LjcgMCAzNy40LTguOSA0OS4xLTIzbC0yMi42LTM5eiIvPjxwYXRoIGZpbGw9IiNEQTNBMzUiIGQ9Ik0tMTYyIDM3NWwzNS40IDYxLjRjOC41LTEwLjkgMTMuNi0yNC41IDEzLjYtMzkuNCAwLTcuNy0xLjQtMTUuMS0zLjktMjJILTE2MnoiLz48cGF0aCBmaWxsPSIjRjE2NTIyIiBkPSJNLTE4OC41IDM3M2g3MC45Yy04LjItMjAuMi0yNi4zLTM1LjItNDguMy0zOS0uMSAwLTIyLjYgMzktMjIuNiAzOXoiLz48cGF0aCBmaWxsPSIjRkNCNDAwIiBkPSJNLTIwMy42IDM5NWwzNS40LTYxLjRjLTIuOS0uNC01LjktLjYtOC45LS42LTE5LjcgMC0zNy40IDguOS00OS4xIDIzbDIyLjYgMzl6Ii8+PC9zdmc+" />
+
+#### New fills
+
+Depending on "how" you're using SVGs, you may be working with paths that do not have fills in them. This would come into play when you're referencing an external sprite, but still want to be able to use things like `fill: currentColor` within your styles. Here's a mixin that handles just that:
+
+```less
+/**
+ * @src      The path to your SVG file
+ * @fill-new The fill value you would like to have injected into your paths
+ */
+.icon-add-fill(@src, @fill-new) {
+  @data-uri: data-uri('image/svg+xml;charset=UTF-8', '@{src}');
+  @replace-default: escape('<path ');
+  @replace-new: escape('<path fill="@{fill-new}" ');
+  @replace-src: replace('@{data-uri}', @replace-default, @replace-new, 'g');
+  background-image: e(@replace-src);
+}
+```
+
+Within the function, we are:
+
+1. Using the [`data-uri()`](http://lesscss.org/functions/#misc-functions-data-uri) function to grab the data-uri version of your SVG; also setting the MIME type appopriately.
+2. Using the [`replace()`](http://lesscss.org/functions/#string-functions-replace) function to substitute `<path` with `<path fill="YOUR FILL COLOR"` with the optional `g` regex flag, which matches all cases.
+3. Escaping the final data-uri and returning a `background-image` property with that value set.
+
+##### Original
+
+<img class="svgBackground-example" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTIiIGhlaWdodD0iNzUiIHZpZXdCb3g9IjAgMCA5MiA3NSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+VHdpdHRlcjwvdGl0bGU+PHBhdGggZD0iTTkyIDguODVjLTMuMzkgMS41LTcuMDMgMi41Mi0xMC44NCAyLjk3IDMuODktMi4zMyA2Ljg5LTYuMDMgOC4zLTEwLjQ0LTMuNjUgMi4xNi03LjY5IDMuNzQtMTEuOTkgNC41OEM3NC4wMyAyLjI5IDY5LjEyIDAgNjMuNjkgMCA1My4yNyAwIDQ0LjgyIDguNDUgNDQuODIgMTguODhjMCAxLjQ4LjE2IDIuOTIuNDkgNC4zLTE1LjY5LS43OS0yOS42LTguMy0zOC45MS0xOS43Mi0xLjYyIDIuNzgtMi41NSA2LjAzLTIuNTUgOS40OSAwIDYuNTQgMy4zMyAxMi4zMiA4LjM5IDE1LjcxLTMuMDktLjEtNi0uOTUtOC41NS0yLjM2di4yM2MwIDkuMTUgNi41MSAxNi43OCAxNS4xNCAxOC41MS0xLjU4LjQzLTMuMjUuNjYtNC45Ny42Ni0xLjIyIDAtMi40LS4xMS0zLjU1LS4zNCAyLjQgNy41IDkuMzcgMTIuOTYgMTcuNjMgMTMuMTEtNi40NiA1LjA3LTE0LjYgOC4wOC0yMy40NCA4LjA4LTEuNTIgMC0zLjAzLS4wOS00LjUtLjI2IDguMzUgNS4zNSAxOC4yNyA4LjQ4IDI4LjkzIDguNDggMzQuNzIgMCA1My43MS0yOC43NiA1My43MS01My43MSAwLS44MS0uMDItMS42My0uMDYtMi40NCAzLjY5LTIuNjYgNi44OS01Ljk4IDkuNDItOS43NyIvPjwvc3ZnPg==" />
+
+##### With Mixin
+
+<img class="svgBackground-example" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTIiIGhlaWdodD0iNzUiIHZpZXdCb3g9IjAgMCA5MiA3NSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+VHdpdHRlcjwvdGl0bGU+PHBhdGggZmlsbD0iIzU1YWNlZSIgZD0iTTkyIDguODVjLTMuMzkgMS41LTcuMDMgMi41Mi0xMC44NCAyLjk3IDMuODktMi4zMyA2Ljg5LTYuMDMgOC4zLTEwLjQ0LTMuNjUgMi4xNi03LjY5IDMuNzQtMTEuOTkgNC41OEM3NC4wMyAyLjI5IDY5LjEyIDAgNjMuNjkgMCA1My4yNyAwIDQ0LjgyIDguNDUgNDQuODIgMTguODhjMCAxLjQ4LjE2IDIuOTIuNDkgNC4zLTE1LjY5LS43OS0yOS42LTguMy0zOC45MS0xOS43Mi0xLjYyIDIuNzgtMi41NSA2LjAzLTIuNTUgOS40OSAwIDYuNTQgMy4zMyAxMi4zMiA4LjM5IDE1LjcxLTMuMDktLjEtNi0uOTUtOC41NS0yLjM2di4yM2MwIDkuMTUgNi41MSAxNi43OCAxNS4xNCAxOC41MS0xLjU4LjQzLTMuMjUuNjYtNC45Ny42Ni0xLjIyIDAtMi40LS4xMS0zLjU1LS4zNCAyLjQgNy41IDkuMzcgMTIuOTYgMTcuNjMgMTMuMTEtNi40NiA1LjA3LTE0LjYgOC4wOC0yMy40NCA4LjA4LTEuNTIgMC0zLjAzLS4wOS00LjUtLjI2IDguMzUgNS4zNSAxOC4yNyA4LjQ4IDI4LjkzIDguNDggMzQuNzIgMCA1My43MS0yOC43NiA1My43MS01My43MSAwLS44MS0uMDItMS42My0uMDYtMi40NCAzLjY5LTIuNjYgNi44OS01Ljk4IDkuNDItOS43NyIvPjwvc3ZnPg==" />
+
+#### Replacing multiple fills
+
+This one involves an SVG that has multiple different fills that you want to be replaced by a single value:
+
+```less
+/**
+ * @src  The path to your SVG file
+ * @fill The fill value you would like to have injected into each path.
+ */
+.icon-fill(@src, @fill) {
+  @data-uri: data-uri('image/svg+xml;charset=UTF-8', '@{src}');
+  @replace-src: replace(
+    '@{data-uri}',
+    'fill\%3D\%22\%23[\w]{3,6}\%22',
+    escape('fill="@{fill}"'),
+    'g'
+  );
+  background-image: e(@replace-src);
+}
+```
+
+Within the function, we are:
+
+1. Using the [`data-uri()`](http://lesscss.org/functions/#misc-functions-data-uri) function to grab the data-uri version of your SVG; also setting the MIME type appopriately.
+2. Using the [`replace()`](http://lesscss.org/functions/#string-functions-replace) function to substitute (the escaped version of) `fill="#HEX"` with `fill="#YOUR HEX"` with the optional `g` regex flag, which matches all cases.
+3. Escaping the final data-uri and returning a `background-image` property with that value set.
+
+##### Original
+
+<img class="svgBackground-example" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0yNDEgMzMzIDEyOCAxMjgiPjx0aXRsZT5BcGVydHVyZTwvdGl0bGU+PHBhdGggZmlsbD0iIzgwQjIzQyIgZD0iTS0xOTIgNDE5bC0zNS40LTYxLjRjLTguNSAxMC45LTEzLjYgMjQuNS0xMy42IDM5LjQgMCA3LjcgMS40IDE1LjEgMy45IDIyaDQ1LjF6Ii8+PHBhdGggZmlsbD0iIzJBOTFBOCIgZD0iTS0xNjUuNSA0MjFoLTcwLjljOC4yIDIwLjIgMjYuMyAzNS4yIDQ4LjMgMzlsMjIuNi0zOXoiLz48cGF0aCBmaWxsPSIjNEE0NkFBIiBkPSJNLTE1MC40IDM5OWwtMzUuNCA2MS40YzIuOS40IDUuOS42IDguOS42IDE5LjcgMCAzNy40LTguOSA0OS4xLTIzbC0yMi42LTM5eiIvPjxwYXRoIGZpbGw9IiNEQTNBMzUiIGQ9Ik0tMTYyIDM3NWwzNS40IDYxLjRjOC41LTEwLjkgMTMuNi0yNC41IDEzLjYtMzkuNCAwLTcuNy0xLjQtMTUuMS0zLjktMjJILTE2MnoiLz48cGF0aCBmaWxsPSIjRjE2NTIyIiBkPSJNLTE4OC41IDM3M2g3MC45Yy04LjItMjAuMi0yNi4zLTM1LjItNDguMy0zOS0uMSAwLTIyLjYgMzktMjIuNiAzOXoiLz48cGF0aCBmaWxsPSIjRkNCNDAwIiBkPSJNLTIwMy42IDM5NWwzNS40LTYxLjRjLTIuOS0uNC01LjktLjYtOC45LS42LTE5LjcgMC0zNy40IDguOS00OS4xIDIzbDIyLjYgMzl6Ii8+PC9zdmc+" />
+
+##### With Mixin
+
+<img class="svgBackground-example" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0yNDEgMzMzIDEyOCAxMjgiPjx0aXRsZT5BcGVydHVyZTwvdGl0bGU+PHBhdGggZmlsbD0iI2RkNGIzOSIgZD0iTS0xOTIgNDE5bC0zNS40LTYxLjRjLTguNSAxMC45LTEzLjYgMjQuNS0xMy42IDM5LjQgMCA3LjcgMS40IDE1LjEgMy45IDIyaDQ1LjF6Ii8+PHBhdGggZmlsbD0iI2RkNGIzOSIgZD0iTS0xNjUuNSA0MjFoLTcwLjljOC4yIDIwLjIgMjYuMyAzNS4yIDQ4LjMgMzlsMjIuNi0zOXoiLz48cGF0aCBmaWxsPSIjZGQ0YjM5IiBkPSJNLTE1MC40IDM5OWwtMzUuNCA2MS40YzIuOS40IDUuOS42IDguOS42IDE5LjcgMCAzNy40LTguOSA0OS4xLTIzbC0yMi42LTM5eiIvPjxwYXRoIGZpbGw9IiNkZDRiMzkiIGQ9Ik0tMTYyIDM3NWwzNS40IDYxLjRjOC41LTEwLjkgMTMuNi0yNC41IDEzLjYtMzkuNCAwLTcuNy0xLjQtMTUuMS0zLjktMjJILTE2MnoiLz48cGF0aCBmaWxsPSIjZGQ0YjM5IiBkPSJNLTE4OC41IDM3M2g3MC45Yy04LjItMjAuMi0yNi4zLTM1LjItNDguMy0zOS0uMSAwLTIyLjYgMzktMjIuNiAzOXoiLz48cGF0aCBmaWxsPSIjZGQ0YjM5IiBkPSJNLTIwMy42IDM5NWwzNS40LTYxLjRjLTIuOS0uNC01LjktLjYtOC45LS42LTE5LjcgMC0zNy40IDguOS00OS4xIDIzbDIyLjYgMzl6Ii8+PC9zdmc+" />
+
+### PostCSS
+
+Don't worry, I didn't forget about PostCSS. Well on it's way to being many developer's build-tool of choice with it's vast array of plugins, I personally use it in conjunction with Sass. So how would we go about taking advantage of modifying inline SVGs with it? The [postcss-inline-svg](https://github.com/zslabs/postcss-inline-svg) package does this for us in a more "native-looking" syntax that's quite easy to bundle alongside your build-tool of choice.
+
+Once installed, loading an SVG in-memory and performing manipulations to internal paths/shapes is possible.
+
+```scss
+// before
+@svg-load nav url(img/nav.svg) {
+  fill: #cfc;
+  path:nth-child(2) {
+    fill: #ff0;
+  }
+}
+.nav {
+  background: svg-inline(nav);
+}
+
+// after
+.nav {
+  background: url("data:image/svg+xml;charset=utf-8,%3Csvg fill='%23cfc'%3E%3Cpath d='...'/%3E%3Cpath d='...' fill='%23ff0'/%3E%3Cpath d='...'/%3E%3C/svg%3E");
+}
+```

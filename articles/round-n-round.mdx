@@ -1,0 +1,102 @@
+---
+title: Round 'n round
+date: 2017/01/08
+---
+
+Today's deep-dive will be a Droplet animation I did for [DigitalOcean](https://www.digitalocean.com). This was a branding experiment to test out future initiatives for the company.
+
+Let's take a look at the illustration I was given:
+
+<Image
+  src="/uploads/round-n-round--illustration.png"
+  width="900"
+  height="1161"
+/>
+
+I love getting illustrations from DO designers as there's no shortage of hand-movements and "swoosh" sounds between us as we construct how best to bring illustrations to life. Yes, we are professionals. No, we don't have any shame.
+
+Breaking this down, there were a few different pieces to this animation:
+
+1. The entire Droplet should bob up and down, with the bottom shadow responding appropriately based on the proximity of the Droplet.
+1. 5 different dots following the respective "dot-axises".
+1. Each dot should go behind the shape as if the Droplet itself is on a different layer.
+
+### Task 1
+
+I started by creating two separate TweenMax iterations. With the Droplet, we're impacting the y-axis to travel up by `15px` with the `yoyo` property to automatically return to the starting position&mdash;repeating indefinitely.
+
+For the bottom-shadow, we want to give the illusion of the Droplet getting closer to the imaginary floor we're setting in our scene. We'll still use the `yoyo` and `repeat` properties as we did for the Droplet, but instead of impacting the `y-axis`, we'll change the `scale`.
+
+```js
+// Droplet bounce
+TweenMax.to('#Droplet-boundingShape', 3, {
+  y: -15,
+  yoyo: true,
+  repeat: -1,
+})
+
+// Droplet shadow
+TweenMax.to('.Droplet-shadow', 3, {
+  scale: 0.85,
+  yoyo: true,
+  repeat: -1,
+  transformOrigin: 'center center',
+})
+```
+
+### Task 2
+
+I decided to use the [Bezier Plugin](https://greensock.com/BezierPlugin-JS) which accepts an array of points/values and `type` to determine the strength of the curve, taking your target element and translating based on the aforementioned attributes. Since the dotted-lines were two separate paths (more on that later), I decided against using the [suggestion from this post](https://greensock.com/forums/topic/13581-animate-svg-object-along-motion-path/) and mapped out what I called each "hard-stop".
+
+<Image src="/uploads/round-n-round--hard-stops.png" width="885" height="188" />
+
+By finding each position relative to the `[0, 0]` point I had each dot start at&mdash;the lower center&mdash; I was able to create a pretty reliable coordinate system that ended up back at the beginning. The first for example, was:
+
+```js
+// Coordinates of first dot
+{x: 46, y: -8},
+{x: 0, y: -16},
+{x: -46, y: -8},
+{x: 0, y: 0}
+```
+
+Then, with the `type` attribute the Bezier plugin provides, I was able to adjust the curviness of the path it would follow based on the imperfect nature of each dotted circle.
+
+### Task 3
+
+Oof - let's start out this task with one of those. As I quickly ran through ways of tackling #1 and #2 in my head with [Masami](https://dribbble.com/masamikubo), I suddenly came to the realization we were dealing with some sort of layered effect that would take a dot and shove it to the background behind the main Droplet.
+
+As I struggled through a few different options, it suddenly dawned on me to look at the illustration itself. Each dotted circle was actually two paths; with one on top of the Droplet layer, and the other behind it. As I looked at the Droplet at its simplest, I knew the visual effect we were going for was more opaque when it reached the Droplet threshold. So, that's exactly what I did.
+
+Now this was tedious to say the least, but determining the timing in which the dot would reach the edge (and come out the other side) I was able to stub-in an opacity update within that interval. With the power of GSAP and timelines, combining each of those tweens with specific delays was pretty easy:
+
+```js
+// Timeline for each dot going behind the Droplet
+timeline
+  .to(
+    dot,
+    0.25,
+    {
+      delay: 1.85,
+      opacity: 0.15,
+      ease: Power0.easeNone,
+    },
+    'droplet-path'
+  )
+  .to(
+    dot,
+    0.25,
+    {
+      delay: 2.85,
+      opacity: 1,
+      ease: Power0.easeNone,
+    },
+    'droplet-path'
+  )
+```
+
+I ran with that idea and figured out the timings, delays, and offsets for each dot. With some more JavaScript trickery, creating an object with each configuration, looping through them, and even setting a random start position for each was a breeze.
+
+What you see below is the finished product. Let me know what you think!
+
+<CodePen codePenId="rjLvMZ" />

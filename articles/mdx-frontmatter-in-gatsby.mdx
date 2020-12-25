@@ -1,0 +1,206 @@
+---
+title: MDX frontmatter in Gatsby
+date: 2020/03/28
+dateModified: 2020/04/12
+---
+
+import { Alert } from 'chaoskit/src/components'
+
+<Alert type="primary">
+  <p>I've published <a href="https://github.com/zslabs/gatsby-plugin-mdx-frontmatter">gatsby-plugin-mdx-frontmatter</a> to help get everyone up and running!</p>
+</Alert>
+
+[MDX](https://mdxjs.com/) is an incredible toolkit that allows you to write [JSX](https://reactjs.org/docs/introducing-jsx.html) in your Markdown files; creating opportunities for more dynamic and interactive experiences in your content. An example of how MDX could be used:
+
+```mdx
+---
+title: My article
+---
+
+import Button from '../components/Button'
+
+Here's some **markdown content**.
+
+<Button>React-powered button</Button>
+```
+
+When I transitioned this site over to MDX, I immediately went to work creating a better [Code](https://github.com/zslabs/zslabs.com/blob/master/src/components/Code.js) component, and slew of [shortcodes](https://github.com/zslabs/zslabs.com/blob/master/src/components/mdxShortcodes.js) that allowed me to remove a few [remark](https://github.com/remarkjs/remark) plugins I wanted to bring in-house.
+
+### The challenge
+
+Storing additional types of data in Markdown frontmatter is a pretty common-practice; especially with CMS solutions like [Netlify CMS](https://www.netlifycms.org/). This allows us seperate out chunks you may want to present in different ways - like so:
+
+```mdx filename=article.md
+---
+title: My article
+items:
+  - value: Item 1
+  - value: Item 2
+  - value: Item 3
+---
+
+Article content.
+```
+
+```js filename=Article.js
+const Article = ({ frontmatter, html }) => (
+  <div>
+    <h1>{frontmatter.title}</h1>
+
+    <ul>
+      {frontmatter.items.map((item) => (
+        <li key={item.value}>{item.value}</li>
+      ))}
+    </ul>
+
+    <div dangerouslySetInnerHTML={{ __html: html }} />
+  </div>
+)
+```
+
+But - what if you have Markdown content within your frontmatter - or better yet, MDX?
+
+```mdx filename=article.md
+---
+title: My article
+items:
+  - value: >-
+      Item 1 **value**
+  - value: >-
+      Item 2
+
+      <Button>React-powered button</Button>
+  - value: >-
+      Item 3 __value__
+---
+
+Article content.
+```
+
+Solutions within [Gatsby](https://www.gatsbyjs.org) for normal Markdown frontmatter previously led me down the path of creating a runtime component to parse the Markdown strings that would be queried on the frontend:
+
+```js filename=Data.js
+import PropTypes from 'prop-types'
+import remark from 'remark'
+import html from 'remark-html'
+import parser from 'html-react-parser'
+
+// Provides a consistent way for us to render content from Markdown frontmatter that propery encodes entities as well
+const Data = ({ children }) =>
+  parser(remark().use(html).processSync(children).toString())
+
+Data.propTypes = {
+  children: PropTypes.node.isRequired,
+}
+
+export default Data
+```
+
+```js filename=Article.js
+import Data from '../components/Data'
+
+const Article = ({ frontmatter, html }) => (
+  <div>
+    <h1>{frontmatter.title}</h1>
+
+    <ul>
+      {frontmatter.items.map((item) => (
+        <li key={item.value}>
+          <Data>{item.value}</Data>
+        </li>
+      ))}
+    </ul>
+
+    <div dangerouslySetInnerHTML={{ __html: html }} />
+  </div>
+)
+```
+
+The upside to this method was that I could add as many remark plugins as needed - with the obvious downside being the bloat it would add to our bundle. The other downer was `gatsby-remark-*` plugins that may have additional logic inside of `gatsby-browser.js` and `gatsby-ssr.js` wouldn't be accessible in this component. This implementation was never ideal.
+
+With MDX thrown in the mix, [`@mdx-js/runtime`](https://mdxjs.com/advanced/runtime) was closer to a plugin 'n play solution, but with the downside of being quite large and not recommended for most usecases.
+
+### The solution
+
+After struggling with a few different suggestions across the Gatsby community, I came across [a method](https://github.com/gatsbyjs/gatsby/issues/21789#issuecomment-592110650) that was straight-forward and easy to extend - enter [`createSchemaCustomization`](https://www.gatsbyjs.org/docs/node-apis/#createSchemaCustomization). This allows us to customize Gatsby’s GraphQL schema by creating type definitions, field extensions or adding third-party schemas.
+
+```js filename=gatsby-node.js
+exports.createSchemaCustomization = ({
+  actions: { createTypes, createFieldExtension },
+  createContentDigest,
+}) => {
+  createFieldExtension({
+    name: 'mdx',
+    extend() {
+      return {
+        type: 'String',
+        resolve(source, args, context, info) {
+          // Grab field
+          const value = source[info.fieldName]
+          // Isolate MDX
+          const mdxType = info.schema.getType('Mdx')
+          // Grab just the body contents of what MDX generates
+          const { resolve } = mdxType.getFields().body
+
+          return resolve({
+            rawBody: value,
+            internal: {
+              contentDigest: createContentDigest(value), // Used for caching
+            },
+            args,
+            context,
+            info,
+          })
+        },
+      }
+    },
+  })
+
+  createTypes(`
+    type Mdx implements Node {
+      frontmatter: MdxFrontmatter
+    }
+
+    type MdxFrontmatter {
+      items: [ItemValues]
+    }
+
+    type ItemValues {
+      value: String @mdx
+    }
+  `)
+}
+```
+
+The above functionality does a few things:
+
+1. Creates a new, `mdx` field extension that automatically attaches the MDX internals to the fields it is assigned to.
+2. Funnels our type definitions down to our specific `items` frontmatter field.
+3. Assigns the newly created `mdx` field to our `value`; which is what we want transformed into MDX.
+
+When querying this data with Gatsby's built-in [`graphiql`](https://github.com/graphql/graphiql) tool, what's returned is the transformed body content, ready to be consumed by `<MDXRenderer />`.
+
+```js filename=Article.js
+import { MDXProvider } from '@mdx-js/react'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
+
+import Button from '../components/Button'
+
+const Article = ({ frontmatter, body }) => (
+  <MDXProvider components={[Button]}>
+    <div>
+      <h1>{frontmatter.title}</h1>
+
+      <ul>
+        {frontmatter.items.map((item) => (
+          <li key={item.value}>
+            <MDXRenderer>{item.value}</MDXRenderer>
+          </li>
+        ))}
+      </ul>
+
+      <MDXRenderer>{body}</MDXRenderer>
+    </div>
+  </MDXProvider>
+)
+```
