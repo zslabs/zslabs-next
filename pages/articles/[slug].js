@@ -13,12 +13,7 @@ import Prose from '~components/Prose'
 import ScrollIndicator from '~components/ScrollIndicator'
 import Code from '~components/Code'
 import Section from '~components/Section'
-
-const Test = () => (
-  <div>
-    test custom <h2 className="relative no-prose">Something</h2>
-  </div>
-)
+import Alert from '~components/Alert'
 
 const Image = (props) => (
   <div className="my-8">
@@ -27,7 +22,7 @@ const Image = (props) => (
 )
 
 const components = {
-  Test,
+  Alert,
   Image,
   CodePen,
   Tweet,

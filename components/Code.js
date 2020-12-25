@@ -30,7 +30,9 @@ export default function Code({
             </div>
             {filename && (
               <div className="relative">
-                <div className="p-4 text-sm text-gray-100">{filename}</div>
+                <div className="p-4 text-sm text-gray-100 whitespace-nowrap">
+                  {filename}
+                </div>
                 <div className="absolute bottom-0 left-0 w-full bg-gradient-to-tr from-blue-500 to-indigo-700 h-0.5" />
               </div>
             )}

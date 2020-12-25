@@ -31,6 +31,15 @@
   .mdx-embed {
     @apply my-8;
   }
+
+  /* Take care of global styles overriding Alert component children */
+  .Alert {
+    @apply dark:text-gray-900;
+  }
+
+  .Alert a:not([class]) {
+    @apply dark:text-blue-500 dark:from-blue-100 dark:to-blue-100;
+  }
 }
 
 @layer utilities {
