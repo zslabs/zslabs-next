@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @import './prose.css';
+@import './prism.css';
 
 @layer base {
   html {
