@@ -1,6 +1,7 @@
+import fs from 'fs'
+
 import PropTypes from 'prop-types'
 import Head from 'next/head'
-import dayjs from 'dayjs'
 
 import BubbleList, { BubbleListItem } from '~components/BubbleList'
 import Button from '~components/Button'
@@ -52,38 +53,7 @@ function RecentProjects() {
   )
 }
 
-function BlogPosts({ data }) {
-  return (
-    <div id="articles">
-      <SectionTitle className="grid place-items-center">
-        <SectionTitleSkew
-          className="from-green-400 to-cyan-500 ring-green-400"
-          style={{
-            clipPath:
-              'polygon(0% 0%, 0% 100%, 25% 100%, 25% 25%, 75% 25%, 75% 75%, 25% 75%, 25% 100%, 100% 100%, 100% 0%)',
-          }}
-        />
-        Articles
-      </SectionTitle>
-      <BubbleList>
-        {data.map((post) => (
-          <BubbleListItem
-            key={post.title}
-            title={post.title}
-            link={`/articles/${post.slug}`}
-            sub={<>{dayjs(post.date).format('MMMM D, YYYY')}</>}
-          />
-        ))}
-      </BubbleList>
-    </div>
-  )
-}
-
-BlogPosts.propTypes = {
-  data: PropTypes.array.isRequired,
-}
-
-export default function Home({ allPosts }) {
+export default function Home({ latestPost }) {
   return (
     <>
       <Head>
@@ -109,7 +79,7 @@ export default function Home({ allPosts }) {
       </Section>
       <Section className="grid grid-cols-1 justify-items-center">
         <TextLink
-          href={`/articles/${allPosts[0].slug}`}
+          href={`/articles/${latestPost.slug}`}
           className="relative py-6 px-12 text-center transform hover:scale-105 ease-bounce duration-300"
         >
           <div className="absolute -top-2 -left-2 w-full h-full transform -skew-x-12 z-0">
@@ -123,7 +93,7 @@ export default function Home({ allPosts }) {
           <div className="absolute inset-0 z-0 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 transform -skew-x-12 shadow rounded" />
           <div className="relative z-10 space-y-1">
             <div>🎉 Check out my latest article:</div>
-            <div className="font-extrabold text-lg">{allPosts[0].title}</div>
+            <div className="font-extrabold text-lg">{latestPost.title}</div>
           </div>
         </TextLink>
       </Section>
@@ -133,20 +103,30 @@ export default function Home({ allPosts }) {
           style={{ backgroundImage: `url(${dots})` }}
         />
         <RecentProjects />
-        <BlogPosts data={allPosts} />
       </Section>
     </>
   )
 }
 
 Home.propTypes = {
-  allPosts: PropTypes.array.isRequired,
+  latestPost: PropTypes.object.isRequired,
 }
 
 export async function getStaticProps() {
   const allPosts = await getAllPosts(['title', 'date', 'slug', 'excerpt'])
 
+  // Build articles file
+  fs.writeFile('./data/articles.json', JSON.stringify(allPosts), (err) => {
+    if (err) return console.log(err) // eslint-disable-line no-console
+
+    console.log('Global articles file generated') // eslint-disable-line no-console
+
+    return true
+  })
+
   return {
-    props: { allPosts },
+    props: {
+      latestPost: allPosts[0],
+    },
   }
 }

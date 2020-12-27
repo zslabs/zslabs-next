@@ -9,20 +9,22 @@ import Prose from './Prose'
 import { ReactComponent as TwitterSvg } from '~icons/twitter.svg'
 import { ReactComponent as GitHubSvg } from '~icons/github.svg'
 import { ReactComponent as CodePenSvg } from '~icons/codepen.svg'
+import useAboutModalState from '~hooks/useAboutModalState'
 
 export default function AboutModal() {
-  const [open, setIsOpen] = React.useState(false)
+  const open = useAboutModalState((state) => state.open)
+  const toggle = useAboutModalState((state) => state.toggle)
 
   return (
     <>
       <button
         type="button"
         className="block w-12 h-12 overflow-hidden rounded-full shadow-md transform duration-300 hover:scale-110 hover:shadow-lg focus:outline-none ease-bounce"
-        onClick={() => setIsOpen(!open)}
+        onClick={toggle}
       >
         <Image src="/me.png" width="48" height="48" />
       </button>
-      <Modal open={open} setIsOpen={setIsOpen}>
+      <Modal open={open} setIsOpen={toggle}>
         <div className="rounded-full overflow-hidden w-24 h-24 shadow-lg mx-auto mb-8">
           <Image src="/me.png" width="96" height="96" />
         </div>
@@ -75,7 +77,10 @@ export default function AboutModal() {
           <h3>Speaking/consulting</h3>
           <p>
             Have a project you'd like me to be part of?{' '}
-            <TextLink href="/contact">Let's chat</TextLink>.
+            <TextLink href="/contact" onClick={toggle}>
+              Let's chat
+            </TextLink>
+            .
           </p>
           <h3>How'd you build this site?</h3>
           <p>

@@ -10,6 +10,7 @@ export function BubbleListItem({
   link,
   badge,
   badgeVariant,
+  onClick = () => {},
   ...rest
 }) {
   return (
@@ -21,7 +22,13 @@ export function BubbleListItem({
       <div className="space-y-1">
         <div className="grid items-center grid-flow-col auto-cols-auto gap-4">
           <h3 className="font-extrabold text-2xl">
-            {link ? <LinkUnderline href={link}>{title}</LinkUnderline> : title}
+            {link ? (
+              <LinkUnderline href={link} onClick={onClick}>
+                {title}
+              </LinkUnderline>
+            ) : (
+              title
+            )}
           </h3>
           {badge && (
             <div className="justify-self-end">
@@ -43,6 +50,7 @@ BubbleListItem.propTypes = {
   link: PropTypes.string,
   sub: PropTypes.node,
   badgeVariant: PropTypes.oneOf(['primary', 'secondary', 'tertiary']),
+  onClick: PropTypes.func,
 }
 
 export default function BubbleList({ children, ...rest }) {

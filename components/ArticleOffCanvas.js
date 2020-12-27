@@ -1,9 +1,12 @@
+import dayjs from 'dayjs'
+
 import OffCanvas from './OffCanvas'
 import SectionTitle, { SectionTitleSkew } from './SectionTitle'
 import BubbleList, { BubbleListItem } from './BubbleList'
 
 import useArticlesOffCanvasState from '~hooks/useArticlesOffCanvasState'
 import { ReactComponent as MenuSvg } from '~icons/menu.svg'
+import posts from '~data/articles.json'
 
 export default function ArticleOffCanvas() {
   const open = useArticlesOffCanvasState((state) => state.open)
@@ -15,6 +18,7 @@ export default function ArticleOffCanvas() {
         type="button"
         className="block transform duration-300 hover:scale-110 ease-bounce focus:outline-none"
         onClick={toggle}
+        title="View articles"
       >
         <MenuSvg className="h-10 w-10 stroke-1.5" />
       </button>
@@ -30,7 +34,15 @@ export default function ArticleOffCanvas() {
           Articles
         </SectionTitle>
         <BubbleList>
-          <BubbleListItem title="Article title" link="/" sub={<>Stuff</>} />
+          {posts.map((post) => (
+            <BubbleListItem
+              key={post.title}
+              title={post.title}
+              link={`/articles/${post.slug}`}
+              sub={<>{dayjs(post.date).format('MMMM D, YYYY')}</>}
+              onClick={toggle}
+            />
+          ))}
         </BubbleList>
       </OffCanvas>
     </>

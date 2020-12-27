@@ -12,6 +12,7 @@ import LinkUnderline from '~components/LinkUnderline'
 import TextLink from '~components/TextLink'
 import Section from '~components/Section'
 import AboutModal from '~components/AboutModal'
+import ArticleOffCanvas from '~components/ArticleOffCanvas'
 
 export default function BaseLayout({ children }) {
   const [mounted, setMounted] = React.useState(false)
@@ -38,6 +39,9 @@ export default function BaseLayout({ children }) {
             <LogoSvg className="h-12 from-indigo-700 to-blue-500" />
           </TextLink>
           <div className="justify-self-center">
+            <ArticleOffCanvas />
+          </div>
+          <div className="grid gap-4 items-center grid-flow-col auto-cols-auto justify-self-end">
             {mounted && (
               <button
                 title="Toggle dark mode"
@@ -52,8 +56,6 @@ export default function BaseLayout({ children }) {
                 )}
               </button>
             )}
-          </div>
-          <div className="justify-self-end">
             <AboutModal />
           </div>
         </Section>
