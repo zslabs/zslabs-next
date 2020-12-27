@@ -57,12 +57,17 @@ module.exports = {
       },
     },
   },
-  purge: [
-    './components/**/*.{js,ts,jsx,tsx}',
-    './layouts/**/*.{js,ts,jsx,tsx}',
-    './media/**/*.{js,ts,jsx,tsx}',
-    './pages/**/*.{js,ts,jsx,tsx}',
-  ],
+  purge: {
+    content: [
+      './components/**/*.{js,ts,jsx,tsx}',
+      './layouts/**/*.{js,ts,jsx,tsx}',
+      './media/**/*.{js,ts,jsx,tsx}',
+      './pages/**/*.{js,ts,jsx,tsx}',
+    ],
+    options: {
+      fontFace: false,
+    },
+  },
   variants: {
     filter: ['dark'],
     extend: {

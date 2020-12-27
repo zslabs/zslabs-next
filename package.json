@@ -1,6 +1,11 @@
 {
   "name": "zslabs-next",
-  "version": "0.1.0",
+  "version": "0.0.0",
+  "author": {
+    "name": "Zach Schnackel",
+    "email": "info@zslabs.com",
+    "url": "https://zslabs.com"
+  },
   "private": true,
   "browserslist": [
     ">5%",
@@ -16,10 +21,12 @@
     "lint:fix": "eslint --fix"
   },
   "dependencies": {
+    "@hookform/resolvers": "1.2.0",
     "@mdx-js/loader": "1.6.22",
     "@mdx-js/react": "1.6.22",
     "@tailwindcss/forms": "0.2.1",
     "autoprefixer": "10.1.0",
+    "await-to-js": "2.1.1",
     "body-scroll-lock": "3.1.5",
     "clsx": "1.1.1",
     "dayjs": "1.9.8",
@@ -47,13 +54,17 @@
     "postcss": "8.2.1",
     "prettier": "2.2.1",
     "prism-react-renderer": "1.1.1",
+    "qs": "6.9.4",
     "react": "17.0.1",
     "react-dom": "17.0.1",
+    "react-hook-form": "6.13.1",
     "react-use": "15.3.4",
+    "redaxios": "0.3.0",
     "slugify": "1.4.6",
     "tailwind-gradient-mask-image": "0.2.0",
     "tailwindcss": "2.0.2",
     "tailwindcss-filters": "3.0.0",
+    "yup": "0.32.8",
     "zustand": "3.2.0"
   },
   "devDependencies": {

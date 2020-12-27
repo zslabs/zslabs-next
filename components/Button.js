@@ -8,6 +8,7 @@ export default function Button({
   className,
   variation,
   iconOnly,
+  loading,
   ...rest
 }) {
   return (
@@ -26,6 +27,7 @@ export default function Button({
             variation === 'quaternary',
           'px-6': !iconOnly,
           'w-12': iconOnly,
+          'pointer-events-none opacity-50': loading,
         }
       )}
       {...rest}
@@ -59,4 +61,5 @@ Button.propTypes = {
     'tertiary',
     'quaternary',
   ]),
+  loading: PropTypes.bool,
 }
