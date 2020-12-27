@@ -1,5 +1,7 @@
+import Input from '~components/Input'
 import Section from '~components/Section'
 import SectionTitle, { SectionTitleSkew } from '~components/SectionTitle'
+import Textarea from '~components/Textarea'
 
 export default function Contact() {
   return (
@@ -14,8 +16,10 @@ export default function Contact() {
         />
         Contact
       </SectionTitle>
-      <input type="text" placeholder="hello" className="rounded" />
-      <input type="checkbox" />
+      <div className="grid gap-4 grid-cols-1">
+        <Input name="name" />
+        <Textarea name="message" />
+      </div>
     </Section>
   )
 }

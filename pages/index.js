@@ -12,6 +12,7 @@ import { ReactComponent as CodeSvg } from '~icons/code.svg'
 import diagonalLines from '~media/diagonal-lines.svg'
 import dots from '~media/dots.svg'
 import { getAllPosts } from '~lib/api'
+import useArticlesOffCanvasState from '~hooks/useArticlesOffCanvasState'
 
 function RecentProjects() {
   return (
@@ -54,6 +55,8 @@ function RecentProjects() {
 }
 
 export default function Home({ latestPost }) {
+  const toggle = useArticlesOffCanvasState((state) => state.toggle)
+
   return (
     <>
       <Head>
@@ -68,9 +71,9 @@ export default function Home({ latestPost }) {
             Zach Schnackel
           </h1>
           <div className="grid justify-items-center auto-cols-auto grid-flow-col gap-6 mt-4">
-            <TextLink href="#articles">
-              <Button variation="primary">Articles</Button>
-            </TextLink>
+            <Button variation="primary" onClick={toggle}>
+              Articles
+            </Button>
             <TextLink href="/experience">
               <Button variation="secondary">Experience</Button>
             </TextLink>
@@ -115,14 +118,19 @@ Home.propTypes = {
 export async function getStaticProps() {
   const allPosts = await getAllPosts(['title', 'date', 'slug', 'excerpt'])
 
-  // Build articles file
-  fs.writeFile('./data/articles.json', JSON.stringify(allPosts), (err) => {
-    if (err) return console.log(err) // eslint-disable-line no-console
+  const currentArticlesFile = fs.readFileSync('./data/articles.json', 'utf8')
 
-    console.log('Global articles file generated') // eslint-disable-line no-console
+  // If the stored article data file is not equal to the new query, replace
+  if (JSON.stringify(allPosts) !== currentArticlesFile) {
+    // Rebuild articles file
+    fs.writeFile('./data/articles.json', JSON.stringify(allPosts), (err) => {
+      if (err) return console.log(err) // eslint-disable-line no-console
 
-    return true
-  })
+      console.log('Global articles file updated') // eslint-disable-line no-console
+
+      return true
+    })
+  }
 
   return {
     props: {
