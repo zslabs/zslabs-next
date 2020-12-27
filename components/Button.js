@@ -22,6 +22,8 @@ export default function Button({
           'from-green-400 to-cyan-500 ring-green-400':
             variation === 'secondary',
           'from-gray-800 to-gray-600 ring-gray-800': variation === 'tertiary',
+          'from-orange-400 to-pink-600 ring-orange-400':
+            variation === 'quaternary',
           'px-6': !iconOnly,
           'w-12': iconOnly,
         }
@@ -51,5 +53,10 @@ Button.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node.isRequired,
   iconOnly: PropTypes.bool,
-  variation: PropTypes.oneOf(['primary', 'secondary', 'tertiary']),
+  variation: PropTypes.oneOf([
+    'primary',
+    'secondary',
+    'tertiary',
+    'quaternary',
+  ]),
 }

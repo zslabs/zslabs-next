@@ -69,6 +69,7 @@ module.exports = {
       backgroundOpacity: ['dark'],
       backgroundSize: ['hover'],
       scale: ['group-hover'],
+      boxShadow: ['dark'],
     },
   },
   plugins: [

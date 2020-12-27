@@ -1,3 +1,4 @@
+import Button from '~components/Button'
 import Input from '~components/Input'
 import Section from '~components/Section'
 import SectionTitle, { SectionTitleSkew } from '~components/SectionTitle'
@@ -16,10 +17,16 @@ export default function Contact() {
         />
         Contact
       </SectionTitle>
-      <div className="grid gap-4 grid-cols-1">
-        <Input name="name" />
-        <Textarea name="message" />
-      </div>
+      <form className="grid gap-4 grid-cols-1">
+        <Input label="Name" name="name" />
+        <Input label="Email" type="email" name="email" />
+        <Textarea label="Message" name="message" />
+        <div className="mt-4 text-center">
+          <Button variation="quaternary" type="submit">
+            Send message
+          </Button>
+        </div>
+      </form>
     </Section>
   )
 }
