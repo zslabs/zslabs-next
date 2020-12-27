@@ -5,7 +5,7 @@
   & * + ul,
   & * + ol,
   & * + dl,
-  & * + blockquote,
+  & * + blockquote:not([class]),
   & * + pre:not([class]),
   & * + address,
   & * + fieldset,

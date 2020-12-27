@@ -14,6 +14,7 @@ import ScrollIndicator from '~components/ScrollIndicator'
 import Code from '~components/Code'
 import Section from '~components/Section'
 import Alert from '~components/Alert'
+import Blockquote from '~components/Blockquote'
 
 const Image = (props) => (
   <div className="my-8">
@@ -28,6 +29,7 @@ const components = {
   Tweet,
   TextLink,
   a: (props) => <TextLink {...props} />,
+  blockquote: (props) => <Blockquote {...props} />,
   h1: (props) => <AutoLinkHeader as="h1" {...props} />,
   h2: (props) => <AutoLinkHeader as="h2" {...props} />,
   h3: (props) => <AutoLinkHeader as="h3" {...props} />,
