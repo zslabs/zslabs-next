@@ -3,7 +3,6 @@ import fs from 'fs'
 import * as React from 'react'
 import { motion, useAnimation } from 'framer-motion'
 import PropTypes from 'prop-types'
-import Head from 'next/head'
 
 import BubbleList, { BubbleListItem } from '~components/BubbleList'
 import Button from '~components/Button'
@@ -151,9 +150,6 @@ export default function Home({ latestPost }) {
 
   return (
     <>
-      <Head>
-        <title>Zach Schnackel</title>
-      </Head>
       <Section>
         <div className="grid place-items-center gap-4">
           <div className="uppercase text-gray-500 dark:text-gray-300 font-extrabold tracking-widest md:text-lg">

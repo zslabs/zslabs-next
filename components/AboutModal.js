@@ -86,7 +86,7 @@ export default function AboutModal() {
           <p>
             Because I love open-source&mdash;it's available for anyone to use.
             Find a bug? Report it!{' '}
-            <TextLink href="https://github.com/zslabs/zslabs.com">
+            <TextLink href="https://github.com/zslabs/zslabs-next">
               View source
             </TextLink>
             .

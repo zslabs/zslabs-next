@@ -5,6 +5,7 @@ import { useForm, FormProvider } from 'react-hook-form'
 import axios from 'redaxios'
 import qs from 'qs'
 import to from 'await-to-js'
+import { NextSeo } from 'next-seo'
 
 import Button from '~components/Button'
 import Input from '~components/Input'
@@ -53,6 +54,14 @@ const ContactForm = (props) => {
 
   return (
     <>
+      <NextSeo
+        title="Contact - Zach Schnackel"
+        canonical="https://zslabs.com/contact"
+        openGraph={{
+          url: 'https://zslabs.com/experience',
+          title: 'Contact - Zach Schnackel',
+        }}
+      />
       {response === 'success' && (
         <Alert>Your message was sent successfully!</Alert>
       )}
@@ -86,20 +95,32 @@ const ContactForm = (props) => {
               autoComplete="new-password"
               ref={methods.register}
             />
-            <Input label="Name" name="name" ref={methods.register} required validationMessage={methods.errors?.name && methods.errors.name.message} />
+            <Input
+              label="Name"
+              name="name"
+              ref={methods.register}
+              required
+              validationMessage={
+                methods.errors?.name && methods.errors.name.message
+              }
+            />
             <Input
               label="Email"
               type="email"
               name="email"
               ref={methods.register}
-              validationMessage={methods.errors?.email && methods.errors.email.message}
+              validationMessage={
+                methods.errors?.email && methods.errors.email.message
+              }
               required
             />
             <Textarea
               label="Message"
               name="message"
               ref={methods.register}
-              validationMessage={methods.errors?.message && methods.errors.message.message}
+              validationMessage={
+                methods.errors?.message && methods.errors.message.message
+              }
               required
             />
             <div className="mt-4 text-center">

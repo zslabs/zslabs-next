@@ -5,6 +5,7 @@ import hydrate from 'next-mdx-remote/hydrate'
 import { preToCodeBlock } from 'mdx-utils'
 import { CodePen, Tweet } from 'mdx-embed'
 import dayjs from 'dayjs'
+import { NextSeo } from 'next-seo'
 
 import { getAllPosts, getPostBySlug } from '~lib/api'
 import AutoLinkHeader from '~components/AutoLinkHeader'
@@ -52,6 +53,14 @@ export default function Post({ post }) {
 
   return (
     <Section>
+      <NextSeo
+        title={`${post.title} - Zach Schnackel`}
+        canonical={`https://zslabs.com/articles/${post.slug}`}
+        openGraph={{
+          url: `https://zslabs.com/articles/${post.slug}`,
+          title: `${post.title} - Zach Schnackel`,
+        }}
+      />
       <article>
         <ScrollIndicator className="fixed hidden md:block top-1 left-1 w-8 h-8 text-blue-500" />
         <header className="mb-8 md:mb-12">

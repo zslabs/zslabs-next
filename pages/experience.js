@@ -1,3 +1,5 @@
+import { NextSeo } from 'next-seo'
+
 import BubbleList, { BubbleListItem } from '~components/BubbleList'
 import Section from '~components/Section'
 import SectionTitle, { SectionTitleSkew } from '~components/SectionTitle'
@@ -42,29 +44,39 @@ const data = [
 
 export default function Experience() {
   return (
-    <Section className="grid grid-cols-1 md:grid-cols-3/4 justify-center relative">
-      <SectionTitle className="grid place-items-center">
-        <SectionTitleSkew
-          className="from-indigo-200 to-purple-700"
-          style={{
-            clipPath: 'polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)',
-          }}
-        />
-        Experience
-      </SectionTitle>
-      <BubbleList>
-        {data.map((partial, index) => (
-          <BubbleListItem
-            key={partial.company}
-            title={partial.company}
-            sub={partial.title}
-            badge={partial.badge}
-            badgeVariant={index === 0 ? 'secondary' : 'tertiary'}
-          >
-            {partial.blurb}
-          </BubbleListItem>
-        ))}
-      </BubbleList>
-    </Section>
+    <>
+      <NextSeo
+        title="Experience - Zach Schnackel"
+        canonical="https://zslabs.com/experience"
+        openGraph={{
+          url: 'https://zslabs.com/experience',
+          title: 'Experience - Zach Schnackel',
+        }}
+      />
+      <Section className="grid grid-cols-1 md:grid-cols-3/4 justify-center relative">
+        <SectionTitle className="grid place-items-center">
+          <SectionTitleSkew
+            className="from-indigo-200 to-purple-700"
+            style={{
+              clipPath: 'polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)',
+            }}
+          />
+          Experience
+        </SectionTitle>
+        <BubbleList>
+          {data.map((partial, index) => (
+            <BubbleListItem
+              key={partial.company}
+              title={partial.company}
+              sub={partial.title}
+              badge={partial.badge}
+              badgeVariant={index === 0 ? 'secondary' : 'tertiary'}
+            >
+              {partial.blurb}
+            </BubbleListItem>
+          ))}
+        </BubbleList>
+      </Section>
+    </>
   )
 }

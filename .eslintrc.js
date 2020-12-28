@@ -7,6 +7,9 @@ module.exports = {
     'plugin:import/errors',
     'plugin:import/warnings',
   ],
+  parserOptions: {
+    ecmaVersion: 2020,
+  },
   plugins: ['react', 'jsx-a11y', 'react-hooks', 'prettier', 'import'],
   rules: {
     'import/no-unresolved': 0,

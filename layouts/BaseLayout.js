@@ -146,7 +146,7 @@ export default function BaseLayout({ children }) {
                   <LinkUnderline href="/contact">Contact</LinkUnderline>
                 </div>
                 <div>
-                  <LinkUnderline href="https://github.com/zslabs/zslabs.com">
+                  <LinkUnderline href="https://github.com/zslabs/zslabs-next">
                     Source
                   </LinkUnderline>
                 </div>
