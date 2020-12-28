@@ -5,13 +5,12 @@ import { ReactComponent as Asterisk } from '~icons/asterisk.svg'
 import { ReactComponent as ExclamationTriangle } from '~icons/exclamation-triangle.svg'
 
 export default function FormLabel({ children, required, hasError, ...rest }) {
-  console.log(required, hasError)
   return (
     <label
       className="font-bold mb-2 items-center gap-2 grid grid-flow-col justify-start auto-cols-auto cursor-default"
       {...rest}
     >
-      {children}{' '}
+      {children}
       {required && !hasError && (
         <Asterisk className="text-red-500 dark:text-gray-400" />
       )}

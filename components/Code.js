@@ -1,6 +1,11 @@
+import * as React from 'react'
 import PropTypes from 'prop-types'
 import Highlight, { defaultProps } from 'prism-react-renderer'
 import clsx from 'clsx'
+import { CopyToClipboard } from 'react-copy-to-clipboard'
+
+import { ReactComponent as ClipboardSvg } from '~icons/clipboard.svg'
+import { ReactComponent as ClipboardCheckSvg } from '~icons/clipboard-check.svg'
 
 export default function Code({
   codeString,
@@ -8,6 +13,15 @@ export default function Code({
   filename,
   wrapperClassName,
 }) {
+  const [isCopied, setCopied] = React.useState(false)
+
+  // Reset icon after 3 seconds
+  React.useEffect(() => {
+    if (isCopied) {
+      setTimeout(() => setCopied(false), 3000)
+    }
+  }, [isCopied])
+
   return (
     <Highlight
       {...defaultProps}
@@ -22,7 +36,7 @@ export default function Code({
             wrapperClassName
           )}
         >
-          <header className="border-b-2 bg-gray-900 border-gray-600 grid auto-cols-min grid-flow-col content-center">
+          <header className="relative border-b-2 bg-gray-900 border-gray-600 grid auto-cols-auto grid-flow-col justify-start items-center">
             <div className="p-4 grid gap-2 auto-cols-max grid-flow-col self-center">
               <div className="w-3 h-3 border-2 rounded-full border-red-500" />
               <div className="w-3 h-3 border-2 rounded-full border-yellow-500" />
@@ -36,9 +50,27 @@ export default function Code({
                 <div className="absolute bottom-0 left-0 w-full bg-gradient-to-tr from-blue-500 to-indigo-700 h-0.5" />
               </div>
             )}
+            <div className="text-gray-400 absolute right-4 top-1/2 transform -translate-y-1/2">
+              {isCopied ? (
+                <ClipboardCheckSvg className="w-6 h-6" />
+              ) : (
+                <CopyToClipboard
+                  text={codeString}
+                  onCopy={() => setCopied(true)}
+                >
+                  <button
+                    type="button"
+                    className="block focus:outline-none"
+                    title="Copy snippet"
+                  >
+                    <ClipboardSvg className="w-6 h-6" />
+                  </button>
+                </CopyToClipboard>
+              )}
+            </div>
           </header>
           <pre className={className}>
-            <div className="grid grid-flow-col auto-cols-min overflow-auto">
+            <div className="grid grid-flow-col auto-cols-auto justify-start overflow-auto">
               <div className="p-4 bg-gray-800 border-r-2 border-gray-600 text-right text-gray-100 text-opacity-40 select-none sticky left-0 z-10">
                 {tokens.map((line, i) => {
                   const lineKey = `line-${i}`

@@ -9,7 +9,14 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head />
+        <Head>
+          <link
+            rel="preload"
+            href="/fonts/Manrope[wght].ttf"
+            as="font"
+            crossOrigin=""
+          />
+        </Head>
         <body className="antialiased text-gray-900 dark:text-gray-100 min-h-screen bg-gray-100 dark:bg-gray-800">
           <Main />
           <NextScript />
