@@ -4,7 +4,11 @@ const withPlugins = require('next-compose-plugins')
 const withFonts = require('nextjs-fonts')
 
 const nextConfig = {
-  webpack: (config, { dev }) => {
+  webpack: (config, { dev, isServer }) => {
+    if (isServer) {
+      require('./scripts/sitemap') // eslint-disable-line global-require
+    }
+
     if (dev) {
       config.module.rules.push({
         test: /\.js$/,

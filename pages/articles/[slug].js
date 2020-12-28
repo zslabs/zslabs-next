@@ -15,6 +15,7 @@ import Code from '~components/Code'
 import Section from '~components/Section'
 import Alert from '~components/Alert'
 import Blockquote from '~components/Blockquote'
+import { ReactComponent as InfoCircleSvg } from '~icons/info-circle.svg'
 
 const Image = (props) => (
   <div className="my-8">
@@ -57,8 +58,17 @@ export default function Post({ post }) {
           <h1 className="text-center mb-2 md:mb-4 text-4xl md:text-5xl font-extrabold">
             {post.title}
           </h1>
-          <div className="uppercase text-gray-500 dark:text-gray-300 font-extrabold tracking-widest md:text-lg text-center">
-            {dayjs(post.date).format('MMMM D, YYYY')}
+          <div className="uppercase text-gray-500 dark:text-gray-300 font-extrabold tracking-widest grid auto-cols-auto grid-flow-col justify-center gap-2 items-center">
+            <span>{dayjs(post.date).format('MMMM D, YYYY')}</span>
+            {post.dateModified && (
+              <div
+                title={`Last modified: ${dayjs(post.dateModified).format(
+                  'MMMM D, YYYY'
+                )}`}
+              >
+                <InfoCircleSvg className="w-6 h-6" />
+              </div>
+            )}
           </div>
         </header>
         <Prose>{content}</Prose>
@@ -72,7 +82,13 @@ Post.propTypes = {
 }
 
 export async function getStaticProps({ params }) {
-  const post = getPostBySlug(params.slug, ['title', 'date', 'slug', 'content'])
+  const post = getPostBySlug(params.slug, [
+    'title',
+    'date',
+    'dateModified',
+    'slug',
+    'content',
+  ])
 
   const mdxSource = await renderToString(post.content, { components })
 

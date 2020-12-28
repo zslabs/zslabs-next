@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://zslabs.com/contact</loc>
+  </url>
+
+  <url>
+    <loc>https://zslabs.com/experience</loc>
+  </url>
+
+  <url>
+    <loc>https://zslabs.com</loc>
+  </url>
+
+  <url>
+    <loc>https://zslabs.com/articles/boomqueries</loc>
+  </url>
+
+  <url>
+    <loc>https://zslabs.com/articles/consolidating-netlify-cms</loc>
+  </url>
+
+  <url>
+    <loc>https://zslabs.com/articles/extendable-switch-statements</loc>
+  </url>
+
+  <url>
+    <loc>https://zslabs.com/articles/fluid-sizes</loc>
+  </url>
+
+  <url>
+    <loc>https://zslabs.com/articles/i-love-loaders</loc>
+  </url>
+
+  <url>
+    <loc>https://zslabs.com/articles/list-ebay-search-toolkit</loc>
+  </url>
+
+  <url>
+    <loc
+      >https://zslabs.com/articles/local-production-builds-with-netlify-functions</loc
+    >
+  </url>
+
+  <url>
+    <loc>https://zslabs.com/articles/mdx-frontmatter-in-gatsby</loc>
+  </url>
+
+  <url>
+    <loc>https://zslabs.com/articles/mdx-link-routing-in-gatsby</loc>
+  </url>
+
+  <url>
+    <loc>https://zslabs.com/articles/mdx-previews-in-netlify-cms</loc>
+  </url>
+
+  <url>
+    <loc>https://zslabs.com/articles/netlify-cms-and-cloudinary</loc>
+  </url>
+
+  <url>
+    <loc>https://zslabs.com/articles/onward-and-upward</loc>
+  </url>
+
+  <url>
+    <loc>https://zslabs.com/articles/polyno</loc>
+  </url>
+
+  <url>
+    <loc>https://zslabs.com/articles/round-n-round</loc>
+  </url>
+
+  <url>
+    <loc>https://zslabs.com/articles/state-dependent-refs-with-hooks</loc>
+  </url>
+
+  <url>
+    <loc>https://zslabs.com/articles/svg-background-fills</loc>
+  </url>
+
+  <url>
+    <loc>https://zslabs.com/articles/using-css-filters-with-svgs</loc>
+  </url>
+</urlset>
