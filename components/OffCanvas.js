@@ -11,7 +11,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 import ClientOnlyPortal from './ClientOnlyPortal'
 
-import { ReactComponent as Close } from '~icons/close.svg'
+import { ReactComponent as CloseSvg } from '~icons/close.svg'
 
 const OffCanvas = ({ children, open, setIsOpen, ...rest }) => {
   const offCanvasRef = React.useRef()
@@ -85,7 +85,7 @@ const OffCanvas = ({ children, open, setIsOpen, ...rest }) => {
                 className="absolute right-8 top-8 inline-block duration-300 opacity-50 ease-bounce transform hover:scale-105 hover:opacity-100 text-2xl focus:outline-none"
                 onClick={() => setIsOpen(false)}
               >
-                <Close />
+                <CloseSvg />
               </button>
               {children}
             </motion.aside>

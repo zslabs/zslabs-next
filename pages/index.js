@@ -1,5 +1,7 @@
 import fs from 'fs'
 
+import * as React from 'react'
+import { motion, useAnimation } from 'framer-motion'
 import PropTypes from 'prop-types'
 import Head from 'next/head'
 
@@ -13,6 +15,7 @@ import diagonalLines from '~media/diagonal-lines.svg'
 import dots from '~media/dots.svg'
 import { getAllPosts } from '~lib/api'
 import useArticlesOffCanvasState from '~hooks/useArticlesOffCanvasState'
+import useLayoutAnimationState from '~hooks/useLayoutAnimationState'
 
 function RecentProjects() {
   return (
@@ -57,6 +60,95 @@ function RecentProjects() {
 export default function Home({ latestPost }) {
   const toggle = useArticlesOffCanvasState((state) => state.toggle)
 
+  const done = useLayoutAnimationState((state) => state.done)
+
+  const introTitleSub = 'Full-Stack/Motion Developer'
+
+  const introTitleVariants = {
+    hidden: {
+      y: '2rem',
+      opacity: 0,
+    },
+    visible: {
+      y: 0,
+      opacity: 1,
+    },
+  }
+
+  const introTitleSubVariants = {
+    hidden: {
+      y: '1.5rem',
+      opacity: 0,
+    },
+    visible: {
+      y: 0,
+      opacity: 1,
+    },
+  }
+
+  const buttonVariants = {
+    hidden: {
+      scale: 0.5,
+      opacity: 0,
+    },
+    visible: {
+      scale: 1,
+      opacity: 1,
+    },
+  }
+
+  const latestArticleVariants = {
+    hidden: {
+      scale: 0.5,
+      opacity: 0,
+    },
+    visible: {
+      scale: 1,
+      opacity: 1,
+    },
+  }
+
+  const projectsVariants = {
+    hidden: {
+      y: '2rem',
+      opacity: 0,
+    },
+    visible: {
+      y: 0,
+      opacity: 1,
+    },
+  }
+
+  const introTitleControls = useAnimation()
+  const introTitleSubControls = useAnimation()
+  const buttonControls = useAnimation()
+  const latestArticleControls = useAnimation()
+  const projectsControls = useAnimation()
+
+  const pageAnimation = React.useCallback(async () => {
+    await introTitleControls.start('visible')
+
+    await introTitleSubControls.start('visible')
+
+    await buttonControls.start('visible')
+
+    await latestArticleControls.start('visible')
+
+    await projectsControls.start('visible')
+  }, [
+    introTitleControls,
+    introTitleSubControls,
+    buttonControls,
+    latestArticleControls,
+    projectsControls,
+  ])
+
+  React.useEffect(() => {
+    if (done) {
+      pageAnimation()
+    }
+  }, [done, pageAnimation])
+
   return (
     <>
       <Head>
@@ -65,22 +157,66 @@ export default function Home({ latestPost }) {
       <Section>
         <div className="grid place-items-center gap-4">
           <div className="uppercase text-gray-500 dark:text-gray-300 font-extrabold tracking-widest md:text-lg">
-            Full-stack/motion developer
+            {Array.from(introTitleSub).map((character, index) => {
+              const key = `${character}-${index}`
+
+              return (
+                <motion.span
+                  key={key}
+                  className="inline-block"
+                  initial="hidden"
+                  transition={{
+                    delay: index * 0.025,
+                  }}
+                  animate={introTitleSubControls}
+                  variants={introTitleSubVariants}
+                >
+                  {character.trim().length > 0 ? character : '\u00a0'}
+                </motion.span>
+              )
+            })}
           </div>
-          <h1 className="text-6xl md:text-7xl font-extrabold">
+          <motion.h1
+            className="text-6xl md:text-7xl font-extrabold"
+            initial="hidden"
+            variants={introTitleVariants}
+            animate={introTitleControls}
+          >
             Zach Schnackel
-          </h1>
+          </motion.h1>
           <div className="grid justify-items-center auto-cols-auto grid-flow-col gap-6 mt-4">
-            <Button variation="primary" onClick={toggle}>
-              Articles
-            </Button>
-            <TextLink href="/experience">
-              <Button variation="secondary">Experience</Button>
-            </TextLink>
+            <motion.div
+              initial="hidden"
+              variants={buttonVariants}
+              animate={buttonControls}
+            >
+              <Button variation="primary" onClick={toggle}>
+                Articles
+              </Button>
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              variants={buttonVariants}
+              animate={buttonControls}
+              transition={{
+                delay: 0.125,
+              }}
+            >
+              <TextLink href="/experience">
+                <Button variation="secondary">Experience</Button>
+              </TextLink>
+            </motion.div>
           </div>
         </div>
       </Section>
-      <Section className="grid grid-cols-1 justify-items-center">
+      <Section
+        as={motion.section}
+        className="grid grid-cols-1 justify-items-center"
+        initial="hidden"
+        variants={latestArticleVariants}
+        animate={latestArticleControls}
+      >
         <TextLink
           href={`/articles/${latestPost.slug}`}
           className="relative py-6 px-12 text-center transform hover:scale-105 ease-bounce duration-300"
@@ -105,7 +241,13 @@ export default function Home({ latestPost }) {
           className="dark:filter-invert absolute top-0 bottom-0 w-screen left-1/2 right-1/2 -mx-1/2-screen -z-1 opacity-5 bg-auto/8"
           style={{ backgroundImage: `url(${dots})` }}
         />
-        <RecentProjects />
+        <motion.div
+          initial="hidden"
+          variants={projectsVariants}
+          animate={projectsControls}
+        >
+          <RecentProjects />
+        </motion.div>
       </Section>
     </>
   )

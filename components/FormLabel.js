@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import PropTypes from 'prop-types'
 
-import { ReactComponent as Asterisk } from '~icons/asterisk.svg'
-import { ReactComponent as ExclamationTriangle } from '~icons/exclamation-triangle.svg'
+import { ReactComponent as AsteriskSvg } from '~icons/asterisk.svg'
+import { ReactComponent as ExclamationTriangleSvg } from '~icons/exclamation-triangle.svg'
 
 export default function FormLabel({ children, required, hasError, ...rest }) {
   return (
@@ -12,10 +12,10 @@ export default function FormLabel({ children, required, hasError, ...rest }) {
     >
       {children}
       {required && !hasError && (
-        <Asterisk className="text-red-500 dark:text-gray-400" />
+        <AsteriskSvg className="text-red-500 dark:text-gray-400" />
       )}
       {hasError && (
-        <ExclamationTriangle className="text-red-500 dark:text-gray-400" />
+        <ExclamationTriangleSvg className="text-red-500 dark:text-gray-400" />
       )}
     </label>
   )

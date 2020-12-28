@@ -1,6 +1,8 @@
 import * as React from 'react'
+import { useRouter } from 'next/router'
 import PropTypes from 'prop-types'
 import { useTheme } from 'next-themes'
+import { motion, useAnimation } from 'framer-motion'
 
 import { ReactComponent as LogoSvg } from '~media/logo.svg'
 import { ReactComponent as ListLogoSvg } from '~icons/list-logo.svg'
@@ -13,13 +15,66 @@ import TextLink from '~components/TextLink'
 import Section from '~components/Section'
 import AboutModal from '~components/AboutModal'
 import ArticleOffCanvas from '~components/ArticleOffCanvas'
+import useLayoutAnimationState from '~hooks/useLayoutAnimationState'
+
+function HeaderItemWrapper({ runAnimation, controls, custom, ...rest }) {
+  const variants = {
+    hidden: {
+      opacity: 0,
+      y: -32,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+    },
+  }
+
+  return (
+    <motion.div
+      animate={controls}
+      variants={variants}
+      initial={runAnimation ? 'hidden' : false}
+      transition={{
+        delay: custom * 0.15,
+      }}
+      {...rest}
+    />
+  )
+}
+
+HeaderItemWrapper.propTypes = {
+  controls: PropTypes.object.isRequired,
+  custom: PropTypes.number.isRequired,
+  runAnimation: PropTypes.bool,
+}
 
 export default function BaseLayout({ children }) {
   const [mounted, setMounted] = React.useState(false)
+
   const { theme, setTheme } = useTheme()
+
+  const { pathname } = useRouter()
+
+  const controls = useAnimation()
+
+  const setDone = useLayoutAnimationState((state) => state.setDone)
+
+  const runAnimation = pathname === '/'
 
   // After mounting, we have access to the theme
   React.useEffect(() => setMounted(true), [])
+
+  React.useEffect(() => {
+    async function runAnimationFunc() {
+      await controls.start('visible')
+
+      setDone()
+    }
+
+    if (runAnimation) {
+      runAnimationFunc()
+    }
+  }, [controls, pathname, setDone, runAnimation])
 
   return (
     <>
@@ -32,16 +87,33 @@ export default function BaseLayout({ children }) {
           as="header"
           className="grid gap-4 auto-cols-fr grid-flow-col items-center"
         >
-          <TextLink
-            href="/"
-            className="justify-self-start transform duration-300 hover:scale-110 ease-bounce"
+          <HeaderItemWrapper
+            runAnimation={runAnimation}
+            controls={controls}
+            custom={1}
+            className="justify-self-start"
           >
-            <LogoSvg className="h-12 from-indigo-700 to-blue-500" />
-          </TextLink>
-          <div className="justify-self-center">
+            <TextLink
+              href="/"
+              className="transform duration-300 hover:scale-110 ease-bounce block"
+            >
+              <LogoSvg className="h-12 from-indigo-700 to-blue-500 " />
+            </TextLink>
+          </HeaderItemWrapper>
+          <HeaderItemWrapper
+            runAnimation={runAnimation}
+            controls={controls}
+            custom={2}
+            className="justify-self-center"
+          >
             <ArticleOffCanvas />
-          </div>
-          <div className="grid gap-4 items-center grid-flow-col auto-cols-auto justify-self-end">
+          </HeaderItemWrapper>
+          <HeaderItemWrapper
+            runAnimation={runAnimation}
+            controls={controls}
+            custom={3}
+            className="grid gap-4 items-center grid-flow-col auto-cols-auto justify-self-end"
+          >
             {mounted && (
               <button
                 title="Toggle dark mode"
@@ -57,7 +129,7 @@ export default function BaseLayout({ children }) {
               </button>
             )}
             <AboutModal />
-          </div>
+          </HeaderItemWrapper>
         </Section>
         {children}
         <Section as="footer">

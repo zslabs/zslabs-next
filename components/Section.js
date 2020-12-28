@@ -10,6 +10,6 @@ export default function Section({
 }
 
 Section.propTypes = {
-  as: PropTypes.oneOf(['header', 'footer', 'section']),
+  as: PropTypes.any,
   className: PropTypes.string,
 }
