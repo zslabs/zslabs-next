@@ -1,7 +1,7 @@
 const path = require('path')
 
 const withPlugins = require('next-compose-plugins')
-const withFonts = require('nextjs-fonts')
+const withFonts = require('next-fonts')
 
 const nextConfig = {
   webpack: (config, { dev, isServer }) => {

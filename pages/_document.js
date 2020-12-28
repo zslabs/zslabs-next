@@ -12,7 +12,7 @@ class MyDocument extends Document {
         <Head>
           <link
             rel="preload"
-            href="/fonts/Manrope[wght].ttf"
+            href="/fonts/Manrope.ttf"
             as="font"
             crossOrigin=""
           />
