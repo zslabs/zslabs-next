@@ -1,40 +1,40 @@
 {
   "redirects": [
-    { "source": "/contact/", "destination": "/" },
-    { "source": "/resume/", "destination": "/experience/" },
+    { "source": "/contact", "destination": "/" },
+    { "source": "/resume", "destination": "/experience/" },
     {
-      "source": "/articles/svg-background-fill/",
+      "source": "/articles/svg-background-fill",
       "destination": "/articles/svg-background-fills/"
     },
-    { "source": "/articles/gsap/", "destination": "/" },
-    { "source": "/articles/svg-cool-kids/", "destination": "/" },
-    { "source": "/articles/do-more-with-less/", "destination": "/" },
-    { "source": "/articles/sass-smartypants/", "destination": "/" },
-    { "source": "/articles/grunt-all-the-things/", "destination": "/" },
-    { "source": "/articles/basey/", "destination": "/" },
-    { "source": "/articles/less-is-more/", "destination": "/" },
-    { "source": "/articles/support-the-unsupported/", "destination": "/" },
-    { "source": "/articles/furry-sassy/", "destination": "/" },
-    { "source": "/articles/new-guts/", "destination": "/" },
-    { "source": "/articles/pluggable-selectors/", "destination": "/" },
+    { "source": "/articles/gsap", "destination": "/" },
+    { "source": "/articles/svg-cool-kids", "destination": "/" },
+    { "source": "/articles/do-more-with-less", "destination": "/" },
+    { "source": "/articles/sass-smartypants", "destination": "/" },
+    { "source": "/articles/grunt-all-the-things", "destination": "/" },
+    { "source": "/articles/basey", "destination": "/" },
+    { "source": "/articles/less-is-more", "destination": "/" },
+    { "source": "/articles/support-the-unsupported", "destination": "/" },
+    { "source": "/articles/furry-sassy", "destination": "/" },
+    { "source": "/articles/new-guts", "destination": "/" },
+    { "source": "/articles/pluggable-selectors", "destination": "/" },
     {
-      "source": "/articles/accessing-external-wordpress-data/",
+      "source": "/articles/accessing-external-wordpress-data",
       "destination": "/"
     },
-    { "source": "/articles/bust-that-cache/", "destination": "/" },
-    { "source": "/articles/upgraded-yeti/", "destination": "/" },
+    { "source": "/articles/bust-that-cache", "destination": "/" },
+    { "source": "/articles/upgraded-yeti", "destination": "/" },
     {
-      "source": "/articles/versioned-dependencies-with-compass/",
+      "source": "/articles/versioned-dependencies-with-compass",
       "destination": "/"
     },
     {
-      "source": "/articles/rethinking-the-wordpress-admin/",
+      "source": "/articles/rethinking-the-wordpress-admin",
       "destination": "/"
     },
-    { "source": "/articles/default-views-for-plugins/", "destination": "/" },
-    { "source": "/articles/separating-form-and-function/", "destination": "/" },
-    { "source": "/articles/journey-to-sublime/", "destination": "/" },
-    { "source": "/articles/hello-kirby/", "destination": "/" },
+    { "source": "/articles/default-views-for-plugins", "destination": "/" },
+    { "source": "/articles/separating-form-and-function", "destination": "/" },
+    { "source": "/articles/journey-to-sublime", "destination": "/" },
+    { "source": "/articles/hello-kirby", "destination": "/" },
     {
       "source": "/articles/i-❤%EF%B8%8F-loaders/",
       "destination": "/articles/i-love-loaders/"
