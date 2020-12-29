@@ -59,6 +59,8 @@
   }
 
   & ol {
+    @apply pl-4;
+
     counter-reset: list-counter;
 
     & > li {
@@ -76,6 +78,10 @@
 
   & li {
     @apply my-2;
+  }
+
+  & ul {
+    @apply pl-4;
   }
 
   & ul > li {

@@ -1,0 +1,111 @@
+---
+title: Revamp v3
+date: 2020/12/29
+---
+
+Every year or so, I use my own site as an opportunity to re-evaluate my current technology-stack and experiment with things that I may not have an opportunity to on an everyday basis.
+
+### Tailwind CSS
+
+Where have the years gone? [Less](http://lesscss.org/), [Sass](https://sass-lang.com/), and [Emotion](https://emotion.sh/) - the way in which I bring designs to life has changed a lot over the years, but one thing always remained consistent - _writing CSS was a fundamental piece of the equation._
+
+While I had heard of [Tailwind CSS](https://tailwindcss.com/), I (like many) wasn't completely on-board with a "utility-first" framework. Using Tailwind CSS for this project dispelled a few preconceived notions I had with new lessons-learned:
+
+- **Pseudo selectors are overrated:** To clarify, `::before` and `::after` have their place. I may have gotten caught up in the old adage that the less DOM elements the better, but in the end, it made HTML & CSS harder to visually parse.
+
+  Don't be afraid of writing HTML. Take a look at a component comparison from my previous site:
+
+  ```js filename=BubbleList.old.js
+  export const BubbleList = ({ ...opts }) => {
+    const theme = useTheme()
+
+    return (
+      <List
+        css={{
+          position: 'relative',
+
+          '&::before, &::after': {
+            content: "''",
+            zIndex: -1,
+            position: 'absolute',
+            top: 0,
+            left: bubbleSize / 2,
+            transform: 'translateX(-50%)',
+            background: theme.fontColor.base,
+          },
+
+          '&::before': {
+            width: bubbleSize / 2,
+            height: bubbleSize / 2,
+            borderRadius: theme.borderRadius.rounded,
+          },
+
+          '&::after': {
+            bottom: 0,
+            background: theme.fontColor.base,
+            width: 2,
+          },
+        }}
+        space="medium"
+        {...opts}
+      />
+    )
+  }
+  ```
+
+  ```js filename=BubbleList.new.js
+  export default function BubbleList({ children, ...rest }) {
+    return (
+      <div className="relative" {...rest}>
+        <div className="absolute top-0 left-2 transform -translate-x-1/2 h-full z-10">
+          <div className="w-2 h-2 bg-gray-900 dark:bg-gray-100 rounded-full absolute top-0 left-1/2 transform -translate-x-1/2" />
+          <div className="h-full bg-gray-900 dark:bg-gray-100 w-0.5" />
+          <div className="w-2 h-2 bg-gray-900 dark:bg-gray-100 rounded-full absolute bottom-0 left-1/2 transform -translate-x-1/2" />
+        </div>
+        <div className="grid grid-cols-1 gap-8 py-8">{children}</div>
+      </div>
+    )
+  }
+  ```
+
+- **Classes don't make your code messy:** The way in which you use them does. [React](https://reactjs.org); or any templating language like it, provide you a platform to build configurable components that work with Tailwind CSS, not against it. Take a look at the `<Alert />` component for my site:
+
+  ```js filename=Alert.js
+  export default function Alert({ className, variation = 'primary', ...rest }) {
+    return (
+      <aside
+        className={clsx(
+          'Alert border-l-8 rounded-lg p-6 my-8',
+          {
+            'border-blue-500 bg-blue-100': variation === 'primary',
+            'border-red-500 bg-red-100': variation === 'danger',
+          },
+          className
+        )}
+        {...rest}
+      />
+    )
+  }
+  ```
+
+- **Dark-mode FTW:** This is something I've wanted to explore more, but was always an afterthought with previous design-systems I've built. Tailwind CSS makes this straight-forward with its native [dark-mode support](https://tailwindcss.com/docs/dark-mode):
+
+  ```markup
+  <div className="text-gray-900 dark:text-gray-100 bg-gray-100 dark:bg-gray-900 p-4">Watch me go!</div>
+  ```
+
+- **Large site !== large CSS**: Ever since I learned about [Facebook's new CSS approach](https://engineering.fb.com/2020/05/08/web/facebook-redesign/); by generating atomic CSS to keep their bundle-size small, I was curious to see if it could be used in a way that still created a developer/team-friendly approach to managing styles. Again, Tailwind CSS has us covered. With [postcss-purgecss](https://purgecss.com/) integration built-in, an infinitely configurable/extensible setup, and [Intellisense integration](https://tailwindcss.com/docs/intellisense), patterns among single-use utility classes quickly become apparent; with this new site coming in under `6kb` - which is just remarkable.
+
+### Next.js
+
+[Next.js](https://nextjs.org/) has been on my radar for quite some time. After [Next.js Conf 2020](https://nextjs.org/2020/conf), I decided to take the plunge. A few standout features that made this build super enjoyable:
+
+- **getStaticProps**: Having built several projects with [Gatsby](https://gatsbyjs.com), I wanted to make sure I could use the same API to grab local data as I would for remote. [getStaticProps](https://nextjs.org/docs/basic-features/data-fetching#getstaticprops-static-generation) provided a way for me to query the local filesystem for my blog posts, transform them with [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote), and return the data to the template, statically.
+- **Automatic image optimization:** The newly released [Image](https://nextjs.org/docs/basic-features/image-optimization) component; which comes bundled with the framework, was extremely simple to setup and makes 3rd party solutions for resizing/optimizations unneeded for most cases.
+- **⚡ Fast reloads:** I'm almost at a loss for words here. The increase in speed from save to reload has been a game-changer. [next-remote-watch](https://github.com/hashicorp/next-remote-watch) has also been a valuable addition while writing blog posts locally.
+
+I also moved the hosting over to the parent company, [Vercel](https://vercel.com/) which has yielded `20sec` production-builds 🤯
+
+### Conclusion
+
+Is there a conclusion? Probably not. Who knows what types of technologies I'll be working with in the future. But, as of right now, I am incredibly happy with what so many have worked so hard to make available. Feel free to check out [the source](https://github.com/zslabs/zslabs-next) of this site and let me know what you think!

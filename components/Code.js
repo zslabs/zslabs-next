@@ -70,7 +70,7 @@ export default function Code({
             </div>
           </header>
           <pre className={className}>
-            <div className="grid grid-flow-col auto-cols-auto justify-start overflow-auto">
+            <div className="grid grid-flow-col auto-cols-auto justify-start overflow-auto max-h-120">
               <div className="p-4 bg-gray-800 border-r-2 border-gray-600 text-right text-gray-100 text-opacity-40 select-none sticky left-0 z-10">
                 {tokens.map((line, i) => {
                   const lineKey = `line-${i}`

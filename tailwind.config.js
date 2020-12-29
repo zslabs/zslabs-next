@@ -46,6 +46,9 @@ module.exports = {
       margin: {
         '-1/2-screen': '-50vw',
       },
+      maxHeight: {
+        120: '30rem',
+      },
       strokeWidth: {
         1.5: '1.5',
       },
