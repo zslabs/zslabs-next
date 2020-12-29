@@ -18,6 +18,7 @@ class MyDocument extends Document {
             as="font"
             crossOrigin=""
           />
+          <link rel="shortcut icon" href="/me.png" />
           <Analytics />
         </Head>
         <body className="antialiased text-gray-900 dark:text-gray-100 min-h-screen bg-gray-100 dark:bg-gray-800">

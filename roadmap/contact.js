@@ -1,3 +1,5 @@
+/* @NOTE Just using a standard mailto link for now; will reimplement with Firestore/Sengrid is integrated */
+
 import * as React from 'react'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -78,8 +80,6 @@ const ContactForm = (props) => {
             className="grid gap-4 grid-cols-1"
             name="contact"
             noValidate
-            data-netlify="true"
-            data-netlify-honeypot="bot-field"
             onSubmit={methods.handleSubmit(handleSubmit)}
             {...props}
           >
