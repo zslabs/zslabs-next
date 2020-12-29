@@ -15,7 +15,7 @@ import { ReactComponent as CloseSvg } from '~icons/close.svg'
 
 const OffCanvas = ({ children, open, setIsOpen, ...rest }) => {
   const offCanvasRef = React.useRef()
-  const offCanvasDialogRef = React.useRef()
+  const offCanvasPanelRef = React.useRef()
 
   const direction = React.useRef('forward')
 
@@ -48,15 +48,15 @@ const OffCanvas = ({ children, open, setIsOpen, ...rest }) => {
 
   useUpdateEffect(() => {
     if (open) {
-      disableBodyScroll(offCanvasRef.current)
+      disableBodyScroll(offCanvasPanelRef.current)
       direction.current = 'forward'
     } else {
-      enableBodyScroll(offCanvasRef.current)
+      enableBodyScroll(offCanvasPanelRef.current)
       direction.current = 'reverse'
     }
   }, [open])
 
-  useClickAway(offCanvasDialogRef, () => setIsOpen(false))
+  useClickAway(offCanvasPanelRef, () => setIsOpen(false))
 
   return (
     <ClientOnlyPortal>
@@ -76,7 +76,7 @@ const OffCanvas = ({ children, open, setIsOpen, ...rest }) => {
               initial="hidden"
               animate="visible"
               exit="hidden"
-              ref={offCanvasDialogRef}
+              ref={offCanvasPanelRef}
               className="overflow-auto bg-gray-100 dark:bg-gray-800 rounded-tr-2xl shadow-lg z-20 relative top-0 left-0 h-full w-full md:max-w-xs p-8"
               transition={{ x: { stiffness: 1000 } }}
             >

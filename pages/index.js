@@ -173,7 +173,7 @@ export default function Home({ latestPost }) {
             })}
           </div>
           <motion.h1
-            className="text-6xl md:text-7xl font-extrabold"
+            className="text-6xl md:text-7xl font-extrabold text-center"
             initial="hidden"
             variants={introTitleVariants}
             animate={introTitleControls}
