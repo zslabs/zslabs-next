@@ -7,6 +7,3 @@
   publish   = "out_publish"
   # Environment variables
   environment = { YARN_VERSION = "1.22.5", NODE_VERSION = "12" }
-
-[[plugins]]
-  package = "netlify-plugin-cache-nextjs"

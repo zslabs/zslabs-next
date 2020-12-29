@@ -14,6 +14,8 @@
 
 # production
 /build
+/out_functions
+/out_publish
 
 # misc
 .DS_Store
