@@ -68,7 +68,7 @@ const Modal = ({ children, open, setIsOpen, ...rest }) => {
             animate="visible"
             exit="hidden"
             ref={modalRef}
-            className="overflow-auto fixed inset-0 bg-gray-900 bg-opacity-75 z-50 px-4"
+            className="overflow-auto fixed inset-0 bg-gray-900 bg-opacity-75 z-50 px-4 backdrop-blur"
             {...rest}
           >
             <motion.div

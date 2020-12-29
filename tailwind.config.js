@@ -9,6 +9,9 @@ module.exports = {
       invert: 'invert(1)',
     },
     extend: {
+      backdropFilter: {
+        blur: 'blur(5px)',
+      },
       backgroundSize: {
         '0/8': '0% 8px',
         '100/8': '100% 8px',
