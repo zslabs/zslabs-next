@@ -62,7 +62,7 @@ export default function Post({ post }) {
         }}
       />
       <article>
-        <ScrollIndicator className="fixed hidden md:block top-1 left-1 w-8 h-8 text-blue-500" />
+        <ScrollIndicator className="fixed hidden md:block top-2 left-2 w-8 h-8 text-blue-500" />
         <header className="mb-8 md:mb-12">
           <h1 className="text-center mb-2 md:mb-4 text-4xl md:text-5xl font-extrabold">
             {post.title}

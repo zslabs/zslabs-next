@@ -13,6 +13,7 @@ import Section from '~components/Section'
 import SectionTitle, { SectionTitleSkew } from '~components/SectionTitle'
 import Textarea from '~components/Textarea'
 import Alert from '~components/Alert'
+import Prose from '~components/Prose'
 
 const schema = yup.object().shape({
   'bot-field': yup.string().max(0),
@@ -152,6 +153,9 @@ export default function Contact() {
         />
         Contact
       </SectionTitle>
+      <Prose className="text-center mb-8">
+        <p>Have a project you'd like me to be part of? Let's chat!</p>
+      </Prose>
       <ContactForm />
     </Section>
   )

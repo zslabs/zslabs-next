@@ -1,5 +1,7 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 
+import Analytics from '~components/Analytics'
+
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx)
@@ -16,6 +18,7 @@ class MyDocument extends Document {
             as="font"
             crossOrigin=""
           />
+          <Analytics />
         </Head>
         <body className="antialiased text-gray-900 dark:text-gray-100 min-h-screen bg-gray-100 dark:bg-gray-800">
           <Main />
