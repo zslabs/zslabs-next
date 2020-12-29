@@ -13,12 +13,18 @@
 
   @font-face {
     font-family: 'ZS Sans';
-    src: url(/fonts/Manrope.ttf) format('truetype-variations');
+    src: url(/fonts/Manrope-Medium.woff2) format('woff2');
     font-style: normal;
-    font-variation-settings: 'wght' 500;
     font-variation-ligatures: normal;
-    font-weight: 500 800;
-    unicode-range: 'U+E000, U+E002-E081, U+E093-E097, U+E0A5-E0E7, U+E0F3-E11D, U+E11E-E165, U+EE01, U+F6C3';
+    font-weight: 500;
+  }
+
+  @font-face {
+    font-family: 'ZS Sans';
+    src: url(/fonts/Manrope-ExtraBold.woff2) format('woff2');
+    font-style: normal;
+    font-variation-ligatures: normal;
+    font-weight: 800;
   }
 
   h1,

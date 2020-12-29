@@ -14,7 +14,13 @@ class MyDocument extends Document {
         <Head>
           <link
             rel="preload"
-            href="/fonts/Manrope.ttf"
+            href="/fonts/Manrope-Medium.woff2"
+            as="font"
+            crossOrigin=""
+          />
+          <link
+            rel="preload"
+            href="/fonts/Manrope-ExtraBold.woff2"
             as="font"
             crossOrigin=""
           />

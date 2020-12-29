@@ -10,6 +10,7 @@ async function generateSitemap() {
     'pages/*.js',
     'articles/*.mdx',
     '!pages/_*.js',
+    '!pages/404.js',
     '!pages/api',
   ])
 
