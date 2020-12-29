@@ -4,6 +4,8 @@ const withPlugins = require('next-compose-plugins')
 const withFonts = require('next-fonts')
 
 const nextConfig = {
+  // Target must be serverless for Netlify
+  target: 'serverless',
   webpack: (config, { dev, isServer }) => {
     if (isServer) {
       require('./scripts/sitemap') // eslint-disable-line global-require
