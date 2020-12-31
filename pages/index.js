@@ -15,6 +15,7 @@ import dots from '~media/dots.svg'
 import { getAllPosts } from '~lib/api'
 import useArticlesOffCanvasState from '~hooks/useArticlesOffCanvasState'
 import useLayoutAnimationState from '~hooks/useLayoutAnimationState'
+import { spring } from '~helpers/'
 
 function RecentProjects() {
   return (
@@ -162,6 +163,7 @@ export default function Home({ latestPost }) {
                   className="inline-block"
                   initial="hidden"
                   transition={{
+                    ...spring,
                     delay: index * 0.025,
                   }}
                   animate={introTitleSubControls}
@@ -177,6 +179,7 @@ export default function Home({ latestPost }) {
             initial="hidden"
             variants={introTitleVariants}
             animate={introTitleControls}
+            transition={spring}
           >
             Zach Schnackel
           </motion.h1>
@@ -185,6 +188,7 @@ export default function Home({ latestPost }) {
               initial="hidden"
               variants={buttonVariants}
               animate={buttonControls}
+              transition={spring}
             >
               <Button variation="primary" onClick={toggle}>
                 Articles
@@ -196,6 +200,7 @@ export default function Home({ latestPost }) {
               variants={buttonVariants}
               animate={buttonControls}
               transition={{
+                ...spring,
                 delay: 0.125,
               }}
             >
@@ -212,6 +217,7 @@ export default function Home({ latestPost }) {
         initial="hidden"
         variants={latestArticleVariants}
         animate={latestArticleControls}
+        transition={spring}
       >
         <TextLink
           href={`/articles/${latestPost.slug}`}
@@ -241,6 +247,7 @@ export default function Home({ latestPost }) {
           initial="hidden"
           variants={projectsVariants}
           animate={projectsControls}
+          transition={spring}
         >
           <RecentProjects />
         </motion.div>

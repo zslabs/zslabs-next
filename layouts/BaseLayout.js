@@ -16,6 +16,7 @@ import Section from '~components/Section'
 import AboutModal from '~components/AboutModal'
 import ArticleOffCanvas from '~components/ArticleOffCanvas'
 import useLayoutAnimationState from '~hooks/useLayoutAnimationState'
+import { spring } from '~helpers'
 
 function HeaderItemWrapper({ runAnimation, controls, custom, ...rest }) {
   const variants = {
@@ -35,6 +36,7 @@ function HeaderItemWrapper({ runAnimation, controls, custom, ...rest }) {
       variants={variants}
       initial={runAnimation ? 'hidden' : false}
       transition={{
+        ...spring,
         delay: custom * 0.15,
       }}
       {...rest}

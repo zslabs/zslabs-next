@@ -12,6 +12,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import ClientOnlyPortal from './ClientOnlyPortal'
 
 import { ReactComponent as CloseSvg } from '~icons/close.svg'
+import { spring } from '~helpers'
 
 const Modal = ({ children, open, setIsOpen, ...rest }) => {
   const modalRef = React.useRef()
@@ -75,6 +76,7 @@ const Modal = ({ children, open, setIsOpen, ...rest }) => {
               variants={modalDialogVariants}
               initial="hidden"
               animate="visible"
+              transition={spring}
               exit="hidden"
               ref={modalDialogRef}
               className="bg-gray-100 dark:bg-gray-800 rounded-lg shadow-lg z-20 my-4 md:my-8 mx-auto max-w-xl relative p-8"

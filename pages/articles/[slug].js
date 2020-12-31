@@ -6,6 +6,7 @@ import { preToCodeBlock } from 'mdx-utils'
 import { CodePen, Tweet } from 'mdx-embed'
 import dayjs from 'dayjs'
 import { NextSeo } from 'next-seo'
+import { motion } from 'framer-motion'
 
 import { getAllPosts, getPostBySlug } from '~lib/api'
 import AutoLinkHeader from '~components/AutoLinkHeader'
@@ -17,6 +18,7 @@ import Section from '~components/Section'
 import Alert from '~components/Alert'
 import Blockquote from '~components/Blockquote'
 import { ReactComponent as InfoCircleSvg } from '~icons/info-circle.svg'
+import { spring } from '~helpers'
 
 const Image = (props) => (
   <div className="my-8">
@@ -63,7 +65,12 @@ export default function Post({ post }) {
       />
       <article>
         <ScrollIndicator className="fixed hidden md:block top-2 left-2 w-8 h-8 text-blue-500" />
-        <header className="mb-8 md:mb-12">
+        <motion.header
+          className="mb-8 md:mb-12"
+          initial={{ opacity: 0, y: '-2rem' }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={spring}
+        >
           <h1 className="text-center mb-2 md:mb-4 text-4xl md:text-5xl font-extrabold">
             {post.title}
           </h1>
@@ -79,8 +86,15 @@ export default function Post({ post }) {
               </div>
             )}
           </div>
-        </header>
-        <Prose>{content}</Prose>
+        </motion.header>
+        <Prose
+          as={motion.div}
+          initial={{ opacity: 0, y: '2rem' }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={spring}
+        >
+          {content}
+        </Prose>
       </article>
     </Section>
   )

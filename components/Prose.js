@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 
-export default function Prose({ className, ...rest }) {
-  return <div className={clsx('prose', className)} {...rest} />
+export default function Prose({ as: Component = 'div', className, ...rest }) {
+  return <Component className={clsx('prose', className)} {...rest} />
 }
 Prose.propTypes = {
+  as: PropTypes.any,
   className: PropTypes.string,
 }
