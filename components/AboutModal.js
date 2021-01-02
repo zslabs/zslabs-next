@@ -34,6 +34,7 @@ export default function AboutModal() {
         <div className="grid gap-4 auto-cols-min grid-flow-col justify-center mb-8">
           <TextLink href="https://twitter.com/zslabs">
             <Button
+              as="div"
               iconOnly
               className="from-blue-600 to-blue-400 ring-blue-600"
             >
@@ -42,6 +43,7 @@ export default function AboutModal() {
           </TextLink>
           <TextLink href="https://github.com/zslabs">
             <Button
+              as="div"
               iconOnly
               className="from-gray-800 to-gray-600 ring-gray-800"
             >
@@ -49,7 +51,11 @@ export default function AboutModal() {
             </Button>
           </TextLink>
           <TextLink href="https://codepen.com/zslabs">
-            <Button iconOnly className="from-red-600 to-red-400 ring-red-600">
+            <Button
+              as="div"
+              iconOnly
+              className="from-red-600 to-red-400 ring-red-600"
+            >
               <CodePenSvg className="text-2xl" />
             </Button>
           </TextLink>

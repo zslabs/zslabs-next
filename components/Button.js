@@ -4,6 +4,7 @@ import clsx from 'clsx'
 import diagonalLines from '~media/diagonal-lines.svg'
 
 export default function Button({
+  as: Component = 'button',
   children,
   className,
   variation,
@@ -12,8 +13,7 @@ export default function Button({
   ...rest
 }) {
   return (
-    <button
-      type="button"
+    <Component
       className={clsx(
         'relative inline-block h-12 bg-gradient-to-br rounded-full text-gray-100 tracking-widest uppercase font-extrabold text-sm shadow-lg duration-300 ease-bounce transform hover:scale-105 ring-4 ring-opacity-10 focus:outline-none focus:ring-opacity-20',
         className,
@@ -34,7 +34,7 @@ export default function Button({
     >
       <span
         className={clsx(
-          'relative z-10 grid place-items-center gap-4 grid-flow-col whitespace-nowrap',
+          'h-full relative z-10 grid place-items-center gap-4 grid-flow-col whitespace-nowrap',
           {
             'auto-cols-min': !iconOnly,
             'auto-cols-auto': iconOnly,
@@ -47,11 +47,13 @@ export default function Button({
         className="absolute z-0 inset-1"
         style={{ backgroundImage: `url(${diagonalLines})` }}
       />
-    </button>
+    </Component>
   )
 }
 
 Button.propTypes = {
+  /* Allowing us to specify the element provides some more flexibility when used as a normal link */
+  as: PropTypes.any,
   className: PropTypes.string,
   children: PropTypes.node.isRequired,
   iconOnly: PropTypes.bool,

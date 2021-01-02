@@ -190,7 +190,7 @@ export default function Home({ latestPost }) {
               animate={buttonControls}
               transition={spring}
             >
-              <Button variation="primary" onClick={toggle}>
+              <Button type="button" variation="primary" onClick={toggle}>
                 Articles
               </Button>
             </motion.div>
@@ -205,7 +205,9 @@ export default function Home({ latestPost }) {
               }}
             >
               <TextLink href="/experience">
-                <Button variation="secondary">Experience</Button>
+                <Button as="div" variation="secondary">
+                  Experience
+                </Button>
               </TextLink>
             </motion.div>
           </div>
