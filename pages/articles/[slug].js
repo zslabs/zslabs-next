@@ -5,7 +5,6 @@ import hydrate from 'next-mdx-remote/hydrate'
 import { preToCodeBlock } from 'mdx-utils'
 import { CodePen, Tweet } from 'mdx-embed'
 import dayjs from 'dayjs'
-import { NextSeo } from 'next-seo'
 import { motion } from 'framer-motion'
 
 import { getAllPosts, getPostBySlug } from '~lib/api'
@@ -19,6 +18,7 @@ import Alert from '~components/Alert'
 import Blockquote from '~components/Blockquote'
 import { ReactComponent as InfoCircleSvg } from '~icons/info-circle.svg'
 import { spring } from '~helpers'
+import SEO from '~components/SEO'
 
 const Image = (props) => (
   <div className="my-8">
@@ -55,14 +55,8 @@ export default function Post({ post }) {
 
   return (
     <Section>
-      <NextSeo
-        title={`${post.title} - Zach Schnackel`}
-        canonical={`https://zslabs.com/articles/${post.slug}`}
-        openGraph={{
-          url: `https://zslabs.com/articles/${post.slug}`,
-          title: `${post.title} - Zach Schnackel`,
-        }}
-      />
+      <SEO title={post.title} />
+
       <article>
         <ScrollIndicator className="fixed hidden md:block top-2 left-2 w-8 h-8 text-blue-500" />
         <motion.header

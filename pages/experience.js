@@ -1,23 +1,16 @@
 import fs from 'fs'
 
 import PropTypes from 'prop-types'
-import { NextSeo } from 'next-seo'
 
 import BubbleList, { BubbleListItem } from '~components/BubbleList'
 import Section from '~components/Section'
 import SectionTitle, { SectionTitleSkew } from '~components/SectionTitle'
+import SEO from '~components/SEO'
 
 export default function Experience({ data }) {
   return (
     <>
-      <NextSeo
-        title="Experience - Zach Schnackel"
-        canonical="https://zslabs.com/experience"
-        openGraph={{
-          url: 'https://zslabs.com/experience',
-          title: 'Experience - Zach Schnackel',
-        }}
-      />
+      <SEO title="Experience" />
       <Section className="grid grid-cols-1 md:grid-cols-3/4 justify-center relative">
         <SectionTitle className="grid place-items-center">
           <SectionTitleSkew

@@ -7,7 +7,6 @@ import { useForm, FormProvider } from 'react-hook-form'
 import axios from 'redaxios'
 import qs from 'qs'
 import to from 'await-to-js'
-import { NextSeo } from 'next-seo'
 
 import Button from '~components/Button'
 import Input from '~components/Input'
@@ -16,6 +15,7 @@ import SectionTitle, { SectionTitleSkew } from '~components/SectionTitle'
 import Textarea from '~components/Textarea'
 import Alert from '~components/Alert'
 import Prose from '~components/Prose'
+import SEO from '~components/SEO'
 
 const schema = yup.object().shape({
   'bot-field': yup.string().max(0),
@@ -57,14 +57,8 @@ const ContactForm = (props) => {
 
   return (
     <>
-      <NextSeo
-        title="Contact - Zach Schnackel"
-        canonical="https://zslabs.com/contact"
-        openGraph={{
-          url: 'https://zslabs.com/experience',
-          title: 'Contact - Zach Schnackel',
-        }}
-      />
+      <SEO title="Contact" />
+
       {response === 'success' && (
         <Alert>Your message was sent successfully!</Alert>
       )}
