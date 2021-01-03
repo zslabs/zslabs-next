@@ -16,6 +16,7 @@ import Prose from '~components/Prose'
 import SEO from '~components/SEO'
 
 const schema = yup.object().shape({
+  'bot-field': yup.string().max(0),
   name: yup.string().required().trim().label('Name'),
   email: yup.string().required().email().trim().label('Email'),
   message: yup.string().required().trim().label('Message'),
@@ -24,6 +25,7 @@ const schema = yup.object().shape({
 const ContactForm = (props) => {
   const methods = useForm({
     defaultValues: {
+      'bot-field': '',
       name: '',
       email: '',
       message: '',
@@ -39,7 +41,7 @@ const ContactForm = (props) => {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         data: qs.stringify(data),
-        url: 'https://formspree.io/f/xoqppgwl',
+        url: '/',
       })
     )
 
@@ -72,6 +74,13 @@ const ContactForm = (props) => {
             onSubmit={methods.handleSubmit(handleSubmit)}
             {...props}
           >
+            <input
+              type="text"
+              name="bot-field"
+              className="sr-only"
+              autoComplete="new-password"
+              ref={methods.register}
+            />
             <Input
               label="Name"
               name="name"
