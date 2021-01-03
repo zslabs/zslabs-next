@@ -17,6 +17,7 @@
     font-style: normal;
     font-variation-ligatures: normal;
     font-weight: 500;
+    font-display: optional;
   }
 
   @font-face {
@@ -25,6 +26,7 @@
     font-style: normal;
     font-variation-ligatures: normal;
     font-weight: 800;
+    font-display: optional;
   }
 
   h1,
