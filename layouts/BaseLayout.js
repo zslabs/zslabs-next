@@ -145,9 +145,7 @@ export default function BaseLayout({ children }) {
               </div>
               <div className="font-extrabold grid gap-4 grid-flow-col auto-cols-auto justify-center items-center">
                 <div>
-                  <LinkUnderline href="mailto:info@zslabs.com">
-                    Contact
-                  </LinkUnderline>
+                  <LinkUnderline href="/contact">Contact</LinkUnderline>
                 </div>
                 <div>
                   <LinkUnderline href="https://github.com/zslabs/zslabs-next">

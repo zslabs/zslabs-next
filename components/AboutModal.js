@@ -83,7 +83,7 @@ export default function AboutModal() {
           <h3>Speaking/consulting</h3>
           <p>
             Have a project you'd like me to be part of?{' '}
-            <TextLink href="mailto:info@zslabs.com" onClick={toggle}>
+            <TextLink href="/contact" onClick={toggle}>
               Let's chat
             </TextLink>
             .

@@ -1,5 +1,3 @@
-/* @NOTE Just using a standard mailto link for now; will reimplement with Firestore/Sengrid is integrated */
-
 import * as React from 'react'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -18,7 +16,6 @@ import Prose from '~components/Prose'
 import SEO from '~components/SEO'
 
 const schema = yup.object().shape({
-  'bot-field': yup.string().max(0),
   name: yup.string().required().trim().label('Name'),
   email: yup.string().required().email().trim().label('Email'),
   message: yup.string().required().trim().label('Message'),
@@ -27,8 +24,6 @@ const schema = yup.object().shape({
 const ContactForm = (props) => {
   const methods = useForm({
     defaultValues: {
-      'form-name': 'contact',
-      'bot-field': '',
       name: '',
       email: '',
       message: '',
@@ -44,7 +39,7 @@ const ContactForm = (props) => {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         data: qs.stringify(data),
-        url: '/',
+        url: 'https://formspree.io/f/xoqppgwl',
       })
     )
 
@@ -77,19 +72,6 @@ const ContactForm = (props) => {
             onSubmit={methods.handleSubmit(handleSubmit)}
             {...props}
           >
-            <input
-              type="hidden"
-              name="form-name"
-              value="contact"
-              ref={methods.register}
-            />
-            <input
-              type="text"
-              name="bot-field"
-              className="sr-only"
-              autoComplete="new-password"
-              ref={methods.register}
-            />
             <Input
               label="Name"
               name="name"
