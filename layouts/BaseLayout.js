@@ -22,7 +22,7 @@ function HeaderItemWrapper({ runAnimation, controls, custom, ...rest }) {
   const variants = {
     hidden: {
       opacity: 0,
-      y: -32,
+      y: '-2rem',
     },
     visible: {
       opacity: 1,
@@ -62,6 +62,17 @@ export default function BaseLayout({ children }) {
   const setDone = useLayoutAnimationState((state) => state.setDone)
 
   const runAnimation = pathname === '/'
+
+  const footerVariants = {
+    hidden: {
+      opacity: 0,
+      y: '2rem',
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+    },
+  }
 
   // After mounting, we have access to the theme
   React.useEffect(() => setMounted(true), [])
@@ -134,7 +145,13 @@ export default function BaseLayout({ children }) {
           </HeaderItemWrapper>
         </Section>
         {children}
-        <Section as="footer">
+        <Section
+          as={motion.footer}
+          animate={controls}
+          variants={footerVariants}
+          transition={spring}
+          initial={runAnimation ? 'hidden' : false}
+        >
           <div className="grid grid-cols-1 gap-4 justify-items-center">
             <div className="bg-gradient-to-tr from-indigo-700 to-blue-500 w-2/4 rounded-full h-0.5" />
             <div className="bg-gradient-to-tr from-indigo-700 to-blue-500 w-2/6 rounded-full h-0.5" />

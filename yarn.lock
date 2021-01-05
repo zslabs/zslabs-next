@@ -2856,10 +2856,10 @@ data-uri-to-buffer@3.0.0:
   dependencies:
     buffer-from "^1.1.1"
 
-dayjs@1.9.8:
-  version "1.9.8"
-  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.9.8.tgz#9a65fbdca037e3d5835f98672da6e796f757cd58"
-  integrity sha512-F42qBtJRa30FKF7XDnOQyNUTsaxDkuaZRj/i7BejSHC34LlLfPoIU4aeopvWfM+m1dJ6/DHKAWLg2ur+pLgq1w==
+dayjs@1.10.1:
+  version "1.10.1"
+  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.10.1.tgz#114f678624842035396667a24eb1436814bc16fd"
+  integrity sha512-2xg7JrHQeLBQFkvTumLoy62x1siyeocc98QwjtURgvRqOPYmAkMUdmSjrOA+MlmL6QMQn5MUhDf6rNZNuPc1LQ==
 
 debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.9:
   version "2.6.9"
@@ -3410,10 +3410,10 @@ eslint-plugin-jsx-a11y@6.4.1:
     jsx-ast-utils "^3.1.0"
     language-tags "^1.0.5"
 
-eslint-plugin-prettier@3.3.0:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-prettier/-/eslint-plugin-prettier-3.3.0.tgz#61e295349a65688ffac0b7808ef0a8244bdd8d40"
-  integrity sha512-tMTwO8iUWlSRZIwS9k7/E4vrTsfvsrcM5p1eftyuqWH25nKsz/o6/54I7jwQ/3zobISyC7wMy9ZsFwgTxOcOpQ==
+eslint-plugin-prettier@3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-prettier/-/eslint-plugin-prettier-3.3.1.tgz#7079cfa2497078905011e6f82e8dd8453d1371b7"
+  integrity sha512-Rq3jkcFY8RYeQLgk2cCwuc0P7SEFwDravPhsJZOQ5N4YI4DSg50NyqJ/9gdZHzQlHf8MvafSesbNJCcP/FF6pQ==
   dependencies:
     prettier-linter-helpers "^1.0.0"
 
@@ -3880,10 +3880,10 @@ fragment-cache@^0.2.1:
   dependencies:
     map-cache "^0.2.2"
 
-framer-motion@3.1.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-3.1.1.tgz#a8a779501213b7ce02cc35beb27621d73cc2f1e7"
-  integrity sha512-Gm1QSb0xUxuhcPar5FIs5Ws+STrhLZ6XZf2Io8dVwFofe1OzwkL9asGFVu7z3y6WqC4Hvnxm7wsW5SBHlxZDYw==
+framer-motion@3.1.4:
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-3.1.4.tgz#05b6c6c9028e8e7b1d396fcf4701d339d152a632"
+  integrity sha512-dVxlWwmqGwI/5k57XsjBJMOyk5jvgk/hW/VGvHsgZrETc39cmjYFYRwWXkrdqqCDobhbmFaQcZwXCy8N5yDqIw==
   dependencies:
     framesync "^5.0.0"
     hey-listen "^1.0.8"
