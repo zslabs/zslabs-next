@@ -8,10 +8,12 @@ const domainRegex = /http[s]*:\/\/[www.]*zslabs\.com[/]?/
 const TextLink = ({ href, ...rest }) => {
   const sameDomain = domainRegex.test(href)
 
+  // If our link matches the `domainRegex` above, update to become relative
   if (sameDomain) {
     href = href.replace(domainRegex, '/')
   }
 
+  // If our link is relative, we can assume it's an internal link and use `next/link`
   if (href.startsWith('/')) {
     return (
       <Link href={href}>
@@ -20,11 +22,12 @@ const TextLink = ({ href, ...rest }) => {
     )
   }
 
-  // Treat urls that aren't web protocols as "normal" links
+  // Treat urls that aren't http protocols as "normal" links
   if (!href.startsWith('http')) {
     return <a href={href} {...rest} />
   }
 
+  // Otherwise, this is an external link that we can add on good security defaults for
   return (
     <a
       data-link-external

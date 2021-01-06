@@ -1,0 +1,101 @@
+---
+title: Improving Next.js links
+date: 2021/01/05
+---
+
+[Next.js](https://nextjs.org) ships with a `<Link />` component, available via the [next/link](https://nextjs.org/docs/api-reference/next/link) module. Both client-side transitions and preloading routes make this a must-have for fast user experiences.
+
+```js filename=index.js
+import Link from 'next/link'
+
+export default function Home() {
+  return (
+    <Link href="/contact">
+      <a>Contact page</a>
+    </Link>
+  )
+}
+```
+
+One aspect that's always looked a bit odd to me is how the DOM is constructed. Ideally, I'd prefer something more familiar with the ability to choose between both internal and external links.
+
+Similar to a previous article on [MDX link routing in Gatsby](/articles/mdx-link-routing-in-gatsby), it turns-out we can use a very similar approach in Next.js:
+
+```js filename=TextLink.js
+import PropTypes from 'prop-types'
+import Link from 'next/link'
+
+// Checks against absolute URLs that share 👇 so
+// we can still pass it along to our internal link component
+const domainRegex = /http[s]*:\/\/[www.]*YOURDOMAIN\.com[/]?/
+
+const TextLink = ({ href, ...rest }) => {
+  const sameDomain = domainRegex.test(href)
+
+  // If our link matches the `domainRegex` above,
+  // update to become relative
+  if (sameDomain) {
+    href = href.replace(domainRegex, '/')
+  }
+
+  // If our link is relative, we can assume it's
+  // an internal link and use `next/link`
+  if (href.startsWith('/')) {
+    return (
+      <Link href={href}>
+        <a {...rest} />
+      </Link>
+    )
+  }
+
+  // Treat urls that aren't http protocols as
+  // "normal" links
+  if (!href.startsWith('http')) {
+    return <a href={href} {...rest} />
+  }
+
+  // Otherwise, this is an external link that
+  // we can add on good security defaults for
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer nofollow"
+      {...rest}
+    />
+  )
+}
+
+TextLink.propTypes = {
+  href: PropTypes.string.isRequired,
+}
+
+export default TextLink
+```
+
+The above `<TextLink />` component accomplishes the simplicity I was after by doing the following:
+
+- Updates any absolute links that match our `domainRegex` and makes them relative
+- Returns `next/link` as the link component for any relative links
+- Returns a normal `ahref` for non-http protocols
+- Attaches `target="_blank" rel="noopener noreferrer nofollow"` for external links that match none of the above
+- Best of all, I can write my links as I normally would, with all props passed-through to their appropriate areas:
+
+  ```markup
+  <!-- Input -->
+  <TextLink href="https://zslabs.com">Homepage</TextLink>
+  <!-- Output -->
+  <Link href="/"><a>Homepage</a></Link>
+
+  <!-- Input -->
+  <TextLink href="/contact" className="text-gray-900">Contact</TextLink>
+  <!-- Output -->
+  <Link href="/contact"><a className="text-gray-900">Contact</a></Link>
+
+  <!-- Input -->
+  <TextLink href="https://nextjs.org">Next.js</TextLink>
+  <!-- Output -->
+  <a href="http://nextjs.org" target="_blank" rel="noopener noreferrer nofollow">Next.js</a>
+  ```
+
+I also use this as part of the [components](https://github.com/zslabs/zslabs-next/blob/master/pages/articles/%5Bslug%5D.js#L29) I pass-through to [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote) to transform Markdown links automatically.
