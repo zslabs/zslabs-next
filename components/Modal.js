@@ -8,8 +8,7 @@ import {
 import useUpdateEffect from 'react-use/lib/useUpdateEffect'
 import useClickAway from 'react-use/lib/useClickAway'
 import { motion, AnimatePresence } from 'framer-motion'
-
-import ClientOnlyPortal from './ClientOnlyPortal'
+import Portal from '@reach/portal'
 
 import { ReactComponent as CloseSvg } from '~icons/close.svg'
 import { spring } from '~helpers'
@@ -60,7 +59,7 @@ const Modal = ({ children, open, setIsOpen, ...rest }) => {
   useClickAway(modalDialogRef, () => setIsOpen(false))
 
   return (
-    <ClientOnlyPortal>
+    <Portal>
       <AnimatePresence>
         {open && (
           <motion.div
@@ -93,7 +92,7 @@ const Modal = ({ children, open, setIsOpen, ...rest }) => {
           </motion.div>
         )}
       </AnimatePresence>
-    </ClientOnlyPortal>
+    </Portal>
   )
 }
 

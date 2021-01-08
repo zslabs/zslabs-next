@@ -8,8 +8,7 @@ import {
 import useUpdateEffect from 'react-use/lib/useUpdateEffect'
 import useClickAway from 'react-use/lib/useClickAway'
 import { motion, AnimatePresence } from 'framer-motion'
-
-import ClientOnlyPortal from './ClientOnlyPortal'
+import Portal from '@reach/portal'
 
 import { ReactComponent as CloseSvg } from '~icons/close.svg'
 
@@ -59,7 +58,7 @@ const OffCanvas = ({ children, open, setIsOpen, ...rest }) => {
   useClickAway(offCanvasPanelRef, () => setIsOpen(false))
 
   return (
-    <ClientOnlyPortal>
+    <Portal>
       <AnimatePresence>
         {open && (
           <motion.div
@@ -92,7 +91,7 @@ const OffCanvas = ({ children, open, setIsOpen, ...rest }) => {
           </motion.div>
         )}
       </AnimatePresence>
-    </ClientOnlyPortal>
+    </Portal>
   )
 }
 
