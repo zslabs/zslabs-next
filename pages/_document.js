@@ -14,20 +14,14 @@ class MyDocument extends Document {
         <Head>
           <link
             rel="preload"
-            href="/fonts/Manrope-Medium.woff2"
+            href="/fonts/Manrope.woff2"
             as="font"
-            crossOrigin=""
-          />
-          <link
-            rel="preload"
-            href="/fonts/Manrope-ExtraBold.woff2"
-            as="font"
-            crossOrigin=""
+            crossOrigin="anonymous"
           />
           <link rel="shortcut icon" href="/me.png" />
           <Analytics />
         </Head>
-        <body className="antialiased text-gray-900 dark:text-gray-100 min-h-screen bg-gray-100 dark:bg-gray-800">
+        <body className="antialiased font-medium text-gray-900 dark:text-gray-100 min-h-screen bg-gray-100 dark:bg-gray-800">
           <Main />
           <NextScript />
         </body>

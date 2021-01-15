@@ -2897,10 +2897,10 @@ data-uri-to-buffer@3.0.1:
   resolved "https://registry.yarnpkg.com/data-uri-to-buffer/-/data-uri-to-buffer-3.0.1.tgz#594b8973938c5bc2c33046535785341abc4f3636"
   integrity sha512-WboRycPNsVw3B3TL559F7kuBUM4d8CgMEvk6xEJlOp7OBPjt6G7z8WMWlD2rOFZLk6OYfFIUGsCOWzcQH9K2og==
 
-dayjs@1.10.2:
-  version "1.10.2"
-  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.10.2.tgz#8f3a424ceb944a8193506804b0045a773d2d0672"
-  integrity sha512-h/YtykNNTR8Qgtd1Fxl5J1/SFP1b7SOk/M1P+Re+bCdFMV0IMkuKNgHPN7rlvvuhfw24w0LX78iYKt4YmePJNQ==
+dayjs@1.10.3:
+  version "1.10.3"
+  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.10.3.tgz#cf3357c8e7f508432826371672ebf376cb7d619b"
+  integrity sha512-/2fdLN987N8Ki7Id8BUN2nhuiRyxTLumQnSQf9CNncFCyqFsSKb9TNhzRYcC8K8eJSJOKvbvkImo/MKKhNi4iw==
 
 debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.9:
   version "2.6.9"
@@ -3926,10 +3926,10 @@ fragment-cache@^0.2.1:
   dependencies:
     map-cache "^0.2.2"
 
-framer-motion@3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-3.2.0.tgz#ed81d7998152ec7545f7e29bd8241d36d1e1d15d"
-  integrity sha512-1yTtCIsm5FV/E1aMj4/JYsKhC07n4Gy90XSl0+JKhY6WX8Dsu6YtQvIZMxKpGH4dcJNnT2GZdeLzhJ/2xkNR9A==
+framer-motion@3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-3.2.1.tgz#66eeb883a0b5c425dd7767ecacdeac451c184cdb"
+  integrity sha512-5AWrh4JElgFAXWLqk0u8lVcdkigyuofyEy2LSsjuCxKbAb1hHqRn3PPdrV0KgPrysTHq95QO1bHFTLA7/Q8g+Q==
   dependencies:
     framesync "^5.0.0"
     hey-listen "^1.0.8"
@@ -5618,10 +5618,10 @@ next-seo@4.17.0:
   resolved "https://registry.yarnpkg.com/next-seo/-/next-seo-4.17.0.tgz#fb3dbe0ed7414aa9d83872ef5d8510980a6dae7e"
   integrity sha512-/hnb3oq7bhi8s7bup7+Lm6VzzgRucj+JrWtp+dJiYs/04H0N/NhmE9MpepixQ16fFj6G/39JLYxhzsO/QZG/Kw==
 
-next-sitemap@1.3.32:
-  version "1.3.32"
-  resolved "https://registry.yarnpkg.com/next-sitemap/-/next-sitemap-1.3.32.tgz#ede76036474447c67c04d68cd8310e1541a062ba"
-  integrity sha512-Kn5foE4nMKXfhl51i61gRpxpYuypQFO3fh7tSz+dOuVN1M2ltsUvlr9l7xdT4Dv2vxO9/HaRCmgsgK1c4ZsMbQ==
+next-sitemap@1.4.5:
+  version "1.4.5"
+  resolved "https://registry.yarnpkg.com/next-sitemap/-/next-sitemap-1.4.5.tgz#009f99f279cab63ca64803830e467fae2aae2e27"
+  integrity sha512-gi7xeBiJrzcSJekT0xRh26KEEU8c+v4yenzy3BDehvm2rXzl2tOFbUoSESuQkv8iHm2Gz5WC8Og297t/VRGmkw==
   dependencies:
     "@corex/deepmerge" "^2.5.3"
     matcher "^3.0.0"
@@ -6681,10 +6681,10 @@ postcss@8.1.7:
     nanoid "^3.1.16"
     source-map "^0.6.1"
 
-postcss@8.2.3:
-  version "8.2.3"
-  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.2.3.tgz#14ed1294850c99661761d9cb68863718eb75690d"
-  integrity sha512-tdmNCCmxJEsLZNj810qlj8QbvnUNKFL9A5doV+uHrGGK/YNKWEslrytnHDWr9M/GgGjfUFwXCRbxd/b6IoRBXQ==
+postcss@8.2.4:
+  version "8.2.4"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.2.4.tgz#20a98a39cf303d15129c2865a9ec37eda0031d04"
+  integrity sha512-kRFftRoExRVXZlwUuay9iC824qmXPcQQVzAjbCCgjpXnkdMCJYBu2gTwAaFBzv8ewND6O8xFb3aELmEkh9zTzg==
   dependencies:
     colorette "^1.2.1"
     nanoid "^3.1.20"
@@ -6891,10 +6891,10 @@ qs@6.7.0:
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.7.0.tgz#41dc1a015e3d581f1621776be31afb2876a9b1bc"
   integrity sha512-VCdBRNFTX1fyE7Nb6FYoURo/SPe62QCaAyzJvUjwRaIsc+NePBEniHlvxFmmX56+HZphIGtV0XeCirBtpDrTyQ==
 
-qs@6.9.4:
-  version "6.9.4"
-  resolved "https://registry.yarnpkg.com/qs/-/qs-6.9.4.tgz#9090b290d1f91728d3c22e54843ca44aea5ab687"
-  integrity sha512-A1kFqHekCTM7cz0udomYUoYNWjBebHm/5wzU/XqrBRBNWectVH0QIiN+NEcZ0Dte5hvzHwbr8+XQmguPhJ6WdQ==
+qs@6.9.6:
+  version "6.9.6"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.9.6.tgz#26ed3c8243a431b2924aca84cc90471f35d5a0ee"
+  integrity sha512-TIRk4aqYLNoJUbd+g2lEdz5kLWIuTMRagAXxl78Q0RiVjAOugHmeKNGdd3cwo/ktpf9aL9epCfFqWDEKysUlLQ==
 
 querystring-es3@^0.2.0:
   version "0.2.1"
@@ -6961,10 +6961,10 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-copy-to-clipboard@5.0.2:
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/react-copy-to-clipboard/-/react-copy-to-clipboard-5.0.2.tgz#d82a437e081e68dfca3761fbd57dbf2abdda1316"
-  integrity sha512-/2t5mLMMPuN5GmdXo6TebFa8IoFxZ+KTDDqYhcDm0PhkgEzSxVvIX26G20s1EB02A4h2UZgwtfymZ3lGJm0OLg==
+react-copy-to-clipboard@5.0.3:
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/react-copy-to-clipboard/-/react-copy-to-clipboard-5.0.3.tgz#2a0623b1115a1d8c84144e9434d3342b5af41ab4"
+  integrity sha512-9S3j+m+UxDZOM0Qb8mhnT/rMR0NGSrj9A/073yz2DSxPMYhmYFBMYIdI2X4o8AjOjyFsSNxDRnCX6s/gRxpriw==
   dependencies:
     copy-to-clipboard "^3"
     prop-types "^15.5.8"
@@ -6998,10 +6998,10 @@ react-universal-interface@^0.6.2:
   resolved "https://registry.yarnpkg.com/react-universal-interface/-/react-universal-interface-0.6.2.tgz#5e8d438a01729a4dbbcbeeceb0b86be146fe2b3b"
   integrity sha512-dg8yXdcQmvgR13RIlZbTRQOoUrDciFVoSBZILwjE2LFISxZZ8loVJKAkuzswl5js8BHda79bIb2b84ehU8IjXw==
 
-react-use@15.3.6:
-  version "15.3.6"
-  resolved "https://registry.yarnpkg.com/react-use/-/react-use-15.3.6.tgz#9c9845fcac7df333c46d0f1b4560094446a530a0"
-  integrity sha512-LlvFJK3FBEhiHmo1wXIIQGAke4U3vUHNQJmmjedLUbdXvG6SccF4CtwbL//SYF/pNaGr+3qtPQxEN0VwEQYQwg==
+react-use@15.3.8:
+  version "15.3.8"
+  resolved "https://registry.yarnpkg.com/react-use/-/react-use-15.3.8.tgz#ca839ac7fb3d696e5ccbeabbc8dadc2698969d30"
+  integrity sha512-GeGcrmGuUvZrY5wER3Lnph9DSYhZt5nEjped4eKDq8BRGr2CnLf9bDQWG9RFc7oCPphnscUUdOovzq0E5F2c6Q==
   dependencies:
     "@types/js-cookie" "2.2.6"
     "@xobotyi/scrollbar-width" "1.9.5"
@@ -9029,10 +9029,10 @@ yup@0.32.8:
     property-expr "^2.0.4"
     toposort "^2.0.2"
 
-zustand@3.3.0:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/zustand/-/zustand-3.3.0.tgz#dc029b8e0ea710a36dda05f5ca147246969a9104"
-  integrity sha512-oTOoJa70tYisd+fRmoIjZKlF21JEmGQ8oC+dJ7pf/wdS4qJPcCS/W9blzKAnyyLMrIYsIl6Mlq5cmili7mpJPw==
+zustand@3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/zustand/-/zustand-3.3.1.tgz#de5c4b51112b84e0f819d8b3f336fbfbc087d758"
+  integrity sha512-o0rgrBsi29nCkPHdhtkAHisCIlmRUoXOV+1AmDMeCgkGG0i5edFSpGU0KiZYBvFmBYycnck4Z07JsLYDjSET9g==
 
 zwitch@^1.0.0:
   version "1.0.5"

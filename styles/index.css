@@ -13,18 +13,10 @@
 
   @font-face {
     font-family: 'ZS Sans';
-    src: url(/fonts/Manrope-Medium.woff2) format('woff2');
+    src: url(/fonts/Manrope.woff2) format('woff2');
     font-style: normal;
     font-variation-ligatures: normal;
-    font-weight: 500;
-  }
-
-  @font-face {
-    font-family: 'ZS Sans';
-    src: url(/fonts/Manrope-ExtraBold.woff2) format('woff2');
-    font-style: normal;
-    font-variation-ligatures: normal;
-    font-weight: 800;
+    font-weight: 500 800;
   }
 
   h1,
