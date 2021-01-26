@@ -6,6 +6,7 @@ import { preToCodeBlock } from 'mdx-utils'
 import { CodePen, Tweet } from 'mdx-embed'
 import dayjs from 'dayjs'
 import { motion } from 'framer-motion'
+import clsx from 'clsx'
 
 import { getAllPosts, getPostBySlug } from '~lib/api'
 import AutoLinkHeader from '~components/AutoLinkHeader'
@@ -20,11 +21,15 @@ import { ReactComponent as InfoCircleSvg } from '~icons/info-circle.svg'
 import { spring } from '~helpers'
 import SEO from '~components/SEO'
 
-const Image = (props) => (
-  <div className="my-8">
-    <NextImage {...props} />
+const Image = ({ className, ...rest }) => (
+  <div className="my-8 text-center">
+    <NextImage className={clsx('rounded-lg shadow-sm', className)} {...rest} />
   </div>
 )
+
+Image.propTypes = {
+  className: PropTypes.string,
+}
 
 const components = {
   Alert,

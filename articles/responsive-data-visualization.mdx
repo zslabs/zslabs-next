@@ -1,0 +1,95 @@
+---
+title: Responsive data visualization
+date: 2021/01/25
+---
+
+When plotting data on the web, there's lots to consider for a consistent experience:
+
+* What type of graph is appropriate to differentiate the data?
+* Will my axis labels scale down on smaller screens?
+* Is the graphing library configurable enough to support customizations; while not introducing a technical-layer that is hard to scale in the future?
+
+For a recent project; I was tasked with replicating large sets of data, amongst numerous types of graphs - that needed to check-off each of the boxes above.
+
+### Choosing a graph library
+
+The open-source community never seizes to amaze me. Spurring from a suggestion by [@kyehohenberger](https://twitter.com/kyehohenberger), [Nivo](https://nivo.rocks/) came away as the perfect-pairing to meet both the design and technical needs of the project.
+
+Built on-top of [D3](https://d3js.org/), Nivo provides a wealth of pre-configured graph-types - with a highly extensible API-layer that allowed me to move fast and make changes along the way.
+
+<TextLink href="https://nivo.rocks/storybook/">
+  <Image src="/uploads/nivo.png" width="1000" height="500" />
+</TextLink>
+
+### Placing axis labels
+
+With libraries like [@visx/text](https://airbnb.io/visx/text) alongside Nivo's `labels` property, we're able to fit SVG `<text />` elements into tight-spots; with auto-wrapping.
+
+Where this method starts to falls-apart, is when we view large sets of data along an axis on small screens. We're faced with two ill-fated scenarios - text which is too small to read OR text that overlaps each other.
+
+For this project; I decided to create a custom legend outside of the graph; which I could control with normal HTML/CSS for a more dependable experience on all screen-sizes. Because I defined a dedicated pallette via Nivo's `colors` property, I passed-through my dataset and looped over it; matching to each color instance perfectly.
+
+<Image src="/uploads/graph-labels.png" width="1000" height="475" />
+
+<Image src="/uploads/graph-labels-mobile.png" width="500" height="495" />
+
+### Updating graph properties based on screen size
+
+While Nivo provides scalable variants for many of their graphs; such as `<ResponsivePie />` and `<ResponsiveBar />`, altering their configuration based on screen-size is not something that is available out-of-the-box.
+
+Luckily, we can use a `matchMedia` hook to re-render the graph with updated properties whenever we'd like:
+
+```js filename=useMatchMedia.js
+import * as React from 'react'
+
+// @SOURCE https://gist.github.com/donaldpipowitch/b454bbfbc3c81a6708a915086cc0de31
+
+// Pass a query like `(min-width: 768px)`
+export function useMatchMedia(query) {
+  // SSR check
+  const [matches, setMatches] = React.useState(() =>
+    typeof window !== 'undefined' ? window.matchMedia(query).matches : null
+  )
+
+  React.useEffect(() => {
+    const mediaQueryList = window.matchMedia(query)
+    const onChange = (event) => setMatches(event.matches)
+
+    mediaQueryList.addListener(onChange)
+
+    return () => mediaQueryList.removeListener(onChange)
+  }, [query])
+
+  return matches
+}
+```
+
+By using `matchMedia` instead of a generic `resize` listener; we can update our view based on a singular, performant event.
+
+```js filename=MyGraph.js
+import { ResponsiveBar } from "@nivo/bar"
+
+import useMatchMedia from '~hooks/useMatchMedia'
+
+export default function MyGraph() {
+  const isLargeScreen = useMatchMedia('(min-width: 768px)')
+
+  const graphProps = {
+    groupMode: 'grouped',
+    layout: 'horizontal',
+    enableGridX: true,
+    enableGridY: false,
+    innerPadding: 2,
+    margin: isLargeScreen
+      ? { left: 160, bottom: 25, right: 10 }
+      : { left: 5, bottom: 25, right: 10 },
+    ...(!isLargeScreen && { axisLeft: null }),
+  }
+
+  return (
+    <ResponsiveBar {...graphProps} />
+  )
+}
+```
+
+Nivo has quickly become my go-to for data visualization and am looking forward to using it on my next project.
