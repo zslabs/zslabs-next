@@ -11,7 +11,7 @@ import Portal from '@reach/portal'
 
 import { ReactComponent as CloseSvg } from '~icons/close.svg'
 
-interface OffCanvasProps {
+export interface OffCanvasProps {
   open: boolean
   setIsOpen(open): boolean
 }

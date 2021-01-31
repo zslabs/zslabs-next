@@ -2,7 +2,7 @@ import * as React from 'react'
 import clsx from 'clsx'
 
 interface ProseProps {
-  as: React.ElementType
+  as?: React.ElementType
   className?: string
 }
 

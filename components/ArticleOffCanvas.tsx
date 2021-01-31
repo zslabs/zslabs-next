@@ -1,3 +1,4 @@
+import * as React from 'react'
 import dayjs from 'dayjs'
 
 import OffCanvas from './OffCanvas'
@@ -8,7 +9,7 @@ import useArticlesOffCanvasState from '~hooks/useArticlesOffCanvasState'
 import { ReactComponent as MenuSvg } from '~icons/menu.svg'
 import posts from '~data/articles.json'
 
-export default function ArticleOffCanvas() {
+const ArticleOffCanvas: React.FC = () => {
   const open = useArticlesOffCanvasState((state) => state.open)
   const toggle = useArticlesOffCanvasState((state) => state.toggle)
 
@@ -48,3 +49,5 @@ export default function ArticleOffCanvas() {
     </>
   )
 }
+
+export default ArticleOffCanvas

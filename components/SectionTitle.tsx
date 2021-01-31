@@ -1,7 +1,13 @@
-import PropTypes from 'prop-types'
 import clsx from 'clsx'
 
-export function SectionTitleSkew({ className, ...rest }) {
+interface SectionTitleSkewProps {
+  className?: string
+}
+
+export const SectionTitleSkew: React.FC<SectionTitleSkewProps> = ({
+  className,
+  ...rest
+}) => {
   return (
     <span
       className={clsx(
@@ -13,11 +19,15 @@ export function SectionTitleSkew({ className, ...rest }) {
   )
 }
 
-SectionTitleSkew.propTypes = {
-  className: PropTypes.string,
+interface SectionTitleProps {
+  className?: string
 }
 
-export default function SectionTitle({ children, className, ...rest }) {
+const SectionTitle: React.FC<SectionTitleProps> = ({
+  children,
+  className,
+  ...rest
+}) => {
   return (
     <div className={clsx('mb-12', className)}>
       <h2 className="relative text-4xl md:text-5xl font-extrabold" {...rest}>
@@ -26,7 +36,5 @@ export default function SectionTitle({ children, className, ...rest }) {
     </div>
   )
 }
-SectionTitle.propTypes = {
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
-}
+
+export default SectionTitle

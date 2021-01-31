@@ -1,13 +1,23 @@
 import fs from 'fs'
 
-import PropTypes from 'prop-types'
+import * as React from 'react'
+import { GetStaticProps } from 'next'
 
 import BubbleList, { BubbleListItem } from '~components/BubbleList'
 import Section from '~components/Section'
 import SectionTitle, { SectionTitleSkew } from '~components/SectionTitle'
 import SEO from '~components/SEO'
 
-export default function Experience({ data }) {
+interface ExperienceProps {
+  data: {
+    company: string
+    title: string
+    badge: string
+    blurb: React.ReactNode
+  }[]
+}
+
+const Experience: React.FC<ExperienceProps> = ({ data }) => {
   return (
     <>
       <SEO title="Experience" />
@@ -39,11 +49,9 @@ export default function Experience({ data }) {
   )
 }
 
-Experience.propTypes = {
-  data: PropTypes.array.isRequired,
-}
+export default Experience
 
-export function getStaticProps() {
+export const getStaticProps: GetStaticProps<ExperienceProps> = async () => {
   const experience = fs.readFileSync('./data/experience.json', 'utf8')
 
   return {

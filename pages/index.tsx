@@ -57,14 +57,14 @@ const RecentProjects: React.FC = () => {
   )
 }
 
-interface Props {
+interface LatestPostProps {
   latestPost: {
     title: string
     slug: string
   }
 }
 
-const Home: NextPage<Props> = ({ latestPost }) => {
+const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
   const toggle = useArticlesOffCanvasState((state) => state.toggle)
 
   const done = useLayoutAnimationState((state) => state.done)

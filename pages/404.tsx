@@ -1,6 +1,8 @@
+import { NextPage } from 'next'
+
 import SEO from '~components/SEO'
 
-export default function PageNotFound() {
+const PageNotFound: NextPage = () => {
   return (
     <>
       <SEO title="Page not found" />
@@ -10,3 +12,5 @@ export default function PageNotFound() {
     </>
   )
 }
+
+export default PageNotFound
