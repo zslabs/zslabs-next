@@ -4,10 +4,9 @@ interface SectionTitleSkewProps {
   className?: string
 }
 
-export const SectionTitleSkew: React.FC<SectionTitleSkewProps> = ({
-  className,
-  ...rest
-}) => {
+export const SectionTitleSkew: React.FC<
+  SectionTitleSkewProps & React.HTMLProps<HTMLSpanElement>
+> = ({ className, ...rest }) => {
   return (
     <span
       className={clsx(

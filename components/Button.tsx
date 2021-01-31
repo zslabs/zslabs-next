@@ -4,7 +4,6 @@ import clsx from 'clsx'
 import diagonalLines from '~media/diagonal-lines.svg'
 
 interface ButtonProps {
-  /** Allowing us to specify the element provides some more flexibility when used as a normal link */
   as?: React.ElementType
   className?: string
   variation?: 'primary' | 'secondary' | 'tertiary' | 'quaternary'
@@ -12,7 +11,7 @@ interface ButtonProps {
   loading?: boolean
 }
 
-const Button: React.FC<ButtonProps> = ({
+const Button: React.FC<ButtonProps & React.HTMLProps<HTMLButtonElement>> = ({
   as: Component = 'button',
   children,
   className,
