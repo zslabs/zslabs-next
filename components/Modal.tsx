@@ -1,5 +1,4 @@
 import * as React from 'react'
-import PropTypes from 'prop-types'
 import {
   disableBodyScroll,
   enableBodyScroll,
@@ -13,7 +12,17 @@ import Portal from '@reach/portal'
 import { ReactComponent as CloseSvg } from '~icons/close.svg'
 import { spring } from '~helpers'
 
-const Modal = ({ children, open, setIsOpen, ...rest }) => {
+interface ModalProps {
+  open: boolean
+  setIsOpen(open): boolean
+}
+
+const Modal: React.FC<ModalProps> = ({
+  children,
+  open,
+  setIsOpen,
+  ...rest
+}) => {
   const modalRef = React.useRef()
   const modalDialogRef = React.useRef()
 
@@ -94,12 +103,6 @@ const Modal = ({ children, open, setIsOpen, ...rest }) => {
       </AnimatePresence>
     </Portal>
   )
-}
-
-Modal.propTypes = {
-  children: PropTypes.node,
-  open: PropTypes.bool,
-  setIsOpen: PropTypes.func.isRequired,
 }
 
 export default Modal

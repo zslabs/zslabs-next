@@ -1,5 +1,4 @@
 import * as React from 'react'
-import PropTypes from 'prop-types'
 import {
   disableBodyScroll,
   enableBodyScroll,
@@ -12,7 +11,17 @@ import Portal from '@reach/portal'
 
 import { ReactComponent as CloseSvg } from '~icons/close.svg'
 
-const OffCanvas = ({ children, open, setIsOpen, ...rest }) => {
+interface OffCanvasProps {
+  open: boolean
+  setIsOpen(open): boolean
+}
+
+const OffCanvas: React.FC<OffCanvasProps> = ({
+  children,
+  open,
+  setIsOpen,
+  ...rest
+}) => {
   const offCanvasRef = React.useRef()
   const offCanvasPanelRef = React.useRef()
 
@@ -93,12 +102,6 @@ const OffCanvas = ({ children, open, setIsOpen, ...rest }) => {
       </AnimatePresence>
     </Portal>
   )
-}
-
-OffCanvas.propTypes = {
-  children: PropTypes.node,
-  open: PropTypes.bool,
-  setIsOpen: PropTypes.func.isRequired,
 }
 
 export default OffCanvas

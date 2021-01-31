@@ -1,7 +1,15 @@
 import clsx from 'clsx'
-import PropTypes from 'prop-types'
 
-export default function Alert({ className, variation = 'primary', ...rest }) {
+interface AlertProps {
+  className?: string
+  variation?: 'primary' | 'danger'
+}
+
+const Alert: React.FC<AlertProps> = ({
+  className,
+  variation = 'primary',
+  ...rest
+}) => {
   return (
     <aside
       className={clsx(
@@ -17,7 +25,4 @@ export default function Alert({ className, variation = 'primary', ...rest }) {
   )
 }
 
-Alert.propTypes = {
-  className: PropTypes.string,
-  variation: PropTypes.oneOf(['primary', 'danger']),
-}
+export default Alert

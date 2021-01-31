@@ -1,12 +1,17 @@
+import * as React from 'react'
 import clsx from 'clsx'
-import PropTypes from 'prop-types'
 
-export default function Badge({
+interface BadgeProps {
+  className?: string
+  variation?: 'primary' | 'secondary' | 'tertiary'
+}
+
+const Badge: React.FC<BadgeProps> = ({
   children,
   variation = 'tertiary',
   className,
   ...rest
-}) {
+}) => {
   return (
     <div
       className={clsx(
@@ -27,8 +32,4 @@ export default function Badge({
   )
 }
 
-Badge.propTypes = {
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
-  variation: PropTypes.oneOf(['primary', 'secondary', 'tertiary']),
-}
+export default Badge

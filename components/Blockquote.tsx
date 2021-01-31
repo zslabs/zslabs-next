@@ -1,9 +1,17 @@
-import PropTypes from 'prop-types'
+import * as React from 'react'
 import clsx from 'clsx'
 
 import { ReactComponent as QuoteSvg } from '~icons/quote.svg'
 
-export default function Blockquote({ className, children, ...rest }) {
+interface BlockquoteProps {
+  className?: string
+}
+
+const Blockquote: React.FC<BlockquoteProps> = ({
+  className,
+  children,
+  ...rest
+}) => {
   return (
     <blockquote
       className={clsx(
@@ -19,7 +27,5 @@ export default function Blockquote({ className, children, ...rest }) {
     </blockquote>
   )
 }
-Blockquote.propTypes = {
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
-}
+
+export default Blockquote

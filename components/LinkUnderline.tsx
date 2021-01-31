@@ -1,9 +1,16 @@
-import PropTypes from 'prop-types'
+import * as React from 'react'
 import clsx from 'clsx'
 
-import TextLink from './TextLink'
+import TextLink, { TextLinkProps } from './TextLink'
 
-export default function LinkUnderline({ className, ...rest }) {
+interface LinkUnderlineProps extends TextLinkProps {
+  className?: string
+}
+
+const LinkUnderline: React.FC<LinkUnderlineProps> = ({
+  className,
+  ...rest
+}) => {
   return (
     <TextLink
       className={clsx(
@@ -14,6 +21,5 @@ export default function LinkUnderline({ className, ...rest }) {
     />
   )
 }
-LinkUnderline.propTypes = {
-  className: PropTypes.string,
-}
+
+export default LinkUnderline

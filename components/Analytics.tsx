@@ -1,4 +1,6 @@
-export default function Analytics() {
+import * as React from 'react'
+
+const Analytics: React.FC = () => {
   return (
     <>
       <script
@@ -19,3 +21,5 @@ export default function Analytics() {
     </>
   )
 }
+
+export default Analytics
