@@ -14,7 +14,7 @@ import { spring } from '~helpers'
 
 interface ModalProps {
   open: boolean
-  setIsOpen(open): boolean
+  setIsOpen: (open: boolean) => void
 }
 
 const Modal: React.FC<ModalProps> = ({

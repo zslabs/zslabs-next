@@ -13,7 +13,7 @@ import { ReactComponent as CloseSvg } from '~icons/close.svg'
 
 export interface OffCanvasProps {
   open: boolean
-  setIsOpen(open): boolean
+  setIsOpen: (open: boolean) => void
 }
 
 const OffCanvas: React.FC<OffCanvasProps> = ({
