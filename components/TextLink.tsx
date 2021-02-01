@@ -9,7 +9,9 @@ export interface TextLinkProps {
 }
 
 /* eslint-disable no-param-reassign */
-const TextLink: React.FC<TextLinkProps> = ({ href, ...rest }) => {
+const TextLink: React.FC<
+  React.AnchorHTMLAttributes<HTMLAnchorElement> & TextLinkProps
+> = ({ href, ...rest }) => {
   const sameDomain = domainRegex.test(href)
 
   // If our link matches the `domainRegex` above, update to become relative
