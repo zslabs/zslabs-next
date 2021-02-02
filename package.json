@@ -17,9 +17,15 @@
     "dev": "next-remote-watch ./articles",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "lint:fix": "eslint --fix",
+    "lint": "eslint --ext js,jsx,ts,tsx",
+    "lint:fix": "eslint --ext js,jsx,ts,tsx --fix",
+    "type-check": "tsc --project tsconfig.json --pretty --noEmit",
     "postbuild": "next-sitemap"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "dependencies": {
     "@hookform/resolvers": "1.3.2",
@@ -81,6 +87,8 @@
   },
   "devDependencies": {
     "@svgr/webpack": "5.5.0",
+    "husky": "4.3.8",
+    "lint-staged": "10.5.3",
     "next-sitemap": "1.4.15",
     "postcss-flexbugs-fixes": "5.0.2",
     "postcss-preset-env": "6.7.0",

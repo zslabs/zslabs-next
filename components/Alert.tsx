@@ -1,17 +1,17 @@
+import * as React from 'react'
 import clsx from 'clsx'
 
 interface AlertProps {
-  className?: string
   variation?: 'primary' | 'danger'
 }
 
-const Alert: React.FC<AlertProps> = ({
-  className,
-  variation = 'primary',
-  ...rest
-}) => {
+const Alert = React.forwardRef<
+  HTMLDivElement,
+  AlertProps & React.HTMLProps<HTMLDivElement>
+>(({ className, variation = 'primary', ...rest }, ref) => {
   return (
     <aside
+      ref={ref}
       className={clsx(
         'Alert border-l-8 rounded-lg p-6 my-8',
         {
@@ -23,6 +23,6 @@ const Alert: React.FC<AlertProps> = ({
       {...rest}
     />
   )
-}
+})
 
 export default Alert

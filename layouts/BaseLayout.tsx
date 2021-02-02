@@ -84,7 +84,7 @@ const BaseLayout: React.FC = ({ children }) => {
   React.useEffect(() => setMounted(true), [])
 
   React.useEffect(() => {
-    async function runAnimationFunc() {
+    async function runAnimationFunc(): Promise<void> {
       await controls.start('visible')
 
       setDone()

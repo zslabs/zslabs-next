@@ -5,6 +5,7 @@ import TextLink, { TextLinkProps } from './TextLink'
 
 interface LinkUnderlineProps extends TextLinkProps {
   className?: string
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>
 }
 
 const LinkUnderline: React.FC<LinkUnderlineProps> = ({
