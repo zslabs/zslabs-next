@@ -1,17 +1,17 @@
 import * as React from 'react'
 import clsx from 'clsx'
+import { forwardRefWithAs } from '@reach/utils'
 
 interface ProseProps {
   as?: React.ElementType
-  className?: string
 }
 
-const Prose: React.FC<ProseProps> = ({
-  as: Component = 'div',
-  className,
-  ...rest
-}) => {
-  return <Component className={clsx('prose', className)} {...rest} />
-}
+const Prose = forwardRefWithAs<ProseProps, 'div'>(
+  ({ as: Component = 'div', className, ...rest }, ref) => {
+    return (
+      <Component ref={ref} className={clsx('prose', className)} {...rest} />
+    )
+  }
+)
 
 export default Prose
