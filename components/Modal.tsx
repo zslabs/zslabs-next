@@ -1,5 +1,4 @@
 import * as React from 'react'
-import PropTypes from 'prop-types'
 import {
   disableBodyScroll,
   enableBodyScroll,
@@ -11,14 +10,25 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Portal from '@reach/portal'
 
 import { ReactComponent as CloseSvg } from '~icons/close.svg'
+import { spring } from '~helpers'
 
-const OffCanvas = ({ children, open, setIsOpen, ...rest }) => {
-  const offCanvasRef = React.useRef()
-  const offCanvasPanelRef = React.useRef()
+interface ModalProps {
+  open: boolean
+  setIsOpen: (open: boolean) => void
+}
+
+const Modal: React.FC<ModalProps> = ({
+  children,
+  open,
+  setIsOpen,
+  ...rest
+}) => {
+  const modalRef = React.useRef()
+  const modalDialogRef = React.useRef()
 
   const direction = React.useRef('forward')
 
-  const offCanvasVariants = {
+  const modalVariants = {
     hidden: {
       opacity: 0,
     },
@@ -27,14 +37,14 @@ const OffCanvas = ({ children, open, setIsOpen, ...rest }) => {
     },
   }
 
-  const offCanvasDialogVariants = {
+  const modalDialogVariants = {
     hidden: {
       opacity: 0,
-      x: '-100%',
+      y: '25%',
     },
     visible: {
       opacity: 1,
-      x: 0,
+      y: 0,
     },
   }
 
@@ -47,37 +57,37 @@ const OffCanvas = ({ children, open, setIsOpen, ...rest }) => {
 
   useUpdateEffect(() => {
     if (open) {
-      disableBodyScroll(offCanvasPanelRef.current)
+      disableBodyScroll(modalRef.current)
       direction.current = 'forward'
     } else {
-      enableBodyScroll(offCanvasPanelRef.current)
+      enableBodyScroll(modalRef.current)
       direction.current = 'reverse'
     }
   }, [open])
 
-  useClickAway(offCanvasPanelRef, () => setIsOpen(false))
+  useClickAway(modalDialogRef, () => setIsOpen(false))
 
   return (
     <Portal>
       <AnimatePresence>
         {open && (
           <motion.div
-            variants={offCanvasVariants}
+            variants={modalVariants}
             initial="hidden"
             animate="visible"
             exit="hidden"
-            ref={offCanvasRef}
-            className="fixed inset-0 bg-gray-900 bg-opacity-75 z-50 pr-4 backdrop-blur"
+            ref={modalRef}
+            className="overflow-auto fixed inset-0 bg-gray-900 bg-opacity-75 z-50 px-4 backdrop-blur"
             {...rest}
           >
-            <motion.aside
-              variants={offCanvasDialogVariants}
+            <motion.div
+              variants={modalDialogVariants}
               initial="hidden"
               animate="visible"
+              transition={spring}
               exit="hidden"
-              ref={offCanvasPanelRef}
-              className="overflow-auto bg-gray-100 dark:bg-gray-800 rounded-tr-2xl shadow-lg z-20 relative top-0 left-0 h-full w-full md:max-w-xs p-8"
-              transition={{ x: { stiffness: 1000 } }}
+              ref={modalDialogRef}
+              className="bg-gray-100 dark:bg-gray-800 rounded-lg shadow-lg z-20 my-4 md:my-8 mx-auto max-w-xl relative p-8"
             >
               <button
                 type="button"
@@ -87,7 +97,7 @@ const OffCanvas = ({ children, open, setIsOpen, ...rest }) => {
                 <CloseSvg />
               </button>
               {children}
-            </motion.aside>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -95,10 +105,4 @@ const OffCanvas = ({ children, open, setIsOpen, ...rest }) => {
   )
 }
 
-OffCanvas.propTypes = {
-  children: PropTypes.node,
-  open: PropTypes.bool,
-  setIsOpen: PropTypes.func.isRequired,
-}
-
-export default OffCanvas
+export default Modal

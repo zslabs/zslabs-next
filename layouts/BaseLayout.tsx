@@ -1,8 +1,12 @@
 import * as React from 'react'
 import { useRouter } from 'next/router'
-import PropTypes from 'prop-types'
 import { useTheme } from 'next-themes'
-import { motion, useAnimation } from 'framer-motion'
+import {
+  AnimationControls,
+  HTMLMotionProps,
+  motion,
+  useAnimation,
+} from 'framer-motion'
 
 import { ReactComponent as LogoSvg } from '~media/logo.svg'
 import { ReactComponent as ListLogoSvg } from '~icons/list-logo.svg'
@@ -18,7 +22,15 @@ import ArticleOffCanvas from '~components/ArticleOffCanvas'
 import useLayoutAnimationState from '~hooks/useLayoutAnimationState'
 import { spring } from '~helpers'
 
-function HeaderItemWrapper({ runAnimation, controls, custom, ...rest }) {
+interface HeaderItemWrapperProps {
+  runAnimation: boolean
+  controls: AnimationControls
+  custom: number
+}
+
+const HeaderItemWrapper: React.FC<
+  HeaderItemWrapperProps & HTMLMotionProps<'div'>
+> = ({ runAnimation, controls, custom, ...rest }) => {
   const variants = {
     hidden: {
       opacity: 0,
@@ -44,13 +56,7 @@ function HeaderItemWrapper({ runAnimation, controls, custom, ...rest }) {
   )
 }
 
-HeaderItemWrapper.propTypes = {
-  controls: PropTypes.object.isRequired,
-  custom: PropTypes.number.isRequired,
-  runAnimation: PropTypes.bool,
-}
-
-export default function BaseLayout({ children }) {
+const BaseLayout: React.FC = ({ children }) => {
   const [mounted, setMounted] = React.useState(false)
 
   const { theme, setTheme } = useTheme()
@@ -78,7 +84,7 @@ export default function BaseLayout({ children }) {
   React.useEffect(() => setMounted(true), [])
 
   React.useEffect(() => {
-    async function runAnimationFunc() {
+    async function runAnimationFunc(): Promise<void> {
       await controls.start('visible')
 
       setDone()
@@ -185,6 +191,4 @@ export default function BaseLayout({ children }) {
   )
 }
 
-BaseLayout.propTypes = {
-  children: PropTypes.node.isRequired,
-}
+export default BaseLayout

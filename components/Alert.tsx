@@ -1,9 +1,17 @@
+import * as React from 'react'
 import clsx from 'clsx'
-import PropTypes from 'prop-types'
 
-export default function Alert({ className, variation = 'primary', ...rest }) {
+interface AlertProps {
+  variation?: 'primary' | 'danger'
+}
+
+const Alert = React.forwardRef<
+  HTMLDivElement,
+  AlertProps & React.HTMLProps<HTMLDivElement>
+>(({ className, variation = 'primary', ...rest }, ref) => {
   return (
     <aside
+      ref={ref}
       className={clsx(
         'Alert border-l-8 rounded-lg p-6 my-8',
         {
@@ -15,9 +23,6 @@ export default function Alert({ className, variation = 'primary', ...rest }) {
       {...rest}
     />
   )
-}
+})
 
-Alert.propTypes = {
-  className: PropTypes.string,
-  variation: PropTypes.oneOf(['primary', 'danger']),
-}
+export default Alert

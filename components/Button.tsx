@@ -1,9 +1,17 @@
-import PropTypes from 'prop-types'
+import * as React from 'react'
 import clsx from 'clsx'
 
 import diagonalLines from '~media/diagonal-lines.svg'
 
-export default function Button({
+interface ButtonProps {
+  as?: React.ElementType
+  className?: string
+  variation?: 'primary' | 'secondary' | 'tertiary' | 'quaternary'
+  iconOnly?: boolean
+  loading?: boolean
+}
+
+const Button: React.FC<ButtonProps & React.HTMLProps<HTMLButtonElement>> = ({
   as: Component = 'button',
   children,
   className,
@@ -11,7 +19,7 @@ export default function Button({
   iconOnly,
   loading,
   ...rest
-}) {
+}) => {
   return (
     <Component
       className={clsx(
@@ -51,17 +59,4 @@ export default function Button({
   )
 }
 
-Button.propTypes = {
-  /* Allowing us to specify the element provides some more flexibility when used as a normal link */
-  as: PropTypes.any,
-  className: PropTypes.string,
-  children: PropTypes.node.isRequired,
-  iconOnly: PropTypes.bool,
-  variation: PropTypes.oneOf([
-    'primary',
-    'secondary',
-    'tertiary',
-    'quaternary',
-  ]),
-  loading: PropTypes.bool,
-}
+export default Button

@@ -1,8 +1,11 @@
-import PropTypes from 'prop-types'
 import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
 
-export default function SEO({ title, ...rest }) {
+interface SEOProps {
+  title: string
+}
+
+const SEO: React.FC<SEOProps> = ({ title, ...rest }) => {
   const router = useRouter()
 
   return (
@@ -18,6 +21,4 @@ export default function SEO({ title, ...rest }) {
   )
 }
 
-SEO.propTypes = {
-  title: PropTypes.string.isRequired,
-}
+export default SEO

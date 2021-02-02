@@ -1,18 +1,25 @@
-import PropTypes from 'prop-types'
-
 import Badge from './Badge'
 import LinkUnderline from './LinkUnderline'
 
-export function BubbleListItem({
+interface BubbleListItemProps {
+  title: string
+  sub?: React.ReactNode
+  link?: string
+  badge?: string
+  badgeVariant?: 'primary' | 'secondary' | 'tertiary'
+  onClick?: () => void
+}
+
+export const BubbleListItem: React.FC<BubbleListItemProps> = ({
   title,
   children,
   sub,
   link,
   badge,
   badgeVariant,
-  onClick = () => {},
+  onClick,
   ...rest
-}) {
+}) => {
   return (
     <div
       className="relative z-20 grid grid-flow-col auto-cols-auto gap-6 items-center justify-start group"
@@ -43,17 +50,7 @@ export function BubbleListItem({
   )
 }
 
-BubbleListItem.propTypes = {
-  badge: PropTypes.node,
-  children: PropTypes.node,
-  title: PropTypes.string.isRequired,
-  link: PropTypes.string,
-  sub: PropTypes.node,
-  badgeVariant: PropTypes.oneOf(['primary', 'secondary', 'tertiary']),
-  onClick: PropTypes.func,
-}
-
-export default function BubbleList({ children, ...rest }) {
+const BubbleList: React.FC = ({ children, ...rest }) => {
   return (
     <div className="relative" {...rest}>
       <div className="absolute top-0 left-2 transform -translate-x-1/2 h-full z-10">
@@ -66,6 +63,4 @@ export default function BubbleList({ children, ...rest }) {
   )
 }
 
-BubbleList.propTypes = {
-  children: PropTypes.node.isRequired,
-}
+export default BubbleList

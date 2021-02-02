@@ -2,7 +2,7 @@ import fs from 'fs'
 
 import * as React from 'react'
 import { motion, useAnimation } from 'framer-motion'
-import PropTypes from 'prop-types'
+import { GetStaticProps, NextPage } from 'next'
 
 import BubbleList, { BubbleListItem } from '~components/BubbleList'
 import Button from '~components/Button'
@@ -15,9 +15,9 @@ import dots from '~media/dots.svg'
 import { getAllPosts } from '~lib/api'
 import useArticlesOffCanvasState from '~hooks/useArticlesOffCanvasState'
 import useLayoutAnimationState from '~hooks/useLayoutAnimationState'
-import { spring } from '~helpers/'
+import { spring } from '~helpers'
 
-function RecentProjects() {
+const RecentProjects: React.FC = () => {
   return (
     <div>
       <SectionTitle className="grid place-items-center">
@@ -57,7 +57,14 @@ function RecentProjects() {
   )
 }
 
-export default function Home({ latestPost }) {
+interface LatestPostProps {
+  latestPost: {
+    title: string
+    slug: string
+  }
+}
+
+const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
   const toggle = useArticlesOffCanvasState((state) => state.toggle)
 
   const done = useLayoutAnimationState((state) => state.done)
@@ -258,11 +265,9 @@ export default function Home({ latestPost }) {
   )
 }
 
-Home.propTypes = {
-  latestPost: PropTypes.object.isRequired,
-}
+export default Home
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   const allPosts = await getAllPosts(['title', 'date', 'slug', 'excerpt'])
 
   const currentArticlesFile = fs.readFileSync('./data/articles.json', 'utf8')

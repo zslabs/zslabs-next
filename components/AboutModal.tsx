@@ -11,7 +11,7 @@ import { ReactComponent as GitHubSvg } from '~icons/github.svg'
 import { ReactComponent as CodePenSvg } from '~icons/codepen.svg'
 import useAboutModalState from '~hooks/useAboutModalState'
 
-export default function AboutModal() {
+const AboutModal: React.FC = () => {
   const open = useAboutModalState((state) => state.open)
   const toggle = useAboutModalState((state) => state.toggle)
 
@@ -102,3 +102,5 @@ export default function AboutModal() {
     </>
   )
 }
+
+export default AboutModal

@@ -1,11 +1,17 @@
-import PropTypes from 'prop-types'
+import * as React from 'react'
 import Link from 'next/link'
 
 // Checks against absolute URLs that share 👇 so we can still pass it along to our internal link component
 const domainRegex = /http[s]*:\/\/[www.]*zslabs\.com[/]?/
 
+export interface TextLinkProps {
+  href: string
+}
+
 /* eslint-disable no-param-reassign */
-const TextLink = ({ href, ...rest }) => {
+const TextLink: React.FC<
+  React.AnchorHTMLAttributes<HTMLAnchorElement> & TextLinkProps
+> = ({ href, ...rest }) => {
   const sameDomain = domainRegex.test(href)
 
   // If our link matches the `domainRegex` above, update to become relative
@@ -39,9 +45,5 @@ const TextLink = ({ href, ...rest }) => {
   )
 }
 /* eslint-enable no-param-reassign */
-
-TextLink.propTypes = {
-  href: PropTypes.string.isRequired,
-}
 
 export default TextLink
