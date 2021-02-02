@@ -6,7 +6,7 @@ import {
   useViewportScroll,
 } from 'framer-motion'
 
-export default function ScrollIndicator(props) {
+const ScrollIndicator: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   const [isComplete, setIsComplete] = React.useState(false)
   const { scrollYProgress } = useViewportScroll()
   const yRange = useTransform(scrollYProgress, [0, 0.9], [0, 1])
@@ -42,3 +42,5 @@ export default function ScrollIndicator(props) {
     </svg>
   )
 }
+
+export default ScrollIndicator
