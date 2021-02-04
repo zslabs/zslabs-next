@@ -1,18 +1,24 @@
 import * as React from 'react'
-import PropTypes from 'prop-types'
-import Highlight, { defaultProps } from 'prism-react-renderer'
+import Highlight, { defaultProps, Language } from 'prism-react-renderer'
 import clsx from 'clsx'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 
 import { ReactComponent as ClipboardSvg } from '~icons/clipboard.svg'
 import { ReactComponent as ClipboardCheckSvg } from '~icons/clipboard-check.svg'
 
+interface CodeProps {
+  codeString: string
+  language?: Language
+  filename?: string
+  wrapperClassName?: string
+}
+
 export default function Code({
   codeString,
   language,
   filename,
   wrapperClassName,
-}) {
+}: CodeProps): React.ReactElement {
   const [isCopied, setCopied] = React.useState(false)
 
   // Reset icon after 3 seconds
@@ -100,11 +106,4 @@ export default function Code({
       )}
     </Highlight>
   )
-}
-
-Code.propTypes = {
-  codeString: PropTypes.string.isRequired,
-  language: PropTypes.string.isRequired,
-  wrapperClassName: PropTypes.string,
-  filename: PropTypes.string,
 }
