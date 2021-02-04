@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types'
+import { AppProps } from 'next/app'
 import { ThemeProvider } from 'next-themes'
 import { DefaultSeo } from 'next-seo'
 import Router from 'next/router'
@@ -31,7 +31,10 @@ Router.events.on('routeChangeComplete', (url) => {
 
 Router.events.on('routeChangeError', () => NProgress.done())
 
-function MyApp({ Component, pageProps }) {
+export default function MyApp({
+  Component,
+  pageProps,
+}: AppProps): React.ReactElement {
   return (
     <ThemeProvider attribute="class">
       <DefaultSeo {...SEO} />
@@ -41,10 +44,3 @@ function MyApp({ Component, pageProps }) {
     </ThemeProvider>
   )
 }
-
-MyApp.propTypes = {
-  Component: PropTypes.any,
-  pageProps: PropTypes.any,
-}
-
-export default MyApp

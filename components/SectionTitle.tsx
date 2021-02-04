@@ -1,12 +1,9 @@
 import clsx from 'clsx'
 
-interface SectionTitleSkewProps {
-  className?: string
-}
-
-export const SectionTitleSkew: React.FC<
-  SectionTitleSkewProps & React.HTMLProps<HTMLSpanElement>
-> = ({ className, ...rest }) => {
+export const SectionTitleSkew: React.FC<React.HTMLProps<HTMLSpanElement>> = ({
+  className,
+  ...rest
+}) => {
   return (
     <span
       className={clsx(
@@ -18,11 +15,7 @@ export const SectionTitleSkew: React.FC<
   )
 }
 
-interface SectionTitleProps {
-  className?: string
-}
-
-const SectionTitle: React.FC<SectionTitleProps> = ({
+const SectionTitle: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
   children,
   className,
   ...rest

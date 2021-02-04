@@ -2,11 +2,10 @@ import * as React from 'react'
 import clsx from 'clsx'
 
 interface BadgeProps {
-  className?: string
   variation?: 'primary' | 'secondary' | 'tertiary'
 }
 
-const Badge: React.FC<BadgeProps> = ({
+const Badge: React.FC<BadgeProps & React.HTMLAttributes<HTMLDivElement>> = ({
   children,
   variation = 'tertiary',
   className,

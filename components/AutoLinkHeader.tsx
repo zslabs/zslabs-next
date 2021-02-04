@@ -1,15 +1,12 @@
 import slugify from 'slugify'
 
 interface AutoLinkHeaderProps {
-  as?: React.ElementType
-  className?: string
+  as?: 'h2' | 'h3' | 'h4' | 'h5'
 }
 
-const AutoLinkHeader: React.FC<AutoLinkHeaderProps> = ({
-  as: Component,
-  children,
-  ...rest
-}) => {
+const AutoLinkHeader: React.FC<
+  AutoLinkHeaderProps & React.HTMLAttributes<HTMLHeadingElement>
+> = ({ as: Component, children, ...rest }) => {
   return (
     <Component
       id={slugify(children.toString(), {

@@ -3,11 +3,7 @@ import clsx from 'clsx'
 
 import { ReactComponent as QuoteSvg } from '~icons/quote.svg'
 
-interface BlockquoteProps {
-  className?: string
-}
-
-const Blockquote: React.FC<BlockquoteProps> = ({
+const Blockquote: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
   className,
   children,
   ...rest

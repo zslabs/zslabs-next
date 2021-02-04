@@ -5,7 +5,7 @@ interface SEOProps {
   title: string
 }
 
-const SEO: React.FC<SEOProps> = ({ title, ...rest }) => {
+export default function SEO({ title, ...rest }: SEOProps): React.ReactElement {
   const router = useRouter()
 
   return (
@@ -20,5 +20,3 @@ const SEO: React.FC<SEOProps> = ({ title, ...rest }) => {
     />
   )
 }
-
-export default SEO

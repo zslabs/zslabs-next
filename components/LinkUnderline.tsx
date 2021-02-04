@@ -4,14 +4,12 @@ import clsx from 'clsx'
 import TextLink, { TextLinkProps } from './TextLink'
 
 interface LinkUnderlineProps extends TextLinkProps {
-  className?: string
   onClick?: React.MouseEventHandler<HTMLAnchorElement>
 }
 
-const LinkUnderline: React.FC<LinkUnderlineProps> = ({
-  className,
-  ...rest
-}) => {
+const LinkUnderline: React.FC<
+  LinkUnderlineProps & React.HTMLAttributes<HTMLAnchorElement>
+> = ({ className, ...rest }) => {
   return (
     <TextLink
       className={clsx(

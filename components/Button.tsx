@@ -5,7 +5,6 @@ import diagonalLines from '~media/diagonal-lines.svg'
 
 interface ButtonProps {
   as?: React.ElementType
-  className?: string
   variation?: 'primary' | 'secondary' | 'tertiary' | 'quaternary'
   iconOnly?: boolean
   loading?: boolean

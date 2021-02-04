@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types'
+import { GetStaticProps, GetStaticPaths } from 'next'
 import NextImage from 'next/image'
 import renderToString from 'next-mdx-remote/render-to-string'
 import hydrate from 'next-mdx-remote/hydrate'
@@ -7,6 +7,7 @@ import { CodePen, Tweet } from 'mdx-embed'
 import dayjs from 'dayjs'
 import { motion } from 'framer-motion'
 import clsx from 'clsx'
+import { MdxRemote } from 'next-mdx-remote/types'
 
 import { getAllPosts, getPostBySlug } from '~lib/api'
 import AutoLinkHeader from '~components/AutoLinkHeader'
@@ -21,14 +22,28 @@ import { ReactComponent as InfoCircleSvg } from '~icons/info-circle.svg'
 import { spring } from '~helpers'
 import SEO from '~components/SEO'
 
-const Image = ({ className, ...rest }) => (
-  <div className="my-8 text-center">
-    <NextImage className={clsx('rounded-lg shadow-sm', className)} {...rest} />
-  </div>
-)
+interface ImageProps {
+  src: string
+  height: string
+  width: string
+}
 
-Image.propTypes = {
-  className: PropTypes.string,
+function Image({
+  className,
+  src,
+  height,
+  width,
+}: ImageProps & React.HTMLAttributes<HTMLDivElement>): React.ReactElement {
+  return (
+    <div className="my-8 text-center">
+      <NextImage
+        src={src}
+        height={height}
+        width={width}
+        className={clsx('rounded-lg shadow-sm', className)}
+      />
+    </div>
+  )
 }
 
 const components = {
@@ -55,12 +70,23 @@ const components = {
   },
 }
 
-export default function Post({ post }) {
-  const content = hydrate(post.source, { components })
+interface PostProps {
+  post: {
+    source: MdxRemote.Source
+    title: string
+    date: string
+    dateModified?: string
+  }
+}
+
+export default function Post({
+  post: { source, title, date, dateModified },
+}: PostProps): React.ReactElement {
+  const content = hydrate(source, { components })
 
   return (
     <Section>
-      <SEO title={post.title} />
+      <SEO title={title} />
 
       <article>
         <ScrollIndicator className="fixed hidden md:block top-2 left-2 w-8 h-8 text-blue-500" />
@@ -71,13 +97,13 @@ export default function Post({ post }) {
           transition={spring}
         >
           <h1 className="text-center mb-2 md:mb-4 text-4xl md:text-5xl font-extrabold">
-            {post.title}
+            {title}
           </h1>
           <div className="uppercase text-gray-500 dark:text-gray-300 font-extrabold tracking-widest grid auto-cols-auto grid-flow-col justify-center gap-2 items-center">
-            <span>{dayjs(post.date).format('MMMM D, YYYY')}</span>
-            {post.dateModified && (
+            <span>{dayjs(date).format('MMMM D, YYYY')}</span>
+            {dateModified && (
               <div
-                title={`Last modified: ${dayjs(post.dateModified).format(
+                title={`Last modified: ${dayjs(dateModified).format(
                   'MMMM D, YYYY'
                 )}`}
               >
@@ -99,11 +125,7 @@ export default function Post({ post }) {
   )
 }
 
-Post.propTypes = {
-  post: PropTypes.object.isRequired,
-}
-
-export async function getStaticProps({ params }) {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const post = getPostBySlug(params.slug, [
     'title',
     'date',
@@ -124,7 +146,7 @@ export async function getStaticProps({ params }) {
   }
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const posts = getAllPosts(['slug'])
 
   return {
