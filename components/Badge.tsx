@@ -5,7 +5,7 @@ interface BadgeProps {
   variation?: 'primary' | 'secondary' | 'tertiary'
 }
 
-const Badge: React.FC<BadgeProps & React.HTMLAttributes<HTMLDivElement>> = ({
+const Badge: React.FC<React.HTMLAttributes<HTMLDivElement> & BadgeProps> = ({
   children,
   variation = 'tertiary',
   className,

@@ -1,10 +1,17 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import PropTypes from 'prop-types'
+import * as React from 'react'
 
 import { ReactComponent as AsteriskSvg } from '~icons/asterisk.svg'
 import { ReactComponent as ExclamationTriangleSvg } from '~icons/exclamation-triangle.svg'
 
-export default function FormLabel({ children, required, hasError, ...rest }) {
+interface FormLabelProps {
+  required: boolean
+  hasError: boolean
+}
+
+const FormLabel: React.FC<
+  React.ReactHTMLElement<HTMLLabelElement> & FormLabelProps
+> = ({ children, required, hasError, ...rest }) => {
   return (
     <label
       className="font-bold mb-2 items-center gap-2 grid grid-flow-col justify-start auto-cols-auto cursor-default"
@@ -21,9 +28,6 @@ export default function FormLabel({ children, required, hasError, ...rest }) {
   )
 }
 
-FormLabel.propTypes = {
-  hasError: PropTypes.bool,
-  required: PropTypes.bool,
-  children: PropTypes.node.isRequired,
-}
 /* eslint-enable jsx-a11y/label-has-associated-control */
+
+export default FormLabel
