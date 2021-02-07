@@ -94,6 +94,10 @@
     @apply absolute left-1 top-2 w-2 h-2 md:top-3 bg-blue-500 ring-2 ring-blue-200 rounded-full;
   }
 
+  & code {
+    @apply text-sm md:text-base px-1 py-0.5 rounded-sm bg-gray-200;
+  }
+
   /* Revert any elements with custom classes to their base styles; most likely is a React component */
   & [class*='no-prose'],
   & [class*='no-prose'] * {
@@ -114,5 +118,9 @@
 
 .prose ol > li::before {
   @apply dark:text-gray-500;
+}
+
+.prose code {
+  @apply dark:bg-gray-700;
 }
 /* stylelint-enable no-duplicate-selectors */
