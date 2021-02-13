@@ -1,7 +1,7 @@
 import fs from 'fs'
 
 import * as React from 'react'
-import { GetStaticProps } from 'next'
+import { GetStaticProps, NextPage } from 'next'
 
 import BubbleList, { BubbleListItem } from '~components/BubbleList'
 import Section from '~components/Section'
@@ -17,7 +17,7 @@ interface ExperienceProps {
   }[]
 }
 
-const Experience: React.FC<ExperienceProps> = ({ data }) => {
+const Experience: NextPage<ExperienceProps> = ({ data }) => {
   return (
     <>
       <SEO title="Experience" />
