@@ -12,7 +12,7 @@ import TextLink from '~components/TextLink'
 import { ReactComponent as CodeSvg } from '~icons/code.svg'
 import diagonalLines from '~media/diagonal-lines.svg'
 import dots from '~media/dots.svg'
-import { getAllPosts } from '~lib/api'
+import { getAllPosts, Post } from '~lib/api'
 import useArticlesOffCanvasState from '~hooks/useArticlesOffCanvasState'
 import useLayoutAnimationState from '~hooks/useLayoutAnimationState'
 import { spring } from '~helpers'
@@ -58,10 +58,7 @@ const RecentProjects: React.FC = () => {
 }
 
 interface LatestPostProps {
-  latestPost: {
-    title: string
-    slug: string
-  }
+  latestPost: Post
 }
 
 const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
@@ -268,7 +265,7 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
 export default Home
 
 export const getStaticProps: GetStaticProps = async () => {
-  const allPosts = await getAllPosts(['title', 'date', 'slug', 'excerpt'])
+  const allPosts = await getAllPosts()
 
   const currentArticlesFile = fs.readFileSync('./data/articles.json', 'utf8')
 

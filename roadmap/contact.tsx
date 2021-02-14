@@ -3,8 +3,7 @@ import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm, FormProvider } from 'react-hook-form'
 import axios from 'redaxios'
-import qs from 'qs'
-import to from 'await-to-js'
+import { NextPage } from 'next'
 
 import Button from '~components/Button'
 import Input from '~components/Input'
@@ -16,16 +15,23 @@ import Prose from '~components/Prose'
 import SEO from '~components/SEO'
 
 const schema = yup.object().shape({
-  'bot-field': yup.string().max(0),
+  __gotcha: yup.string().max(0),
   name: yup.string().required().trim().label('Name'),
   email: yup.string().required().email().trim().label('Email'),
   message: yup.string().required().trim().label('Message'),
 })
 
-const ContactForm = (props) => {
-  const methods = useForm({
+type FormValues = {
+  _gotcha?: string
+  name: string
+  email: string
+  message: string
+}
+
+const ContactForm: React.FC = () => {
+  const methods = useForm<FormValues>({
     defaultValues: {
-      'bot-field': '',
+      _gotcha: '',
       name: '',
       email: '',
       message: '',
@@ -33,23 +39,21 @@ const ContactForm = (props) => {
     resolver: yupResolver(schema),
   })
 
-  const [response, setResponse] = React.useState()
+  const [response, setResponse] = React.useState<string | null>()
 
-  const handleSubmit = async (data) => {
-    const [, success] = await to(
-      axios({
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        data: qs.stringify(data),
-        url: '/',
+  async function handleSubmit(data: FormValues): Promise<void> {
+    axios({
+      method: 'POST',
+      headers: { Accept: 'application/json' },
+      data,
+      url: '/', // @NOTE TBD on what we want to do here
+    })
+      .then(() => {
+        setResponse('success')
       })
-    )
-
-    if (success) {
-      setResponse('success')
-    } else {
-      setResponse('error')
-    }
+      .catch(() => {
+        setResponse('error')
+      })
   }
 
   return (
@@ -72,34 +76,34 @@ const ContactForm = (props) => {
             name="contact"
             noValidate
             onSubmit={methods.handleSubmit(handleSubmit)}
-            {...props}
           >
             <input
-              type="text"
-              name="bot-field"
+              type="hidden"
+              name="_gotcha"
               className="sr-only"
-              autoComplete="new-password"
               ref={methods.register}
             />
-            <Input
-              label="Name"
-              name="name"
-              ref={methods.register}
-              required
-              validationMessage={
-                methods.errors?.name && methods.errors.name.message
-              }
-            />
-            <Input
-              label="Email"
-              type="email"
-              name="email"
-              ref={methods.register}
-              validationMessage={
-                methods.errors?.email && methods.errors.email.message
-              }
-              required
-            />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <Input
+                label="Name"
+                name="name"
+                ref={methods.register}
+                required
+                validationMessage={
+                  methods.errors?.name && methods.errors.name.message
+                }
+              />
+              <Input
+                label="Email"
+                type="email"
+                name="email"
+                ref={methods.register}
+                validationMessage={
+                  methods.errors?.email && methods.errors.email.message
+                }
+                required
+              />
+            </div>
             <Textarea
               label="Message"
               name="message"
@@ -125,7 +129,7 @@ const ContactForm = (props) => {
   )
 }
 
-export default function Contact() {
+const Contact: NextPage = () => {
   return (
     <Section className="grid grid-cols-1 md:grid-cols-3/4 justify-center relative">
       <SectionTitle className="grid place-items-center">
@@ -139,9 +143,15 @@ export default function Contact() {
         Contact
       </SectionTitle>
       <Prose className="text-center mb-8">
-        <p>Have a project you'd like me to be part of? Let's chat!</p>
+        <p>
+          Have a project you'd like me to be part of? Let's chat! You can either{' '}
+          <a href="mailto:info@zslabs.com">email me directly</a> or fill out the
+          form below.
+        </p>
       </Prose>
       <ContactForm />
     </Section>
   )
 }
+
+export default Contact

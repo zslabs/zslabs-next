@@ -9,21 +9,32 @@ interface InputProps {
   label: string
   explanationMessage?: string
   validationMessage?: string
+  name: string
+  required: boolean
+  type?: string
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
-    { className, label, explanationMessage, validationMessage, ...rest },
+    {
+      className,
+      label,
+      explanationMessage,
+      validationMessage,
+      required,
+      type = 'string',
+      ...rest
+    },
     ref
   ) => {
     return (
       <div className={className}>
-        <ControlWrapper>
+        <ControlWrapper required={required}>
           <ControlLabel>{label}</ControlLabel>
           <input
             ref={ref}
-            id="test"
-            className="bg-transparent border-none focus:outline-none h-12 pt-4 pb-0 px-2 w-full text-gray-900 dark:text-gray-100 leading-none"
+            className="bg-transparent border-none focus:outline-none focus:ring-0 h-12 pt-4 pb-0 px-2 w-full text-gray-900 dark:text-gray-100 leading-none"
+            type={type}
             {...rest}
           />
         </ControlWrapper>

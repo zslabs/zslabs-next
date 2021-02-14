@@ -126,13 +126,11 @@ export default function Post({
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const post = getPostBySlug(params.slug, [
-    'title',
-    'date',
-    'dateModified',
-    'slug',
-    'content',
-  ])
+  const post = getPostBySlug({
+    slug: params.slug.toString(),
+    fields: ['dateModified'],
+    includeContent: true,
+  })
 
   const mdxSource = await renderToString(post.content, { components })
 
@@ -147,7 +145,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = getAllPosts(['slug'])
+  const posts = getAllPosts()
 
   return {
     paths: posts.map((post) => {

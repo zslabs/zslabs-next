@@ -29,7 +29,7 @@
     }
   },
   "dependencies": {
-    "@hookform/resolvers": "1.3.4",
+    "@hookform/resolvers": "1.3.0",
     "@mdx-js/loader": "1.6.22",
     "@mdx-js/react": "1.6.22",
     "@reach/portal": "0.13.0",
