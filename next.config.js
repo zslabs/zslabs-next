@@ -2,21 +2,16 @@ const path = require('path')
 
 const withPlugins = require('next-compose-plugins')
 const withFonts = require('next-fonts')
+const ESLintPlugin = require('eslint-webpack-plugin')
 
 const nextConfig = {
   webpack: (config, { dev }) => {
     if (dev) {
-      config.module.rules.push({
-        test: /\.js$/,
-        enforce: 'pre',
-        exclude: /node_modules/,
-        loader: 'eslint-loader',
-        options: {
-          // Emit errors as warnings for dev to not break webpack build.
-          // Eslint errors are shown in console for dev, yay :-)
-          emitWarning: dev,
-        },
-      })
+      config.plugins.push(
+        new ESLintPlugin({
+          extensions: ['js', 'jsx', 'ts', 'tsx'],
+        })
+      )
     }
 
     config.module.rules.push({
