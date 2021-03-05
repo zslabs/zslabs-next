@@ -1,6 +1,5 @@
 {
   "redirects": [
-    { "source": "/contact", "destination": "/" },
     { "source": "/resume", "destination": "/experience/" },
     {
       "source": "/articles/svg-background-fill",
