@@ -2,7 +2,6 @@ module.exports = {
   extends: [
     'airbnb',
     'prettier',
-    'prettier/react',
     'plugin:prettier/recommended',
     'plugin:import/errors',
     'plugin:import/warnings',
@@ -46,7 +45,6 @@ module.exports = {
       extends: [
         'airbnb',
         'prettier',
-        'prettier/react',
         'plugin:prettier/recommended',
         'plugin:import/errors',
         'plugin:import/warnings',
