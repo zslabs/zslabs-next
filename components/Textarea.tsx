@@ -31,7 +31,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           <ControlLabel>{label}</ControlLabel>
           <textarea
             ref={ref}
-            className="bg-transparent border-none focus:outline-none focus:ring-0 w-full pt-5 px-2 text-gray-900 dark:text-gray-100 align-top"
+            className="bg-transparent border-none focus:outline-none focus:ring-0 w-full pt-5 px-2 text-gray-900 dark:text-gray-100 align-top min-h-32"
             {...rest}
           />
         </ControlWrapper>

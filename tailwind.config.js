@@ -46,6 +46,9 @@ module.exports = {
       margin: {
         '-1/2-screen': '-50vw',
       },
+      minHeight: {
+        32: '8rem',
+      },
       maxHeight: {
         120: '30rem',
       },
