@@ -46,7 +46,7 @@ const Experience: NextPage<ExperienceProps> = ({ data }) => {
           ))}
         </BubbleList>
       </Section>
-      <ViewSource fixed path="pages/experience.tsx" />
+      <ViewSource fixed path="experience.tsx" />
     </>
   )
 }

@@ -255,7 +255,7 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
           <RecentProjects />
         </motion.div>
       </Section>
-      <ViewSource fixed path="pages/index.tsx" />
+      <ViewSource fixed path="index.tsx" />
     </>
   )
 }

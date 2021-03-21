@@ -122,7 +122,7 @@ export default function Post({
           {content}
         </Prose>
       </article>
-      <ViewSource fixed path="pages/articles/[slug].tsx" />
+      <ViewSource fixed path="articles/[slug].tsx" />
     </Section>
   )
 }
