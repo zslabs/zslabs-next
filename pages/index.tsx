@@ -9,13 +9,13 @@ import Button from '~components/Button'
 import Section from '~components/Section'
 import SectionTitle, { SectionTitleSkew } from '~components/SectionTitle'
 import TextLink from '~components/TextLink'
-import { ReactComponent as CodeSvg } from '~icons/code.svg'
 import diagonalLines from '~media/diagonal-lines.svg'
 import dots from '~media/dots.svg'
 import { getAllPosts, Post } from '~lib/api'
 import useArticlesOffCanvasState from '~hooks/useArticlesOffCanvasState'
 import useLayoutAnimationState from '~hooks/useLayoutAnimationState'
 import { spring } from '~helpers'
+import ViewSource from '~components/ViewSource'
 
 const RecentProjects: React.FC = () => {
   return (
@@ -35,13 +35,10 @@ const RecentProjects: React.FC = () => {
         <BubbleListItem title="ChaosKit" link="https://chaoskit.netlify.app/">
           A lightweight and modular front-end framework for developing fast and
           powerful interfaces within Gremlin.{' '}
-          <TextLink
+          <ViewSource
             href="https://www.github.com/gremlin/chaoskit"
-            className="inline-block ml-1 ring-2 ring-gray-300 dark:ring-gray-600 rounded-full bg-gray-300 dark:bg-gray-600 transform hover:scale-105 ease-bounce duration-300"
-            title="View source"
-          >
-            <CodeSvg className="md:text-lg" />
-          </TextLink>
+            className="ml-1"
+          />
         </BubbleListItem>
         <BubbleListItem title="Gremlin" link="https://www.gremlin.com/">
           Marketing site for Chaos.
@@ -258,6 +255,7 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
           <RecentProjects />
         </motion.div>
       </Section>
+      <ViewSource fixed path="pages/index.tsx" />
     </>
   )
 }

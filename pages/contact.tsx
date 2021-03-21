@@ -13,6 +13,7 @@ import Textarea from '~components/Textarea'
 import Alert from '~components/Alert'
 import Prose from '~components/Prose'
 import SEO from '~components/SEO'
+import ViewSource from '~components/ViewSource'
 
 const schema = yup.object().shape({
   __gotcha: yup.string().max(0),
@@ -150,6 +151,7 @@ const Contact: NextPage = () => {
         </p>
       </Prose>
       <ContactForm />
+      <ViewSource path="pages/contact.tsx" fixed />
     </Section>
   )
 }

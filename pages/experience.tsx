@@ -7,6 +7,7 @@ import BubbleList, { BubbleListItem } from '~components/BubbleList'
 import Section from '~components/Section'
 import SectionTitle, { SectionTitleSkew } from '~components/SectionTitle'
 import SEO from '~components/SEO'
+import ViewSource from '~components/ViewSource'
 
 interface ExperienceProps {
   data: {
@@ -45,6 +46,7 @@ const Experience: NextPage<ExperienceProps> = ({ data }) => {
           ))}
         </BubbleList>
       </Section>
+      <ViewSource fixed path="pages/experience.tsx" />
     </>
   )
 }

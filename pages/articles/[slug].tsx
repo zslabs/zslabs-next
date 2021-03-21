@@ -21,6 +21,7 @@ import Blockquote from '~components/Blockquote'
 import { ReactComponent as InfoCircleSvg } from '~icons/info-circle.svg'
 import { spring } from '~helpers'
 import SEO from '~components/SEO'
+import ViewSource from '~components/ViewSource'
 
 interface ImageProps {
   src: string
@@ -121,6 +122,7 @@ export default function Post({
           {content}
         </Prose>
       </article>
+      <ViewSource fixed path="pages/articles/[slug].tsx" />
     </Section>
   )
 }
