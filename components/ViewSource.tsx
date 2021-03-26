@@ -40,7 +40,7 @@ const ViewSource: React.FC<ViewSourceProps> = ({
         },
         className
       )}
-      title="View source"
+      title={path ? 'View page source' : 'View source'}
     >
       <CodeSvg className="md:text-lg" />
     </TextLink>

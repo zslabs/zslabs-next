@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion'
+
 import Badge from './Badge'
 import LinkUnderline from './LinkUnderline'
 
@@ -20,8 +22,14 @@ export const BubbleListItem: React.FC<BubbleListItemProps> = ({
   onClick,
   ...rest
 }) => {
+  const item = {
+    hidden: { opacity: 0, y: '1rem' },
+    show: { opacity: 1, y: 0 },
+  }
+
   return (
-    <div
+    <motion.div
+      variants={item}
       className="relative z-20 grid grid-flow-col auto-cols-auto gap-6 items-center justify-start group"
       {...rest}
     >
@@ -46,11 +54,21 @@ export const BubbleListItem: React.FC<BubbleListItemProps> = ({
         {sub && <div className="text-gray-500 dark:text-gray-400">{sub}</div>}
         {children && <div className="md:text-lg">{children}</div>}
       </div>
-    </div>
+    </motion.div>
   )
 }
 
 const BubbleList: React.FC = ({ children, ...rest }) => {
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.125,
+      },
+    },
+  }
+
   return (
     <div className="relative" {...rest}>
       <div className="absolute top-0 left-2 transform -translate-x-1/2 h-full z-10">
@@ -58,7 +76,14 @@ const BubbleList: React.FC = ({ children, ...rest }) => {
         <div className="h-full bg-gray-900 dark:bg-gray-100 w-0.5" />
         <div className="w-2 h-2 bg-gray-900 dark:bg-gray-100 rounded-full absolute bottom-0 left-1/2 transform -translate-x-1/2" />
       </div>
-      <div className="grid grid-cols-1 gap-8 py-8">{children}</div>
+      <motion.div
+        className="grid grid-cols-1 gap-8 py-8"
+        variants={container}
+        initial="hidden"
+        animate="show"
+      >
+        {children}
+      </motion.div>
     </div>
   )
 }
