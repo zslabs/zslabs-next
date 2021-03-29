@@ -47,7 +47,7 @@ const ContactForm: React.FC = () => {
       method: 'POST',
       headers: { Accept: 'application/json' },
       data,
-      url: 'https://formcarry.com/s/Tm7xt873CT', // @NOTE TBD on what we want to do here
+      url: 'https://formcarry.com/s/Tm7xt873CT',
     })
       .then(() => {
         setResponse('success')
