@@ -21,6 +21,8 @@ import AboutModal from '~components/AboutModal'
 import ArticleOffCanvas from '~components/ArticleOffCanvas'
 import useLayoutAnimationState from '~hooks/useLayoutAnimationState'
 import { spring } from '~helpers'
+import { ReactComponent as TwitterSvg } from '~icons/twitter.svg'
+import { ReactComponent as GitHubSvg } from '~icons/github.svg'
 
 interface HeaderItemWrapperProps {
   runAnimation: boolean
@@ -177,7 +179,17 @@ const BaseLayout: React.FC = ({ children }) => {
                 </div>
                 <div>
                   <TextLink href="https://list.zslabs.com">
-                    <ListLogoSvg className="text-xl" />
+                    <ListLogoSvg className="text-lg" />
+                  </TextLink>
+                </div>
+                <div>
+                  <TextLink href="https://twitter.com/zslabs">
+                    <TwitterSvg className="text-lg" />
+                  </TextLink>
+                </div>
+                <div>
+                  <TextLink href="https://github.com/zslabs">
+                    <GitHubSvg className="text-lg" />
                   </TextLink>
                 </div>
               </div>
