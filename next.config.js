@@ -5,6 +5,9 @@ const withFonts = require('next-fonts')
 const ESLintPlugin = require('eslint-webpack-plugin')
 
 const nextConfig = {
+  future: {
+    webpack5: true,
+  },
   webpack: (config, { dev }) => {
     if (dev) {
       config.plugins.push(

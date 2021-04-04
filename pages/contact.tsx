@@ -1,7 +1,8 @@
 import * as React from 'react'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { useForm, FormProvider } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
+import to from 'await-to-js'
 import axios from 'redaxios'
 import { NextPage } from 'next'
 
@@ -30,7 +31,11 @@ type FormValues = {
 }
 
 const ContactForm: React.FC = () => {
-  const methods = useForm<FormValues>({
+  const {
+    formState: { errors, isSubmitting },
+    register,
+    handleSubmit,
+  } = useForm<FormValues>({
     defaultValues: {
       _gotcha: '',
       name: '',
@@ -42,19 +47,21 @@ const ContactForm: React.FC = () => {
 
   const [response, setResponse] = React.useState<string | null>()
 
-  async function handleSubmit(data: FormValues): Promise<void> {
-    axios({
-      method: 'POST',
-      headers: { Accept: 'application/json' },
-      data,
-      url: 'https://formcarry.com/s/Tm7xt873CT',
-    })
-      .then(() => {
-        setResponse('success')
+  async function onSubmit(data: FormValues): Promise<void> {
+    const [err] = await to(
+      axios({
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        data,
+        url: 'https://formcarry.com/s/Tm7xt873CT',
       })
-      .catch(() => {
-        setResponse('error')
-      })
+    )
+
+    if (err) {
+      setResponse('error')
+    } else {
+      setResponse('success')
+    }
   }
 
   return (
@@ -71,60 +78,40 @@ const ContactForm: React.FC = () => {
         </Alert>
       )}
       {!response && (
-        <FormProvider {...methods}>
-          <form
-            className="grid gap-4 grid-cols-1"
-            name="contact"
-            noValidate
-            onSubmit={methods.handleSubmit(handleSubmit)}
-          >
-            <input
-              type="hidden"
-              name="_gotcha"
-              className="sr-only"
-              ref={methods.register}
+        <form
+          className="grid gap-4 grid-cols-1"
+          name="contact"
+          noValidate
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <input type="hidden" className="sr-only" {...register('_gotcha')} />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <Input
+              label="Name"
+              {...register('name')}
+              required
+              validationMessage={errors?.name && errors.name.message}
             />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <Input
-                label="Name"
-                name="name"
-                ref={methods.register}
-                required
-                validationMessage={
-                  methods.errors?.name && methods.errors.name.message
-                }
-              />
-              <Input
-                label="Email"
-                type="email"
-                name="email"
-                ref={methods.register}
-                validationMessage={
-                  methods.errors?.email && methods.errors.email.message
-                }
-                required
-              />
-            </div>
-            <Textarea
-              label="Message"
-              name="message"
-              ref={methods.register}
-              validationMessage={
-                methods.errors?.message && methods.errors.message.message
-              }
+            <Input
+              label="Email"
+              type="email"
+              {...register('email')}
+              validationMessage={errors?.email && errors.email.message}
               required
             />
-            <div className="mt-4 text-center">
-              <Button
-                variation="quaternary"
-                type="submit"
-                loading={methods.formState.isSubmitting}
-              >
-                Send message
-              </Button>
-            </div>
-          </form>
-        </FormProvider>
+          </div>
+          <Textarea
+            label="Message"
+            {...register('message')}
+            validationMessage={errors?.message && errors.message.message}
+            required
+          />
+          <div className="mt-4 text-center">
+            <Button variation="quaternary" type="submit" loading={isSubmitting}>
+              Send message
+            </Button>
+          </div>
+        </form>
       )}
     </>
   )
