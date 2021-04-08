@@ -1,11 +1,8 @@
+import * as React from 'react'
 import clsx from 'clsx'
-import { forwardRefWithAs } from '@reach/utils'
+import type * as Polymorphic from '@reach/utils/polymorphic'
 
-interface SectionProps {
-  as?: React.ElementType
-}
-
-const Section = forwardRefWithAs<SectionProps, 'section'>(
+const Section = React.forwardRef(
   ({ as: Component = 'section', className, ...rest }, ref) => {
     return (
       <Component
@@ -15,6 +12,6 @@ const Section = forwardRefWithAs<SectionProps, 'section'>(
       />
     )
   }
-)
+) as Polymorphic.ForwardRefComponent<'section'>
 
 export default Section
