@@ -219,7 +219,7 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
       </Section>
       <Section
         as={motion.section}
-        className="grid grid-cols-1 justify-items-center"
+        className="grid grid-cols-1 justify-items-center px-4"
         initial="hidden"
         variants={latestArticleVariants}
         animate={latestArticleControls}
