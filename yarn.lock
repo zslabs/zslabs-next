@@ -2924,15 +2924,16 @@ eslint-visitor-keys@^2.0.0:
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-2.0.0.tgz#21fdc8fbcd9c795cc0321f0563702095751511a8"
   integrity sha512-QudtT6av5WXels9WjIM7qz1XD1cWGvX4gGXvp/zBn9nXG02D0utdU3Em2m/QjTnrsk6bBjmCygl3rmj118msQQ==
 
-eslint-webpack-plugin@2.5.3:
-  version "2.5.3"
-  resolved "https://registry.yarnpkg.com/eslint-webpack-plugin/-/eslint-webpack-plugin-2.5.3.tgz#a125585a1d8bb9c939f2a920a9bc9be4a21cdb58"
-  integrity sha512-LewNevZf9ghDCxCGT6QltNWVi8KIYWc4LKcin8K9Azh1hypG7YAmobUDIU67fAPa+eMjRnU4rjEkLbYI1w5/UA==
+eslint-webpack-plugin@2.5.4:
+  version "2.5.4"
+  resolved "https://registry.yarnpkg.com/eslint-webpack-plugin/-/eslint-webpack-plugin-2.5.4.tgz#473b84932f1a8e2c2b8e66a402d0497bf440b986"
+  integrity sha512-7rYh0m76KyKSDE+B+2PUQrlNS4HJ51t3WKpkJg6vo2jFMbEPTG99cBV0Dm7LXSHucN4WGCG65wQcRiTFrj7iWw==
   dependencies:
     "@types/eslint" "^7.2.6"
     arrify "^2.0.1"
     jest-worker "^26.6.2"
     micromatch "^4.0.2"
+    normalize-path "^3.0.0"
     schema-utils "^3.0.0"
 
 eslint@7.24.0:
@@ -3262,10 +3263,10 @@ fraction.js@^4.0.13:
   resolved "https://registry.yarnpkg.com/fraction.js/-/fraction.js-4.0.13.tgz#3c1c315fa16b35c85fffa95725a36fa729c69dfe"
   integrity sha512-E1fz2Xs9ltlUp+qbiyx9wmt2n9dRzPsS11Jtdb8D2o+cC7wr9xkkKsVKJuBX0ST+LVS+LhLO+SbLJNtfWcJvXA==
 
-framer-motion@4.1.4:
-  version "4.1.4"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-4.1.4.tgz#3b3728df6bd0e0119346a8e77f23d0308eeb7bd5"
-  integrity sha512-UoxPB1adLosrcQGczF8UX3zQWQ0+6Yki14nf/kjpz022tzzCSkExj+TulsUiiWFFW8gDhifi7PVZkWJ5UJWePg==
+framer-motion@4.1.5:
+  version "4.1.5"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-4.1.5.tgz#451ac3a41c682190bf247d5e209e24572e45cfc3"
+  integrity sha512-ExZ/BGKecRDs91W9ZebbCW5HgO8PaVT5V2ZUs28/jqLyef7VrTho0J5BRH/oAvwc9Qdnl0nRS/YRJWNOCt/PYQ==
   dependencies:
     framesync "5.3.0"
     hey-listen "^1.0.8"
@@ -5846,10 +5847,10 @@ react-dom@17.0.2:
     object-assign "^4.1.1"
     scheduler "^0.20.2"
 
-react-hook-form@7.1.1:
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.1.1.tgz#b0e2990d4dfa153c4ff2f27fe72ff73d2fbe6a26"
-  integrity sha512-d+tE+8FKLXioxemPnMnBOniMgmbCmAhBkP6EdOaJbqVpeRxfCfySMmg6EU9oruwnJbYpjx+IHTgheADqE8ruGA==
+react-hook-form@7.2.1:
+  version "7.2.1"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.2.1.tgz#99b3540dd2314499df12e9a53c70587ad63a806c"
+  integrity sha512-QopAubhVofqQrwlWLr9aK0DF8tNU8fnU8sJIlw1Tb3tGkEvP9yeaA+cx1hlxYni8xBswtHruL1WcDEa6CYQDow==
 
 react-is@16.13.1, react-is@^16.8.1:
   version "16.13.1"
