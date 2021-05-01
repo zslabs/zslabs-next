@@ -26,6 +26,13 @@ module.exports = {
     'react/no-unused-prop-types': 1,
     'react/react-in-jsx-scope': 'off',
     'react/require-default-props': 0,
+    'react/self-closing-comp': [
+      'error',
+      {
+        component: true,
+        html: false,
+      },
+    ],
     'prettier/prettier': 'error',
     // Next.js <Link> component doesn't play nice with anchor validation
     'jsx-a11y/anchor-is-valid': 0,
