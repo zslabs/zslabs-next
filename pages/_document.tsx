@@ -1,14 +1,24 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document'
+import Document, {
+  Html,
+  Head,
+  Main,
+  NextScript,
+  DocumentContext,
+  DocumentInitialProps,
+} from 'next/document'
 
 import Analytics from '~components/Analytics'
 
 class MyDocument extends Document {
-  static async getInitialProps(ctx) {
+  static async getInitialProps(
+    ctx: DocumentContext
+  ): Promise<DocumentInitialProps> {
     const initialProps = await Document.getInitialProps(ctx)
+
     return { ...initialProps }
   }
 
-  render() {
+  render(): JSX.Element {
     return (
       <Html lang="en">
         <Head>
@@ -17,7 +27,7 @@ class MyDocument extends Document {
             href="/fonts/Manrope.woff2"
             as="font"
             type="font/woff2"
-            crossOrigin
+            crossOrigin="anonymous"
           />
           <link rel="shortcut icon" href="/me.png" />
           <Analytics />
