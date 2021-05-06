@@ -16,7 +16,8 @@ class MyDocument extends Document {
             rel="preload"
             href="/fonts/Manrope.woff2"
             as="font"
-            crossOrigin="anonymous"
+            type="font/woff2"
+            crossOrigin
           />
           <link rel="shortcut icon" href="/me.png" />
           <Analytics />

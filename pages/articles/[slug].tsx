@@ -1,13 +1,12 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
 import NextImage from 'next/image'
-import renderToString from 'next-mdx-remote/render-to-string'
-import hydrate from 'next-mdx-remote/hydrate'
+import { serialize } from 'next-mdx-remote/serialize'
+import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { preToCodeBlock } from 'mdx-utils'
 import { CodePen, Tweet } from 'mdx-embed'
 import dayjs from 'dayjs'
 import { motion } from 'framer-motion'
 import clsx from 'clsx'
-import { MdxRemote } from 'next-mdx-remote/types'
 
 import { getAllPosts, getPostBySlug } from '~lib/api'
 import AutoLinkHeader from '~components/AutoLinkHeader'
@@ -73,7 +72,7 @@ const components = {
 
 interface PostProps {
   post: {
-    source: MdxRemote.Source
+    source: MDXRemoteSerializeResult
     title: string
     date: string
     dateModified?: string
@@ -83,8 +82,6 @@ interface PostProps {
 export default function Post({
   post: { source, title, date, dateModified },
 }: PostProps): React.ReactElement {
-  const content = hydrate(source, { components })
-
   return (
     <Section>
       <SEO title={title} />
@@ -119,7 +116,7 @@ export default function Post({
           animate={{ opacity: 1, y: 0 }}
           transition={spring}
         >
-          {content}
+          <MDXRemote {...source} components={components} />
         </Prose>
       </article>
       <ViewSource fixed path="articles/[slug].tsx" />
@@ -134,7 +131,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     includeContent: true,
   })
 
-  const mdxSource = await renderToString(post.content, { components })
+  const mdxSource = await serialize(post.content)
 
   return {
     props: {
