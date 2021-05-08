@@ -4,14 +4,9 @@ const colors = require('tailwindcss/colors')
 
 module.exports = {
   darkMode: 'class',
+  mode: 'jit',
   theme: {
-    filter: {
-      invert: 'invert(1)',
-    },
     extend: {
-      backdropFilter: {
-        blur: 'blur(5px)',
-      },
       backgroundSize: {
         '0/8': '0% 8px',
         '100/8': '100% 8px',
@@ -80,18 +75,5 @@ module.exports = {
       fontFace: false,
     },
   },
-  variants: {
-    filter: ['dark'],
-    extend: {
-      backgroundOpacity: ['dark'],
-      backgroundSize: ['hover'],
-      scale: ['group-hover'],
-      boxShadow: ['dark'],
-    },
-  },
-  plugins: [
-    require('tailwindcss-filters'),
-    require('@tailwindcss/forms'),
-    require('tailwind-gradient-mask-image'),
-  ],
+  plugins: [require('@tailwindcss/forms')],
 }

@@ -76,7 +76,7 @@ const OffCanvas: React.FC<OffCanvasProps> = ({
             animate="visible"
             exit="hidden"
             ref={offCanvasRef}
-            className="fixed inset-0 bg-gray-900 bg-opacity-75 z-50 pr-4 backdrop-blur"
+            className="fixed inset-0 bg-gray-900 bg-opacity-75 z-50 pr-4 backdrop-filter backdrop-blur-sm"
             {...rest}
           >
             <motion.aside

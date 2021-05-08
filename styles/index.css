@@ -52,4 +52,13 @@
     text-decoration: underline;
     text-decoration-skip-ink: auto;
   }
+
+  .gradient-mask-b-0\% {
+    mask-image: linear-gradient(180deg, #000 0, transparent);
+  }
+
+  /* Filter */
+  .filter-invert {
+    filter: invert(1);
+  }
 }
