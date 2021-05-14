@@ -1,5 +1,6 @@
 import * as React from 'react'
 import clsx from 'clsx'
+
 import type * as Polymorphic from '@reach/utils/polymorphic'
 
 const Section = React.forwardRef(
