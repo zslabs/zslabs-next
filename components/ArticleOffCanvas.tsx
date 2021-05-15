@@ -34,7 +34,7 @@ const ArticleOffCanvas: React.FC = () => {
           />
           Articles
         </SectionTitle>
-        <BubbleList>
+        <BubbleList className="mb-8">
           {posts.map((post) => (
             <BubbleListItem
               key={post.title}

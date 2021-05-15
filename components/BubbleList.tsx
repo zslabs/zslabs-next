@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import { motion } from 'framer-motion'
 
 import Badge from './Badge'
@@ -58,7 +59,11 @@ export const BubbleListItem: React.FC<BubbleListItemProps> = ({
   )
 }
 
-const BubbleList: React.FC = ({ children, ...rest }) => {
+const BubbleList: React.FC<{ className?: string }> = ({
+  children,
+  className,
+  ...rest
+}) => {
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -70,7 +75,7 @@ const BubbleList: React.FC = ({ children, ...rest }) => {
   }
 
   return (
-    <div className="relative" {...rest}>
+    <div className={clsx('relative', className)} {...rest}>
       <div className="absolute top-0 left-2 transform -translate-x-1/2 h-full z-10">
         <div className="w-2 h-2 bg-gray-900 dark:bg-gray-100 rounded-full absolute top-0 left-1/2 transform -translate-x-1/2" />
         <div className="h-full bg-gray-900 dark:bg-gray-100 w-0.5" />
