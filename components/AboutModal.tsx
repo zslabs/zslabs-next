@@ -62,12 +62,12 @@ const AboutModal: React.FC = () => {
         </div>
         <Prose>
           <p>
-            I create buttons, borders, and other groovy things at{' '}
-            <TextLink href="https://www.gremlin.com">Gremlin</TextLink>. I work
-            with techologies like{' '}
+            I'm part of the messaging team at{' '}
+            <TextLink href="https://www.slack.com">Slack</TextLink>. I work with
+            techologies like{' '}
             <TextLink href="https://reactjs.org">React</TextLink>,{' '}
-            <TextLink href="https://gatsbyjs.org">Gatsby</TextLink>,{' '}
-            <TextLink href="https://nextjs.org">Next.js</TextLink>, and{' '}
+            <TextLink href="https://nextjs.org">Next.js</TextLink>,{' '}
+            <TextLink href="https://gatsbyjs.org">Gatsby</TextLink>, and{' '}
             <TextLink href="https://nodejs.org">Node</TextLink>.{' '}
             <TextLink href="https://www.framer.com/motion/">
               Framer Motion
