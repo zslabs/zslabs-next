@@ -19,10 +19,11 @@ const AboutModal: React.FC = () => {
     <>
       <button
         type="button"
+        title="About me"
         className="block w-12 h-12 overflow-hidden rounded-full shadow-md transform duration-300 hover:scale-110 hover:shadow-lg focus:outline-none ease-bounce"
         onClick={toggle}
       >
-        <Image src="/me.png" width="48" height="48" />
+        <Image alt="Zach Schnackel" src="/me.png" width="48" height="48" />
       </button>
       <Modal open={open} setIsOpen={toggle}>
         <div className="rounded-full overflow-hidden w-24 h-24 shadow-lg mx-auto mb-8">
@@ -32,7 +33,10 @@ const AboutModal: React.FC = () => {
           Hi, I'm Zach
         </h3>
         <div className="grid gap-4 auto-cols-min grid-flow-col justify-center mb-8">
-          <TextLink href="https://twitter.com/zslabs">
+          <TextLink
+            title="View my Twitter profile"
+            href="https://twitter.com/zslabs"
+          >
             <Button
               as="div"
               iconOnly
@@ -41,7 +45,10 @@ const AboutModal: React.FC = () => {
               <TwitterSvg className="text-2xl" />
             </Button>
           </TextLink>
-          <TextLink href="https://github.com/zslabs">
+          <TextLink
+            title="View my GitHub profile"
+            href="https://github.com/zslabs"
+          >
             <Button
               as="div"
               iconOnly
@@ -50,7 +57,10 @@ const AboutModal: React.FC = () => {
               <GitHubSvg className="text-2xl" />
             </Button>
           </TextLink>
-          <TextLink href="https://codepen.com/zslabs">
+          <TextLink
+            title="View my CodePen profile"
+            href="https://codepen.com/zslabs"
+          >
             <Button
               as="div"
               iconOnly

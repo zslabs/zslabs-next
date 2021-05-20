@@ -116,6 +116,7 @@ const BaseLayout: React.FC = ({ children }) => {
           >
             <TextLink
               href="/"
+              title="ZS Labs"
               className="transform duration-300 hover:scale-110 ease-bounce block"
             >
               <LogoSvg className="h-12 from-indigo-700 to-blue-500 " />
@@ -178,17 +179,26 @@ const BaseLayout: React.FC = ({ children }) => {
                   </LinkUnderline>
                 </div>
                 <div>
-                  <TextLink href="https://list.zslabs.com">
+                  <TextLink
+                    title="List - eBay toolkit"
+                    href="https://list.zslabs.com"
+                  >
                     <ListLogoSvg className="text-lg" />
                   </TextLink>
                 </div>
                 <div>
-                  <TextLink href="https://twitter.com/zslabs">
+                  <TextLink
+                    title="View my Twitter profile"
+                    href="https://twitter.com/zslabs"
+                  >
                     <TwitterSvg className="text-lg" />
                   </TextLink>
                 </div>
                 <div>
-                  <TextLink href="https://github.com/zslabs">
+                  <TextLink
+                    title="View my GitHub profile"
+                    href="https://github.com/zslabs"
+                  >
                     <GitHubSvg className="text-lg" />
                   </TextLink>
                 </div>
