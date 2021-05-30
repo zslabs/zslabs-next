@@ -1,6 +1,7 @@
 /* eslint-disable global-require */
 const defaultTheme = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
+const plugin = require('tailwindcss/plugin')
 
 module.exports = {
   darkMode: 'class',
@@ -75,5 +76,25 @@ module.exports = {
       fontFace: false,
     },
   },
-  plugins: [require('@tailwindcss/forms')],
+  plugins: [
+    require('@tailwindcss/forms'),
+    plugin(({ addUtilities }) => {
+      const newUtilities = {
+        '.filter-invert': {
+          filter: 'invert(1)',
+        },
+
+        '.gradient-mask-b-0': {
+          'mask-image': 'linear-gradient(180deg, #000 0, transparent)',
+        },
+
+        '.underline': {
+          'text-decoration': 'underline',
+          'text-decoration-skip-ink': 'auto',
+        },
+      }
+
+      addUtilities(newUtilities)
+    }),
+  ],
 }

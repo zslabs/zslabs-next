@@ -100,7 +100,7 @@ const BaseLayout: React.FC = ({ children }) => {
   return (
     <>
       <div
-        className="absolute opacity-10 -z-1 top-0 left-0 w-full dark:filter-invert h-24 gradient-mask-b-0%"
+        className="absolute opacity-10 -z-1 top-0 left-0 w-full dark:filter-invert h-24 gradient-mask-b-0"
         style={{ backgroundImage: `url(${bubbles})` }}
       />
       <Container>
