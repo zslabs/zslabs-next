@@ -46,7 +46,7 @@ const TextLinkContentsIcon: React.FC<{ href: string; className?: string }> = ({
     )
   }
 
-  if (href.includes('gatsbyjs.org')) {
+  if (href.includes('gatsbyjs.org') || href.includes('gatsbyjs.com')) {
     return <GatsbySvg className={clsx(className)} />
   }
 
