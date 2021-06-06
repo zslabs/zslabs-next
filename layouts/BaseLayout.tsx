@@ -9,7 +9,7 @@ import {
 } from 'framer-motion'
 
 import { ReactComponent as LogoSvg } from '~media/logo.svg'
-import { ReactComponent as ListLogoSvg } from '~icons/list-logo.svg'
+import { ReactComponent as ListLogoSvg } from '~icons/logos/list.svg'
 import { ReactComponent as DarkSvg } from '~icons/dark.svg'
 import { ReactComponent as LightSvg } from '~icons/light.svg'
 import bubbles from '~media/bubbles.svg'
@@ -21,8 +21,8 @@ import AboutModal from '~components/AboutModal'
 import ArticleOffCanvas from '~components/ArticleOffCanvas'
 import useLayoutAnimationState from '~hooks/useLayoutAnimationState'
 import { spring } from '~helpers'
-import { ReactComponent as TwitterSvg } from '~icons/twitter.svg'
-import { ReactComponent as GitHubSvg } from '~icons/github.svg'
+import { ReactComponent as TwitterSvg } from '~icons/logos/twitter.svg'
+import { ReactComponent as GitHubSvg } from '~icons/logos/github.svg'
 
 interface HeaderItemWrapperProps {
   runAnimation: boolean

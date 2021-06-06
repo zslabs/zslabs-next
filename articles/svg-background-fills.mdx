@@ -45,8 +45,8 @@ Aside from the first; which I could deal with, not being able to modify the fill
 Within the function, we are:
 
 1. Escaping both the `@fill-default` and `@fill-new` values (you can write them as normal HEX values this way in your mixin call)
-1. Using the [`data-uri()`](http://lesscss.org/functions/#misc-functions-data-uri) function to grab the data-uri version of your SVG; also setting the MIME type appopriately.
-1. Using the [`replace()`](http://lesscss.org/functions/#string-functions-replace) function to substitute the default fill-color with your new color.
+1. Using the [data-uri()](http://lesscss.org/functions/#misc-functions-data-uri) function to grab the data-uri version of your SVG; also setting the MIME type appopriately.
+1. Using the [replace()](http://lesscss.org/functions/#string-functions-replace) function to substitute the default fill-color with your new color.
 1. Escaping the final data-uri and returning a `background-image` property with that value set.
 
 ##### Original
@@ -85,8 +85,8 @@ Depending on "how" you're using SVGs, you may be working with paths that do not 
 
 Within the function, we are:
 
-1. Using the [`data-uri()`](http://lesscss.org/functions/#misc-functions-data-uri) function to grab the data-uri version of your SVG; also setting the MIME type appopriately.
-2. Using the [`replace()`](http://lesscss.org/functions/#string-functions-replace) function to substitute `<path` with `<path fill="YOUR FILL COLOR"` with the optional `g` regex flag, which matches all cases.
+1. Using the [data-uri()](http://lesscss.org/functions/#misc-functions-data-uri) function to grab the data-uri version of your SVG; also setting the MIME type appopriately.
+2. Using the [replace()](http://lesscss.org/functions/#string-functions-replace) function to substitute `<path` with `<path fill="YOUR FILL COLOR"` with the optional `g` regex flag, which matches all cases.
 3. Escaping the final data-uri and returning a `background-image` property with that value set.
 
 ##### Original
@@ -128,8 +128,8 @@ This one involves an SVG that has multiple different fills that you want to be r
 
 Within the function, we are:
 
-1. Using the [`data-uri()`](http://lesscss.org/functions/#misc-functions-data-uri) function to grab the data-uri version of your SVG; also setting the MIME type appopriately.
-2. Using the [`replace()`](http://lesscss.org/functions/#string-functions-replace) function to substitute (the escaped version of) `fill="#HEX"` with `fill="#YOUR HEX"` with the optional `g` regex flag, which matches all cases.
+1. Using the [data-uri()](http://lesscss.org/functions/#misc-functions-data-uri) function to grab the data-uri version of your SVG; also setting the MIME type appopriately.
+2. Using the [replace()](http://lesscss.org/functions/#string-functions-replace) function to substitute (the escaped version of) `fill="#HEX"` with `fill="#YOUR HEX"` with the optional `g` regex flag, which matches all cases.
 3. Escaping the final data-uri and returning a `background-image` property with that value set.
 
 ##### Original

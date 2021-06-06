@@ -25,7 +25,7 @@ endwhile;
 
 By calling the above inside of `single.php`, we're able to create different "cases" for each post type. This cuts down on duplicating wrapper HTML. "Great - less files. But where's the output stored?" Elsewhere - because what we're doing here is laying down a foundation for our views, not outputting them. In my parent-theme, there is a separate `output.php` file that is used for this exact purpose. Let's take the above example a bit further.
 
-As mentioned, I was building a parent-theme; which means it isn't mean to be modified directly, but built on-top of. So where does that leave us with our `single.php` switch statements? The above example is pretty static. Although it gives us a bit more flexibility, any new custom post types we create are not included in this logic (and would ultimately fall-into the default case). That's where an extremely handy function called [`has_action`](http://codex.wordpress.org/Function_Reference/has_action) comes into play. By combining this check with our original case statement, we are able to create a pluggable switch statement:
+As mentioned, I was building a parent-theme; which means it isn't mean to be modified directly, but built on-top of. So where does that leave us with our `single.php` switch statements? The above example is pretty static. Although it gives us a bit more flexibility, any new custom post types we create are not included in this logic (and would ultimately fall-into the default case). That's where an extremely handy function called [has_action](http://codex.wordpress.org/Function_Reference/has_action) comes into play. By combining this check with our original case statement, we are able to create a pluggable switch statement:
 
 ```php
 while ( have_posts() ) : the_post();

@@ -14,9 +14,9 @@ Creating links in Markdown is fairly straightfoward:
 
 With the help of a few plugins, we're able to make these links do a bit more for us automagically:
 
-1. [`remark-external-links`](https://github.com/remarkjs/remark-external-links): Automatically adds `target` and `rel` attributes to external links.
-2. [`remark-relative-links`](https://github.com/zslabs/remark-relative-links): Rewrites absolute URLs to relative ones.
-3. [`gatsby-plugin-catch-links`](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-catch-links_): Intercepts local links and replaces their behavior with that of the `gatsby-link` [navigate](https://www.gatsbyjs.org/docs/gatsby-link/#how-to-use-the-navigate-helper-function).
+1. [remark-external-links](https://github.com/remarkjs/remark-external-links): Automatically adds `target` and `rel` attributes to external links.
+2. [remark-relative-links](https://github.com/zslabs/remark-relative-links): Rewrites absolute URLs to relative ones.
+3. [gatsby-plugin-catch-links](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-catch-links_): Intercepts local links and replaces their behavior with that of the `gatsby-link` [navigate](https://www.gatsbyjs.org/docs/gatsby-link/#how-to-use-the-navigate-helper-function).
 
 With MDX's ability to override normal DOM elements, I was able to encapsulate the logic from all three of these plugins into a handy snippet:
 

@@ -122,11 +122,11 @@ const Article = ({ frontmatter, html }) => (
 
 The upside to this method was that I could add as many remark plugins as needed - with the obvious downside being the bloat it would add to our bundle. The other downer was `gatsby-remark-*` plugins that may have additional logic inside of `gatsby-browser.js` and `gatsby-ssr.js` wouldn't be accessible in this component. This implementation was never ideal.
 
-With MDX thrown in the mix, [`@mdx-js/runtime`](https://mdxjs.com/advanced/runtime) was closer to a plugin 'n play solution, but with the downside of being quite large and not recommended for most usecases.
+With MDX thrown in the mix, [@mdx-js/runtime](https://mdxjs.com/advanced/runtime) was closer to a plugin 'n play solution, but with the downside of being quite large and not recommended for most usecases.
 
 ### The solution
 
-After struggling with a few different suggestions across the Gatsby community, I came across [a method](https://github.com/gatsbyjs/gatsby/issues/21789#issuecomment-592110650) that was straight-forward and easy to extend - enter [`createSchemaCustomization`](https://www.gatsbyjs.org/docs/node-apis/#createSchemaCustomization). This allows us to customize Gatsby’s GraphQL schema by creating type definitions, field extensions or adding third-party schemas.
+After struggling with a few different suggestions across the Gatsby community, I came across [a method](https://github.com/gatsbyjs/gatsby/issues/21789#issuecomment-592110650) that was straight-forward and easy to extend - enter [createSchemaCustomization](https://www.gatsbyjs.org/docs/node-apis/#createSchemaCustomization). This allows us to customize Gatsby’s GraphQL schema by creating type definitions, field extensions or adding third-party schemas.
 
 ```js filename=gatsby-node.js
 exports.createSchemaCustomization = ({
@@ -182,7 +182,7 @@ The above functionality does a few things:
 2. Funnels our type definitions down to our specific `items` frontmatter field.
 3. Assigns the newly created `mdx` field to our `value`; which is what we want transformed into MDX.
 
-When querying this data with Gatsby's built-in [`graphiql`](https://github.com/graphql/graphiql) tool, what's returned is the transformed body content, ready to be consumed by `<MDXRenderer />`.
+When querying this data with Gatsby's built-in [graphiql](https://github.com/graphql/graphiql) tool, what's returned is the transformed body content, ready to be consumed by `<MDXRenderer />`.
 
 ```js filename=Article.js
 import { MDXProvider } from '@mdx-js/react'

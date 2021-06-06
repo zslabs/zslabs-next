@@ -52,7 +52,7 @@ const components = {
   CodePen,
   Tweet,
   TextLink,
-  a: (props) => <TextLink {...props} />,
+  a: (props) => <TextLink includeIcon {...props} />,
   blockquote: (props) => <Blockquote {...props} />,
   h1: (props) => <AutoLinkHeader as="h1" {...props} />,
   h2: (props) => <AutoLinkHeader as="h2" {...props} />,
