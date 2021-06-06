@@ -6,6 +6,7 @@ import TextLink from './TextLink'
 import Button from './Button'
 import Prose from './Prose'
 
+import { ReactComponent as SlackSvg } from '~icons/slack.svg'
 import { ReactComponent as TwitterSvg } from '~icons/twitter.svg'
 import { ReactComponent as GitHubSvg } from '~icons/github.svg'
 import { ReactComponent as CodePenSvg } from '~icons/codepen.svg'
@@ -73,8 +74,13 @@ const AboutModal: React.FC = () => {
         <Prose>
           <p>
             I'm part of the messaging team at{' '}
-            <TextLink href="https://www.slack.com">Slack</TextLink>. I work with
-            techologies like{' '}
+            <TextLink href="https://www.slack.com">
+              <div className="inline-grid auto-cols-auto grid-flow-col gap-1 items-baseline leading-none">
+                <SlackSvg />
+                Slack
+              </div>
+            </TextLink>
+            . I work with techologies like{' '}
             <TextLink href="https://reactjs.org">React</TextLink>,{' '}
             <TextLink href="https://nextjs.org">Next.js</TextLink>,{' '}
             <TextLink href="https://gatsbyjs.org">Gatsby</TextLink>, and{' '}
