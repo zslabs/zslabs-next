@@ -8,6 +8,7 @@ import { ReactComponent as GitHubSvg } from '~icons/logos/github.svg'
 import { ReactComponent as NextJsSvg } from '~icons/logos/next.svg'
 import { ReactComponent as GatsbySvg } from '~icons/logos/gatsby.svg'
 import { ReactComponent as NetlifySvg } from '~icons/logos/netlify.svg'
+import { ReactComponent as TailwindSvg } from '~icons/logos/tailwind.svg'
 
 // Checks against absolute URLs that share 👇 so we can still pass it along to our internal link component
 const domainRegex = /http[s]*:\/\/[www.]*zslabs\.com[/]?/
@@ -51,6 +52,18 @@ const TextLinkContentsIcon: React.FC<{ href: string; className?: string }> = ({
 
   if (href.includes('netlify.com') || href.includes('netlifycms.org')) {
     return <NetlifySvg className={clsx(className)} />
+  }
+
+  if (href.includes('tailwindcss.com')) {
+    return <TailwindSvg className={clsx(className)} />
+  }
+
+  if (href.includes('vercel.com')) {
+    return (
+      <span className={clsx('text-gray-900 dark:text-gray-100', className)}>
+        ▲
+      </span>
+    )
   }
 
   return null
