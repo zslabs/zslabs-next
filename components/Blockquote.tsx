@@ -17,7 +17,7 @@ const Blockquote: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
       {...rest}
     >
       {children}
-      <div className="absolute top-0 left-0 transform -translate-x-1/2 -translate-y-1/2 p-2 rounded-full border-2 border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-800 ring-4 ring-gray-100 dark:ring-gray-800">
+      <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 p-2 rounded-full border-2 border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-800 ring-4 ring-gray-100 dark:ring-gray-800">
         <QuoteSvg />
       </div>
     </blockquote>

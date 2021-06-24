@@ -33,7 +33,7 @@ const ViewSource: React.FC<ViewSourceProps> = ({
         `https://github.com/zslabs/zslabs-next/blob/master/pages/${path}`
       }
       className={clsx(
-        'ring-2 ring-gray-300 dark:ring-gray-600 rounded-full bg-gray-300 dark:bg-gray-600 transform hover:scale-105 ease-bounce duration-300 text-gray-700 dark:text-gray-300',
+        'ring-2 ring-gray-300 dark:ring-gray-600 rounded-full bg-gray-300 dark:bg-gray-600 hover:scale-105 ease-bounce duration-300 text-gray-700 dark:text-gray-300',
         {
           'inline-block': !fixed,
           'fixed left-4 bottom-4 z-10 p-1 hidden md:inline-block': fixed,

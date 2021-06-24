@@ -139,7 +139,7 @@ const BaseLayout: React.FC = ({ children }) => {
             {mounted && (
               <button
                 title="Toggle dark mode"
-                className="focus:outline-none transform duration-300 hover:scale-110 ease-bounce"
+                className="focus:outline-none duration-300 hover:scale-110 ease-bounce"
                 type="button"
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
               >

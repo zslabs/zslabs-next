@@ -22,7 +22,7 @@ const Button: React.FC<ButtonProps & React.HTMLProps<HTMLButtonElement>> = ({
   return (
     <Component
       className={clsx(
-        'relative inline-block h-12 bg-gradient-to-br rounded-full text-gray-100 tracking-widest uppercase font-extrabold text-sm shadow-lg duration-300 ease-bounce transform hover:scale-105 ring-4 ring-opacity-10 focus:outline-none focus:ring-opacity-20',
+        'relative inline-block h-12 bg-gradient-to-br rounded-full text-gray-100 tracking-widest uppercase font-extrabold text-sm shadow-lg duration-300 ease-bounce hover:scale-105 ring-4 ring-opacity-10 focus:outline-none focus:ring-opacity-20',
         className,
         {
           'from-indigo-700 to-blue-500 ring-indigo-700':

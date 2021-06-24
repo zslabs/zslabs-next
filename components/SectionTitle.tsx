@@ -7,7 +7,7 @@ export const SectionTitleSkew: React.FC<React.HTMLProps<HTMLSpanElement>> = ({
   return (
     <span
       className={clsx(
-        '-z-1 absolute transform -translate-x-3 block bg-gradient-to-br w-8 h-8',
+        '-z-1 absolute -translate-x-3 block bg-gradient-to-br w-8 h-8',
         className
       )}
       {...rest}

@@ -76,7 +76,7 @@ const OffCanvas: React.FC<OffCanvasProps> = ({
             animate="visible"
             exit="hidden"
             ref={offCanvasRef}
-            className="fixed inset-0 bg-gray-900 bg-opacity-75 z-50 pr-4 backdrop-filter backdrop-blur-sm"
+            className="fixed inset-0 bg-gray-900 bg-opacity-75 z-50 pr-4 backdrop-blur-sm"
             {...rest}
           >
             <motion.aside
@@ -90,7 +90,7 @@ const OffCanvas: React.FC<OffCanvasProps> = ({
             >
               <button
                 type="button"
-                className="absolute right-8 top-8 inline-block duration-300 opacity-50 ease-bounce transform hover:scale-105 hover:opacity-100 text-2xl focus:outline-none"
+                className="absolute right-8 top-8 inline-block duration-300 opacity-50 ease-bounce hover:scale-105 hover:opacity-100 text-2xl focus:outline-none"
                 onClick={() => setIsOpen(false)}
               >
                 <CloseSvg />

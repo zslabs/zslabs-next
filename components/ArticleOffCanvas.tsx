@@ -17,7 +17,7 @@ const ArticleOffCanvas: React.FC = () => {
     <>
       <button
         type="button"
-        className="block transform duration-300 hover:scale-110 ease-bounce focus:outline-none"
+        className="block duration-300 hover:scale-110 ease-bounce focus:outline-none"
         onClick={toggle}
         title="View articles"
       >

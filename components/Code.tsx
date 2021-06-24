@@ -56,7 +56,7 @@ export default function Code({
                 <div className="absolute bottom-0 left-0 w-full bg-gradient-to-tr from-blue-500 to-indigo-700 h-0.5" />
               </div>
             )}
-            <div className="text-gray-400 absolute right-4 top-1/2 transform -translate-y-1/2">
+            <div className="text-gray-400 absolute right-4 top-1/2 -translate-y-1/2">
               {isCopied ? (
                 <ClipboardCheckSvg className="w-6 h-6" />
               ) : (
