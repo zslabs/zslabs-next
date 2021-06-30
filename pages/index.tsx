@@ -16,6 +16,7 @@ import useArticlesOffCanvasState from '~hooks/useArticlesOffCanvasState'
 import useLayoutAnimationState from '~hooks/useLayoutAnimationState'
 import { spring } from '~helpers'
 import ViewSource from '~components/ViewSource'
+import { getRssXml } from '~lib/rss'
 
 const RecentProjects: React.FC = () => {
   return (
@@ -281,6 +282,11 @@ export const getStaticProps: GetStaticProps = async () => {
       return true
     })
   }
+
+  // Generate RSS feed
+  const rss = getRssXml(allPosts)
+
+  fs.writeFileSync('./public/rss.xml', rss)
 
   return {
     props: {
