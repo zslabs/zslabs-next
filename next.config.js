@@ -1,12 +1,10 @@
 const path = require('path')
 
-const withPlugins = require('next-compose-plugins')
-const withFonts = require('next-fonts')
 const ESLintPlugin = require('eslint-webpack-plugin')
 
 const nextConfig = {
-  future: {
-    webpack5: true,
+  eslint: {
+    ignoreDuringBuilds: true,
   },
   webpack: (config, { dev }) => {
     if (dev) {
@@ -32,4 +30,4 @@ const nextConfig = {
   },
 }
 
-module.exports = withPlugins([withFonts], nextConfig)
+module.exports = nextConfig

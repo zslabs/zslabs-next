@@ -38,7 +38,7 @@ class MyDocument extends Document {
             href="/rss.xml"
           />
         </Head>
-        <body className="antialiased overflow-y-scroll font-medium text-gray-900 dark:text-gray-100 bg-gray-100 dark:bg-gray-800">
+        <body className="antialiased overflow-y-scroll overflow-x-hidden font-medium text-gray-900 dark:text-gray-100 bg-gray-100 dark:bg-gray-800">
           <Main />
           <NextScript />
         </body>
