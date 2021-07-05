@@ -227,7 +227,7 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
         transition={spring}
       >
         <TextLink
-          href={`/articles/${latestPost.slug}`}
+          href={`/articles/${latestPost.frontmatter.slug}`}
           className="relative py-6 px-10 text-center hover:scale-105 ease-bounce duration-300"
         >
           <div className="absolute -top-2 -left-2 w-full h-full -skew-x-12 z-0">
@@ -241,7 +241,9 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
           <div className="absolute inset-0 z-0 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 -skew-x-12 shadow rounded" />
           <div className="relative z-10 space-y-1">
             <div>🎉 Check out my latest article:</div>
-            <div className="font-extrabold text-lg">{latestPost.title}</div>
+            <div className="font-extrabold text-lg">
+              {latestPost.frontmatter.title}
+            </div>
           </div>
         </TextLink>
       </Section>

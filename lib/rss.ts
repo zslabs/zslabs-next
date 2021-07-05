@@ -11,17 +11,17 @@ const blogPostsRssXml = (
   posts.forEach((post) => {
     rssItemsXml += `
       <item>
-        <title><![CDATA[${post.title}]]></title>
-        <link>https://zslabs.com/articles/${post.slug}</link>
-        <pubDate>${new Date(post.date).toUTCString()}</pubDate>
+        <title><![CDATA[${post.frontmatter.title}]]></title>
+        <link>https://zslabs.com/articles/${post.frontmatter.slug}</link>
+        <pubDate>${new Date(post.frontmatter.date).toUTCString()}</pubDate>
         <guid isPermaLink="false">https://zslabs.com/articles/${
-          post.slug
+          post.frontmatter.slug
         }</guid>
       </item>`
   })
 
   return {
-    latestPostDate: new Date(posts[0].date).toUTCString(),
+    latestPostDate: new Date(posts[0].frontmatter.date).toUTCString(),
     rssItemsXml,
   }
 }

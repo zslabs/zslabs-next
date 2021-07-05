@@ -1,64 +1,82 @@
 import fs from 'fs'
 import path from 'path'
 
-import matter from 'gray-matter'
+import { bundleMDX } from 'mdx-bundler'
 
 const postsDirectory = path.join(process.cwd(), 'articles')
 
-export function getPostSlugs(): string[] {
-  return fs.readdirSync(postsDirectory)
+export function getFiles(folder: string): string[] {
+  return fs.readdirSync(folder)
 }
 
 export interface Post {
+  frontmatter: {
+    title: string
+    date: Date
+    dateModified?: Date
+    slug: string
+  }
   content?: string
-  date: Date
-  dateModified?: Date
-  slug: string
-  title: string
 }
 
-interface PostBySlugProps {
-  slug: string
-  fields?: string[]
-  includeContent?: boolean
+interface PostFile {
+  frontmatter: {
+    [key: string]: unknown
+  }
+  content?: string
 }
 
-export function getPostBySlug({
-  slug,
-  fields = [],
+/**
+ * Gets article contents
+ */
+export async function resolvePostFile({
+  post,
   includeContent,
-}: PostBySlugProps): Post {
-  const realSlug = slug.replace(/\.mdx$/, '')
-  const fullPath = path.join(postsDirectory, `${realSlug}.mdx`)
-  const fileContents = fs.readFileSync(fullPath, 'utf8')
-  const { data, content } = matter(fileContents)
+}: {
+  post: string
+  includeContent?: boolean
+}): Promise<PostFile> {
+  const fullPath = path.join(postsDirectory, post)
 
-  const returnObj = {
-    title: data.title,
-    date: data.date,
-    slug: realSlug,
-    ...(includeContent && { content }),
+  const fileContents = fs.readFileSync(fullPath, 'utf8')
+
+  const { code: content, frontmatter } = await bundleMDX(fileContents)
+
+  const resolvedFrontmatter = frontmatter.slug
+    ? frontmatter
+    : { ...frontmatter, slug: post.replace(/\.mdx$/, '') }
+
+  if (includeContent) {
+    return {
+      frontmatter: resolvedFrontmatter,
+      content,
+    }
   }
 
-  fields.forEach((field) => {
-    if (data[field]) {
-      returnObj[field] = data[field]
-    }
-  })
-
-  return returnObj
+  return {
+    frontmatter: resolvedFrontmatter,
+  }
 }
 
-export function getAllPosts(fields?: string[]): Post[] {
-  const slugs = getPostSlugs()
+export async function getAllPosts(includeContent?: boolean): Promise<Post[]> {
+  const files = getFiles(postsDirectory)
 
-  const posts = slugs
-    .map((slug) => getPostBySlug({ slug, fields }))
-    // Sort posts by date in descending order
-    .sort(
-      (post1: Post, post2: Post) =>
-        +new Date(post2.date) - +new Date(post1.date)
-    )
+  const posts = await Promise.all(
+    files.map(async (post) => resolvePostFile({ post, includeContent }))
+  )
 
-  return posts
+  posts.sort(
+    (post1: Post, post2: Post) =>
+      +new Date(post2.frontmatter.date) - +new Date(post1.frontmatter.date)
+  )
+
+  return posts as Post[]
+}
+
+export async function getPostBySlug({ slug }: { slug: string }): Promise<Post> {
+  const posts = await getAllPosts(true)
+
+  const matchedPost = posts.find((post) => post.frontmatter.slug === slug)
+
+  return matchedPost
 }

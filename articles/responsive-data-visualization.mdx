@@ -5,9 +5,9 @@ date: 2021/01/25
 
 When plotting data on the web, there's lots to consider for a consistent experience:
 
-* What type of graph is appropriate to differentiate the data?
-* Will my axis labels scale down on smaller screens?
-* Is the graphing library configurable enough to support customizations; while not introducing a technical-layer that is hard to scale in the future?
+- What type of graph is appropriate to differentiate the data?
+- Will my axis labels scale down on smaller screens?
+- Is the graphing library configurable enough to support customizations; while not introducing a technical-layer that is hard to scale in the future?
 
 For a recent project; I was tasked with replicating large sets of data, amongst numerous types of graphs - that needed to check-off each of the boxes above.
 
@@ -67,7 +67,7 @@ export function useMatchMedia(query) {
 By using `matchMedia` instead of a generic `resize` listener; we can update our view based on a singular, performant event.
 
 ```js filename=MyGraph.js
-import { ResponsiveBar } from "@nivo/bar"
+import { ResponsiveBar } from '@nivo/bar'
 
 import useMatchMedia from '~hooks/useMatchMedia'
 
@@ -86,9 +86,7 @@ export default function MyGraph() {
     ...(!isLargeScreen && { axisLeft: null }),
   }
 
-  return (
-    <ResponsiveBar {...graphProps} />
-  )
+  return <ResponsiveBar {...graphProps} />
 }
 ```
 
