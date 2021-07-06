@@ -1,3 +1,8 @@
+/**
+ * @SOURCE https://github.com/PaulieScanlon/mdx-embed/blob/main/packages/mdx-embed/src/components/general-observer/general-observer.tsx
+ * MIT License
+ * Copyright (c) 2020 Paul Scanlon
+ */
 import React from 'react'
 import { noop } from 'lodash'
 
