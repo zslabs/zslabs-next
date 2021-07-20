@@ -45,6 +45,7 @@
     "body-scroll-lock": "3.1.5",
     "clsx": "1.1.1",
     "dayjs": "1.10.6",
+    "esbuild": "0.12.15",
     "eslint": "7.31.0",
     "eslint-config-airbnb": "18.2.1",
     "eslint-config-prettier": "8.3.0",

@@ -37,6 +37,7 @@ const Tweet: React.FC<ITweetProps> = ({
           data-conversation={hideConversation ? 'none' : ''}
         >
           <a href={`https://twitter.com/${tweetLink}?ref_src=twsrc%5Etfw`}>
+            {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
             {typeof window !== 'undefined' && !(window as any).twttr
               ? 'Loading'
               : ''}
