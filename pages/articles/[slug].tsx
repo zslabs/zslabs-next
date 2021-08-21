@@ -21,7 +21,7 @@ export default function Post({
       <SEO title={frontmatter.title} />
 
       <article>
-        <ScrollIndicator className="fixed hidden md:block top-2 left-2 w-8 h-8 text-blue-500" />
+        <ScrollIndicator position="fixed" />
         <motion.header
           className="mb-8 md:mb-12"
           initial={{ opacity: 0, y: '-2rem' }}

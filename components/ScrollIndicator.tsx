@@ -5,8 +5,15 @@ import {
   useTransform,
   useViewportScroll,
 } from 'framer-motion'
+import clsx from 'clsx'
 
-const ScrollIndicator: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
+interface ScrollIndicatorProps {
+  position?: 'fixed'
+}
+
+const ScrollIndicator: React.FC<
+  React.SVGProps<SVGSVGElement> & ScrollIndicatorProps
+> = ({ position, ...rest }) => {
   const [isComplete, setIsComplete] = React.useState(false)
   const { scrollYProgress } = useViewportScroll()
   const yRange = useTransform(scrollYProgress, [0, 0.9], [0, 1])
@@ -15,7 +22,14 @@ const ScrollIndicator: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   React.useEffect(() => yRange.onChange((v) => setIsComplete(v >= 1)), [yRange])
 
   return (
-    <svg viewBox="0 0 60 60" {...props}>
+    <svg
+      viewBox="0 0 60 60"
+      className={clsx({
+        'fixed hidden md:block top-2 left-2 w-8 h-8 text-blue-500':
+          position === 'fixed',
+      })}
+      {...rest}
+    >
       <motion.path
         fill="none"
         strokeWidth="5"
