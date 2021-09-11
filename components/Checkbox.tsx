@@ -14,7 +14,7 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
           <input
             ref={ref}
             type="checkbox"
-            className="rounded border-2 border-gray-300 h-5 w-5"
+            className="rounded-lg border-2 border-gray-300 h-5 w-5"
             {...rest}
           />
           <span>{label}</span>

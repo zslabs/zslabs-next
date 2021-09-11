@@ -14,7 +14,7 @@ const FormLabel: React.FC<
 > = ({ children, required, hasError, ...rest }) => {
   return (
     <label
-      className="font-bold mb-2 items-center gap-2 grid grid-flow-col justify-start auto-cols-auto cursor-default"
+      className="font-extrabold mb-2 items-center gap-2 grid grid-flow-col justify-start auto-cols-auto cursor-default"
       {...rest}
     >
       {children}

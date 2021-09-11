@@ -95,7 +95,7 @@
   }
 
   & code {
-    @apply text-sm md:text-base px-1 py-0.5 rounded-sm bg-gray-200;
+    @apply text-sm md:text-base px-1 py-0.5 rounded-lg bg-gray-200;
   }
 
   /* Revert any elements with custom classes to their base styles; most likely is a React component */
