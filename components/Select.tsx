@@ -22,7 +22,7 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
           <ControlLabel>{label}</ControlLabel>
           <select
             ref={ref}
-            className="bg-transparent border-none focus:outline-none h-12 w-full pt-4 pb-0 px-2 focus:text-gray-900 rounded-lg"
+            className="bg-transparent border-none focus:outline-none h-12 w-full pt-4 pb-0 pl-2 focus:text-gray-900 rounded-lg"
             {...rest}
           />
         </ControlWrapper>

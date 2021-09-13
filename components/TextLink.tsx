@@ -34,14 +34,6 @@ const TextLinkContentsIcon: React.FC<{ href: string; className?: string }> = ({
     )
   }
 
-  if (href.includes('vercel.com')) {
-    return (
-      <span className={clsx('text-gray-900 dark:text-gray-100', className)}>
-        ▲
-      </span>
-    )
-  }
-
   return null
 }
 

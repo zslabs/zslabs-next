@@ -30,11 +30,17 @@ const RecentProjects: React.FC = () => {
       </SectionTitle>
       <BubbleList>
         <BubbleListItem title="List" link="https://list.zslabs.com/">
-          The best experience for monitoring activity on multiple eBay multiple
-          search terms.
+          The best experience for monitoring activity on multiple eBay search
+          terms.
         </BubbleListItem>
         <BubbleListItem title="Sold" link="https://sold.zslabs.com/">
-          eBay toolkit for gauging market-prices and trends.
+          Toolkit for gauging market-prices and trends on eBay.
+        </BubbleListItem>
+        <BubbleListItem
+          title="Saos Capital"
+          link="https://www.saoscapital.com/"
+        >
+          Financial planning and advisory services to the stars.
         </BubbleListItem>
         <BubbleListItem title="ChaosKit" link="https://chaoskit.netlify.app/">
           A lightweight and modular front-end framework for developing fast and
@@ -46,12 +52,6 @@ const RecentProjects: React.FC = () => {
         </BubbleListItem>
         <BubbleListItem title="Gremlin" link="https://www.gremlin.com/">
           Marketing site for Chaos.
-        </BubbleListItem>
-        <BubbleListItem
-          title="Saos Capital"
-          link="https://www.saoscapital.com/"
-        >
-          Financial planning and advisory services to the stars.
         </BubbleListItem>
       </BubbleList>
     </div>

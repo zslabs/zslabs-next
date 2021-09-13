@@ -36,7 +36,7 @@ export default function MyApp({
   pageProps,
 }: AppProps): React.ReactElement {
   return (
-    <ThemeProvider attribute="class">
+    <ThemeProvider attribute="class" defaultTheme="light">
       <DefaultSeo {...SEO} />
       <BaseLayout>
         <Component {...pageProps} />
