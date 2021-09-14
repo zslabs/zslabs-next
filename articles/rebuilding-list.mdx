@@ -1,0 +1,54 @@
+---
+title: Rebuilding List
+date: 2021/09/13
+---
+
+As a frequent-user of eBay, [List](https://list.zslabs.com) has become an essential part of my buying experience. It felt great to not only build something for myself, but also recieve all the great feedback since its initial launch.
+
+That being said, there were a number of parts about List that had begun to feel a bit stale. Personal projects like these are always a great way to try new things, but when a project lacks the attention it deserves, it can make updates a bit harder to manage as time goes on. I decided to rebuild List from the ground-up, and am excited to share some of the decisions behind-the-scenes:
+
+<TextLink href="https://list.zslabs.com">
+  <Image src="/uploads/list-updated.png" width="1000" height="711" />
+</TextLink>
+
+### Framework
+
+With absolutely no shade thrown, `create-react-app` just wasn't part of my day-to-day. [Next.js](https://nextjs.org/) continues to be a solid foundation for a variety of applications; [this website](https://github.com/zslabs/zslabs-next) being one of them, and List being a natural fit as well. Even though List currently uses a client-side lookup via `localStorage` for data, all of the other built-ins were too good to pass up.
+
+As always, List is hosted on [Vercel](https://vercel.com) - which continues to be a great option for my applications.
+
+### Data-fetching
+
+With [axios](https://github.com/axios/axios) powering the previous version, it wasn't until I gave [SWR](https://swr.vercel.app/) a shot that I realized all of what I was missing: built-in cache and request deduplication, TS support, revalidation on focus, seamless polling, and more. I really did have several, "oh, I don't need to think about this", moments throughout; which made me love this library even more.
+
+```ts
+const { data, error } = useSWR<{ results: Result[]; message?: string }>(
+  ['/api/search', term, sort, buyingOption],
+  fetcher,
+  { refreshInterval: 60000 } // Refresh every minute
+)
+```
+
+### Global store
+
+Although this one did remain consistent from the last version, I took advantage of a [zustand](https://github.com/pmndrs/zustand) feature I somehow overlooked the first time - by enabling their [persist middleware](https://github.com/pmndrs/zustand#persist-middleware) to provide even better integration with `localStorage` than what I was doing manually before.
+
+### Styling
+
+I've written a bit about why I've really enjoyed using [Tailwind](https://tailwindcss.com) in my [revamp post](/articles/revamp-v3), and rebuilding List provided another opportunity to let it shine. List now has dark mode, an even smaller bundle-size, and smart-components that allow me to handle any variation I need.
+
+### API
+
+While the other items in the list were "technically" perfectly-fine as-is, the catalyst to this project was a notification from eBay that they were deprecating an API I depended on for this project. Luckily, [@hendt/ebay-api](https://github.com/hendt/ebay-api) is a fantastic, TS-ready solution that made authorizing and fetching data, a breeze.
+
+### Focused featureset
+
+There's been features I initially added into List, that later felt more appopriate to live on their own. One of them was analyzing sold data - which later become [Sold](https://sold.zslabs.com).
+
+In this version, I decided to focus on making the search experience even more powerful, by introducing **Collections** - which is the ability to group searches under a common-theme. For my usecase, separating out Football, Basketball, and Dragon Ball Z listings was previously a bit messy. Now, I can separate out these searches more easily.
+
+<Image src="/uploads/list-collections.png" width="500" height="585" />
+
+### More on the way
+
+Doing this rebuild has spurred a ton of additional ideas I have for List; including authentication for persistence across devices and additional search filters. Excited to hear everyone's feedback!
