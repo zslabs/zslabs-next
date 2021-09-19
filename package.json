@@ -54,6 +54,7 @@
     "eslint-plugin-prettier": "4.0.0",
     "eslint-plugin-react": "7.25.1",
     "eslint-plugin-react-hooks": "4.2.0",
+    "eslint-plugin-tailwindcss": "1.14.3",
     "eslint-webpack-plugin": "3.0.1",
     "framer-motion": "4.1.17",
     "lodash": "4.17.21",
