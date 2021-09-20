@@ -27,7 +27,7 @@ const Experience: NextPage<ExperienceProps> = ({ data }) => {
           <SectionTitleSkew
             className="from-indigo-200 to-purple-700"
             style={{
-              clipPath: 'polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)',
+              clipPath: 'polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)', // stylelint-disable
             }}
           />
           Experience

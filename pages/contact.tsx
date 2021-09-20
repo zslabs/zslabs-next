@@ -16,19 +16,14 @@ import Prose from '~components/Prose'
 import SEO from '~components/SEO'
 import ViewSource from '~components/ViewSource'
 
-const schema = yup.object().shape({
-  __gotcha: yup.string().max(0),
+const schema = yup.object({
+  _gotcha: yup.string().max(0),
   name: yup.string().required().trim().label('Name'),
   email: yup.string().required().email().trim().label('Email'),
   message: yup.string().required().trim().label('Message'),
 })
 
-type FormValues = {
-  _gotcha?: string
-  name: string
-  email: string
-  message: string
-}
+type FormValues = yup.InferType<typeof schema>
 
 const ContactForm: React.FC = () => {
   const {
@@ -125,7 +120,7 @@ const Contact: NextPage = () => {
           className="from-green-200 to-green-700"
           style={{
             clipPath:
-              'polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%)',
+              'polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%)', // stylelint-disable
           }}
         />
         Contact
