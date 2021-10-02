@@ -78,6 +78,7 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/forms'),
+    require('@tailwindcss/line-clamp'),
     plugin(({ addUtilities }) => {
       const newUtilities = {
         '.filter-invert': {

@@ -2,19 +2,22 @@
 import * as React from 'react'
 
 import { ReactComponent as AsteriskSvg } from '~icons/asterisk.svg'
-import { ReactComponent as ExclamationTriangleSvg } from '~icons/exclamation-triangle.svg'
+import { ReactComponent as ExclamationCircleSvg } from '~icons/exclamation-circle.svg'
 
-interface FormLabelProps {
-  required: boolean
-  hasError: boolean
+interface FormLabelProps extends React.ComponentPropsWithoutRef<'label'> {
+  required?: boolean
+  hasError?: boolean
 }
 
-const FormLabel: React.FC<
-  React.ReactHTMLElement<HTMLLabelElement> & FormLabelProps
-> = ({ children, required, hasError, ...rest }) => {
+const FormLabel: React.FC<FormLabelProps> = ({
+  children,
+  required,
+  hasError,
+  ...rest
+}) => {
   return (
     <label
-      className="font-extrabold mb-2 items-center gap-2 grid grid-flow-col justify-start auto-cols-auto cursor-default"
+      className="line-clamp-1 font-extrabold mb-1 items-center gap-2 grid grid-flow-col justify-start auto-cols-auto cursor-default"
       {...rest}
     >
       {children}
@@ -22,7 +25,7 @@ const FormLabel: React.FC<
         <AsteriskSvg className="text-red-500 dark:text-gray-400" />
       )}
       {hasError && (
-        <ExclamationTriangleSvg className="text-red-500 dark:text-gray-400" />
+        <ExclamationCircleSvg className="text-red-500 dark:text-gray-400" />
       )}
     </label>
   )

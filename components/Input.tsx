@@ -1,40 +1,54 @@
+import clsx from 'clsx'
 import * as React from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
-import ControlLabel from './ControlLabel'
+import FormLabel from './FormLabel'
 import ControlWrapper from './ControlWrapper'
 import FormFooter from './FormFooter'
 
-interface InputProps {
-  className?: string
-  label: string
+interface InputProps extends React.ComponentPropsWithoutRef<'input'> {
+  label?: string
   explanationMessage?: string
   validationMessage?: string
-  name: string
-  required: boolean
-  type?: string
+  prefixIcon?: React.ReactNode
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
     {
-      className,
       label,
       explanationMessage,
       validationMessage,
-      required,
+      name,
+      prefixIcon,
       type = 'string',
       ...rest
     },
     ref
   ) => {
+    const id = React.useMemo(() => `${name}-${uuidv4()}`, [name])
+
     return (
-      <div className={className}>
-        <ControlWrapper required={required}>
-          <ControlLabel>{label}</ControlLabel>
+      <div>
+        {label && <FormLabel htmlFor={id}>{label}</FormLabel>}
+        <ControlWrapper>
+          {prefixIcon && (
+            <div className="absolute z-10 left-3 top-1/2 -translate-y-1/2">
+              {prefixIcon}
+            </div>
+          )}
           <input
             ref={ref}
-            className="bg-transparent border-none focus:outline-none focus:ring-0 h-12 pt-4 pb-0 px-2 w-full text-gray-900 dark:text-gray-100 leading-none rounded-lg"
+            className={clsx(
+              'bg-transparent border-none focus:outline-none focus:ring-0 h-10 pr-4 w-full text-gray-900 dark:text-gray-100 leading-none rounded-lg',
+              {
+                'pl-10': prefixIcon,
+                'pl-4': !prefixIcon,
+              }
+            )}
             type={type}
+            id={id}
+            name={name}
             {...rest}
           />
         </ControlWrapper>
