@@ -119,7 +119,7 @@ const BaseLayout: React.FC = ({ children }) => {
               title="ZS Labs"
               className="transform duration-300 hover:scale-110 ease-bounce block"
             >
-              <LogoSvg className="h-12 from-indigo-700 to-blue-500 " />
+              <LogoSvg className="h-12 from-blue-500 to-blue-600 drop-shadow-md" />
             </TextLink>
           </HeaderItemWrapper>
           <HeaderItemWrapper

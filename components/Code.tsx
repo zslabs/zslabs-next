@@ -38,7 +38,7 @@ export default function Code({
       {({ className, tokens, getLineProps, getTokenProps }) => (
         <aside
           className={clsx(
-            'relative bg-gray-800 font-mono rounded-lg overflow-hidden ring-4 ring-gray-900 dark:ring-gray-600 ring-opacity-25',
+            'relative bg-gray-800 font-mono rounded-lg overflow-hidden ring-4 ring-gray-900 dark:ring-gray-600 ring-opacity-25 tracking-normal',
             wrapperClassName
           )}
         >
