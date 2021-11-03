@@ -11,28 +11,28 @@ import SEO from '~components/SEO'
 import ViewSource from '~components/ViewSource'
 import MDXContent from '~components/MDXContent'
 
-interface PrivacyPolicyProps {
+interface PrivacyProps {
   content?: string
 }
 
-const PrivacyPolicy: NextPage<PrivacyPolicyProps> = ({ content }) => {
+const Privacy: NextPage<PrivacyProps> = ({ content }) => {
   return (
     <>
-      <SEO title="Privacy policy" />
+      <SEO title="Privacy" />
       <Section>
-        <SectionTitle className="text-center">Privacy policy</SectionTitle>
+        <SectionTitle className="text-center">Privacy</SectionTitle>
         <MDXContent content={content} />
       </Section>
-      <ViewSource fixed path="privacy-policy.tsx" />
+      <ViewSource fixed path="privacy.tsx" />
     </>
   )
 }
 
-export default PrivacyPolicy
+export default Privacy
 
 export const getStaticProps: GetStaticProps = async () => {
   const dataDirectory = path.join(process.cwd(), 'data')
-  const filePath = path.join(dataDirectory, 'privacy-policy.mdx')
+  const filePath = path.join(dataDirectory, 'privacy.mdx')
   const fileContents = fs.readFileSync(filePath, 'utf8')
 
   const { code: content } = await bundleMDX(fileContents)
