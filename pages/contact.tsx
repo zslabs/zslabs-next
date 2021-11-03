@@ -120,7 +120,7 @@ const Contact: NextPage = () => {
           className="from-green-200 to-green-700"
           style={{
             clipPath:
-              'polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%)', // stylelint-disable
+              'polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%)',
           }}
         />
         Contact

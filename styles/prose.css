@@ -107,7 +107,6 @@
 
 /* @NOTE Workaround for some screwy PostCSS and dark mode styles inside of prose */
 
-/* stylelint-disable no-duplicate-selectors */
 .prose a:not([class]) {
   @apply dark:from-gray-600 dark:to-gray-600 dark:text-gray-100;
 }
@@ -123,4 +122,3 @@
 .prose code {
   @apply dark:bg-gray-700;
 }
-/* stylelint-enable no-duplicate-selectors */

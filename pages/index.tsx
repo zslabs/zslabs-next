@@ -25,7 +25,7 @@ const RecentProjects: React.FC = () => {
         <SectionTitleSkew
           className="from-orange-400 to-pink-600"
           style={{
-            clipPath: 'polygon(0 100%, 0 0, 100% 0)', // stylelint-disable
+            clipPath: 'polygon(0 100%, 0 0, 100% 0)',
           }}
         />
         Recent projects
