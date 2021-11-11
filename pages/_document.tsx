@@ -29,7 +29,7 @@ class MyDocument extends Document {
             type="font/ttf"
             crossOrigin="anonymous"
           />
-          <link rel="shortcut icon" href="/me.png" />
+          <link rel="icon" href="/me.png" />
           <Analytics />
           <link
             rel="alternate"

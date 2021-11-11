@@ -34,6 +34,8 @@ module.exports = {
     'react/no-unused-prop-types': 1,
     'react/react-in-jsx-scope': 'off',
     'react/require-default-props': 0,
+    'react/function-component-definition': 0,
+    'react/jsx-no-useless-fragment': 0,
     // 'react/forbid-component-props': ['error', { forbid: ['className'] }],
     'react/self-closing-comp': [
       'error',
@@ -88,6 +90,8 @@ module.exports = {
         'react/no-unused-prop-types': 1,
         'react/react-in-jsx-scope': 'off',
         'react/require-default-props': 0,
+        'react/function-component-definition': 0,
+        'react/jsx-no-useless-fragment': 0,
         // 'react/forbid-component-props': ['error', { forbid: ['className'] }],
         'prettier/prettier': 'error',
         // Next.js <Link> component doesn't play nice with anchor validation
