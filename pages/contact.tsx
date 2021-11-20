@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as yup from 'yup'
-import { yupResolver } from '@hookform/resolvers/yup'
+import { yupResolver } from '@hookform/resolvers/yup/dist/yup'
 import { useForm } from 'react-hook-form'
 import to from 'await-to-js'
 import axios from 'redaxios'

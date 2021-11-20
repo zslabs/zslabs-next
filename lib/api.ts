@@ -38,9 +38,9 @@ export async function resolvePostFile({
 }): Promise<PostFile> {
   const fullPath = path.join(postsDirectory, post)
 
-  const fileContents = fs.readFileSync(fullPath, 'utf8')
-
-  const { code: content, frontmatter } = await bundleMDX(fileContents)
+  const { code: content, frontmatter } = await bundleMDX({
+    file: fullPath,
+  })
 
   const resolvedFrontmatter = frontmatter.slug
     ? frontmatter

@@ -1,5 +1,4 @@
 import path from 'path'
-import fs from 'fs'
 
 import * as React from 'react'
 import { GetStaticProps, NextPage } from 'next'
@@ -33,9 +32,8 @@ export default Terms
 export const getStaticProps: GetStaticProps = async () => {
   const dataDirectory = path.join(process.cwd(), 'data')
   const filePath = path.join(dataDirectory, 'terms.mdx')
-  const fileContents = fs.readFileSync(filePath, 'utf8')
 
-  const { code: content } = await bundleMDX(fileContents)
+  const { code: content } = await bundleMDX({ file: filePath })
 
   return {
     props: {
