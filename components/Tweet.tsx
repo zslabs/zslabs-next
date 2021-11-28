@@ -31,7 +31,6 @@ const Tweet: React.FC<ITweetProps> = ({
     <GeneralObserver>
       <div data-testid="twitter-tweet" style={{ overflow: 'auto' }}>
         <blockquote
-          className="twitter-tweet"
           data-theme={theme}
           data-align={align}
           data-conversation={hideConversation ? 'none' : ''}

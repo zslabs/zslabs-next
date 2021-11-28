@@ -9,9 +9,9 @@ module.exports = {
   theme: {
     extend: {
       backgroundSize: {
-        '0/8': '0% 8px',
-        '100/8': '100% 8px',
-        'auto/8': 'auto 8px',
+        '0/6': '0% 6px',
+        '100/6': '100% 6px',
+        'auto/6': 'auto 6px',
       },
       borderColor: {
         current: 'currentColor',

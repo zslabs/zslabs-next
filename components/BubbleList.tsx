@@ -31,10 +31,10 @@ export const BubbleListItem: React.FC<BubbleListItemProps> = ({
   return (
     <motion.div
       variants={item}
-      className="relative z-20 grid grid-flow-col auto-cols-auto gap-6 items-center justify-start group"
+      className="relative z-20 grid grid-flow-col auto-cols-auto gap-5 justify-start group"
       {...rest}
     >
-      <div className="w-4 h-4 ring-4 ring-gray-100 dark:ring-gray-800 border-2 border-gray-900 dark:border-gray-100 rounded-full bg-gray-100 dark:bg-gray-800 group-hover:bg-gray-900 dark:group-hover:bg-gray-100 duration-300 ease-bounce group-hover:scale-125" />
+      <div className="w-4 h-4 ring-2 ring-gray-900 dark:ring-gray-100 border-2 border-gray-100 dark:border-gray-800 rounded-full bg-gray-900 dark:bg-gray-100 duration-300 ease-bounce group-hover:scale-125 mt-2.5" />
       <div className="space-y-1">
         <div className="grid items-center grid-flow-col auto-cols-auto gap-4">
           <h3 className="font-extrabold text-2xl">
@@ -77,9 +77,7 @@ const BubbleList: React.FC<{ className?: string }> = ({
   return (
     <div className={clsx('relative', className)} {...rest}>
       <div className="absolute top-0 left-2 -translate-x-1/2 h-full z-10">
-        <div className="w-2 h-2 bg-gray-900 dark:bg-gray-100 rounded-full absolute top-0 left-1/2 -translate-x-1/2" />
-        <div className="h-full bg-gray-900 dark:bg-gray-100 w-0.5" />
-        <div className="w-2 h-2 bg-gray-900 dark:bg-gray-100 rounded-full absolute bottom-0 left-1/2 -translate-x-1/2" />
+        <div className="h-full bg-gray-900 dark:bg-gray-100 w-1 rounded-full" />
       </div>
       <motion.div
         className="grid grid-cols-1 gap-8 py-8"

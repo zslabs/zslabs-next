@@ -251,7 +251,7 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
       </Section>
       <Section className="grid grid-cols-1 md:grid-cols-3/4 gap-8 md:gap-16 justify-center relative">
         <span
-          className="dark:filter-invert absolute top-0 bottom-0 w-screen left-1/2 right-1/2 -mx-1/2-screen -z-1 opacity-5 bg-auto/8"
+          className="dark:filter-invert absolute top-0 bottom-0 w-screen left-1/2 right-1/2 -mx-1/2-screen -z-1 opacity-5 bg-auto/6"
           style={{ backgroundImage: `url(${dots})` }}
         />
         <motion.div
