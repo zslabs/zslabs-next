@@ -7,7 +7,7 @@ import { GetStaticProps, NextPage } from 'next'
 import BubbleList, { BubbleListItem } from '~components/BubbleList'
 import Button from '~components/Button'
 import Section from '~components/Section'
-import SectionTitle, { SectionTitleSkew } from '~components/SectionTitle'
+import SectionTitle from '~components/SectionTitle'
 import TextLink from '~components/TextLink'
 import diagonalLines from '~media/diagonal-lines.svg'
 import dots from '~media/dots.svg'
@@ -21,15 +21,7 @@ import { getRssXml } from '~lib/rss'
 const RecentProjects: React.FC = () => {
   return (
     <div>
-      <SectionTitle className="grid place-items-center">
-        <SectionTitleSkew
-          className="from-orange-400 to-pink-600"
-          style={{
-            clipPath: 'polygon(0 100%, 0 0, 100% 0)',
-          }}
-        />
-        Recent projects
-      </SectionTitle>
+      <SectionTitle title="Recent projects" />
       <BubbleList>
         <BubbleListItem title="List" link="https://list.zslabs.com/">
           The best experience for monitoring activity on multiple eBay search

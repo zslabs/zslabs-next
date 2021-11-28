@@ -53,7 +53,7 @@ export const BubbleListItem: React.FC<BubbleListItemProps> = ({
           )}
         </div>
         {sub && <div className="text-gray-500 dark:text-gray-400">{sub}</div>}
-        {children && <div className="md:text-lg">{children}</div>}
+        {children && <div className="text-lg">{children}</div>}
       </div>
     </motion.div>
   )

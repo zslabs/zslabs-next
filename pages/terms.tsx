@@ -19,7 +19,7 @@ const Terms: NextPage<TermsProps> = ({ content }) => {
     <>
       <SEO title="Terms" />
       <Section>
-        <SectionTitle className="text-center">Terms</SectionTitle>
+        <SectionTitle title="Terms" />
         <MDXContent content={content} />
       </Section>
       <ViewSource fixed path="terms.tsx" />

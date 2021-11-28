@@ -1,29 +1,49 @@
 import clsx from 'clsx'
+import { useMemo } from 'react'
 
-export const SectionTitleSkew: React.FC<React.HTMLProps<HTMLSpanElement>> = ({
-  className,
-  ...rest
-}) => {
-  return (
-    <span
-      className={clsx(
-        '-z-1 absolute -translate-x-3 block bg-gradient-to-br w-8 h-8',
-        className
-      )}
-      {...rest}
-    />
-  )
+interface SectionTitle extends React.HTMLAttributes<HTMLDivElement> {
+  title: string
+  firstLetterClassName?: string
 }
 
-const SectionTitle: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
-  children,
+export const TitleSkew: React.FC<SectionTitle> = ({
+  title,
+  firstLetterClassName = 'before:to-gray-300',
+}) => {
+  const titleRender = useMemo(
+    () =>
+      Array.from(title).map((character, index) => {
+        const key = `${character}-${index}`
+
+        if (index !== 0) {
+          return character
+        }
+
+        return (
+          <span
+            key={key}
+            className={`relative before:inset-0 before:absolute before:bg-gradient-to-br before:from-gray-100 ${firstLetterClassName} dark:before:from-gray-800 dark:before:to-gray-700 before:-z-1 before:-mx-2 before:rounded-lg before:skew-x-8`}
+          >
+            {character.trim().length > 0 ? character : '\u00a0'}
+          </span>
+        )
+      }),
+    [title, firstLetterClassName]
+  )
+
+  return <>{titleRender}</>
+}
+
+const SectionTitle: React.FC<SectionTitle> = ({
+  title,
   className,
+  firstLetterClassName = 'before:to-gray-300',
   ...rest
 }) => {
   return (
-    <div className={clsx('mb-12', className)}>
+    <div className={clsx('mb-12 grid place-content-center', className)}>
       <h2 className="relative text-4xl md:text-5xl font-extrabold" {...rest}>
-        {children}
+        <TitleSkew title={title} firstLetterClassName={firstLetterClassName} />
       </h2>
     </div>
   )

@@ -54,6 +54,9 @@ module.exports = {
       letterSpacing: {
         tight: '-.0125em',
       },
+      skew: {
+        8: '8deg',
+      },
       transitionProperty: {
         'background-size': 'background-size',
       },

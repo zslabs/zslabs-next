@@ -2,7 +2,7 @@ import * as React from 'react'
 import dayjs from 'dayjs'
 
 import OffCanvas from './OffCanvas'
-import SectionTitle, { SectionTitleSkew } from './SectionTitle'
+import SectionTitle from './SectionTitle'
 import BubbleList, { BubbleListItem } from './BubbleList'
 
 import useArticlesOffCanvasState from '~hooks/useArticlesOffCanvasState'
@@ -24,27 +24,23 @@ const ArticleOffCanvas: React.FC = () => {
         <MenuSvg className="h-10 w-10 stroke-1.5" />
       </button>
       <OffCanvas open={open} setIsOpen={toggle}>
-        <SectionTitle className="mt-12">
-          <SectionTitleSkew
-            className="from-green-400 to-cyan-500 ring-green-400"
-            style={{
-              clipPath:
-                'polygon(0% 0%, 0% 100%, 25% 100%, 25% 25%, 75% 25%, 75% 75%, 25% 75%, 25% 100%, 100% 100%, 100% 0%)',
-            }}
+        <div className="mt-12">
+          <SectionTitle
+            title="Articles"
+            firstLetterClassName="before:to-blue-200"
           />
-          Articles
-        </SectionTitle>
-        <BubbleList className="mb-8">
-          {posts.map((post) => (
-            <BubbleListItem
-              key={post.frontmatter.title}
-              title={post.frontmatter.title}
-              link={`/articles/${post.frontmatter.slug}`}
-              sub={<>{dayjs(post.frontmatter.date).format('MMMM D, YYYY')}</>}
-              onClick={toggle}
-            />
-          ))}
-        </BubbleList>
+          <BubbleList className="mb-8">
+            {posts.map((post) => (
+              <BubbleListItem
+                key={post.frontmatter.title}
+                title={post.frontmatter.title}
+                link={`/articles/${post.frontmatter.slug}`}
+                sub={<>{dayjs(post.frontmatter.date).format('MMMM D, YYYY')}</>}
+                onClick={toggle}
+              />
+            ))}
+          </BubbleList>
+        </div>
       </OffCanvas>
     </>
   )

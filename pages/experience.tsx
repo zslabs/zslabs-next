@@ -5,7 +5,7 @@ import { GetStaticProps, NextPage } from 'next'
 
 import BubbleList, { BubbleListItem } from '~components/BubbleList'
 import Section from '~components/Section'
-import SectionTitle, { SectionTitleSkew } from '~components/SectionTitle'
+import SectionTitle from '~components/SectionTitle'
 import SEO from '~components/SEO'
 import ViewSource from '~components/ViewSource'
 
@@ -23,15 +23,10 @@ const Experience: NextPage<ExperienceProps> = ({ data }) => {
     <>
       <SEO title="Experience" />
       <Section className="grid grid-cols-1 md:grid-cols-3/4 justify-center relative">
-        <SectionTitle className="grid place-items-center">
-          <SectionTitleSkew
-            className="from-indigo-200 to-purple-700"
-            style={{
-              clipPath: 'polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)',
-            }}
-          />
-          Experience
-        </SectionTitle>
+        <SectionTitle
+          title="Experience"
+          firstLetterClassName="before:to-indigo-200"
+        />
         <BubbleList>
           {data.map((partial, index) => (
             <BubbleListItem

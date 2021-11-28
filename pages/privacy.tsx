@@ -19,7 +19,7 @@ const Privacy: NextPage<PrivacyProps> = ({ content }) => {
     <>
       <SEO title="Privacy" />
       <Section>
-        <SectionTitle className="text-center">Privacy</SectionTitle>
+        <SectionTitle title="Privacy" />
         <MDXContent content={content} />
       </Section>
       <ViewSource fixed path="privacy.tsx" />

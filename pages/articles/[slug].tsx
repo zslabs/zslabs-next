@@ -10,6 +10,7 @@ import { ReactComponent as InfoCircleSvg } from '~icons/info-circle.svg'
 import { spring } from '~helpers'
 import SEO from '~components/SEO'
 import ViewSource from '~components/ViewSource'
+import { TitleSkew } from '~components/SectionTitle'
 
 export default function Post({
   post: { frontmatter, content },
@@ -29,7 +30,7 @@ export default function Post({
           transition={spring}
         >
           <h1 className="text-center mb-2 md:mb-4 text-4xl md:text-5xl font-extrabold">
-            {frontmatter.title}
+            <TitleSkew title={frontmatter.title} />
           </h1>
           <div className="uppercase text-gray-500 dark:text-gray-300 font-extrabold tracking-widest grid auto-cols-auto grid-flow-col justify-center gap-2 items-center">
             <span>{dayjs(frontmatter.date).format('MMMM D, YYYY')}</span>

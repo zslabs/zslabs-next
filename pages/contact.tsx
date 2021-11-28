@@ -9,7 +9,7 @@ import { NextPage } from 'next'
 import Button from '~components/Button'
 import Input from '~components/Input'
 import Section from '~components/Section'
-import SectionTitle, { SectionTitleSkew } from '~components/SectionTitle'
+import SectionTitle from '~components/SectionTitle'
 import Textarea from '~components/Textarea'
 import Alert from '~components/Alert'
 import Prose from '~components/Prose'
@@ -115,16 +115,7 @@ const ContactForm: React.FC = () => {
 const Contact: NextPage = () => {
   return (
     <Section className="grid grid-cols-1 md:grid-cols-3/4 justify-center relative">
-      <SectionTitle className="grid place-items-center">
-        <SectionTitleSkew
-          className="from-green-200 to-green-700"
-          style={{
-            clipPath:
-              'polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%)',
-          }}
-        />
-        Contact
-      </SectionTitle>
+      <SectionTitle title="Contact" firstLetterClassName="before:to-red-200" />
       <Prose className="text-center mb-8">
         <p>
           Have a project you'd like me to be part of? Let's chat! You can either{' '}
