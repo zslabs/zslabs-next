@@ -16,13 +16,18 @@ const nextConfig = {
     }
 
     config.module.rules.push({
-      test: /\.svg$/,
+      test: /\.svg$/i,
+      issuer: /\.[jt]sx?$/,
       include: [path.resolve(__dirname, 'icons')],
-      use: ['@svgr/webpack?+icon,+ref', 'url-loader'],
+      use: [
+        { loader: '@svgr/webpack', options: { icon: true, ref: true } },
+        'url-loader',
+      ],
     })
 
     config.module.rules.push({
-      test: /\.svg$/,
+      test: /\.svg$/i,
+      issuer: /\.[jt]sx?$/,
       use: ['@svgr/webpack', 'url-loader'],
     })
 
