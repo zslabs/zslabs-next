@@ -13,6 +13,11 @@ interface BubbleListItemProps {
   onClick?: () => void
 }
 
+const fadeInUp = {
+  offscreen: { opacity: 0, y: '1rem' },
+  onscreen: { opacity: 1, y: 0 },
+}
+
 export const BubbleListItem: React.FC<BubbleListItemProps> = ({
   title,
   children,
@@ -23,14 +28,12 @@ export const BubbleListItem: React.FC<BubbleListItemProps> = ({
   onClick,
   ...rest
 }) => {
-  const item = {
-    hidden: { opacity: 0, y: '1rem' },
-    show: { opacity: 1, y: 0 },
-  }
-
   return (
     <motion.div
-      variants={item}
+      initial="offscreen"
+      whileInView="onscreen"
+      variants={fadeInUp}
+      viewport={{ once: true, amount: 0.5 }}
       className="relative z-20 grid grid-flow-col auto-cols-auto gap-5 justify-start group"
       {...rest}
     >
@@ -66,12 +69,7 @@ const BubbleList: React.FC<{ className?: string }> = ({
 }) => {
   const container = {
     hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.125,
-      },
-    },
+    show: { opacity: 1 },
   }
 
   return (
