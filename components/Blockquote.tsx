@@ -1,23 +1,18 @@
 import * as React from 'react'
-import clsx from 'clsx'
 
 import { ReactComponent as QuoteSvg } from '~icons/quote.svg'
 
 const Blockquote: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
-  className,
   children,
   ...rest
 }) => {
   return (
     <blockquote
-      className={clsx(
-        'relative my-8 p-6 border-2 border-gray-300 dark:border-gray-600 rounded-lg',
-        className
-      )}
+      className="relative my-8 p-6 border-2 border-slate-300 dark:border-slate-600 rounded-lg"
       {...rest}
     >
       {children}
-      <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 p-2 rounded-full border-2 border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-800 ring-4 ring-gray-100 dark:ring-gray-800">
+      <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 p-2 rounded-full border-2 border-slate-300 dark:border-slate-600 bg-slate-100 dark:bg-slate-800 ring-4 ring-slate-100 dark:ring-slate-800">
         <QuoteSvg />
       </div>
     </blockquote>

@@ -8,18 +8,14 @@ interface AlertProps {
 const Alert = React.forwardRef<
   HTMLDivElement,
   React.HTMLProps<HTMLDivElement> & AlertProps
->(({ className, variation = 'primary', ...rest }, ref) => {
+>(({ variation = 'primary', ...rest }, ref) => {
   return (
     <aside
       ref={ref}
-      className={clsx(
-        'Alert border-l-8 rounded-lg p-6 my-8',
-        {
-          'border-blue-500 bg-blue-100': variation === 'primary',
-          'border-red-500 bg-red-100': variation === 'danger',
-        },
-        className
-      )}
+      className={clsx('Alert border-l-8 rounded-lg p-6 my-8', {
+        'border-blue-500 bg-blue-100': variation === 'primary',
+        'border-red-500 bg-red-100': variation === 'danger',
+      })}
       {...rest}
     />
   )

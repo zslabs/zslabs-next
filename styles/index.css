@@ -21,14 +21,9 @@
     font-display: swap;
   }
 
-  /* MDX Embed */
-  .mdx-embed {
-    @apply my-8;
-  }
-
   /* Take care of global styles overriding Alert component children */
   .Alert {
-    @apply dark:text-gray-900;
+    @apply dark:text-slate-900;
   }
 
   .Alert a:not([class]) {

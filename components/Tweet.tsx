@@ -29,7 +29,7 @@ const Tweet: React.FC<ITweetProps> = ({
 
   return (
     <GeneralObserver>
-      <div data-testid="twitter-tweet" style={{ overflow: 'auto' }}>
+      <div data-testid="twitter-tweet" className="overflow-auto">
         <blockquote
           data-theme={theme}
           data-align={align}

@@ -1,11 +1,7 @@
 import * as React from 'react'
-import clsx from 'clsx'
 
-const Container: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
-  className,
-  ...rest
-}) => {
-  return <div className={clsx('max-w-3xl mx-auto px-4', className)} {...rest} />
+const Container: React.FC<React.HTMLAttributes<HTMLDivElement>> = (props) => {
+  return <div className="max-w-3xl mx-auto px-4" {...props} />
 }
 
 export default Container

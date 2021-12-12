@@ -29,7 +29,7 @@ const TextLinkContentsIcon: React.FC<{ href: string; className?: string }> = ({
   if (href.includes('github.com')) {
     return (
       <GitHubSvg
-        className={clsx('text-gray-900 dark:text-gray-100', className)}
+        className={clsx('text-slate-900 dark:text-slate-100', className)}
       />
     )
   }

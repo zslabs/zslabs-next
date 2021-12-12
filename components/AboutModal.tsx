@@ -52,7 +52,7 @@ const AboutModal: React.FC = () => {
             <Button
               as="div"
               iconOnly
-              className="from-gray-800 to-gray-600 ring-gray-800"
+              className="from-slate-800 to-slate-600 ring-slate-800"
             >
               <GitHubSvg className="text-2xl" />
             </Button>

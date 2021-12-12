@@ -29,7 +29,7 @@ const ArticleOffCanvas: React.FC = () => {
             title="Articles"
             firstLetterClassName="before:to-blue-200"
           />
-          <BubbleList className="mb-8">
+          <BubbleList>
             {posts.map((post) => (
               <BubbleListItem
                 key={post.frontmatter.title}

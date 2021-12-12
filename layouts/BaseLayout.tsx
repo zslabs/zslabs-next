@@ -165,7 +165,7 @@ const BaseLayout: React.FC = ({ children }) => {
             <div className="bg-gradient-to-tr from-indigo-700 to-blue-500 w-2/4 rounded-full h-0.5" />
             <div className="bg-gradient-to-tr from-indigo-700 to-blue-500 w-2/6 rounded-full h-0.5" />
             <div className="grid gap-2 grid-cols-1 text-sm mt-4">
-              <div className="text-gray-500 dark:text-gray-300">
+              <div className="text-slate-500 dark:text-slate-300">
                 Copyright &copy; {new Date().getFullYear()} Zach Schnackel.
                 Penalty is 🔥
               </div>

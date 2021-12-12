@@ -22,14 +22,15 @@ const Button: React.FC<ButtonProps & React.HTMLProps<HTMLButtonElement>> = ({
   return (
     <Component
       className={clsx(
-        'relative inline-block h-12 bg-gradient-to-br rounded-full text-gray-100 tracking-widest uppercase font-extrabold text-sm shadow-lg duration-300 ease-bounce hover:scale-105 ring-4 ring-opacity-10 focus:outline-none focus:ring-opacity-20 active:scale-100',
+        'relative inline-block h-12 bg-gradient-to-br rounded-full text-slate-100 tracking-widest uppercase font-extrabold text-sm shadow-lg duration-300 ease-bounce hover:scale-105 ring-4 ring-opacity-10 focus:outline-none focus:ring-opacity-20 active:scale-100',
         className,
         {
           'from-indigo-700 to-blue-500 ring-indigo-700':
             variation === 'primary',
-          'from-green-400 to-cyan-500 ring-green-400':
+          'from-emerald-400 to-cyan-500 ring-emerald-400':
             variation === 'secondary',
-          'from-gray-800 to-gray-600 ring-gray-800': variation === 'tertiary',
+          'from-slate-800 to-slate-600 ring-slate-800':
+            variation === 'tertiary',
           'from-orange-400 to-pink-600 ring-orange-400':
             variation === 'quaternary',
           'px-6': !iconOnly,

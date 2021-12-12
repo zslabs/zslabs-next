@@ -8,7 +8,7 @@ interface SectionTitle extends React.HTMLAttributes<HTMLDivElement> {
 
 export const TitleSkew: React.FC<SectionTitle> = ({
   title,
-  firstLetterClassName = 'before:to-gray-300',
+  firstLetterClassName = 'before:to-slate-300',
 }) => {
   const titleRender = useMemo(
     () =>
@@ -22,7 +22,7 @@ export const TitleSkew: React.FC<SectionTitle> = ({
         return (
           <span
             key={key}
-            className={`relative before:inset-0 before:absolute before:bg-gradient-to-br before:from-gray-100 ${firstLetterClassName} dark:before:from-gray-800 dark:before:to-gray-700 before:-z-1 before:-mx-2 before:rounded-lg before:skew-x-8`}
+            className={`relative before:inset-0 before:absolute before:bg-gradient-to-br before:from-slate-100 ${firstLetterClassName} dark:before:from-slate-800 dark:before:to-slate-700 before:-z-1 before:-mx-2 before:rounded-lg before:skew-x-8`}
           >
             {character.trim().length > 0 ? character : '\u00a0'}
           </span>
@@ -37,7 +37,7 @@ export const TitleSkew: React.FC<SectionTitle> = ({
 const SectionTitle: React.FC<SectionTitle> = ({
   title,
   className,
-  firstLetterClassName = 'before:to-gray-300',
+  firstLetterClassName = 'before:to-slate-300',
   ...rest
 }) => {
   return (

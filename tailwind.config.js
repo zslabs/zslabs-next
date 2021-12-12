@@ -1,11 +1,9 @@
 /* eslint-disable global-require */
 const defaultTheme = require('tailwindcss/defaultTheme')
-const colors = require('tailwindcss/colors')
 const plugin = require('tailwindcss/plugin')
 
 module.exports = {
   darkMode: 'class',
-  mode: 'jit',
   theme: {
     extend: {
       backgroundSize: {
@@ -15,12 +13,6 @@ module.exports = {
       },
       borderColor: {
         current: 'currentColor',
-      },
-      colors: {
-        transparent: 'transparent',
-        current: 'currentColor',
-        cyan: colors.cyan,
-        orange: colors.orange,
       },
       fontFamily: {
         sans: ['ZS Sans', ...defaultTheme.fontFamily.sans],
@@ -71,17 +63,12 @@ module.exports = {
       },
     },
   },
-  purge: {
-    content: [
-      './components/**/*.{js,ts,jsx,tsx}',
-      './layouts/**/*.{js,ts,jsx,tsx}',
-      './media/**/*.{js,ts,jsx,tsx}',
-      './pages/**/*.{js,ts,jsx,tsx}',
-    ],
-    options: {
-      fontFace: false,
-    },
-  },
+  content: [
+    './components/**/*.{js,ts,jsx,tsx}',
+    './layouts/**/*.{js,ts,jsx,tsx}',
+    './media/**/*.{js,ts,jsx,tsx}',
+    './pages/**/*.{js,ts,jsx,tsx}',
+  ],
   plugins: [
     require('@tailwindcss/forms'),
     require('@tailwindcss/line-clamp'),

@@ -1,4 +1,3 @@
-import clsx from 'clsx'
 import { motion } from 'framer-motion'
 
 import Badge from './Badge'
@@ -37,7 +36,7 @@ export const BubbleListItem: React.FC<BubbleListItemProps> = ({
       className="relative z-20 grid grid-flow-col auto-cols-auto gap-5 justify-start group"
       {...rest}
     >
-      <div className="w-4 h-4 ring-2 ring-gray-900 dark:ring-gray-100 border-2 border-gray-100 dark:border-gray-800 rounded-full bg-gray-900 dark:bg-gray-100 duration-300 ease-bounce group-hover:scale-125 mt-2.5" />
+      <div className="w-4 h-4 ring-2 ring-slate-900 dark:ring-slate-100 border-2 border-slate-100 dark:border-slate-800 rounded-full bg-slate-900 dark:bg-slate-100 duration-300 ease-bounce group-hover:scale-125 mt-2.5" />
       <div className="space-y-1">
         <div className="grid items-center grid-flow-col auto-cols-auto gap-4">
           <h3 className="font-extrabold text-2xl">
@@ -55,27 +54,23 @@ export const BubbleListItem: React.FC<BubbleListItemProps> = ({
             </div>
           )}
         </div>
-        {sub && <div className="text-gray-500 dark:text-gray-400">{sub}</div>}
+        {sub && <div className="text-slate-500 dark:text-slate-400">{sub}</div>}
         {children && <div className="text-lg">{children}</div>}
       </div>
     </motion.div>
   )
 }
 
-const BubbleList: React.FC<{ className?: string }> = ({
-  children,
-  className,
-  ...rest
-}) => {
+const BubbleList: React.FC = ({ children, ...rest }) => {
   const container = {
     hidden: { opacity: 0 },
     show: { opacity: 1 },
   }
 
   return (
-    <div className={clsx('relative', className)} {...rest}>
+    <div className="relative" {...rest}>
       <div className="absolute top-0 left-2 -translate-x-1/2 h-full z-10">
-        <div className="h-full bg-gray-900 dark:bg-gray-100 w-1 rounded-full" />
+        <div className="h-full bg-slate-900 dark:bg-slate-100 w-1 rounded-full" />
       </div>
       <motion.div
         className="grid grid-cols-1 gap-8 py-8"

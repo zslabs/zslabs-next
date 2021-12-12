@@ -1,106 +1,106 @@
 .prose {
   @apply md:text-lg;
 
-  & * + p,
-  & * + ul,
-  & * + ol,
-  & * + dl,
-  & * + blockquote:not([class]),
-  & * + pre:not([class]),
-  & * + address,
-  & * + fieldset,
-  & * + figure {
+  * + p,
+  * + ul,
+  * + ol,
+  * + dl,
+  * + blockquote:not([class]),
+  * + pre:not([class]),
+  * + address,
+  * + fieldset,
+  * + figure {
     margin-top: theme('space.4');
   }
 
-  & > :first-child {
+  > :first-child {
     @apply mt-0;
   }
 
-  & > :last-child {
+  > :last-child {
     @apply mb-0;
   }
 
-  & a:not([class]) {
+  a:not([class]) {
     @apply font-extrabold text-blue-500 duration-150 bg-gradient-to-r from-blue-100 to-blue-100 transition-all bg-left-bottom bg-no-repeat bg-100/6;
   }
 
-  & h2,
-  & h3,
-  & h4,
-  & h5 {
+  h2,
+  h3,
+  h4,
+  h5 {
     font-weight: theme('fontWeight.extrabold');
   }
 
-  & * + h2,
-  & * + h3 {
+  * + h2,
+  * + h3 {
     margin-top: theme('space.8');
   }
 
-  & * + h4,
-  & * + h5 {
+  * + h4,
+  * + h5 {
     @apply mt-4;
   }
 
-  & h2 {
+  h2 {
     @apply text-4xl;
   }
 
-  & h3 {
+  h3 {
     @apply text-3xl;
   }
 
-  & h4 {
+  h4 {
     @apply text-2xl;
   }
 
-  & h5 {
+  h5 {
     @apply text-xl;
   }
 
-  & ol {
+  ol {
     @apply pl-4;
 
     counter-reset: list-counter;
 
-    & > li {
+    > li {
       @apply relative pl-7;
 
       counter-increment: list-counter;
     }
   }
 
-  & ol > li::before {
+  ol > li::before {
     content: counter(list-counter) '.';
 
     @apply absolute left-1 font-extrabold text-blue-500;
   }
 
-  & li {
+  li {
     @apply my-2;
   }
 
-  & ul {
+  ul {
     @apply pl-4;
   }
 
-  & ul > li {
+  ul > li {
     @apply pl-7 relative;
   }
 
-  & ul > li::before {
+  ul > li::before {
     content: '';
 
     @apply absolute left-1 top-2 w-2 h-2 md:top-3 bg-blue-500 ring-2 ring-blue-200 rounded-full;
   }
 
-  & code {
-    @apply text-sm md:text-base px-1 py-0.5 rounded-lg bg-gray-200;
+  code {
+    @apply text-sm md:text-base px-1 py-0.5 rounded-lg bg-slate-200;
   }
 
   /* Revert any elements with custom classes to their base styles; most likely is a React component */
-  & [class*='no-prose'],
-  & [class*='no-prose'] * {
+  [class*='no-prose'],
+  [class*='no-prose'] * {
     all: inherit;
   }
 }
@@ -108,17 +108,17 @@
 /* @NOTE Workaround for some screwy PostCSS and dark mode styles inside of prose */
 
 .prose a:not([class]) {
-  @apply dark:from-gray-600 dark:to-gray-600 dark:text-gray-100;
+  @apply dark:from-slate-600 dark:to-slate-600 dark:text-slate-100;
 }
 
 .prose ul > li::before {
-  @apply dark:bg-gray-500 dark:ring-gray-700;
+  @apply dark:bg-slate-500 dark:ring-slate-700;
 }
 
 .prose ol > li::before {
-  @apply dark:text-gray-500;
+  @apply dark:text-slate-500;
 }
 
 .prose code {
-  @apply dark:bg-gray-700;
+  @apply dark:bg-slate-700;
 }

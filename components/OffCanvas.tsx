@@ -76,7 +76,7 @@ const OffCanvas: React.FC<OffCanvasProps> = ({
             animate="visible"
             exit="hidden"
             ref={offCanvasRef}
-            className="fixed inset-0 bg-gray-900 bg-opacity-75 z-50 pr-4 backdrop-blur-sm"
+            className="fixed inset-0 bg-slate-900 bg-opacity-75 z-50 pr-4 backdrop-blur-sm"
             {...rest}
           >
             <motion.aside
@@ -85,7 +85,7 @@ const OffCanvas: React.FC<OffCanvasProps> = ({
               animate="visible"
               exit="hidden"
               ref={offCanvasPanelRef}
-              className="overflow-auto bg-gray-100 dark:bg-gray-800 rounded-tr-2xl shadow-lg z-20 relative top-0 left-0 h-full w-full md:max-w-xs p-8"
+              className="overflow-auto bg-slate-100 dark:bg-slate-800 rounded-tr-2xl shadow-lg z-20 relative top-0 left-0 h-full w-full md:max-w-xs p-8"
               transition={{ x: { stiffness: 1000 } }}
             >
               <button

@@ -36,9 +36,7 @@ const CodePen: React.FC<ICodePenProps> = ({
       data-testid="codepen"
       title={`codepen-${codePenId}`}
       height={height}
-      style={{
-        width: '100%',
-      }}
+      className="w-full"
       scrolling="no"
       src={`https://codepen.io/team/codepen/embed${
         clickToLoad ? '/preview' : ''

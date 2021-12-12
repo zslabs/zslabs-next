@@ -22,10 +22,10 @@ const FormLabel: React.FC<FormLabelProps> = ({
     >
       {children}
       {required && !hasError && (
-        <AsteriskSvg className="text-red-500 dark:text-gray-400" />
+        <AsteriskSvg className="text-red-500 dark:text-slate-400" />
       )}
       {hasError && (
-        <ExclamationCircleSvg className="text-red-500 dark:text-gray-400" />
+        <ExclamationCircleSvg className="text-red-500 dark:text-slate-400" />
       )}
     </label>
   )
