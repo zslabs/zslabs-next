@@ -142,9 +142,9 @@ const BaseLayout: React.FC = ({ children }) => {
                   onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
                 >
                   {theme === 'light' ? (
-                    <DarkSvg className="h-8 w-8 stroke-1.5" />
+                    <DarkSvg className="h-8 w-8" />
                   ) : (
-                    <LightSvg className="h-8 w-8 stroke-1.5" />
+                    <LightSvg className="h-8 w-8" />
                   )}
                 </button>
               )}

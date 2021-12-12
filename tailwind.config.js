@@ -14,6 +14,9 @@ module.exports = {
       borderColor: {
         current: 'currentColor',
       },
+      boxShadow: {
+        solid: '0 0 0 2px currentColor',
+      },
       fontFamily: {
         sans: ['ZS Sans', ...defaultTheme.fontFamily.sans],
       },
@@ -40,11 +43,11 @@ module.exports = {
       maxHeight: {
         120: '30rem',
       },
-      strokeWidth: {
-        1.5: '1.5',
-      },
       letterSpacing: {
         tight: '-.0125em',
+      },
+      scale: {
+        1: '1',
       },
       skew: {
         8: '8deg',

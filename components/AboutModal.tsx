@@ -37,7 +37,7 @@ const AboutModal: React.FC = () => {
             title="View my Twitter profile"
             href="https://twitter.com/zslabs"
           >
-            <Button as="div" iconOnly variation="twitter">
+            <Button as="div" iconOnly variation="primary">
               <TwitterSvg className="text-2xl" />
             </Button>
           </TextLink>
@@ -45,7 +45,7 @@ const AboutModal: React.FC = () => {
             title="View my GitHub profile"
             href="https://github.com/zslabs"
           >
-            <Button as="div" iconOnly variation="github">
+            <Button as="div" iconOnly variation="secondary">
               <GitHubSvg className="text-2xl" />
             </Button>
           </TextLink>
@@ -53,7 +53,7 @@ const AboutModal: React.FC = () => {
             title="View my CodePen profile"
             href="https://codepen.com/zslabs"
           >
-            <Button as="div" iconOnly variation="codepen">
+            <Button as="div" iconOnly variation="tertiary">
               <CodePenSvg className="text-2xl" />
             </Button>
           </TextLink>

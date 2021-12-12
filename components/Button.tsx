@@ -1,18 +1,9 @@
 import * as React from 'react'
 import clsx from 'clsx'
 
-import diagonalLines from '~media/diagonal-lines.svg'
-
 interface ButtonProps {
   as?: React.ElementType
-  variation?:
-    | 'primary'
-    | 'secondary'
-    | 'tertiary'
-    | 'quaternary'
-    | 'twitter'
-    | 'github'
-    | 'codepen'
+  variation: 'primary' | 'secondary' | 'tertiary'
   iconOnly?: boolean
   loading?: boolean
 }
@@ -28,18 +19,39 @@ const Button: React.FC<ButtonProps & React.HTMLProps<HTMLButtonElement>> = ({
   return (
     <Component
       className={clsx(
-        'relative inline-block h-12 bg-gradient-to-br rounded-full text-slate-100 tracking-widest uppercase font-extrabold text-sm shadow-lg duration-300 ease-bounce hover:scale-105 ring-4 ring-opacity-10 focus:outline-none focus:ring-opacity-20 active:scale-100',
+        `
+        before:duration-500
+        before:absolute
+        before:-z-10
+        before:inset-0
+        before:opacity-0
+        before:bg-gradient-to-tr
+        before:rounded-full
+        before:blur-md
+        before:pointer-events-none
+        hover:before:scale-105
+        hover:before:opacity-75
+
+        relative inline-block h-12
+        border-2 border-slate-100 dark:border-slate-800
+        tracking-widest uppercase font-extrabold text-sm
+        rounded-full
+        duration-200
+
+        after:absolute
+        after:-z-10
+        after:-inset-1
+        after:rounded-full
+        after:bg-gradient-to-tr
+        after:pointer-events-none
+        `,
         {
-          'from-indigo-700 to-blue-500 ring-indigo-700':
+          'from-indigo-700 to-blue-500 before:from-indigo-700 before:to-blue-500 after:from-indigo-700 after:to-blue-500':
             variation === 'primary',
-          'from-emerald-400 to-cyan-500 ring-emerald-400':
+          'from-blue-500 to-emerald-500 before:from-blue-500 before:to-emerald-700 after:from-blue-500 after:to-emerald-500':
             variation === 'secondary',
-          'from-slate-800 to-slate-600 ring-slate-800':
-            variation === 'tertiary' || variation === 'github',
-          'from-orange-400 to-pink-600 ring-orange-400':
-            variation === 'quaternary',
-          'from-blue-600 to-blue-400 ring-blue-600': variation === 'twitter',
-          'from-rose-600 to-rose-400 ring-rose-600': variation === 'codepen',
+          'from-rose-500 to-indigo-700 before:from-rose-500 before:to-indigo-700 after:from-rose-500 after:to-indigo-700':
+            variation === 'tertiary',
           'px-6': !iconOnly,
           'w-12': iconOnly,
           'pointer-events-none opacity-50': loading,
@@ -49,7 +61,9 @@ const Button: React.FC<ButtonProps & React.HTMLProps<HTMLButtonElement>> = ({
     >
       <span
         className={clsx(
-          'h-full relative z-10 grid place-items-center gap-4 grid-flow-col whitespace-nowrap',
+          `h-full relative z-10
+          grid place-items-center gap-4 grid-flow-col
+          whitespace-nowrap text-slate-100`,
           {
             'auto-cols-min': !iconOnly,
             'auto-cols-auto': iconOnly,
@@ -58,10 +72,6 @@ const Button: React.FC<ButtonProps & React.HTMLProps<HTMLButtonElement>> = ({
       >
         {children}
       </span>
-      <span
-        className="absolute z-0 inset-1"
-        style={{ backgroundImage: `url(${diagonalLines})` }}
-      />
     </Component>
   )
 }

@@ -21,7 +21,7 @@ const ArticleOffCanvas: React.FC = () => {
         onClick={toggle}
         title="View articles"
       >
-        <MenuSvg className="h-10 w-10 stroke-1.5" />
+        <MenuSvg className="h-10 w-10" />
       </button>
       <OffCanvas open={open} setIsOpen={toggle}>
         <div className="mt-12">

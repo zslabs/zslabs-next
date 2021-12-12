@@ -102,7 +102,7 @@ const ContactForm: React.FC = () => {
             required
           />
           <div className="mt-4 text-center">
-            <Button variation="quaternary" type="submit" loading={isSubmitting}>
+            <Button variation="tertiary" type="submit" loading={isSubmitting}>
               Send message
             </Button>
           </div>
