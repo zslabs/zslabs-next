@@ -114,18 +114,25 @@ const ContactForm: React.FC = () => {
 
 const Contact: NextPage = () => {
   return (
-    <Section className="grid grid-cols-1 md:grid-cols-3/4 justify-center relative">
-      <SectionTitle title="Contact" firstLetterClassName="before:to-red-200" />
-      <Prose className="text-center mb-8">
-        <p>
-          Have a project you'd like me to be part of? Let's chat! You can either{' '}
-          <a href="mailto:info@zslabs.com">email me directly</a> or fill out the
-          form below.
-        </p>
-      </Prose>
-      <ContactForm />
-      <ViewSource path="contact.tsx" fixed />
-    </Section>
+    <>
+      <Section>
+        <div className="grid grid-cols-1 md:grid-cols-3/4 justify-center relative">
+          <SectionTitle title="Contact" variation="red" />
+          <div className="text-center mb-8">
+            <Prose>
+              <p>
+                Have a project you'd like me to be part of? Let's chat! You can
+                either <a href="mailto:info@zslabs.com">email me directly</a> or
+                fill out the form below.
+              </p>
+            </Prose>
+          </div>
+
+          <ContactForm />
+        </div>
+      </Section>
+      <ViewSource path="contact.tsx" variation="fixed" />
+    </>
   )
 }
 

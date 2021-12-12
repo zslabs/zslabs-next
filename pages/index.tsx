@@ -41,7 +41,7 @@ const RecentProjects: React.FC = () => {
           powerful interfaces within Gremlin.{' '}
           <ViewSource
             href="https://www.github.com/gremlin/chaoskit"
-            className="ml-1"
+            variation="inline"
           />
         </BubbleListItem>
         <BubbleListItem title="Gremlin" link="https://www.gremlin.com/">
@@ -214,48 +214,51 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
       </Section>
       <Section
         as={motion.section}
-        className="grid grid-cols-1 justify-items-center px-4"
         initial="hidden"
         variants={latestArticleVariants}
         animate={latestArticleControls}
         transition={spring}
       >
-        <TextLink
-          href={`/articles/${latestPost.frontmatter.slug}`}
-          className="relative py-6 px-10 text-center hover:scale-105 ease-bounce duration-300"
-        >
-          <div className="absolute -top-2 -left-2 w-full h-full -skew-x-12 z-0">
-            <div className="absolute inset-0 bg-gradient-to-r from-indigo-700 to-blue-500 opacity-80 rounded-lg" />
-            <span
-              className="absolute inset-0"
-              style={{ backgroundImage: `url(${diagonalLines})` }}
-            />
-          </div>
-
-          <div className="absolute inset-0 z-0 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800 -skew-x-12 shadow rounded-lg" />
-          <div className="relative z-10 space-y-1">
-            <div>🎉 Check out my latest article:</div>
-            <div className="font-extrabold text-lg">
-              {latestPost.frontmatter.title}
+        <div className="grid grid-cols-1 justify-items-center px-4">
+          <TextLink
+            href={`/articles/${latestPost.frontmatter.slug}`}
+            className="relative py-6 px-10 text-center hover:scale-105 ease-bounce duration-300"
+          >
+            <div className="absolute -top-2 -left-2 w-full h-full -skew-x-12 z-0">
+              <div className="absolute inset-0 bg-gradient-to-r from-indigo-700 to-blue-500 opacity-80 rounded-lg" />
+              <span
+                className="absolute inset-0"
+                style={{ backgroundImage: `url(${diagonalLines})` }}
+              />
             </div>
-          </div>
-        </TextLink>
+
+            <div className="absolute inset-0 z-0 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800 -skew-x-12 shadow rounded-lg" />
+            <div className="relative z-10 space-y-1">
+              <div>🎉 Check out my latest article:</div>
+              <div className="font-extrabold text-lg">
+                {latestPost.frontmatter.title}
+              </div>
+            </div>
+          </TextLink>
+        </div>
       </Section>
-      <Section className="grid grid-cols-1 md:grid-cols-3/4 gap-8 md:gap-16 justify-center relative">
-        <span
-          className="dark:filter-invert absolute top-0 bottom-0 w-screen left-1/2 right-1/2 -mx-1/2-screen -z-1 opacity-5 bg-auto/6"
-          style={{ backgroundImage: `url(${dots})` }}
-        />
-        <motion.div
-          initial="hidden"
-          variants={projectsVariants}
-          animate={projectsControls}
-          transition={spring}
-        >
-          <RecentProjects />
-        </motion.div>
+      <Section>
+        <div className="grid grid-cols-1 md:grid-cols-3/4 gap-8 md:gap-16 justify-center">
+          <span
+            className="dark:filter-invert absolute top-0 bottom-0 w-screen left-1/2 right-1/2 -mx-1/2-screen -z-1 opacity-5 bg-auto/6"
+            style={{ backgroundImage: `url(${dots})` }}
+          />
+          <motion.div
+            initial="hidden"
+            variants={projectsVariants}
+            animate={projectsControls}
+            transition={spring}
+          >
+            <RecentProjects />
+          </motion.div>
+        </div>
       </Section>
-      <ViewSource fixed path="index.tsx" />
+      <ViewSource path="index.tsx" variation="fixed" />
     </>
   )
 }

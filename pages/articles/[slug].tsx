@@ -53,7 +53,7 @@ export default function Post({
           <MDXContent content={content} />
         </motion.div>
       </article>
-      <ViewSource fixed path="articles/[slug].tsx" />
+      <ViewSource path="articles/[slug].tsx" variation="fixed" />
     </Section>
   )
 }

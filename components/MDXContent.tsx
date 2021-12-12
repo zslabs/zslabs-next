@@ -1,7 +1,6 @@
 import React from 'react'
 import NextImage from 'next/image'
 import { getMDXComponent } from 'mdx-bundler/client'
-import clsx from 'clsx'
 
 import AutoLinkHeader from './AutoLinkHeader'
 
@@ -20,7 +19,6 @@ interface ImageProps {
 }
 
 function Image({
-  className,
   src,
   height,
   width,
@@ -31,7 +29,7 @@ function Image({
         src={src}
         height={height}
         width={width}
-        className={clsx('rounded-lg shadow-sm', className)}
+        className="rounded-lg shadow-sm"
       />
     </div>
   )
@@ -62,18 +60,21 @@ const components = {
       language: className && className.split('-')[1],
     }
 
-    return <Code {...props} wrapperClassName="my-8" />
+    return (
+      <div className="my-8">
+        <Code {...props} />
+      </div>
+    )
   },
 }
 
 const MDXContent: React.FC<{
   content: string
-  className?: string
-}> = ({ content, className }) => {
+}> = ({ content }) => {
   const Component = React.useMemo(() => getMDXComponent(content), [content])
 
   return (
-    <Prose className={className}>
+    <Prose>
       <Component components={components} />
     </Prose>
   )

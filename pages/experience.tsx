@@ -22,26 +22,25 @@ const Experience: NextPage<ExperienceProps> = ({ data }) => {
   return (
     <>
       <SEO title="Experience" />
-      <Section className="grid grid-cols-1 md:grid-cols-3/4 justify-center relative">
-        <SectionTitle
-          title="Experience"
-          firstLetterClassName="before:to-indigo-200"
-        />
-        <BubbleList>
-          {data.map((partial, index) => (
-            <BubbleListItem
-              key={partial.company}
-              title={partial.company}
-              sub={partial.title}
-              badge={partial.badge}
-              badgeVariant={index === 0 ? 'secondary' : 'tertiary'}
-            >
-              {partial.blurb}
-            </BubbleListItem>
-          ))}
-        </BubbleList>
+      <Section>
+        <div className="grid grid-cols-1 md:grid-cols-3/4 justify-center relative">
+          <SectionTitle title="Experience" variation="purple" />
+          <BubbleList>
+            {data.map((partial, index) => (
+              <BubbleListItem
+                key={partial.company}
+                title={partial.company}
+                sub={partial.title}
+                badge={partial.badge}
+                badgeVariant={index === 0 ? 'secondary' : 'tertiary'}
+              >
+                {partial.blurb}
+              </BubbleListItem>
+            ))}
+          </BubbleList>
+        </div>
       </Section>
-      <ViewSource fixed path="experience.tsx" />
+      <ViewSource path="experience.tsx" variation="fixed" />
     </>
   )
 }

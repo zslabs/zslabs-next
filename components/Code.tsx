@@ -10,14 +10,12 @@ interface CodeProps {
   codeString: string
   language?: Language
   filename?: string
-  wrapperClassName?: string
 }
 
 export default function Code({
   codeString,
   language,
   filename,
-  wrapperClassName,
 }: CodeProps): React.ReactElement {
   const [isCopied, setCopied] = React.useState(false)
 
@@ -36,15 +34,10 @@ export default function Code({
       language={language}
     >
       {({ className, tokens, getLineProps, getTokenProps }) => (
-        <aside
-          className={clsx(
-            'relative bg-slate-800 font-mono rounded-lg overflow-hidden ring-4 ring-slate-900 dark:ring-slate-600 ring-opacity-25 tracking-normal',
-            wrapperClassName
-          )}
-        >
+        <aside className="relative bg-slate-800 font-mono rounded-lg overflow-hidden ring-4 ring-slate-900 dark:ring-slate-600 ring-opacity-25 tracking-normal">
           <header className="relative border-b-2 bg-slate-900 border-slate-600 grid auto-cols-auto grid-flow-col justify-start items-center">
             <div className="p-4 grid gap-2 auto-cols-max grid-flow-col self-center">
-              <div className="w-3 h-3 border-2 rounded-full border-red-500" />
+              <div className="w-3 h-3 border-2 rounded-full border-rose-500" />
               <div className="w-3 h-3 border-2 rounded-full border-yellow-500" />
               <div className="w-3 h-3 border-2 rounded-full border-emerald-500" />
             </div>

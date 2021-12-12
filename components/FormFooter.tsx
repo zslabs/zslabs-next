@@ -19,7 +19,7 @@ const FormFooter: React.FC<
         </div>
       )}
       {validationMessage && (
-        <div className="text-red-500 dark:text-slate-400 text-right">
+        <div className="text-rose-500 dark:text-slate-400 text-right">
           {validationMessage}
         </div>
       )}

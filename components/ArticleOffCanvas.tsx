@@ -25,10 +25,7 @@ const ArticleOffCanvas: React.FC = () => {
       </button>
       <OffCanvas open={open} setIsOpen={toggle}>
         <div className="mt-12">
-          <SectionTitle
-            title="Articles"
-            firstLetterClassName="before:to-blue-200"
-          />
+          <SectionTitle title="Articles" variation="blue" />
           <BubbleList>
             {posts.map((post) => (
               <BubbleListItem

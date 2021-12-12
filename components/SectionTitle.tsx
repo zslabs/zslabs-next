@@ -3,12 +3,12 @@ import { useMemo } from 'react'
 
 interface SectionTitle extends React.HTMLAttributes<HTMLDivElement> {
   title: string
-  firstLetterClassName?: string
+  variation?: 'default' | 'blue' | 'red' | 'purple'
 }
 
 export const TitleSkew: React.FC<SectionTitle> = ({
   title,
-  firstLetterClassName = 'before:to-slate-300',
+  variation = 'default',
 }) => {
   const titleRender = useMemo(
     () =>
@@ -22,13 +22,21 @@ export const TitleSkew: React.FC<SectionTitle> = ({
         return (
           <span
             key={key}
-            className={`relative before:inset-0 before:absolute before:bg-gradient-to-br before:from-slate-100 ${firstLetterClassName} dark:before:from-slate-800 dark:before:to-slate-700 before:-z-1 before:-mx-2 before:rounded-lg before:skew-x-8`}
+            className={clsx(
+              'relative before:inset-0 before:absolute before:bg-gradient-to-br before:from-slate-100 dark:before:from-slate-800 dark:before:to-slate-700 before:-z-1 before:-mx-2 before:rounded-lg before:skew-x-8',
+              {
+                'before:to-slate-300': variation === 'default',
+                'before:to-blue-200': variation === 'blue',
+                'before:to-rose-200': variation === 'red',
+                'before:to-indigo-200': variation === 'purple',
+              }
+            )}
           >
             {character.trim().length > 0 ? character : '\u00a0'}
           </span>
         )
       }),
-    [title, firstLetterClassName]
+    [title, variation]
   )
 
   return <>{titleRender}</>
@@ -36,14 +44,13 @@ export const TitleSkew: React.FC<SectionTitle> = ({
 
 const SectionTitle: React.FC<SectionTitle> = ({
   title,
-  className,
-  firstLetterClassName = 'before:to-slate-300',
+  variation = 'default',
   ...rest
 }) => {
   return (
-    <div className={clsx('mb-12 grid place-content-center', className)}>
+    <div className="mb-12 grid place-content-center">
       <h2 className="relative text-4xl md:text-5xl font-extrabold" {...rest}>
-        <TitleSkew title={title} firstLetterClassName={firstLetterClassName} />
+        <TitleSkew title={title} variation={variation} />
       </h2>
     </div>
   )

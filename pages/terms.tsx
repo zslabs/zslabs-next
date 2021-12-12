@@ -22,7 +22,7 @@ const Terms: NextPage<TermsProps> = ({ content }) => {
         <SectionTitle title="Terms" />
         <MDXContent content={content} />
       </Section>
-      <ViewSource fixed path="terms.tsx" />
+      <ViewSource path="terms.tsx" variation="fixed" />
     </>
   )
 }

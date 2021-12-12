@@ -104,55 +104,55 @@ const BaseLayout: React.FC = ({ children }) => {
         style={{ backgroundImage: `url(${bubbles})` }}
       />
       <Container>
-        <Section
-          as="header"
-          className="grid gap-4 auto-cols-fr grid-flow-col items-center"
-        >
-          <HeaderItemWrapper
-            runAnimation={runAnimation}
-            controls={controls}
-            custom={1}
-            className="justify-self-start"
-          >
-            <TextLink
-              href="/"
-              title="ZS Labs"
-              className="transform duration-300 hover:scale-110 ease-bounce block"
+        <Section as="header">
+          <div className="grid gap-4 auto-cols-fr grid-flow-col items-center">
+            <HeaderItemWrapper
+              runAnimation={runAnimation}
+              controls={controls}
+              custom={1}
+              className="justify-self-start"
             >
-              <LogoSvg className="h-12 from-blue-500 to-blue-600 drop-shadow-md" />
-            </TextLink>
-          </HeaderItemWrapper>
-          <HeaderItemWrapper
-            runAnimation={runAnimation}
-            controls={controls}
-            custom={2}
-            className="justify-self-center"
-          >
-            <ArticleOffCanvas />
-          </HeaderItemWrapper>
-          <HeaderItemWrapper
-            runAnimation={runAnimation}
-            controls={controls}
-            custom={3}
-            className="grid gap-4 items-center grid-flow-col auto-cols-auto justify-self-end"
-          >
-            {mounted && (
-              <button
-                title="Toggle dark mode"
-                className="focus:outline-none duration-300 hover:scale-110 ease-bounce"
-                type="button"
-                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              <TextLink
+                href="/"
+                title="ZS Labs"
+                className="transform duration-300 hover:scale-110 ease-bounce block"
               >
-                {theme === 'light' ? (
-                  <DarkSvg className="h-8 w-8 stroke-1.5" />
-                ) : (
-                  <LightSvg className="h-8 w-8 stroke-1.5" />
-                )}
-              </button>
-            )}
-            <AboutModal />
-          </HeaderItemWrapper>
+                <LogoSvg className="h-12 from-blue-500 to-blue-600 drop-shadow-md" />
+              </TextLink>
+            </HeaderItemWrapper>
+            <HeaderItemWrapper
+              runAnimation={runAnimation}
+              controls={controls}
+              custom={2}
+              className="justify-self-center"
+            >
+              <ArticleOffCanvas />
+            </HeaderItemWrapper>
+            <HeaderItemWrapper
+              runAnimation={runAnimation}
+              controls={controls}
+              custom={3}
+              className="grid gap-4 items-center grid-flow-col auto-cols-auto justify-self-end"
+            >
+              {mounted && (
+                <button
+                  title="Toggle dark mode"
+                  className="focus:outline-none duration-300 hover:scale-110 ease-bounce"
+                  type="button"
+                  onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                >
+                  {theme === 'light' ? (
+                    <DarkSvg className="h-8 w-8 stroke-1.5" />
+                  ) : (
+                    <LightSvg className="h-8 w-8 stroke-1.5" />
+                  )}
+                </button>
+              )}
+              <AboutModal />
+            </HeaderItemWrapper>
+          </div>
         </Section>
+
         {children}
         <Section
           as={motion.footer}
