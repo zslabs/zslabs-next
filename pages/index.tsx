@@ -21,7 +21,7 @@ import { getRssXml } from '~lib/rss'
 const RecentProjects: React.FC = () => {
   return (
     <div>
-      <SectionTitle title="Recent projects" />
+      <SectionTitle title="Recent projects" variation="purple" />
       <BubbleList>
         <BubbleListItem title="List" link="https://list.zslabs.com/">
           The best experience for monitoring activity on multiple eBay search

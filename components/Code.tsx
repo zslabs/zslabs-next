@@ -1,6 +1,5 @@
 import * as React from 'react'
 import Highlight, { defaultProps, Language } from 'prism-react-renderer'
-import clsx from 'clsx'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 
 import { ReactComponent as ClipboardSvg } from '~icons/clipboard.svg'
