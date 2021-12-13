@@ -162,8 +162,8 @@ const BaseLayout: React.FC = ({ children }) => {
           initial={runAnimation ? 'hidden' : false}
         >
           <div className="grid grid-cols-1 gap-4 justify-items-center">
-            <div className="bg-gradient-to-tr from-indigo-700 to-blue-500 w-2/4 rounded-full h-0.5" />
-            <div className="bg-gradient-to-tr from-indigo-700 to-blue-500 w-2/6 rounded-full h-0.5" />
+            <div className="bg-gradient-to-br from-indigo-700 to-blue-500 w-2/4 rounded-full h-0.5" />
+            <div className="bg-gradient-to-br from-indigo-700 to-blue-500 w-2/6 rounded-full h-0.5" />
             <div className="grid gap-2 grid-cols-1 text-sm mt-4">
               <div className="text-slate-500 dark:text-slate-300">
                 Copyright &copy; {new Date().getFullYear()} Zach Schnackel.

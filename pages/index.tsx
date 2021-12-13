@@ -225,7 +225,7 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
             className="relative py-6 px-10 text-center hover:scale-105 ease-bounce duration-300"
           >
             <div className="absolute -top-2 -left-2 w-full h-full -skew-x-12 z-0">
-              <div className="absolute inset-0 bg-gradient-to-r from-indigo-700 to-blue-500 opacity-80 rounded-lg" />
+              <div className="absolute inset-0 bg-gradient-to-br from-indigo-700 to-blue-500 opacity-80 rounded-lg" />
               <span
                 className="absolute inset-0"
                 style={{ backgroundImage: `url(${diagonalLines})` }}

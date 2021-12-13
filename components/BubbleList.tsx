@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import { motion } from 'framer-motion'
 
 import Badge from './Badge'
@@ -36,7 +37,32 @@ export const BubbleListItem: React.FC<BubbleListItemProps> = ({
       className="relative z-20 grid grid-flow-col auto-cols-auto gap-5 justify-start group"
       {...rest}
     >
-      <div className="w-4 h-4 ring-2 ring-slate-900 dark:ring-slate-100 border-2 border-slate-100 dark:border-slate-800 rounded-full bg-slate-900 dark:bg-slate-100 duration-300 ease-bounce group-hover:scale-125 mt-2.5" />
+      <div
+        className={clsx(`
+          before:duration-500
+          before:absolute
+          before:-z-10
+          before:-inset-1
+          before:opacity-0
+          before:bg-gradient-to-br
+          before:rounded-full
+          before:blur-md
+          before:pointer-events-none
+          before:from-indigo-700 before:to-blue-500
+
+          group-hover:before:scale-105
+          group-hover:before:opacity-75
+
+          w-4 h-4
+          relative
+          ring-2 ring-slate-900 dark:ring-slate-100
+          border-2 border-slate-100 dark:border-slate-800
+
+          rounded-full bg-slate-900 dark:bg-slate-100
+          duration-300 ease-bounce group-hover:scale-125
+          mt-2.5
+        `)}
+      />
       <div className="space-y-1">
         <div className="grid items-center grid-flow-col auto-cols-auto gap-4">
           <h3 className="font-extrabold text-2xl">

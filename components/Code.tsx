@@ -33,7 +33,7 @@ export default function Code({
       language={language}
     >
       {({ className, tokens, getLineProps, getTokenProps }) => (
-        <aside className="relative bg-slate-800 font-mono rounded-lg overflow-hidden ring-4 ring-slate-900 dark:ring-slate-600 ring-opacity-25 tracking-normal">
+        <aside className="relative bg-slate-800 font-mono rounded-lg overflow-hidden tracking-normal">
           <header className="relative border-b-2 bg-slate-900 border-slate-600 grid auto-cols-auto grid-flow-col justify-start items-center">
             <div className="p-4 grid gap-2 auto-cols-max grid-flow-col self-center">
               <div className="w-3 h-3 border-2 rounded-full border-rose-500" />
@@ -45,7 +45,7 @@ export default function Code({
                 <div className="p-4 text-sm text-slate-100 whitespace-nowrap">
                   {filename}
                 </div>
-                <div className="absolute bottom-0 left-0 w-full bg-gradient-to-tr from-blue-500 to-indigo-700 h-0.5" />
+                <div className="absolute bottom-0 left-0 w-full bg-gradient-to-br from-blue-500 to-indigo-700 h-0.5" />
               </div>
             )}
             <div className="text-slate-400 absolute right-4 top-1/2 -translate-y-1/2">

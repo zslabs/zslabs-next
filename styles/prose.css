@@ -22,7 +22,7 @@
   }
 
   a:not([class]) {
-    @apply font-extrabold text-blue-500 duration-150 bg-gradient-to-r from-blue-100 to-blue-100 transition-all bg-left-bottom bg-no-repeat bg-100/6;
+    @apply font-extrabold text-blue-500 duration-150 bg-gradient-to-br from-blue-100 to-blue-100 transition-all bg-left-bottom bg-no-repeat bg-100/6;
   }
 
   h2,

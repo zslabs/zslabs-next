@@ -25,10 +25,11 @@ const Button: React.FC<ButtonProps & React.HTMLProps<HTMLButtonElement>> = ({
         before:-z-10
         before:inset-0
         before:opacity-0
-        before:bg-gradient-to-tr
+        before:bg-gradient-to-br
         before:rounded-full
         before:blur-md
         before:pointer-events-none
+
         hover:before:scale-105
         hover:before:opacity-75
 
@@ -42,7 +43,7 @@ const Button: React.FC<ButtonProps & React.HTMLProps<HTMLButtonElement>> = ({
         after:-z-10
         after:-inset-1
         after:rounded-full
-        after:bg-gradient-to-tr
+        after:bg-gradient-to-br
         after:pointer-events-none
         `,
         {
