@@ -5,6 +5,7 @@ import clsx from 'clsx'
 import { ReactComponent as SlackSvg } from '~icons/logos/slack.svg'
 import { ReactComponent as TwitterSvg } from '~icons/logos/twitter.svg'
 import { ReactComponent as GitHubSvg } from '~icons/logos/github.svg'
+import { ReactComponent as ListSvg } from '~icons/logos/list.svg'
 
 // Checks against absolute URLs that share 👇 so we can still pass it along to our internal link component
 const domainRegex = /http[s]*:\/\/[www.]*zslabs\.com[/]?/
@@ -23,12 +24,24 @@ const TextLinkContentsIcon: React.FC<{ href: string; className?: string }> = ({
   }
 
   if (href.includes('twitter.com')) {
-    return <TwitterSvg className={clsx('text-[#1DA1F2]', className)} />
+    return (
+      <TwitterSvg
+        className={clsx('text-slate-900 dark:text-slate-100', className)}
+      />
+    )
   }
 
   if (href.includes('github.com')) {
     return (
       <GitHubSvg
+        className={clsx('text-slate-900 dark:text-slate-100', className)}
+      />
+    )
+  }
+
+  if (href.includes('list.zslabs.com')) {
+    return (
+      <ListSvg
         className={clsx('text-slate-900 dark:text-slate-100', className)}
       />
     )
