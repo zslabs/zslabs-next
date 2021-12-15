@@ -33,7 +33,7 @@ export default function Code({
       language={language}
     >
       {({ className, tokens, getLineProps, getTokenProps }) => (
-        <aside className="relative bg-slate-800 font-mono rounded-lg overflow-hidden tracking-normal">
+        <aside className="relative bg-slate-800 font-mono rounded-lg overflow-hidden tracking-normal ring-4 ring-slate-900 dark:ring-slate-600 ring-opacity-25">
           <header className="relative border-b-2 bg-slate-900 border-slate-600 grid auto-cols-auto grid-flow-col justify-start items-center">
             <div className="p-4 grid gap-2 auto-cols-max grid-flow-col self-center">
               <div className="w-3 h-3 border-2 rounded-full border-rose-500" />
