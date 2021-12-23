@@ -195,7 +195,7 @@ const BaseLayout: React.FC = ({ children }) => {
         </Section>
       </Container>
       {mounted && (
-        <div className="fixed bottom-4 right-4 z-20">
+        <div className="fixed bottom-2 right-2 z-20">
           <IconButton
             variation="contrast"
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}

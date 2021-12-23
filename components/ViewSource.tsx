@@ -17,7 +17,7 @@ type ViewSourceProps = Href | Path
 
 const ViewSource: React.FC<ViewSourceProps> = ({ href, path }) => {
   return (
-    <div className="fixed bottom-4 left-4 z-20">
+    <div className="fixed bottom-2 left-2 z-20">
       <TextLink
         href={
           href ||
