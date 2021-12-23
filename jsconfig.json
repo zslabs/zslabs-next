@@ -4,7 +4,7 @@
     "paths": {
       "~data/*": ["data/*"],
       "~components/*": ["components/*"],
-      "~helpers": ["helpers/index"],
+      "~helpers/*": ["helpers/*"],
       "~hooks/*": ["hooks/*"],
       "~icons/*": ["icons/*"],
       "~layouts/*": ["layouts/*"],

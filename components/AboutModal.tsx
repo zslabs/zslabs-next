@@ -17,21 +17,34 @@ const AboutModal: React.FC = () => {
 
   return (
     <>
-      <button
-        type="button"
-        title="About me"
-        className="block w-12 h-12 overflow-hidden rounded-full shadow-md duration-300 hover:scale-110 hover:shadow-lg focus:outline-none ease-bounce"
-        onClick={toggle}
+      <Modal
+        trigger={
+          <button
+            type="button"
+            title="About me"
+            className="block w-12 h-12 overflow-hidden rounded-full shadow-md duration-300 hover:scale-110 hover:shadow-lg focus:outline-none ease-iOS"
+          >
+            <NextImage
+              alt="Zach Schnackel"
+              src="/me.png"
+              width="48"
+              height="48"
+            />
+          </button>
+        }
+        beforeTitle={
+          <div className="rounded-full overflow-hidden w-24 h-24 shadow-lg mx-auto mb-8">
+            <NextImage src="/me.png" width="96" height="96" />
+          </div>
+        }
+        title={
+          <h3 className="text-4xl font-extrabold text-center mb-4">
+            Hi, I'm Zach
+          </h3>
+        }
+        open={open}
+        setOpen={toggle}
       >
-        <NextImage alt="Zach Schnackel" src="/me.png" width="48" height="48" />
-      </button>
-      <Modal open={open} setIsOpen={toggle}>
-        <div className="rounded-full overflow-hidden w-24 h-24 shadow-lg mx-auto mb-8">
-          <NextImage src="/me.png" width="96" height="96" />
-        </div>
-        <h3 className="text-4xl font-extrabold text-center mb-4">
-          Hi, I'm Zach
-        </h3>
         <div className="grid gap-4 auto-cols-min grid-flow-col justify-center mb-8">
           <TextLink
             title="View my Twitter profile"

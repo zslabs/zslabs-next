@@ -1,44 +1,35 @@
-import clsx from 'clsx'
+import IconButton from './IconButton'
 
 import TextLink from '~components/TextLink'
 import { ReactComponent as CodeSvg } from '~icons/code.svg'
 
-interface ViewSourcePropsBasics {
-  variation: 'inline' | 'fixed'
-  className?: string
-}
-
-interface Href extends ViewSourcePropsBasics {
+interface Href {
   href: string
   path?: never
 }
 
-interface Path extends ViewSourcePropsBasics {
+interface Path {
   path: string
   href?: never
 }
 
 type ViewSourceProps = Href | Path
 
-const ViewSource: React.FC<ViewSourceProps> = ({ href, path, variation }) => {
+const ViewSource: React.FC<ViewSourceProps> = ({ href, path }) => {
   return (
-    <TextLink
-      href={
-        href ||
-        `https://github.com/zslabs/zslabs-next/blob/master/pages/${path}`
-      }
-      className={clsx(
-        'ring-2 ring-slate-300 dark:ring-slate-600 rounded-full bg-slate-300 dark:bg-slate-600 hover:scale-105 ease-bounce duration-300 text-slate-700 dark:text-slate-300',
-        {
-          'inline-block ml-1': variation === 'inline',
-          'fixed left-4 bottom-4 z-10 p-1 hidden md:inline-block':
-            variation === 'fixed',
+    <div className="fixed bottom-4 left-4 z-20">
+      <TextLink
+        href={
+          href ||
+          `https://github.com/zslabs/zslabs-next/blob/master/pages/${path}`
         }
-      )}
-      title={path ? 'View page source' : 'View source'}
-    >
-      <CodeSvg className="md:text-lg" />
-    </TextLink>
+        title={path ? 'View page source' : 'View source'}
+      >
+        <IconButton as="div" variation="default">
+          <CodeSvg />
+        </IconButton>
+      </TextLink>
+    </div>
   )
 }
 

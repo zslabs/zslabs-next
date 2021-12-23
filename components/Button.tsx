@@ -20,7 +20,7 @@ const Button: React.FC<ButtonProps & React.HTMLProps<HTMLButtonElement>> = ({
     <Component
       className={clsx(
         `
-        before:duration-500
+        before:duration-300
         before:absolute
         before:-z-10
         before:inset-0
@@ -37,7 +37,7 @@ const Button: React.FC<ButtonProps & React.HTMLProps<HTMLButtonElement>> = ({
         border-2 border-slate-100 dark:border-slate-800
         tracking-widest uppercase font-extrabold text-sm
         rounded-full
-        duration-200
+        duration-150
 
         after:absolute
         after:-z-10

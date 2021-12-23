@@ -4,6 +4,8 @@ import { motion } from 'framer-motion'
 import Badge from './Badge'
 import LinkUnderline from './LinkUnderline'
 
+import { fadeInUp } from '~helpers/styles'
+
 interface BubbleListItemProps {
   title: string
   sub?: React.ReactNode
@@ -11,11 +13,6 @@ interface BubbleListItemProps {
   badge?: string
   badgeVariant?: 'primary' | 'secondary' | 'tertiary'
   onClick?: () => void
-}
-
-const fadeInUp = {
-  offscreen: { opacity: 0, y: '1rem' },
-  onscreen: { opacity: 1, y: 0 },
 }
 
 export const BubbleListItem: React.FC<BubbleListItemProps> = ({
@@ -39,7 +36,7 @@ export const BubbleListItem: React.FC<BubbleListItemProps> = ({
     >
       <div
         className={clsx(`
-          before:duration-500
+          before:duration-300
           before:absolute
           before:-z-10
           before:-inset-1
@@ -59,7 +56,7 @@ export const BubbleListItem: React.FC<BubbleListItemProps> = ({
           border-2 border-slate-100 dark:border-slate-800
 
           rounded-full bg-slate-900 dark:bg-slate-100
-          duration-300 ease-bounce group-hover:scale-125
+          duration-300 ease-iOS group-hover:scale-125
           mt-2.5
         `)}
       />

@@ -22,7 +22,7 @@ const Privacy: NextPage<PrivacyProps> = ({ content }) => {
         <SectionTitle title="Privacy" />
         <MDXContent content={content} />
       </Section>
-      <ViewSource path="privacy.tsx" variation="fixed" />
+      <ViewSource path="privacy.tsx" />
     </>
   )
 }

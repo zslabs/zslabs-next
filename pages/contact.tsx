@@ -131,7 +131,7 @@ const Contact: NextPage = () => {
           <ContactForm />
         </div>
       </Section>
-      <ViewSource path="contact.tsx" variation="fixed" />
+      <ViewSource path="contact.tsx" />
     </>
   )
 }

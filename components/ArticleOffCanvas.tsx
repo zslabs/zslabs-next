@@ -4,6 +4,7 @@ import dayjs from 'dayjs'
 import OffCanvas from './OffCanvas'
 import SectionTitle from './SectionTitle'
 import BubbleList, { BubbleListItem } from './BubbleList'
+import IconButton from './IconButton'
 
 import useArticlesOffCanvasState from '~hooks/useArticlesOffCanvasState'
 import { ReactComponent as MenuSvg } from '~icons/menu.svg'
@@ -15,17 +16,17 @@ const ArticleOffCanvas: React.FC = () => {
 
   return (
     <>
-      <button
-        type="button"
-        className="block duration-300 hover:scale-110 ease-bounce focus:outline-none"
-        onClick={toggle}
-        title="View articles"
+      <OffCanvas
+        trigger={
+          <IconButton title="View articles" size="large">
+            <MenuSvg />
+          </IconButton>
+        }
+        title={<SectionTitle title="Articles" variation="blue" />}
+        open={open}
+        setOpen={toggle}
       >
-        <MenuSvg className="h-10 w-10" />
-      </button>
-      <OffCanvas open={open} setIsOpen={toggle}>
         <div className="mt-12">
-          <SectionTitle title="Articles" variation="blue" />
           <BubbleList>
             {posts.map((post) => (
               <BubbleListItem
