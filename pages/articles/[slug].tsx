@@ -2,7 +2,6 @@ import { GetStaticProps, GetStaticPaths } from 'next'
 import dayjs from 'dayjs'
 import { motion } from 'framer-motion'
 
-import { iosEase } from '~helpers/styles'
 import { getAllPosts, getPostBySlug, Post as PostProps } from '~lib/api'
 import ScrollIndicator from '~components/ScrollIndicator'
 import MDXContent from '~components/MDXContent'
@@ -27,7 +26,6 @@ export default function Post({
           className="mb-8 md:mb-12"
           initial={{ opacity: 0, y: '-2rem' }}
           animate={{ opacity: 1, y: 0 }}
-          transition={iosEase}
         >
           <h1 className="text-center mb-2 md:mb-4 text-4xl md:text-5xl font-extrabold">
             <TitleSkew title={frontmatter.title} />
@@ -48,7 +46,6 @@ export default function Post({
         <motion.div
           initial={{ opacity: 0, y: '2rem' }}
           animate={{ opacity: 1, y: 0 }}
-          transition={iosEase}
         >
           <MDXContent content={content} />
         </motion.div>

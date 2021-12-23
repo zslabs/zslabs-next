@@ -5,7 +5,6 @@ import * as Dialog from '@radix-ui/react-dialog'
 import IconButton from './IconButton'
 
 import { ReactComponent as CloseSvg } from '~icons/close.svg'
-import { iosEase } from '~helpers/styles'
 
 interface ModalProps {
   open: boolean
@@ -19,24 +18,20 @@ interface ModalProps {
 const modalVariants = {
   hidden: {
     opacity: 0,
-    transition: { duration: 0.3, ease: iosEase },
   },
   visible: {
     opacity: 1,
-    transition: { duration: 0.4, ease: iosEase },
   },
 }
 
 const modalDialogVariants = {
   hidden: {
     opacity: 0,
-    y: '80px',
-    transition: { duration: 0.3, ease: iosEase },
+    y: '8rem',
   },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.4, ease: iosEase },
   },
 }
 

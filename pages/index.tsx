@@ -14,7 +14,6 @@ import dots from '~media/dots.svg'
 import { getAllPosts, Post } from '~lib/api'
 import useArticlesOffCanvasState from '~hooks/useArticlesOffCanvasState'
 import useLayoutAnimationState from '~hooks/useLayoutAnimationState'
-import { iosEase } from '~helpers/styles'
 import ViewSource from '~components/ViewSource'
 import { getRssXml } from '~lib/rss'
 
@@ -158,7 +157,6 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
                   className="inline-block"
                   initial="hidden"
                   transition={{
-                    ...iosEase,
                     delay: index * 0.025,
                   }}
                   animate={introTitleSubControls}
@@ -174,7 +172,6 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
             initial="hidden"
             variants={introTitleVariants}
             animate={introTitleControls}
-            transition={iosEase}
           >
             Zach Schnackel
           </motion.h1>
@@ -183,7 +180,6 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
               initial="hidden"
               variants={buttonVariants}
               animate={buttonControls}
-              transition={iosEase}
             >
               <Button type="button" variation="primary" onClick={toggle}>
                 Articles
@@ -195,7 +191,6 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
               variants={buttonVariants}
               animate={buttonControls}
               transition={{
-                ...iosEase,
                 delay: 0.125,
               }}
             >
@@ -213,12 +208,11 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
         initial="hidden"
         variants={latestArticleVariants}
         animate={latestArticleControls}
-        transition={iosEase}
       >
         <div className="grid grid-cols-1 justify-items-center px-4">
           <TextLink
             href={`/articles/${latestPost.frontmatter.slug}`}
-            className="relative py-6 px-10 text-center hover:scale-105 ease-iOS duration-300"
+            className="relative py-6 px-10 text-center hover:scale-105 ease-in-out duration-300"
           >
             <div className="absolute -top-2 -left-2 w-full h-full -skew-x-12 z-0">
               <div className="absolute inset-0 bg-gradient-to-br from-indigo-700 to-blue-500 opacity-80 rounded-lg" />
@@ -248,7 +242,6 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
             initial="hidden"
             variants={projectsVariants}
             animate={projectsControls}
-            transition={iosEase}
           >
             <RecentProjects />
           </motion.div>

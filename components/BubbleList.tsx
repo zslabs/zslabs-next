@@ -56,7 +56,7 @@ export const BubbleListItem: React.FC<BubbleListItemProps> = ({
           border-2 border-slate-100 dark:border-slate-800
 
           rounded-full bg-slate-900 dark:bg-slate-100
-          duration-300 ease-iOS group-hover:scale-125
+          duration-300 ease-in-out group-hover:scale-125
           mt-2.5
         `)}
       />

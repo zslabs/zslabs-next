@@ -5,7 +5,6 @@ import * as Dialog from '@radix-ui/react-dialog'
 import IconButton from './IconButton'
 
 import { ReactComponent as CloseSvg } from '~icons/close.svg'
-import { iosEase } from '~helpers/styles'
 
 interface OffCanvasProps {
   open: boolean
@@ -18,11 +17,9 @@ interface OffCanvasProps {
 const offCanvasVariants = {
   hidden: {
     opacity: 0,
-    transition: { duration: 0.3, ease: iosEase },
   },
   visible: {
     opacity: 1,
-    transition: { duration: 0.4, ease: iosEase },
   },
 }
 
@@ -30,12 +27,10 @@ const offCanvasDialogVariants = {
   hidden: {
     opacity: 0,
     x: '-100%',
-    transition: { duration: 0.3, ease: iosEase },
   },
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.4, ease: iosEase },
   },
 }
 
@@ -72,6 +67,7 @@ const OffCanvas: React.FC<OffCanvasProps> = ({
                     animate="visible"
                     exit="hidden"
                     className="overflow-auto bg-slate-100 dark:bg-slate-800 rounded-tr-2xl shadow-lg z-20 relative top-0 left-0 h-full w-full md:max-w-xs pt-16 pr-8 pb-8 pl-8"
+                    transition={{ x: { stiffness: 1000 } }}
                   >
                     <Dialog.Title asChild>{title}</Dialog.Title>
                     {description && (

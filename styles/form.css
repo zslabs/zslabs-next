@@ -10,7 +10,7 @@ select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
   -webkit-text-fill-color: theme('colors.gray.900');
   -webkit-box-shadow: inset 0 0 0 9999px theme('colors.white');
-  transition: background-color 5000s ease-iOS 0s;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 .dark {

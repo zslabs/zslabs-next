@@ -20,7 +20,6 @@ import Section from '~components/Section'
 import AboutModal from '~components/AboutModal'
 import ArticleOffCanvas from '~components/ArticleOffCanvas'
 import useLayoutAnimationState from '~hooks/useLayoutAnimationState'
-import { iosEase } from '~helpers/styles'
 import { ReactComponent as TwitterSvg } from '~icons/logos/twitter.svg'
 import { ReactComponent as GitHubSvg } from '~icons/logos/github.svg'
 import IconButton from '~components/IconButton'
@@ -51,8 +50,7 @@ const HeaderItemWrapper: React.FC<
       variants={variants}
       initial={runAnimation ? 'hidden' : false}
       transition={{
-        ...iosEase,
-        delay: custom * 0.15,
+        delay: custom * 0.25,
       }}
       {...rest}
     />
@@ -116,7 +114,7 @@ const BaseLayout: React.FC = ({ children }) => {
               <TextLink
                 href="/"
                 title="ZS Labs"
-                className="transform duration-300 hover:scale-110 ease-iOS block"
+                className="transform duration-300 hover:scale-110 ease-in-out block"
               >
                 <LogoSvg className="h-12 from-blue-500 to-blue-600 drop-shadow-md" />
               </TextLink>
@@ -145,7 +143,6 @@ const BaseLayout: React.FC = ({ children }) => {
           as={motion.footer}
           animate={controls}
           variants={footerVariants}
-          transition={iosEase}
           initial={runAnimation ? 'hidden' : false}
         >
           <div className="grid grid-cols-1 gap-4 justify-items-center">

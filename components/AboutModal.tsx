@@ -22,7 +22,7 @@ const AboutModal: React.FC = () => {
           <button
             type="button"
             title="About me"
-            className="block w-12 h-12 overflow-hidden rounded-full shadow-md duration-300 hover:scale-110 hover:shadow-lg focus:outline-none ease-iOS"
+            className="block w-12 h-12 overflow-hidden rounded-full shadow-md duration-300 hover:scale-110 hover:shadow-lg focus:outline-none ease-in-out"
           >
             <NextImage
               alt="Zach Schnackel"

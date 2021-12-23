@@ -55,9 +55,6 @@ module.exports = {
       transitionProperty: {
         'background-size': 'background-size',
       },
-      transitionTimingFunction: {
-        iOS: 'cubic-bezier(0.36, 0.66, 0.04, 1)',
-      },
       width: {
         0.5: '0.125rem',
       },

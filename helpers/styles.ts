@@ -1,7 +1,12 @@
-import { Variants } from 'framer-motion'
+import { Transition, Variants } from 'framer-motion'
 
-export const iosEase = [0.36, 0.66, 0.04, 1]
+export const spring: Transition = {
+  type: 'spring',
+  damping: 20,
+  stiffness: 300,
+}
 
+/* eslint-disable import/prefer-default-export */
 export const fadeInUp: Variants = {
   offscreen: {
     opacity: 0,

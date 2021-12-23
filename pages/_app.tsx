@@ -3,9 +3,11 @@ import { ThemeProvider } from 'next-themes'
 import { DefaultSeo } from 'next-seo'
 import Router from 'next/router'
 import NProgress from 'nprogress'
+import { MotionConfig } from 'framer-motion'
 
 import SEO from '../next-seo.config'
 
+import { spring } from '~helpers/styles'
 import BaseLayout from '~layouts/BaseLayout'
 
 import '~styles/index.css'
@@ -36,11 +38,13 @@ export default function MyApp({
   pageProps,
 }: AppProps): React.ReactElement {
   return (
-    <ThemeProvider attribute="class" defaultTheme="light">
-      <DefaultSeo {...SEO} />
-      <BaseLayout>
-        <Component {...pageProps} />
-      </BaseLayout>
-    </ThemeProvider>
+    <MotionConfig transition={spring}>
+      <ThemeProvider attribute="class" defaultTheme="light">
+        <DefaultSeo {...SEO} />
+        <BaseLayout>
+          <Component {...pageProps} />
+        </BaseLayout>
+      </ThemeProvider>
+    </MotionConfig>
   )
 }
