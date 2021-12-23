@@ -40,7 +40,7 @@ export default function Post({
                   'MMMM D, YYYY'
                 )}`}
               >
-                <InfoCircleSvg className="w-6 h-6" />
+                <InfoCircleSvg className="text-2xl" />
               </div>
             )}
           </div>

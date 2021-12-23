@@ -48,9 +48,9 @@ export default function Code({
                 <div className="absolute bottom-0 left-0 w-full bg-gradient-to-br from-blue-500 to-indigo-700 h-0.5" />
               </div>
             )}
-            <div className="text-slate-400 absolute right-4 top-1/2 -translate-y-1/2">
+            <div className="text-slate-400 absolute right-4 top-1/2 -translate-y-1/2 text-2xl">
               {isCopied ? (
-                <ClipboardCheckSvg className="w-6 h-6" />
+                <ClipboardCheckSvg />
               ) : (
                 <CopyToClipboard
                   text={codeString}
@@ -61,7 +61,7 @@ export default function Code({
                     className="block focus:outline-none"
                     title="Copy snippet"
                   >
-                    <ClipboardSvg className="w-6 h-6" />
+                    <ClipboardSvg />
                   </button>
                 </CopyToClipboard>
               )}
