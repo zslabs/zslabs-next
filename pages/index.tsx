@@ -212,7 +212,7 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
         <div className="grid grid-cols-1 justify-items-center px-4">
           <TextLink
             href={`/articles/${latestPost.frontmatter.slug}`}
-            className="relative py-6 px-10 text-center hover:scale-105 ease-in-out duration-300"
+            className="relative py-6 px-10 text-center hover:scale-105 ease-bounce duration-300"
           >
             <div className="absolute -top-2 -left-2 w-full h-full -skew-x-12 z-0">
               <div className="absolute inset-0 bg-gradient-to-br from-indigo-700 to-blue-500 opacity-80 rounded-lg" />

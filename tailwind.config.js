@@ -55,6 +55,9 @@ module.exports = {
       transitionProperty: {
         'background-size': 'background-size',
       },
+      transitionTimingFunction: {
+        bounce: 'cubic-bezier(0.680, -0.550, 0.265, 1.550)',
+      },
       width: {
         0.5: '0.125rem',
       },

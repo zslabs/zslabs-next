@@ -23,7 +23,7 @@ const IconButton = React.forwardRef(
       <Component
         ref={ref}
         className={clsx(
-          'grid place-content-center disabled:opacity-50 disabled:cursor-not-allowed duration-150 hover:scale-110 ease-in-out focus:outline-none rounded-full',
+          'grid place-content-center disabled:opacity-50 disabled:cursor-not-allowed duration-150 hover:scale-110 ease-bounce focus:outline-none rounded-full',
           {
             'bg-slate-200 dark:bg-slate-700': variation === 'default',
             'bg-slate-900 text-slate-100': variation === 'contrast',
