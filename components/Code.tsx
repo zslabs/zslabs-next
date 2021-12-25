@@ -69,7 +69,7 @@ export default function Code({
           </header>
           <pre className={className}>
             <div className="grid grid-flow-col auto-cols-auto justify-start overflow-auto max-h-120">
-              <div className="p-4 bg-slate-800 border-slate-600 text-right text-slate-100 text-opacity-40 select-none sticky left-0 z-10">
+              <div className="p-4 rounded-bl-xl bg-slate-800 border-slate-600 text-right text-slate-100 text-opacity-40 select-none sticky left-0 z-10">
                 {tokens.map((line, i) => {
                   const lineKey = `line-${i}`
 
