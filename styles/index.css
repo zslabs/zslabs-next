@@ -21,6 +21,15 @@
     font-display: swap;
   }
 
+  @font-face {
+    font-family: 'JetBrains Mono';
+    src: url('/fonts/JetBrainsMono[wght].woff2') format('woff2');
+    font-style: normal;
+    font-variation-ligatures: normal;
+    font-weight: 400 600;
+    font-display: swap;
+  }
+
   /* Take care of global styles overriding Alert component children */
   .Alert {
     @apply dark:text-slate-900;

@@ -29,6 +29,13 @@ class MyDocument extends Document {
             type="font/woff2"
             crossOrigin="anonymous"
           />
+          <link
+            rel="preload"
+            href="/fonts/JetBrainsMono[wght].woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
           <link rel="icon" href="/me.png" />
           <Analytics />
           <link

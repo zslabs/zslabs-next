@@ -75,6 +75,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ['ZS Sans', ...defaultTheme.fontFamily.sans],
+        mono: ['JetBrains Mono', ...defaultTheme.fontFamily.mono],
       },
       gridTemplateColumns: {
         13: 'repeat(13, minmax(0, 1fr))',

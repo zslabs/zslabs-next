@@ -33,12 +33,12 @@ export default function Code({
       language={language}
     >
       {({ className, tokens, getLineProps, getTokenProps }) => (
-        <aside className="relative bg-slate-800 font-mono rounded-lg overflow-hidden tracking-normal ring-4 ring-slate-900 dark:ring-slate-600 ring-opacity-25">
-          <header className="relative border-b-2 bg-slate-900 border-slate-600 grid auto-cols-auto grid-flow-col justify-start items-center">
+        <aside className="relative bg-slate-800 font-mono rounded-xl overflow-hidden shadow-md tracking-normal border border-slate-600">
+          <header className="relative border-b border-slate-600 grid auto-cols-auto grid-flow-col justify-start items-center">
             <div className="p-4 grid gap-2 auto-cols-max grid-flow-col self-center">
-              <div className="w-3 h-3 border-2 rounded-full border-rose-500" />
-              <div className="w-3 h-3 border-2 rounded-full border-yellow-500" />
-              <div className="w-3 h-3 border-2 rounded-full border-emerald-500" />
+              <div className="w-3 h-3 rounded-full bg-rose-500" />
+              <div className="w-3 h-3 rounded-full bg-yellow-500" />
+              <div className="w-3 h-3 rounded-full bg-emerald-500" />
             </div>
             {filename && (
               <div className="relative">
@@ -69,7 +69,7 @@ export default function Code({
           </header>
           <pre className={className}>
             <div className="grid grid-flow-col auto-cols-auto justify-start overflow-auto max-h-120">
-              <div className="p-4 bg-slate-800 border-r-2 border-slate-600 text-right text-slate-100 text-opacity-40 select-none sticky left-0 z-10">
+              <div className="p-4 bg-slate-800 border-slate-600 text-right text-slate-100 text-opacity-40 select-none sticky left-0 z-10">
                 {tokens.map((line, i) => {
                   const lineKey = `line-${i}`
 
