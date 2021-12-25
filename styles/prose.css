@@ -22,7 +22,7 @@
   }
 
   a:not([class]) {
-    @apply font-extrabold text-blue-500 duration-150 bg-gradient-to-br from-blue-100 to-blue-100 transition-all bg-left-bottom bg-no-repeat bg-100/6;
+    @apply font-bold text-blue-500 duration-150 bg-gradient-to-br from-blue-100 to-blue-100 transition-all bg-left-bottom bg-no-repeat bg-100/6;
   }
 
   h2,
@@ -73,7 +73,7 @@
   ol > li::before {
     content: counter(list-counter) '.';
 
-    @apply absolute left-1 font-extrabold text-blue-500;
+    @apply absolute left-1 font-bold text-blue-500;
   }
 
   li {

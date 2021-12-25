@@ -27,10 +27,10 @@ export default function Post({
           initial={{ opacity: 0, y: '-2rem' }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <h1 className="text-center mb-2 md:mb-4 text-4xl md:text-5xl font-extrabold">
+          <h1 className="text-center mb-2 md:mb-4 text-4xl md:text-5xl font-bold">
             <TitleSkew title={frontmatter.title} />
           </h1>
-          <div className="uppercase text-slate-500 dark:text-slate-300 font-extrabold tracking-widest grid auto-cols-auto grid-flow-col justify-center gap-2 items-center">
+          <div className="uppercase text-slate-500 dark:text-slate-300 font-bold tracking-widest grid auto-cols-auto grid-flow-col justify-center gap-2 items-center">
             <span>{dayjs(frontmatter.date).format('MMMM D, YYYY')}</span>
             {frontmatter.dateModified && (
               <div

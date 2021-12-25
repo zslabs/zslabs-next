@@ -1,14 +1,20 @@
 import { NextPage } from 'next'
 
+import Container from '~components/Container'
 import SEO from '~components/SEO'
 
 const PageNotFound: NextPage = () => {
   return (
     <>
       <SEO title="Page not found" />
-      <h1 className="text-25vw text-center font-extrabold bg-clip-text bg-gradient-to-br from-emerald-400 to-cyan-500 text-fill-transparent leading-none">
-        404
-      </h1>
+      <Container>
+        <div className="text-center">
+          <h1 className="text-9xl font-extrabold bg-clip-text bg-gradient-to-br from-emerald-400 to-cyan-500 text-fill-transparent mb-8">
+            404
+          </h1>
+          <p className="text-large">It's probably something you did</p>
+        </div>
+      </Container>
     </>
   )
 }

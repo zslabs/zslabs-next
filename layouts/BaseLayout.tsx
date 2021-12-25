@@ -153,7 +153,7 @@ const BaseLayout: React.FC = ({ children }) => {
                 Copyright &copy; {new Date().getFullYear()} Zach Schnackel.
                 Penalty is 🔥
               </div>
-              <div className="font-extrabold grid gap-4 grid-flow-col auto-cols-auto justify-center items-center">
+              <div className="font-bold grid gap-4 grid-flow-col auto-cols-auto justify-center items-center">
                 <div>
                   <LinkUnderline href="/contact">Contact</LinkUnderline>
                 </div>

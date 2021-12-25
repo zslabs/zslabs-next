@@ -62,7 +62,7 @@ export const BubbleListItem: React.FC<BubbleListItemProps> = ({
       />
       <div className="space-y-1">
         <div className="grid items-center grid-flow-col auto-cols-auto gap-4">
-          <h3 className="font-extrabold text-2xl">
+          <h3 className="font-bold text-2xl">
             {link ? (
               <LinkUnderline href={link} onClick={onClick}>
                 {title}

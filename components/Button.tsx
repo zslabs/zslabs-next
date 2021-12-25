@@ -35,7 +35,7 @@ const Button: React.FC<ButtonProps & React.HTMLProps<HTMLButtonElement>> = ({
 
         relative inline-block h-12
         border-2 border-slate-100 dark:border-slate-800
-        tracking-widest uppercase font-extrabold text-sm
+        uppercase font-bold text-sm tracking-widest
         rounded-full
         duration-150
 

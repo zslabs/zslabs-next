@@ -24,9 +24,9 @@ class MyDocument extends Document {
         <Head>
           <link
             rel="preload"
-            href="/fonts/Manrope[wght].ttf"
+            href="/fonts/Manrope[wght].woff2"
             as="font"
-            type="font/ttf"
+            type="font/woff2"
             crossOrigin="anonymous"
           />
           <link rel="icon" href="/me.png" />
@@ -38,7 +38,7 @@ class MyDocument extends Document {
             href="/rss.xml"
           />
         </Head>
-        <body className="antialiased overflow-y-scroll overflow-x-hidden font-medium text-slate-900 dark:text-slate-100 bg-slate-100 dark:bg-slate-800 tracking-tight">
+        <body className="antialiased overflow-y-scroll overflow-x-hidden font-medium text-slate-900 dark:text-slate-100 bg-slate-100 dark:bg-slate-800">
           <Main />
           <NextScript />
         </body>

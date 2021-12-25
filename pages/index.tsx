@@ -147,7 +147,7 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
     <>
       <Section>
         <div className="grid place-items-center gap-4">
-          <div className="uppercase text-slate-500 dark:text-slate-300 font-extrabold tracking-widest md:text-lg">
+          <div className="uppercase text-slate-500 dark:text-slate-300 font-bold tracking-widest md:text-lg md:tracking-widest">
             {Array.from(introTitleSub).map((character, index) => {
               const key = `${character}-${index}`
 
@@ -168,7 +168,7 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
             })}
           </div>
           <motion.h1
-            className="text-6xl md:text-7xl font-extrabold text-center"
+            className="text-6xl md:text-7xl font-bold text-center"
             initial="hidden"
             variants={introTitleVariants}
             animate={introTitleControls}
@@ -225,7 +225,7 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
             <div className="absolute inset-0 z-0 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800 -skew-x-12 shadow rounded-lg" />
             <div className="relative z-10 space-y-1">
               <div>🎉 Check out my latest article:</div>
-              <div className="font-extrabold text-lg">
+              <div className="font-bold text-lg">
                 {latestPost.frontmatter.title}
               </div>
             </div>

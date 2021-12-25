@@ -59,7 +59,7 @@
 
 .token.important,
 .token.bold {
-  @apply font-extrabold;
+  @apply font-bold;
 }
 
 .token.entity {

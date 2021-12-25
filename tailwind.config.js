@@ -2,9 +2,65 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 const plugin = require('tailwindcss/plugin')
 
+// Calculates ideal letterSpacing for a given font size
+function dynamicTracking(fontSize) {
+  const a = -0.0223
+  const b = 0.135 // 0.185 default
+  const c = -0.1745
+  // tracking = a + b * e ^ (c * fontSize)
+  const value = a + b * Math.E ** (c * (fontSize * 16))
+
+  return `${value.toFixed(3)}em`
+}
+
 module.exports = {
   darkMode: 'class',
   theme: {
+    fontSize: {
+      xs: [
+        '0.75rem',
+        { lineHeight: '1rem', letterSpacing: dynamicTracking(0.75) },
+      ],
+      sm: [
+        '0.875rem',
+        { lineHeight: '1.25rem', letterSpacing: dynamicTracking(1.25) },
+      ],
+      base: [
+        '1rem',
+        { lineHeight: '1.5rem', letterSpacing: dynamicTracking(1) },
+      ],
+      lg: [
+        '1.125rem',
+        { lineHeight: '1.75rem', letterSpacing: dynamicTracking(1.125) },
+      ],
+      xl: [
+        '1.25rem',
+        { lineHeight: '1.75rem', letterSpacing: dynamicTracking(1.75) },
+      ],
+      '2xl': [
+        '1.5rem',
+        { lineHeight: '2rem', letterSpacing: dynamicTracking(1.5) },
+      ],
+      '3xl': [
+        '1.875rem',
+        { lineHeight: '2.25rem', letterSpacing: dynamicTracking(1.875) },
+      ],
+      '4xl': [
+        '2.25rem',
+        { lineHeight: '2.5rem', letterSpacing: dynamicTracking(2.25) },
+      ],
+      '5xl': ['3rem', { lineHeight: '1', letterSpacing: dynamicTracking(2.3) }],
+      '6xl': [
+        '3.75rem',
+        { lineHeight: '1', letterSpacing: dynamicTracking(3.75) },
+      ],
+      '7xl': [
+        '4.5rem',
+        { lineHeight: '1', letterSpacing: dynamicTracking(4.5) },
+      ],
+      '8xl': ['6rem', { lineHeight: '1', letterSpacing: dynamicTracking(6) }],
+      '9xl': ['8rem', { lineHeight: '1', letterSpacing: dynamicTracking(9) }],
+    },
     extend: {
       backgroundSize: {
         '0/6': '0% 6px',
@@ -19,9 +75,6 @@ module.exports = {
       },
       fontFamily: {
         sans: ['ZS Sans', ...defaultTheme.fontFamily.sans],
-      },
-      fontSize: {
-        '25vw': '25vw',
       },
       gridTemplateColumns: {
         13: 'repeat(13, minmax(0, 1fr))',
@@ -42,9 +95,6 @@ module.exports = {
       },
       maxHeight: {
         120: '30rem',
-      },
-      letterSpacing: {
-        tight: '-.0125em',
       },
       scale: {
         1: '1',
