@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form'
 import to from 'await-to-js'
 import axios from 'redaxios'
 import { NextPage } from 'next'
+import { motion } from 'framer-motion'
 
 import Button from '~components/Button'
 import Input from '~components/Input'
@@ -61,8 +62,6 @@ const ContactForm: React.FC = () => {
 
   return (
     <>
-      <SEO title="Contact" />
-
       {response === 'success' && (
         <Alert>Your message was sent successfully!</Alert>
       )}
@@ -115,20 +114,33 @@ const ContactForm: React.FC = () => {
 const Contact: NextPage = () => {
   return (
     <>
+      <SEO title="Contact" />
+
       <Section>
         <div className="grid grid-cols-1 md:grid-cols-3/4 justify-center relative">
-          <SectionTitle title="Contact" variation="red" />
-          <div className="text-center mb-8">
-            <Prose>
-              <p>
-                Have a project you'd like me to be part of? Let's chat! You can
-                either <a href="mailto:info@zslabs.com">email me directly</a> or
-                fill out the form below.
-              </p>
-            </Prose>
-          </div>
+          <motion.header
+            initial={{ opacity: 0, y: '-2rem' }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            <SectionTitle title="Contact" variation="red" />
+          </motion.header>
+          <motion.main
+            initial={{ opacity: 0, y: '2rem' }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            <div className="text-center mb-8">
+              <Prose>
+                <p>
+                  Have a project you'd like me to be part of? Let's chat! You
+                  can either{' '}
+                  <a href="mailto:info@zslabs.com">email me directly</a> or fill
+                  out the form below.
+                </p>
+              </Prose>
+            </div>
 
-          <ContactForm />
+            <ContactForm />
+          </motion.main>
         </div>
       </Section>
       <ViewSource path="contact.tsx" />
