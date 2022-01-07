@@ -47,9 +47,9 @@ const Modal: React.FC<ModalProps> = ({
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>{trigger}</Dialog.Trigger>
-      <Dialog.Portal forceMount>
-        <AnimatePresence>
-          {open && (
+      <AnimatePresence>
+        {open && (
+          <Dialog.Portal forceMount>
             <Dialog.Overlay asChild forceMount>
               <motion.div
                 variants={modalVariants}
@@ -89,9 +89,9 @@ const Modal: React.FC<ModalProps> = ({
                 </Dialog.Content>
               </motion.div>
             </Dialog.Overlay>
-          )}
-        </AnimatePresence>
-      </Dialog.Portal>
+          </Dialog.Portal>
+        )}
+      </AnimatePresence>
     </Dialog.Root>
   )
 }

@@ -45,9 +45,9 @@ const OffCanvas: React.FC<OffCanvasProps> = ({
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>{trigger}</Dialog.Trigger>
-      <Dialog.Portal forceMount>
-        <AnimatePresence>
-          {open && (
+      <AnimatePresence>
+        {open && (
+          <Dialog.Portal forceMount>
             <Dialog.Overlay asChild forceMount>
               <motion.div
                 variants={offCanvasVariants}
@@ -87,9 +87,9 @@ const OffCanvas: React.FC<OffCanvasProps> = ({
                 </Dialog.Content>
               </motion.div>
             </Dialog.Overlay>
-          )}
-        </AnimatePresence>
-      </Dialog.Portal>
+          </Dialog.Portal>
+        )}
+      </AnimatePresence>
     </Dialog.Root>
   )
 }
