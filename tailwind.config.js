@@ -124,25 +124,20 @@ module.exports = {
     './pages/**/*.{js,ts,jsx,tsx}',
   ],
   plugins: [
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/line-clamp'),
     plugin(({ addUtilities }) => {
-      const newUtilities = {
+      addUtilities({
         '.filter-invert': {
           filter: 'invert(1)',
         },
-
         '.gradient-mask-b-0': {
           'mask-image': 'linear-gradient(180deg, #000 0, transparent)',
         },
-
-        '.underline': {
-          'text-decoration': 'underline',
-          'text-decoration-skip-ink': 'auto',
+        '.text-fill-transparent': {
+          '-webkit-text-fill-color': 'transparent',
         },
-      }
-
-      addUtilities(newUtilities)
+      })
     }),
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/line-clamp'),
   ],
 }

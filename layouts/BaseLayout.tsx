@@ -114,7 +114,7 @@ const BaseLayout: React.FC = ({ children }) => {
               <TextLink
                 href="/"
                 title="ZS Labs"
-                className="transform duration-300 hover:scale-110 ease-bounce block"
+                className="duration-300 hover:scale-110 ease-bounce block"
               >
                 <LogoSvg className="h-12 from-blue-500 to-blue-600 drop-shadow-md" />
               </TextLink>

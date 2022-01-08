@@ -5,11 +5,19 @@ module.exports = {
     'plugin:prettier/recommended',
     'plugin:import/errors',
     'plugin:import/warnings',
+    'plugin:tailwindcss/recommended',
   ],
   parserOptions: {
     ecmaVersion: 2020,
   },
-  plugins: ['react', 'jsx-a11y', 'react-hooks', 'prettier', 'import'],
+  plugins: [
+    'react',
+    'jsx-a11y',
+    'react-hooks',
+    'prettier',
+    'import',
+    'tailwindcss',
+  ],
   rules: {
     'import/no-unresolved': 0,
     'import/extensions': 0,
@@ -40,6 +48,7 @@ module.exports = {
     // Next.js <Link> component doesn't play nice with anchor validation
     'jsx-a11y/anchor-is-valid': 0,
     'jsx-a11y/anchor-has-content': 0,
+    'tailwindcss/classnames-order': 0,
   },
   overrides: [
     // TypeScript config
@@ -59,6 +68,7 @@ module.exports = {
         'plugin:import/errors',
         'plugin:import/warnings',
         'plugin:@typescript-eslint/recommended',
+        'plugin:tailwindcss/recommended',
       ],
       rules: {
         // We will use TypeScript's types for component props instead
@@ -100,6 +110,7 @@ module.exports = {
             allowConciseArrowFunctionExpressionsStartingWithVoid: true,
           },
         ],
+        'tailwindcss/classnames-order': 0,
       },
     },
   ],
