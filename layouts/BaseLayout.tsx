@@ -1,28 +1,25 @@
 import * as React from 'react'
-import { useRouter } from 'next/router'
-import { useTheme } from 'next-themes'
-import {
-  AnimationControls,
-  HTMLMotionProps,
-  motion,
-  useAnimation,
-} from 'framer-motion'
 
-import { ReactComponent as LogoSvg } from '~media/logo.svg'
-import { ReactComponent as ListLogoSvg } from '~icons/logos/list.svg'
-import { ReactComponent as DarkSvg } from '~icons/dark.svg'
-import { ReactComponent as LightSvg } from '~icons/light.svg'
-import bubbles from '~media/bubbles.svg'
-import Container from '~components/Container'
-import LinkUnderline from '~components/LinkUnderline'
-import TextLink from '~components/TextLink'
-import Section from '~components/Section'
+import type { AnimationControls, HTMLMotionProps } from 'framer-motion'
+import { motion, useAnimation } from 'framer-motion'
+import { useTheme } from 'next-themes'
+import { useRouter } from 'next/router'
+
 import AboutModal from '~components/AboutModal'
 import ArticleOffCanvas from '~components/ArticleOffCanvas'
-import useLayoutAnimationState from '~hooks/useLayoutAnimationState'
-import { ReactComponent as TwitterSvg } from '~icons/logos/twitter.svg'
-import { ReactComponent as GitHubSvg } from '~icons/logos/github.svg'
+import Container from '~components/Container'
 import IconButton from '~components/IconButton'
+import LinkUnderline from '~components/LinkUnderline'
+import Section from '~components/Section'
+import TextLink from '~components/TextLink'
+import useLayoutAnimationState from '~hooks/useLayoutAnimationState'
+import { ReactComponent as DarkSvg } from '~icons/dark.svg'
+import { ReactComponent as LightSvg } from '~icons/light.svg'
+import { ReactComponent as GitHubSvg } from '~icons/logos/github.svg'
+import { ReactComponent as ListLogoSvg } from '~icons/logos/list.svg'
+import { ReactComponent as TwitterSvg } from '~icons/logos/twitter.svg'
+import bubbles from '~media/bubbles.svg'
+import { ReactComponent as LogoSvg } from '~media/logo.svg'
 
 interface HeaderItemWrapperProps {
   runAnimation: boolean

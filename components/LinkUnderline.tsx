@@ -1,6 +1,7 @@
 import * as React from 'react'
 
-import TextLink, { TextLinkProps } from './TextLink'
+import type { TextLinkProps } from './TextLink'
+import TextLink from './TextLink'
 
 interface LinkUnderlineProps extends TextLinkProps {
   onClick?: React.MouseEventHandler<HTMLAnchorElement>

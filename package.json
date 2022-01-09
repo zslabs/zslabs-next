@@ -17,9 +17,9 @@
     "dev": "next-remote-watch ./articles",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint --ext js,jsx,ts,tsx",
-    "lint:fix": "eslint --ext js,jsx,ts,tsx --fix",
-    "type-check": "tsc --project tsconfig.json --pretty --noEmit",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "type:check": "tsc --project tsconfig.json --pretty --noEmit",
     "postbuild": "next-sitemap",
     "postinstall": "husky install"
   },

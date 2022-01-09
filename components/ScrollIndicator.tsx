@@ -1,11 +1,12 @@
 import * as React from 'react'
+
+import clsx from 'clsx'
 import {
   motion,
   useSpring,
   useTransform,
   useViewportScroll,
 } from 'framer-motion'
-import clsx from 'clsx'
 
 interface ScrollIndicatorProps {
   position?: 'fixed'

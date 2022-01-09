@@ -1,15 +1,16 @@
-import { GetStaticProps, GetStaticPaths } from 'next'
 import dayjs from 'dayjs'
 import { motion } from 'framer-motion'
+import type { GetStaticProps, GetStaticPaths } from 'next'
 
-import { getAllPosts, getPostBySlug, Post as PostProps } from '~lib/api'
-import ScrollIndicator from '~components/ScrollIndicator'
 import MDXContent from '~components/MDXContent'
+import ScrollIndicator from '~components/ScrollIndicator'
 import Section from '~components/Section'
-import { ReactComponent as InfoCircleSvg } from '~icons/info-circle.svg'
+import { TitleSkew } from '~components/SectionTitle'
 import SEO from '~components/SEO'
 import ViewSource from '~components/ViewSource'
-import { TitleSkew } from '~components/SectionTitle'
+import { ReactComponent as InfoCircleSvg } from '~icons/info-circle.svg'
+import { getAllPosts, getPostBySlug } from '~lib/api'
+import type { Post as PostProps } from '~lib/api'
 
 export default function Post({
   post: { frontmatter, content },

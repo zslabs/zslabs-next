@@ -1,9 +1,9 @@
-import { AppProps } from 'next/app'
-import { ThemeProvider } from 'next-themes'
+import { MotionConfig } from 'framer-motion'
 import { DefaultSeo } from 'next-seo'
+import { ThemeProvider } from 'next-themes'
+import type { AppProps } from 'next/app'
 import Router from 'next/router'
 import NProgress from 'nprogress'
-import { MotionConfig } from 'framer-motion'
 
 import SEO from '../next-seo.config'
 

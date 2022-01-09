@@ -1,8 +1,9 @@
 import fs from 'fs'
 
 import * as React from 'react'
-import { GetStaticProps, NextPage } from 'next'
+
 import { motion } from 'framer-motion'
+import type { GetStaticProps, NextPage } from 'next'
 
 import BubbleList, { BubbleListItem } from '~components/BubbleList'
 import Section from '~components/Section'

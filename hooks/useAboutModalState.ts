@@ -1,4 +1,5 @@
-import create, { State } from 'zustand'
+import type { State } from 'zustand'
+import create from 'zustand'
 
 interface AboutModalState extends State {
   open: boolean

@@ -1,21 +1,23 @@
 import fs from 'fs'
 
 import * as React from 'react'
+
 import { motion, useAnimation } from 'framer-motion'
-import { GetStaticProps, NextPage } from 'next'
+import type { GetStaticProps, NextPage } from 'next'
 
 import BubbleList, { BubbleListItem } from '~components/BubbleList'
 import Button from '~components/Button'
 import Section from '~components/Section'
 import SectionTitle from '~components/SectionTitle'
 import TextLink from '~components/TextLink'
-import diagonalLines from '~media/diagonal-lines.svg'
-import dots from '~media/dots.svg'
-import { getAllPosts, Post } from '~lib/api'
+import ViewSource from '~components/ViewSource'
 import useArticlesOffCanvasState from '~hooks/useArticlesOffCanvasState'
 import useLayoutAnimationState from '~hooks/useLayoutAnimationState'
-import ViewSource from '~components/ViewSource'
+import type { Post } from '~lib/api'
+import { getAllPosts } from '~lib/api'
 import { getRssXml } from '~lib/rss'
+import diagonalLines from '~media/diagonal-lines.svg'
+import dots from '~media/dots.svg'
 
 const RecentProjects: React.FC = () => {
   return (

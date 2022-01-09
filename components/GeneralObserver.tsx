@@ -4,6 +4,7 @@
  * Copyright (c) 2020 Paul Scanlon
  */
 import React from 'react'
+
 import { noop } from 'lodash'
 
 interface IGeneralObserverProps {

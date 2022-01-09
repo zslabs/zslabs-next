@@ -1,11 +1,12 @@
 import * as React from 'react'
-import Link from 'next/link'
-import clsx from 'clsx'
 
-import { ReactComponent as SlackSvg } from '~icons/logos/slack.svg'
-import { ReactComponent as TwitterSvg } from '~icons/logos/twitter.svg'
+import clsx from 'clsx'
+import Link from 'next/link'
+
 import { ReactComponent as GitHubSvg } from '~icons/logos/github.svg'
 import { ReactComponent as ListSvg } from '~icons/logos/list.svg'
+import { ReactComponent as SlackSvg } from '~icons/logos/slack.svg'
+import { ReactComponent as TwitterSvg } from '~icons/logos/twitter.svg'
 
 // Checks against absolute URLs that share 👇 so we can still pass it along to our internal link component
 const domainRegex = /http[s]*:\/\/[www.]*zslabs\.com[/]?/

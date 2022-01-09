@@ -1,4 +1,4 @@
-import { NextPage } from 'next'
+import type { NextPage } from 'next'
 
 import Container from '~components/Container'
 import SEO from '~components/SEO'

@@ -1,15 +1,16 @@
 import React from 'react'
-import NextImage from 'next/image'
+
 import { getMDXComponent } from 'mdx-bundler/client'
+import NextImage from 'next/image'
 
 import AutoLinkHeader from './AutoLinkHeader'
 
 import Alert from '~components/Alert'
+import Blockquote from '~components/Blockquote'
+import Code from '~components/Code'
+import CodePen from '~components/CodePen'
 import Prose from '~components/Prose'
 import TextLink from '~components/TextLink'
-import Code from '~components/Code'
-import Blockquote from '~components/Blockquote'
-import CodePen from '~components/CodePen'
 import Tweet from '~components/Tweet'
 
 interface ImageProps {

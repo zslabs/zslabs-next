@@ -1,14 +1,15 @@
 import path from 'path'
 
 import * as React from 'react'
-import { GetStaticProps, NextPage } from 'next'
-import { bundleMDX } from 'mdx-bundler'
 
+import { bundleMDX } from 'mdx-bundler'
+import type { GetStaticProps, NextPage } from 'next'
+
+import MDXContent from '~components/MDXContent'
 import Section from '~components/Section'
 import SectionTitle from '~components/SectionTitle'
 import SEO from '~components/SEO'
 import ViewSource from '~components/ViewSource'
-import MDXContent from '~components/MDXContent'
 
 interface TermsProps {
   content?: string

@@ -1,6 +1,7 @@
 import * as React from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+
 import * as Dialog from '@radix-ui/react-dialog'
+import { motion, AnimatePresence } from 'framer-motion'
 
 import IconButton from './IconButton'
 

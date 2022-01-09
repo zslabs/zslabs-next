@@ -1,9 +1,11 @@
 import * as React from 'react'
-import Highlight, { defaultProps, Language } from 'prism-react-renderer'
+
+import type { Language } from 'prism-react-renderer'
+import Highlight, { defaultProps } from 'prism-react-renderer'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 
-import { ReactComponent as ClipboardSvg } from '~icons/clipboard.svg'
 import { ReactComponent as ClipboardCheckSvg } from '~icons/clipboard-check.svg'
+import { ReactComponent as ClipboardSvg } from '~icons/clipboard.svg'
 
 interface CodeProps {
   codeString: string
@@ -85,9 +87,16 @@ export default function Code({
                       {line.length === 1 && line[0].empty === true && (
                         <span>&#8203;</span>
                       )}
-                      {line.map((token, key) => (
-                        <span {...getTokenProps({ token, key })} />
-                      ))}
+                      {line.map((token, index) => {
+                        const key = `line-${index}`
+
+                        return (
+                          <span
+                            key={key}
+                            {...getTokenProps({ token, index })}
+                          />
+                        )
+                      })}
                     </div>
                   )
                 })}

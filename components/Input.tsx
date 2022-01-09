@@ -1,10 +1,11 @@
-import clsx from 'clsx'
 import * as React from 'react'
+
+import clsx from 'clsx'
 import { v4 as uuidv4 } from 'uuid'
 
-import FormLabel from './FormLabel'
 import ControlWrapper from './ControlWrapper'
 import FormFooter from './FormFooter'
+import FormLabel from './FormLabel'
 
 interface InputProps extends React.ComponentPropsWithoutRef<'input'> {
   label?: string

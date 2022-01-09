@@ -1,34 +1,91 @@
 module.exports = {
+  root: true,
+  env: {
+    browser: true,
+    node: true,
+    es6: true,
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
+    linkComponents: [
+      // Components used as alternatives to <a> for linking, eg. <Link to={ url } />
+      'Hyperlink',
+      { name: 'Link', linkAttribute: 'to' },
+    ],
+  },
+  parser: '@typescript-eslint/parser',
+  plugins: [
+    '@typescript-eslint',
+    'prettier',
+    'import',
+    'react',
+    'react-hooks',
+    'jsx-a11y',
+  ],
   extends: [
     'airbnb',
-    'prettier',
+    'eslint:recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
     'plugin:import/errors',
     'plugin:import/warnings',
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
   ],
-  parserOptions: {
-    ecmaVersion: 2020,
-  },
-  plugins: ['react', 'jsx-a11y', 'react-hooks', 'prettier', 'import'],
   rules: {
-    'import/no-unresolved': 0,
-    'import/extensions': 0,
-    'import/order': ['error', { 'newlines-between': 'always' }],
-    'import/no-extraneous-dependencies': 0,
+    // Global
+    'global-require': 'off',
+    // Typescript
+    '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/consistent-type-imports': 'error',
+    // Prettier
+    'prettier/prettier': 'error',
+    // Import
+    'import/first': 'error',
+    'import/newline-after-import': 'error',
+    'import/no-duplicates': 'error',
+    'import/no-unresolved': 'off',
+    'import/extensions': 'off',
+    'import/order': [
+      'error',
+      {
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: true,
+        },
+        'newlines-between': 'always',
+        groups: ['builtin', 'external', 'parent', 'sibling', 'index'],
+        pathGroups: [
+          {
+            pattern: 'react',
+            group: 'external',
+            position: 'before',
+          },
+          {
+            pattern: 'remix',
+            group: 'external',
+            position: 'before',
+          },
+        ],
+        pathGroupsExcludedImportTypes: ['builtin'],
+      },
+    ],
+    'import/no-extraneous-dependencies': 'off',
     'import/no-named-as-default': 'off',
-    'react-hooks/exhaustive-deps': 'warn',
-    'react-hooks/rules-of-hooks': 'error',
-    'react/forbid-prop-types': 0,
-    'react/jsx-filename-extension': 0,
-    'react/jsx-one-expression-per-line': 0,
-    'react/jsx-props-no-spreading': 0,
-    'react/no-unescaped-entities': 0,
-    'react/no-unused-prop-types': 1,
+    'import/prefer-default-export': 'off',
+    // React
     'react/react-in-jsx-scope': 'off',
-    'react/require-default-props': 0,
-    'react/function-component-definition': 0,
-    'react/jsx-no-useless-fragment': 0,
-    // 'react/forbid-component-props': ['error', { forbid: ['className'] }],
+    'react/jsx-filename-extension': 'off',
+    'react/prop-types': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    'react/require-default-props': 'off',
+    'react/no-unescaped-entities': 'off',
+    'react/display-name': 'off',
+    'react/jsx-no-useless-fragment': 'off',
+    'react/function-component-definition': 'off',
     'react/self-closing-comp': [
       'error',
       {
@@ -36,71 +93,5 @@ module.exports = {
         html: false,
       },
     ],
-    'prettier/prettier': 'error',
-    // Next.js <Link> component doesn't play nice with anchor validation
-    'jsx-a11y/anchor-is-valid': 0,
-    'jsx-a11y/anchor-has-content': 0,
   },
-  overrides: [
-    // TypeScript config
-    {
-      files: ['**/*.ts', '**/*.tsx'],
-      parser: '@typescript-eslint/parser',
-      settings: { react: { version: 'detect' } },
-      env: {
-        browser: true,
-        node: true,
-        es6: true,
-      },
-      extends: [
-        'airbnb',
-        'prettier',
-        'plugin:prettier/recommended',
-        'plugin:import/errors',
-        'plugin:import/warnings',
-        'plugin:@typescript-eslint/recommended',
-      ],
-      rules: {
-        // We will use TypeScript's types for component props instead
-        'react/prop-types': 'off',
-
-        // From above
-        'import/no-unresolved': 0,
-        'import/extensions': 0,
-        'import/order': ['error', { 'newlines-between': 'always' }],
-        'import/no-extraneous-dependencies': 0,
-        'import/no-named-as-default': 'off',
-        'react-hooks/exhaustive-deps': 'warn',
-        'react-hooks/rules-of-hooks': 'error',
-        'react/forbid-prop-types': 0,
-        'react/jsx-filename-extension': 0,
-        'react/jsx-one-expression-per-line': 0,
-        'react/jsx-props-no-spreading': 0,
-        'react/no-unescaped-entities': 0,
-        'react/no-unused-prop-types': 1,
-        'react/react-in-jsx-scope': 'off',
-        'react/require-default-props': 0,
-        'react/function-component-definition': 0,
-        'react/jsx-no-useless-fragment': 0,
-        // 'react/forbid-component-props': ['error', { forbid: ['className'] }],
-        'prettier/prettier': 'error',
-        // Next.js <Link> component doesn't play nice with anchor validation
-        'jsx-a11y/anchor-is-valid': 0,
-        'jsx-a11y/anchor-has-content': 0,
-
-        // TypeScript specific override to avoid errors like `'React' was used before it was defined`
-        'no-use-before-define': 'off',
-        '@typescript-eslint/no-use-before-define': ['error'],
-
-        // I suggest this setting for requiring return types on functions only where useful
-        '@typescript-eslint/explicit-function-return-type': [
-          'warn',
-          {
-            allowExpressions: true,
-            allowConciseArrowFunctionExpressionsStartingWithVoid: true,
-          },
-        ],
-      },
-    },
-  ],
 }

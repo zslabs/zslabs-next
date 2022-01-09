@@ -1,4 +1,4 @@
-import { Post } from './api'
+import type { Post } from './api'
 
 const blogPostsRssXml = (
   posts: Post[]
