@@ -38,8 +38,4 @@
   .Alert a:not([class]) {
     @apply dark:text-blue-500 dark:from-blue-100 dark:to-blue-100;
   }
-
-  .text-fill-transparent {
-    -webkit-text-fill-color: transparent;
-  }
 }

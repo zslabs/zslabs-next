@@ -70,6 +70,9 @@ module.exports = {
       borderColor: {
         current: 'currentColor',
       },
+      borderRadius: {
+        conditional: 'max(0px, min(12px, calc((100vw - 6px - 100%) * 9999)))',
+      },
       boxShadow: {
         solid: '0 0 0 2px currentColor',
       },
@@ -126,14 +129,8 @@ module.exports = {
   plugins: [
     plugin(({ addUtilities }) => {
       addUtilities({
-        '.filter-invert': {
-          filter: 'invert(1)',
-        },
         '.gradient-mask-b-0': {
           'mask-image': 'linear-gradient(180deg, #000 0, transparent)',
-        },
-        '.text-fill-transparent': {
-          '-webkit-text-fill-color': 'transparent',
         },
       })
     }),
