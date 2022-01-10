@@ -9,11 +9,6 @@ module.exports = {
     react: {
       version: 'detect',
     },
-    linkComponents: [
-      // Components used as alternatives to <a> for linking, eg. <Link to={ url } />
-      'Hyperlink',
-      { name: 'Link', linkAttribute: 'to' },
-    ],
   },
   parser: '@typescript-eslint/parser',
   plugins: [
@@ -93,5 +88,9 @@ module.exports = {
         html: false,
       },
     ],
+    // JSX-A11Y
+    // Next.js <Link> component doesn't play nice with anchor validation
+    'jsx-a11y/anchor-is-valid': 0,
+    'jsx-a11y/anchor-has-content': 0,
   },
 }
