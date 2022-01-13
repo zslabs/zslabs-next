@@ -33,7 +33,7 @@
     "@radix-ui/react-dialog": "0.1.5",
     "@reach/utils": "0.16.0",
     "@tailwindcss/forms": "0.4.0",
-    "@tailwindcss/line-clamp": "0.3.0",
+    "@tailwindcss/line-clamp": "0.3.1",
     "@types/gtag.js": "0.0.8",
     "@types/node": "17.0.8",
     "@types/nprogress": "0.2.0",
@@ -57,7 +57,7 @@
     "eslint-plugin-react": "7.28.0",
     "eslint-plugin-react-hooks": "4.3.0",
     "eslint-webpack-plugin": "3.1.1",
-    "framer-motion": "5.5.8",
+    "framer-motion": "5.6.0",
     "lodash": "4.17.21",
     "mdx-bundler": "8.0.1",
     "next": "12.0.8",
@@ -89,6 +89,6 @@
     "@svgr/webpack": "6.2.0",
     "husky": "7.0.4",
     "lint-staged": "12.1.7",
-    "next-sitemap": "1.8.7"
+    "next-sitemap": "1.9.9"
   }
 }
