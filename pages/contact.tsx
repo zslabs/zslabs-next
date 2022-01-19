@@ -1,12 +1,12 @@
 import * as React from 'react'
 
-import { yupResolver } from '@hookform/resolvers/yup'
+import { zodResolver } from '@hookform/resolvers/zod'
 import to from 'await-to-js'
 import { motion } from 'framer-motion'
 import type { NextPage } from 'next'
 import { useForm } from 'react-hook-form'
 import axios from 'redaxios'
-import * as yup from 'yup'
+import { z } from 'zod'
 
 import Alert from '~components/Alert'
 import Button from '~components/Button'
@@ -18,14 +18,17 @@ import SEO from '~components/SEO'
 import Textarea from '~components/Textarea'
 import ViewSource from '~components/ViewSource'
 
-const schema = yup.object({
-  _gotcha: yup.string().max(0),
-  name: yup.string().required().trim().label('Name'),
-  email: yup.string().required().email().trim().label('Email'),
-  message: yup.string().required().trim().label('Message'),
+const schema = z.object({
+  _gotcha: z.string().max(0),
+  name: z.string().nonempty({ message: 'Name is required' }),
+  email: z
+    .string()
+    .nonempty({ message: 'Email is required' })
+    .email({ message: 'Invalid email address' }),
+  message: z.string().nonempty({ message: 'Message is required' }),
 })
 
-type FormValues = yup.InferType<typeof schema>
+type FormValues = z.infer<typeof schema>
 
 const ContactForm: React.FC = () => {
   const {
@@ -39,7 +42,7 @@ const ContactForm: React.FC = () => {
       email: '',
       message: '',
     },
-    resolver: yupResolver(schema),
+    resolver: zodResolver(schema),
   })
 
   const [response, setResponse] = React.useState<string | null>()
