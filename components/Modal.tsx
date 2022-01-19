@@ -57,7 +57,7 @@ const Modal: React.FC<ModalProps> = ({
                 initial="hidden"
                 animate="visible"
                 exit="hidden"
-                className="overflow-auto fixed inset-0 bg-slate-900 bg-opacity-75 z-50 px-4 backdrop-blur-sm"
+                className="overflow-auto fixed inset-0 bg-slate-900/75 z-50 px-4 backdrop-blur-sm"
               >
                 <Dialog.Content
                   onCloseAutoFocus={(e) => e.preventDefault()}

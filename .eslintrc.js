@@ -18,6 +18,7 @@ module.exports = {
     'react',
     'react-hooks',
     'jsx-a11y',
+    'tailwindcss',
   ],
   extends: [
     'airbnb',
@@ -29,6 +30,7 @@ module.exports = {
     'plugin:import/warnings',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
+    'plugin:tailwindcss/recommended',
   ],
   rules: {
     // Global
@@ -92,5 +94,7 @@ module.exports = {
     // Next.js <Link> component doesn't play nice with anchor validation
     'jsx-a11y/anchor-is-valid': 0,
     'jsx-a11y/anchor-has-content': 0,
+    // TailwindCSS
+    'tailwindcss/classnames-order': 'off',
   },
 }

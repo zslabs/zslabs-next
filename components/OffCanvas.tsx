@@ -55,7 +55,7 @@ const OffCanvas: React.FC<OffCanvasProps> = ({
                 initial="hidden"
                 animate="visible"
                 exit="hidden"
-                className="fixed inset-0 bg-slate-900 bg-opacity-75 z-50 pr-4 backdrop-blur-sm"
+                className="fixed inset-0 bg-slate-900/75 z-50 pr-4 backdrop-blur-sm"
               >
                 <Dialog.Content
                   onCloseAutoFocus={(e) => e.preventDefault()}
@@ -67,7 +67,7 @@ const OffCanvas: React.FC<OffCanvasProps> = ({
                     initial="hidden"
                     animate="visible"
                     exit="hidden"
-                    className="overflow-auto bg-slate-100 dark:bg-slate-800 rounded-tr-2xl shadow-lg z-20 relative top-0 left-0 h-full w-full md:max-w-xs pt-16 pr-8 pb-8 pl-8"
+                    className="overflow-auto bg-slate-100 dark:bg-slate-800 rounded-tr-2xl shadow-lg z-20 relative top-0 left-0 h-full w-full md:max-w-xs pt-16 px-8 pb-8"
                     transition={{ x: { stiffness: 1000 } }}
                   >
                     <Dialog.Title asChild>{title}</Dialog.Title>
