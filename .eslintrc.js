@@ -96,5 +96,11 @@ module.exports = {
     'jsx-a11y/anchor-has-content': 0,
     // TailwindCSS
     'tailwindcss/classnames-order': 'off',
+    'tailwindcss/no-custom-classname': [
+      'error',
+      {
+        whitelist: ['gradient\\-mask\\-b\\-0'],
+      },
+    ],
   },
 }
