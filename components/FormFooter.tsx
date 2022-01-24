@@ -14,14 +14,10 @@ const FormFooter: React.FC<
       {...rest}
     >
       {explanationMessage && (
-        <div className="text-slate-500 dark:text-slate-400">
-          {explanationMessage}
-        </div>
+        <div className="text-slate-11">{explanationMessage}</div>
       )}
       {validationMessage && (
-        <div className="text-rose-500 dark:text-slate-400 text-right">
-          {validationMessage}
-        </div>
+        <div className="text-danger-11 text-right">{validationMessage}</div>
       )}
     </div>
   ) : null

@@ -8,11 +8,11 @@ const Blockquote: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
 }) => {
   return (
     <blockquote
-      className="relative my-8 p-6 border-2 border-slate-300 dark:border-slate-600 rounded-lg"
+      className="relative my-8 p-6 border-2 border-slate-7 rounded-lg"
       {...rest}
     >
       {children}
-      <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 p-2 rounded-full border-2 border-slate-300 dark:border-slate-600 bg-slate-100 dark:bg-slate-800 ring-4 ring-slate-100 dark:ring-slate-800">
+      <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 p-2 rounded-full border-2 border-slate-7 bg-slate-1 ring-4 ring-slate-1">
         <QuoteSvg />
       </div>
     </blockquote>

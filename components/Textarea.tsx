@@ -22,7 +22,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
         <ControlWrapper>
           <textarea
             ref={ref}
-            className="bg-transparent border-none focus:outline-none focus:ring-0 w-full p-4 text-slate-900 dark:text-slate-100 align-top min-h-32 rounded"
+            className="bg-transparent border-none focus:outline-none focus:ring-0 w-full p-4 text-slate-12 align-top min-h-32 rounded"
             id={id}
             name={name}
             {...rest}

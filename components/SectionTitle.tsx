@@ -24,12 +24,12 @@ export const TitleSkew: React.FC<SectionTitle> = ({
           <span
             key={key}
             className={clsx(
-              'relative before:inset-0 before:absolute before:bg-gradient-to-br before:from-slate-100 dark:before:from-slate-800 dark:before:to-slate-700 before:-z-1 before:-mx-2 before:rounded-lg before:skew-x-8',
+              'relative before:inset-0 before:absolute before:bg-gradient-to-br before:from-slate-1 before:-z-1 before:-mx-2 before:rounded-lg before:skew-x-8',
               {
-                'before:to-slate-300': variation === 'default',
-                'before:to-blue-200': variation === 'blue',
-                'before:to-rose-200': variation === 'red',
-                'before:to-indigo-200': variation === 'purple',
+                'before:to-slate-4': variation === 'default',
+                'before:to-primary-3': variation === 'blue',
+                'before:to-danger-3': variation === 'red',
+                'before:to-accent-3': variation === 'purple',
               }
             )}
           >

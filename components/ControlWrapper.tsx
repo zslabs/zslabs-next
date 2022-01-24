@@ -3,7 +3,7 @@ import * as React from 'react'
 const ControlWrapper: React.FC = (props) => {
   return (
     <div
-      className="relative shadow-sm bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-500 dark:text-slate-300 focus-within:border-blue-500 dark:focus-within:border-blue-500 focus-within:text-blue-500 dark:focus-within:text-blue-500 rounded-lg"
+      className="relative shadow-sm bg-slate-1 border border-slate-7 text-slate-12 focus-within:border-primary-7 focus-within:text-primary-11 rounded-lg"
       {...props}
     />
   )

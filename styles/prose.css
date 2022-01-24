@@ -22,7 +22,7 @@
   }
 
   a:not([class]) {
-    @apply font-bold text-blue-500 duration-150 bg-gradient-to-br from-blue-100 to-blue-100 transition-all bg-left-bottom bg-no-repeat bg-100/6;
+    @apply font-bold text-primary-9 duration-150 bg-gradient-to-br from-primary-4 to-primary-4 transition-all bg-left-bottom bg-no-repeat bg-100/6;
   }
 
   h2,
@@ -73,7 +73,7 @@
   ol > li::before {
     content: counter(list-counter) '.';
 
-    @apply absolute left-1 font-bold text-blue-500;
+    @apply absolute left-1 font-bold text-primary-9;
   }
 
   li {
@@ -91,11 +91,11 @@
   ul > li::before {
     content: '';
 
-    @apply absolute left-1 top-2 w-2 h-2 md:top-3 bg-blue-500 ring-2 ring-blue-200 rounded-full;
+    @apply absolute left-1 top-2 w-2 h-2 md:top-3 bg-primary-9 ring-2 ring-primary-5 rounded-full;
   }
 
   code {
-    @apply text-sm md:text-base px-1 py-0.5 rounded-lg bg-slate-200;
+    @apply text-sm md:text-base px-1 py-0.5 rounded-lg bg-slate-4;
   }
 
   /* Revert any elements with custom classes to their base styles; most likely is a React component */
@@ -103,22 +103,4 @@
   [class*='no-prose'] * {
     all: inherit;
   }
-}
-
-/* @NOTE Workaround for some screwy PostCSS and dark mode styles inside of prose */
-
-.prose a:not([class]) {
-  @apply dark:from-slate-600 dark:to-slate-600 dark:text-slate-100;
-}
-
-.prose ul > li::before {
-  @apply dark:bg-slate-500 dark:ring-slate-700;
-}
-
-.prose ol > li::before {
-  @apply dark:text-slate-500;
-}
-
-.prose code {
-  @apply dark:bg-slate-700;
 }

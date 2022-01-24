@@ -149,7 +149,7 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
     <>
       <Section>
         <div className="grid place-items-center gap-4">
-          <div className="uppercase text-slate-500 dark:text-slate-300 font-bold tracking-widest md:text-lg md:tracking-widest">
+          <div className="uppercase text-slate-11 font-bold tracking-widest md:text-lg md:tracking-widest">
             {Array.from(introTitleSub).map((character, index) => {
               const key = `${character}-${index}`
 
@@ -217,14 +217,14 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
             className="relative py-6 px-10 text-center hover:scale-105 ease-bounce duration-300"
           >
             <div className="absolute -top-2 -left-2 w-full h-full -skew-x-12 z-0">
-              <div className="absolute inset-0 bg-gradient-to-br from-indigo-700 to-blue-500 opacity-80 rounded-lg" />
+              <div className="absolute inset-0 bg-gradient-to-br from-accent-9 to-primary-9 opacity-80 rounded-lg" />
               <span
                 className="absolute inset-0"
                 style={{ backgroundImage: `url(${diagonalLines})` }}
               />
             </div>
 
-            <div className="absolute inset-0 z-0 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800 -skew-x-12 shadow rounded-lg" />
+            <div className="absolute inset-0 z-0 bg-gradient-to-br from-slate-1 to-slate-4 dark:from-slate-4 dark:to-slate-1 -skew-x-12 shadow rounded-lg" />
             <div className="relative z-10 space-y-1">
               <div>🎉 Check out my latest article:</div>
               <div className="font-bold text-lg">

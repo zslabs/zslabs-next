@@ -35,10 +35,12 @@ const Button: React.FC<ButtonProps & React.HTMLProps<HTMLButtonElement>> = ({
         hover:before:opacity-75
 
         relative inline-block h-12
-        border-2 border-slate-100 dark:border-slate-800
-        uppercase font-bold text-sm tracking-widest
         rounded-full
         duration-150
+        uppercase tracking-widest font-bold text-sm
+        shadow-lg
+        bg-gradient-to-br
+        border-2 border-slate-1
 
         after:absolute
         after:-z-10
@@ -48,11 +50,11 @@ const Button: React.FC<ButtonProps & React.HTMLProps<HTMLButtonElement>> = ({
         after:pointer-events-none
         `,
         {
-          'from-indigo-700 to-blue-500 before:from-indigo-700 before:to-blue-500 after:from-indigo-700 after:to-blue-500':
+          'from-accent-9 to-primary-9 before:from-accent-9 before:to-primary-9 after:from-accent-9 after:to-primary-9':
             variation === 'primary',
-          'from-blue-500 to-emerald-500 before:from-blue-500 before:to-emerald-700 after:from-blue-500 after:to-emerald-500':
+          'from-primary-9 to-success-9 before:from-primary-9 before:to-success-9 after:from-primary-9 after:to-success-9':
             variation === 'secondary',
-          'from-rose-500 to-indigo-700 before:from-rose-500 before:to-indigo-700 after:from-rose-500 after:to-indigo-700':
+          'from-danger-9 to-accent-9 before:from-danger-9 before:to-accent-9 after:from-danger-9 after:to-accent-9':
             variation === 'tertiary',
           'px-6': !iconOnly,
           'w-12': iconOnly,
@@ -65,7 +67,7 @@ const Button: React.FC<ButtonProps & React.HTMLProps<HTMLButtonElement>> = ({
         className={clsx(
           `h-full relative z-10
           grid place-items-center gap-4 grid-flow-col
-          whitespace-nowrap text-slate-100`,
+          whitespace-nowrap text-slate-1 dark:text-slate-12`,
           {
             'auto-cols-min': !iconOnly,
             'auto-cols-auto': iconOnly,

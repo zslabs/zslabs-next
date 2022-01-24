@@ -26,8 +26,8 @@ const IconButton = React.forwardRef(
         className={clsx(
           'grid place-content-center disabled:opacity-50 disabled:cursor-not-allowed duration-150 hover:scale-110 ease-bounce focus:outline-none rounded-full',
           {
-            'bg-slate-200 dark:bg-slate-700': variation === 'default',
-            'bg-slate-900 text-slate-100': variation === 'contrast',
+            'bg-slate-4': variation === 'default',
+            'bg-slate-12 text-slate-1': variation === 'contrast',
             'text-2xl w-8 h-8': size === 'default',
             'text-4xl w-12 h-12': size === 'large',
           }

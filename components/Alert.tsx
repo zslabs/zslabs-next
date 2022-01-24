@@ -13,9 +13,9 @@ const Alert = React.forwardRef<
   return (
     <aside
       ref={ref}
-      className={clsx('Alert border-l-8 rounded-lg p-6 my-8', {
-        'border-blue-500 bg-blue-100': variation === 'primary',
-        'border-rose-500 bg-rose-100': variation === 'danger',
+      className={clsx('border-l-8 rounded-lg p-6 my-8', {
+        'border-primary-9 bg-primary-1': variation === 'primary',
+        'border-danger-9 bg-danger-1': variation === 'danger',
       })}
       {...rest}
     />

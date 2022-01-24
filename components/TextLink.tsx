@@ -25,27 +25,15 @@ const TextLinkContentsIcon: React.FC<{ href: string; className?: string }> = ({
   }
 
   if (href.includes('twitter.com')) {
-    return (
-      <TwitterSvg
-        className={clsx('text-slate-900 dark:text-slate-100', className)}
-      />
-    )
+    return <TwitterSvg className={clsx('text-slate-12', className)} />
   }
 
   if (href.includes('github.com')) {
-    return (
-      <GitHubSvg
-        className={clsx('text-slate-900 dark:text-slate-100', className)}
-      />
-    )
+    return <GitHubSvg className={clsx('text-slate-12', className)} />
   }
 
   if (href.includes('list.zslabs.com')) {
-    return (
-      <ListSvg
-        className={clsx('text-slate-900 dark:text-slate-100', className)}
-      />
-    )
+    return <ListSvg className={clsx('text-slate-12', className)} />
   }
 
   return null

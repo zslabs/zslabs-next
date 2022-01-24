@@ -11,7 +11,7 @@ interface BubbleListItemProps {
   sub?: React.ReactNode
   link?: string
   badge?: string
-  badgeVariant?: 'primary' | 'secondary' | 'tertiary'
+  badgeVariant?: 'primary' | 'secondary'
   onClick?: () => void
 }
 
@@ -36,26 +36,12 @@ export const BubbleListItem: React.FC<BubbleListItemProps> = ({
     >
       <div
         className={clsx(`
-          before:duration-300
-          before:absolute
-          before:-z-10
-          before:-inset-1
-          before:opacity-0
-          before:bg-gradient-to-br
-          before:rounded-full
-          before:blur-md
-          before:pointer-events-none
-          before:from-indigo-700 before:to-blue-500
-
-          group-hover:before:scale-105
-          group-hover:before:opacity-75
-
           w-4 h-4
           relative
-          ring-2 ring-slate-900 dark:ring-slate-100
-          border-2 border-slate-100 dark:border-slate-800
+          ring-2 ring-slate-12
+          border-2 border-slate-1
 
-          rounded-full bg-slate-900 dark:bg-slate-100
+          rounded-full bg-slate-12
           duration-300 ease-bounce group-hover:scale-125
           mt-2.5
         `)}
@@ -77,7 +63,7 @@ export const BubbleListItem: React.FC<BubbleListItemProps> = ({
             </div>
           )}
         </div>
-        {sub && <div className="text-slate-500 dark:text-slate-400">{sub}</div>}
+        {sub && <div className="text-slate-11">{sub}</div>}
         {children && <div className="text-lg">{children}</div>}
       </div>
     </motion.div>
@@ -93,7 +79,7 @@ const BubbleList: React.FC = ({ children, ...rest }) => {
   return (
     <div className="relative" {...rest}>
       <div className="absolute top-0 left-2 -translate-x-1/2 h-full z-10">
-        <div className="h-full bg-slate-900 dark:bg-slate-100 w-1 rounded-full" />
+        <div className="h-full bg-slate-12 w-1 rounded-full" />
       </div>
       <motion.div
         className="grid grid-cols-1 gap-8 py-8"
