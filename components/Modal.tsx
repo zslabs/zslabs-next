@@ -69,7 +69,7 @@ const Modal: React.FC<ModalProps> = ({
                     initial="hidden"
                     animate="visible"
                     exit="hidden"
-                    className="bg-slate-100 dark:bg-slate-800 rounded-lg shadow-lg z-20 my-4 md:my-8 mx-auto max-w-xl relative p-8"
+                    className="bg-slate-100 dark:bg-slate-800 rounded-xl shadow-lg z-20 my-4 md:my-8 mx-auto max-w-xl relative p-8"
                   >
                     {beforeTitle}
                     <Dialog.Title asChild>{title}</Dialog.Title>
