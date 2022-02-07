@@ -10,11 +10,12 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    font-feature-settings: 'calt', 'liga';
   }
 
   @font-face {
     font-family: 'ZS Sans';
-    src: url('/fonts/Manrope[wght].woff2') format('woff2');
+    src: url('/fonts/Manrope[wght].woff2') format('woff2-variations');
     font-style: normal;
     font-variation-ligatures: normal;
     font-weight: 500 800;
@@ -23,7 +24,7 @@
 
   @font-face {
     font-family: 'JetBrains Mono';
-    src: url('/fonts/JetBrainsMono[wght].woff2') format('woff2');
+    src: url('/fonts/JetBrainsMono[wght].woff2') format('woff2-variations');
     font-style: normal;
     font-variation-ligatures: normal;
     font-weight: 400 600;
