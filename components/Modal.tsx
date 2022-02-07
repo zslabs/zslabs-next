@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import * as Dialog from '@radix-ui/react-dialog'
+import type { AnimationProps } from 'framer-motion'
 import { motion, AnimatePresence } from 'framer-motion'
 
 import IconButton from './IconButton'
@@ -10,13 +11,13 @@ import { ReactComponent as CloseSvg } from '~icons/close.svg'
 interface ModalProps {
   open: boolean
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
-  trigger: React.ReactElement
-  beforeTitle?: React.ReactElement
-  title: React.ReactElement
-  description?: React.ReactElement
+  trigger: React.NamedExoticComponent<object>
+  beforeTitle?: React.NamedExoticComponent<object>
+  title: React.NamedExoticComponent<object>
+  description?: React.NamedExoticComponent<object>
 }
 
-const modalVariants = {
+const modalVariants: AnimationProps['variants'] = {
   hidden: {
     opacity: 0,
   },
@@ -25,7 +26,7 @@ const modalVariants = {
   },
 }
 
-const modalDialogVariants = {
+const modalDialogVariants: AnimationProps['variants'] = {
   hidden: {
     opacity: 0,
     y: '8rem',
@@ -45,9 +46,20 @@ const Modal: React.FC<ModalProps> = ({
   open,
   setOpen,
 }) => {
+  const handleOnCloseAutoFocus = React.useCallback((e: Event) => {
+    e.preventDefault()
+  }, [])
+
+  const [Trigger, Title] = [trigger, title]
+
+  const BeforeTitle = beforeTitle || React.memo(() => null)
+  const Description = description || React.memo(() => null)
+
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
-      <Dialog.Trigger asChild>{trigger}</Dialog.Trigger>
+      <Dialog.Trigger asChild>
+        <Trigger />
+      </Dialog.Trigger>
       <AnimatePresence>
         {open && (
           <Dialog.Portal forceMount>
@@ -60,7 +72,7 @@ const Modal: React.FC<ModalProps> = ({
                 className="overflow-auto fixed inset-0 bg-slate-900/75 z-50 px-4 backdrop-blur-sm"
               >
                 <Dialog.Content
-                  onCloseAutoFocus={(e) => e.preventDefault()}
+                  onCloseAutoFocus={handleOnCloseAutoFocus}
                   asChild
                   forceMount
                 >
@@ -71,11 +83,13 @@ const Modal: React.FC<ModalProps> = ({
                     exit="hidden"
                     className="bg-slate-100 dark:bg-slate-800 rounded-xl shadow-lg z-20 my-4 md:my-8 mx-auto max-w-xl relative p-8"
                   >
-                    {beforeTitle}
-                    <Dialog.Title asChild>{title}</Dialog.Title>
+                    {beforeTitle && <BeforeTitle />}
+                    <Dialog.Title asChild>
+                      <Title />
+                    </Dialog.Title>
                     {description && (
                       <Dialog.Description asChild>
-                        {description}
+                        <Description />
                       </Dialog.Description>
                     )}
                     {children}

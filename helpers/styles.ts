@@ -1,4 +1,5 @@
-import type { Transition, Variants } from 'framer-motion'
+import type { MotionProps, Transition, Variants } from 'framer-motion'
+import type { ViewportOptions } from 'framer-motion/types/motion/features/viewport/types'
 
 export const spring: Transition = {
   type: 'spring',
@@ -17,3 +18,20 @@ export const fadeInUp: Variants = {
     y: 0,
   },
 }
+
+export const viewportInViewOptions: ViewportOptions = {
+  once: true,
+  amount: 0.5,
+}
+
+export const fadeInDownInitial: MotionProps['initial'] = {
+  opacity: 0,
+  y: '-2rem',
+}
+
+export const fadeInUpInitial: MotionProps['initial'] = {
+  opacity: 0,
+  y: '2rem',
+}
+
+export const fadeInAnimate: MotionProps['animate'] = { opacity: 1, y: 0 }

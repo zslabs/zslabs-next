@@ -17,6 +17,11 @@ import SectionTitle from '~components/SectionTitle'
 import SEO from '~components/SEO'
 import Textarea from '~components/Textarea'
 import ViewSource from '~components/ViewSource'
+import {
+  fadeInAnimate,
+  fadeInDownInitial,
+  fadeInUpInitial,
+} from '~helpers/styles'
 
 const schema = z.object({
   _gotcha: z.string().max(0),
@@ -122,16 +127,10 @@ const Contact: NextPage = () => {
 
       <Section>
         <div className="grid grid-cols-1 md:grid-cols-3/4 justify-center relative">
-          <motion.header
-            initial={{ opacity: 0, y: '-2rem' }}
-            animate={{ opacity: 1, y: 0 }}
-          >
+          <motion.header initial={fadeInDownInitial} animate={fadeInAnimate}>
             <SectionTitle title="Contact" variation="red" />
           </motion.header>
-          <motion.main
-            initial={{ opacity: 0, y: '2rem' }}
-            animate={{ opacity: 1, y: 0 }}
-          >
+          <motion.main initial={fadeInUpInitial} animate={fadeInAnimate}>
             <div className="text-center mb-8">
               <Prose>
                 <p>

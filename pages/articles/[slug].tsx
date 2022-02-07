@@ -8,6 +8,11 @@ import Section from '~components/Section'
 import { TitleSkew } from '~components/SectionTitle'
 import SEO from '~components/SEO'
 import ViewSource from '~components/ViewSource'
+import {
+  fadeInAnimate,
+  fadeInDownInitial,
+  fadeInUpInitial,
+} from '~helpers/styles'
 import { ReactComponent as InfoCircleSvg } from '~icons/info-circle.svg'
 import { getAllPosts, getPostBySlug } from '~lib/api'
 import type { Post as PostProps } from '~lib/api'
@@ -25,8 +30,8 @@ export default function Post({
         <ScrollIndicator position="fixed" />
         <motion.header
           className="mb-8 md:mb-12"
-          initial={{ opacity: 0, y: '-2rem' }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={fadeInDownInitial}
+          animate={fadeInAnimate}
         >
           <h1 className="text-center mb-2 md:mb-4 text-4xl md:text-5xl font-bold">
             <TitleSkew title={frontmatter.title} />
@@ -44,10 +49,7 @@ export default function Post({
             )}
           </div>
         </motion.header>
-        <motion.div
-          initial={{ opacity: 0, y: '2rem' }}
-          animate={{ opacity: 1, y: 0 }}
-        >
+        <motion.div initial={fadeInUpInitial} animate={fadeInAnimate}>
           <MDXContent content={content} />
         </motion.div>
       </article>

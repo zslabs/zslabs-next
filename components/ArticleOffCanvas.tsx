@@ -15,17 +15,20 @@ const ArticleOffCanvas: React.FC = () => {
   const open = useArticlesOffCanvasState((state) => state.open)
   const toggle = useArticlesOffCanvasState((state) => state.toggle)
 
+  const trigger = React.memo((props) => {
+    return (
+      <IconButton title="View articles" size="large" {...props}>
+        <MenuSvg />
+      </IconButton>
+    )
+  })
+
+  const title = React.memo((props) => {
+    return <SectionTitle title="Articles" variation="blue" {...props} />
+  })
+
   return (
-    <OffCanvas
-      trigger={
-        <IconButton title="View articles" size="large">
-          <MenuSvg />
-        </IconButton>
-      }
-      title={<SectionTitle title="Articles" variation="blue" />}
-      open={open}
-      setOpen={toggle}
-    >
+    <OffCanvas trigger={trigger} title={title} open={open} setOpen={toggle}>
       <div className="mt-12">
         <BubbleList>
           {posts.map((post) => (

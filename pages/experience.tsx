@@ -10,6 +10,11 @@ import Section from '~components/Section'
 import SectionTitle from '~components/SectionTitle'
 import SEO from '~components/SEO'
 import ViewSource from '~components/ViewSource'
+import {
+  fadeInAnimate,
+  fadeInDownInitial,
+  fadeInUpInitial,
+} from '~helpers/styles'
 
 interface ExperienceProps {
   data: {
@@ -26,16 +31,10 @@ const Experience: NextPage<ExperienceProps> = ({ data }) => {
       <SEO title="Experience" />
       <Section>
         <div className="grid grid-cols-1 md:grid-cols-3/4 justify-center relative">
-          <motion.header
-            initial={{ opacity: 0, y: '-2rem' }}
-            animate={{ opacity: 1, y: 0 }}
-          >
+          <motion.header initial={fadeInDownInitial} animate={fadeInAnimate}>
             <SectionTitle title="Experience" variation="purple" />
           </motion.header>
-          <motion.main
-            initial={{ opacity: 0, y: '2rem' }}
-            animate={{ opacity: 1, y: 0 }}
-          >
+          <motion.main initial={fadeInUpInitial} animate={fadeInAnimate}>
             <BubbleList>
               {data.map((partial, index) => (
                 <BubbleListItem

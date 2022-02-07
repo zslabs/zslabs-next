@@ -2,6 +2,7 @@ import fs from 'fs'
 
 import * as React from 'react'
 
+import type { AnimationControls, AnimationProps, Variants } from 'framer-motion'
 import { motion, useAnimation } from 'framer-motion'
 import type { GetStaticProps, NextPage } from 'next'
 
@@ -53,67 +54,108 @@ interface LatestPostProps {
   latestPost: Post
 }
 
+interface IntroTitleSubCharacterProps {
+  character: string
+  index: number
+  introTitleSubControls: AnimationControls
+}
+
+const IntroTitleSubCharacter: React.FC<IntroTitleSubCharacterProps> = ({
+  character,
+  index,
+  introTitleSubControls,
+}) => {
+  const introTitleSubVariants: Variants = React.useMemo(
+    () => ({
+      hidden: {
+        y: '1.5rem',
+        opacity: 0,
+      },
+      visible: {
+        y: 0,
+        opacity: 1,
+      },
+    }),
+    []
+  )
+
+  const introTitleSubTransition: AnimationProps['transition'] = React.useMemo(
+    () => ({ delay: index * 0.025 }),
+    [index]
+  )
+
+  return (
+    <motion.span
+      className="inline-block"
+      initial="hidden"
+      transition={introTitleSubTransition}
+      animate={introTitleSubControls}
+      variants={introTitleSubVariants}
+    >
+      {character.trim().length > 0 ? character : '\u00a0'}
+    </motion.span>
+  )
+}
+
+const introTitleSub = 'Full-Stack/Motion Developer'
+
+const introTitleVariants: Variants = {
+  hidden: {
+    y: '2rem',
+    opacity: 0,
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+  },
+}
+
+const buttonVariants: Variants = {
+  hidden: {
+    scale: 0.5,
+    opacity: 0,
+  },
+  visible: {
+    scale: 1,
+    opacity: 1,
+  },
+}
+
+const buttonTransition: AnimationProps['transition'] = {
+  delay: 0.125,
+}
+
+const latestArticleVariants: Variants = {
+  hidden: {
+    scale: 0.5,
+    opacity: 0,
+  },
+  visible: {
+    scale: 1,
+    opacity: 1,
+  },
+}
+
+const projectsVariants: AnimationProps['variants'] = {
+  hidden: {
+    y: '2rem',
+    opacity: 0,
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+  },
+}
+
+const diagonalLinesStyles = {
+  backgroundImage: `url(${diagonalLines})`,
+}
+
+const dotsStyles = { backgroundImage: `url(${dots})` }
+
 const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
   const toggle = useArticlesOffCanvasState((state) => state.toggle)
-
   const done = useLayoutAnimationState((state) => state.done)
-
-  const introTitleSub = 'Full-Stack/Motion Developer'
-
-  const introTitleVariants = {
-    hidden: {
-      y: '2rem',
-      opacity: 0,
-    },
-    visible: {
-      y: 0,
-      opacity: 1,
-    },
-  }
-
-  const introTitleSubVariants = {
-    hidden: {
-      y: '1.5rem',
-      opacity: 0,
-    },
-    visible: {
-      y: 0,
-      opacity: 1,
-    },
-  }
-
-  const buttonVariants = {
-    hidden: {
-      scale: 0.5,
-      opacity: 0,
-    },
-    visible: {
-      scale: 1,
-      opacity: 1,
-    },
-  }
-
-  const latestArticleVariants = {
-    hidden: {
-      scale: 0.5,
-      opacity: 0,
-    },
-    visible: {
-      scale: 1,
-      opacity: 1,
-    },
-  }
-
-  const projectsVariants = {
-    hidden: {
-      y: '2rem',
-      opacity: 0,
-    },
-    visible: {
-      y: 0,
-      opacity: 1,
-    },
-  }
 
   const introTitleControls = useAnimation()
   const introTitleSubControls = useAnimation()
@@ -123,13 +165,9 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
 
   const pageAnimation = React.useCallback(async () => {
     await introTitleControls.start('visible')
-
     await introTitleSubControls.start('visible')
-
     await buttonControls.start('visible')
-
     await latestArticleControls.start('visible')
-
     await projectsControls.start('visible')
   }, [
     introTitleControls,
@@ -154,18 +192,12 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
               const key = `${character}-${index}`
 
               return (
-                <motion.span
+                <IntroTitleSubCharacter
                   key={key}
-                  className="inline-block"
-                  initial="hidden"
-                  transition={{
-                    delay: index * 0.025,
-                  }}
-                  animate={introTitleSubControls}
-                  variants={introTitleSubVariants}
-                >
-                  {character.trim().length > 0 ? character : '\u00a0'}
-                </motion.span>
+                  character={character}
+                  index={index}
+                  introTitleSubControls={introTitleSubControls}
+                />
               )
             })}
           </div>
@@ -192,9 +224,7 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
               initial="hidden"
               variants={buttonVariants}
               animate={buttonControls}
-              transition={{
-                delay: 0.125,
-              }}
+              transition={buttonTransition}
             >
               <TextLink href="/experience">
                 <Button as="div" variation="secondary">
@@ -218,10 +248,7 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
           >
             <div className="absolute -top-2 -left-2 w-full h-full -skew-x-12 z-0">
               <div className="absolute inset-0 bg-gradient-to-br from-indigo-700 to-blue-500 opacity-80 rounded-lg" />
-              <span
-                className="absolute inset-0"
-                style={{ backgroundImage: `url(${diagonalLines})` }}
-              />
+              <span className="absolute inset-0" style={diagonalLinesStyles} />
             </div>
 
             <div className="absolute inset-0 z-0 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800 -skew-x-12 shadow rounded-lg" />
@@ -238,7 +265,7 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
         <div className="grid grid-cols-1 md:grid-cols-3/4 gap-8 md:gap-16 justify-center">
           <span
             className="absolute inset-y-0 inset-x-1/2 w-screen -mx-1/2-screen -z-1 opacity-5 bg-auto/6 dark:invert"
-            style={{ backgroundImage: `url(${dots})` }}
+            style={dotsStyles}
           />
           <motion.div
             initial="hidden"

@@ -27,6 +27,8 @@ export default function Code({
     }
   }, [isCopied])
 
+  const handleCopy = React.useCallback(() => setCopied(true), [])
+
   return (
     <Highlight
       {...defaultProps}
@@ -54,10 +56,7 @@ export default function Code({
               {isCopied ? (
                 <ClipboardCheckSvg />
               ) : (
-                <CopyToClipboard
-                  text={codeString}
-                  onCopy={() => setCopied(true)}
-                >
+                <CopyToClipboard text={codeString} onCopy={handleCopy}>
                   <button
                     type="button"
                     className="block focus:outline-none"

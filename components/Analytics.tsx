@@ -1,6 +1,18 @@
 import * as React from 'react'
 
 const Analytics: React.FC = () => {
+  const analytics = React.useMemo(
+    () => ({
+      __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-17637644-1');
+          `,
+    }),
+    []
+  )
+
   return (
     <>
       <script
@@ -9,14 +21,7 @@ const Analytics: React.FC = () => {
       />
       <script
         // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'UA-17637644-1');
-          `,
-        }}
+        dangerouslySetInnerHTML={analytics}
       />
     </>
   )

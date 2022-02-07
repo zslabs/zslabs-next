@@ -1,6 +1,11 @@
 import * as React from 'react'
 
-import type { AnimationControls, HTMLMotionProps } from 'framer-motion'
+import type {
+  AnimationControls,
+  AnimationProps,
+  HTMLMotionProps,
+  Variants,
+} from 'framer-motion'
 import { motion, useAnimation } from 'framer-motion'
 import { useTheme } from 'next-themes'
 import { useRouter } from 'next/router'
@@ -30,25 +35,33 @@ interface HeaderItemWrapperProps {
 const HeaderItemWrapper: React.FC<
   HeaderItemWrapperProps & HTMLMotionProps<'div'>
 > = ({ runAnimation, controls, custom, ...rest }) => {
-  const variants = {
-    hidden: {
-      opacity: 0,
-      y: '-2rem',
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-    },
-  }
+  const variants: Variants = React.useMemo(
+    () => ({
+      hidden: {
+        opacity: 0,
+        y: '-2rem',
+      },
+      visible: {
+        opacity: 1,
+        y: 0,
+      },
+    }),
+    []
+  )
+
+  const transition: AnimationProps['transition'] = React.useMemo(
+    () => ({
+      delay: custom * 0.25,
+    }),
+    [custom]
+  )
 
   return (
     <motion.div
       animate={controls}
       variants={variants}
       initial={runAnimation ? 'hidden' : false}
-      transition={{
-        delay: custom * 0.25,
-      }}
+      transition={transition}
       {...rest}
     />
   )
@@ -67,16 +80,31 @@ const BaseLayout: React.FC = ({ children }) => {
 
   const runAnimation = pathname === '/'
 
-  const footerVariants = {
-    hidden: {
-      opacity: 0,
-      y: '2rem',
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-    },
-  }
+  const footerVariants: Variants = React.useMemo(
+    () => ({
+      hidden: {
+        opacity: 0,
+        y: '2rem',
+      },
+      visible: {
+        opacity: 1,
+        y: 0,
+      },
+    }),
+    []
+  )
+
+  const bubblesStyles = React.useMemo(
+    () => ({
+      backgroundImage: `url(${bubbles})`,
+    }),
+    []
+  )
+
+  const handleThemeToggleClick = React.useCallback(
+    () => setTheme(theme === 'dark' ? 'light' : 'dark'),
+    [setTheme, theme]
+  )
 
   // After mounting, we have access to the theme
   React.useEffect(() => setMounted(true), [])
@@ -97,7 +125,7 @@ const BaseLayout: React.FC = ({ children }) => {
     <>
       <div
         className="absolute opacity-10 -z-1 top-0 left-0 w-full dark:invert h-24 gradient-mask-b-0"
-        style={{ backgroundImage: `url(${bubbles})` }}
+        style={bubblesStyles}
       />
       <Container>
         <Section as="header">
@@ -190,10 +218,7 @@ const BaseLayout: React.FC = ({ children }) => {
       </Container>
       {mounted && (
         <div className="fixed bottom-2 right-2 z-20">
-          <IconButton
-            variation="contrast"
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-          >
+          <IconButton variation="contrast" onClick={handleThemeToggleClick}>
             {theme === 'light' ? <DarkSvg /> : <LightSvg />}
           </IconButton>
         </div>

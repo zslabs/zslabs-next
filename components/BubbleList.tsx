@@ -1,10 +1,13 @@
+import * as React from 'react'
+
 import clsx from 'clsx'
+import type { AnimationProps } from 'framer-motion'
 import { motion } from 'framer-motion'
 
 import Badge from './Badge'
 import LinkUnderline from './LinkUnderline'
 
-import { fadeInUp } from '~helpers/styles'
+import { fadeInUp, viewportInViewOptions } from '~helpers/styles'
 
 interface BubbleListItemProps {
   title: string
@@ -30,7 +33,7 @@ export const BubbleListItem: React.FC<BubbleListItemProps> = ({
       initial="offscreen"
       whileInView="onscreen"
       variants={fadeInUp}
-      viewport={{ once: true, amount: 0.5 }}
+      viewport={viewportInViewOptions}
       className="relative z-20 grid grid-flow-col auto-cols-auto gap-5 justify-start group"
       {...rest}
     >
@@ -85,10 +88,13 @@ export const BubbleListItem: React.FC<BubbleListItemProps> = ({
 }
 
 const BubbleList: React.FC = ({ children, ...rest }) => {
-  const container = {
-    hidden: { opacity: 0 },
-    show: { opacity: 1 },
-  }
+  const container: AnimationProps['variants'] = React.useMemo(
+    () => ({
+      hidden: { opacity: 0 },
+      show: { opacity: 1 },
+    }),
+    []
+  )
 
   return (
     <div className="relative" {...rest}>

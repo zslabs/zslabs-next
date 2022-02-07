@@ -16,30 +16,43 @@ const AboutModal: React.FC = () => {
   const open = useAboutModalState((state) => state.open)
   const toggle = useAboutModalState((state) => state.toggle)
 
+  const trigger = React.memo((props) => {
+    return (
+      <button
+        type="button"
+        title="About me"
+        className="block w-12 h-12 overflow-hidden rounded-full shadow-md duration-300 hover:scale-110 hover:shadow-lg focus:outline-none ease-bounce"
+        {...props}
+      >
+        <NextImage alt="Zach Schnackel" src="/me.png" width="48" height="48" />
+      </button>
+    )
+  })
+
+  const beforeTitle = React.memo((props) => {
+    return (
+      <div
+        className="rounded-full overflow-hidden w-24 h-24 shadow-lg mx-auto mb-8"
+        {...props}
+      >
+        <NextImage src="/me.png" width="96" height="96" />
+      </div>
+    )
+  })
+
+  const title = React.memo((props) => {
+    return (
+      <h3 className="text-4xl font-bold text-center mb-4" {...props}>
+        Hi, I'm Zach
+      </h3>
+    )
+  })
+
   return (
     <Modal
-      trigger={
-        <button
-          type="button"
-          title="About me"
-          className="block w-12 h-12 overflow-hidden rounded-full shadow-md duration-300 hover:scale-110 hover:shadow-lg focus:outline-none ease-bounce"
-        >
-          <NextImage
-            alt="Zach Schnackel"
-            src="/me.png"
-            width="48"
-            height="48"
-          />
-        </button>
-      }
-      beforeTitle={
-        <div className="rounded-full overflow-hidden w-24 h-24 shadow-lg mx-auto mb-8">
-          <NextImage src="/me.png" width="96" height="96" />
-        </div>
-      }
-      title={
-        <h3 className="text-4xl font-bold text-center mb-4">Hi, I'm Zach</h3>
-      }
+      trigger={trigger}
+      beforeTitle={beforeTitle}
+      title={title}
       open={open}
       setOpen={toggle}
     >

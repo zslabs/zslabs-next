@@ -43,13 +43,18 @@ const GeneralObserver: React.FC<IGeneralObserverProps> = ({
     }
   }, [ref, onEnter])
 
+  const style: React.CSSProperties = React.useMemo(
+    () => ({ height, width: '100%' }),
+    [height]
+  )
+
   return (
     <div
       ref={ref as React.RefObject<HTMLDivElement>}
       data-testid="general-observer"
       className="my-8"
     >
-      {isChildVisible ? children : <div style={{ height, width: '100%' }} />}
+      {isChildVisible ? children : <div style={style} />}
     </div>
   )
 }

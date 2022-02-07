@@ -17,6 +17,7 @@ module.exports = {
     'import',
     'react',
     'react-hooks',
+    'react-perf',
     'jsx-a11y',
     'tailwindcss',
   ],
@@ -30,6 +31,7 @@ module.exports = {
     'plugin:import/warnings',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
+    'plugin:react-perf/all',
     'plugin:tailwindcss/recommended',
   ],
   rules: {
