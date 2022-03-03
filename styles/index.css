@@ -1,7 +1,6 @@
 @import './prose.css';
 @import './prism.css';
 @import './nprogress.css';
-@import './form.css';
 
 @tailwind base;
 @tailwind components;
