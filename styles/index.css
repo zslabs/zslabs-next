@@ -38,4 +38,9 @@
   .Alert a:not([class]) {
     @apply dark:text-blue-500 dark:from-blue-100 dark:to-blue-100;
   }
+
+  input::placeholder,
+  textarea::placeholder {
+    @apply text-gray-500 opacity-100;
+  }
 }
