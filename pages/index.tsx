@@ -253,7 +253,7 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
 
             <div className="absolute inset-0 z-0 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800 -skew-x-12 shadow rounded-lg" />
             <div className="relative z-10 space-y-1">
-              <div>🎉 Check out my latest article:</div>
+              <div>🎉 Check out my latest article!</div>
               <div className="font-bold text-lg">
                 {latestPost.frontmatter.title}
               </div>
