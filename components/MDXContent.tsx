@@ -14,25 +14,35 @@ import TextLink from '~components/TextLink'
 import Tweet from '~components/Tweet'
 
 interface ImageProps {
+  caption?: string
   src: string
   height: string
   width: string
 }
 
 function Image({
+  caption,
   src,
   height,
   width,
 }: ImageProps & React.HTMLAttributes<HTMLDivElement>): React.ReactElement {
   return (
-    <div className="my-8 text-center">
-      <NextImage
-        src={src}
-        height={height}
-        width={width}
-        className="rounded-lg shadow-sm"
-      />
-    </div>
+    <figure className="my-8 text-center">
+      <div className="mx-auto grid w-fit relative rounded-lg shadow">
+        <div className="absolute -inset-2 bg-slate-200 dark:bg-slate-900 rounded-lg shadow-inner" />
+        <NextImage
+          src={src}
+          height={height}
+          width={width}
+          className="rounded-lg"
+        />
+      </div>
+      {caption && (
+        <figcaption className="mt-4 text-sm text-slate-500 dark:text-slate-400">
+          {caption}
+        </figcaption>
+      )}
+    </figure>
   )
 }
 

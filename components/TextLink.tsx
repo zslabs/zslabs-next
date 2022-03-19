@@ -66,13 +66,13 @@ const TextLinkContents: React.FC<TextLinkContentsProps> = ({
   }
 
   return (
-    <>
+    <span>
       <TextLinkContentsIcon
         className="inline-block mr-1 relative -top-0.5"
         href={href}
       />
       {children}
-    </>
+    </span>
   )
 }
 
