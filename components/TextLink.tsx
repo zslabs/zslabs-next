@@ -62,7 +62,7 @@ const TextLinkContents: React.FC<TextLinkContentsProps> = ({
   href,
 }) => {
   if (!includeIcon) {
-    return <>{children}</>
+    return <span>{children}</span>
   }
 
   return (

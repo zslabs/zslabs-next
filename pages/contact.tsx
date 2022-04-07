@@ -16,6 +16,7 @@ import Section from '~components/Section'
 import SectionTitle from '~components/SectionTitle'
 import SEO from '~components/SEO'
 import Textarea from '~components/Textarea'
+import TextLink from '~components/TextLink'
 import ViewSource from '~components/ViewSource'
 import {
   fadeInAnimate,
@@ -136,8 +137,10 @@ const Contact: NextPage = () => {
                 <p>
                   Have a project you'd like me to be part of? Let's chat! You
                   can either{' '}
-                  <a href="mailto:info@zslabs.com">email me directly</a> or fill
-                  out the form below.
+                  <TextLink href="mailto:info@zslabs.com">
+                    email me directly
+                  </TextLink>{' '}
+                  or fill out the form below.
                 </p>
               </Prose>
             </div>
