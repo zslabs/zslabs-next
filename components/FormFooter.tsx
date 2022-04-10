@@ -10,7 +10,7 @@ const FormFooter: React.FC<
 > = ({ explanationMessage, validationMessage, ...rest }) => {
   return explanationMessage || validationMessage ? (
     <div
-      className="text-sm grid auto-cols-fr grid-flow-col gap-2 mt-1 px-2"
+      className="grid grid-flow-col auto-cols-fr gap-2 px-2 mt-1 text-sm"
       {...rest}
     >
       {explanationMessage && (
@@ -19,7 +19,7 @@ const FormFooter: React.FC<
         </div>
       )}
       {validationMessage && (
-        <div className="text-rose-500 dark:text-slate-400 text-right">
+        <div className="text-right text-rose-500 dark:text-slate-400">
           {validationMessage}
         </div>
       )}

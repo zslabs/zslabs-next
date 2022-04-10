@@ -21,7 +21,7 @@ const AboutModal: React.FC = () => {
       <button
         type="button"
         title="About me"
-        className="block w-12 h-12 overflow-hidden rounded-full shadow-md duration-300 hover:scale-110 hover:shadow-lg focus:outline-none ease-bounce"
+        className="block overflow-hidden w-12 h-12 rounded-full focus:outline-none shadow-md hover:shadow-lg duration-300 ease-bounce hover:scale-110"
         {...props}
       >
         <NextImage alt="Zach Schnackel" src="/me.png" width="48" height="48" />
@@ -32,7 +32,7 @@ const AboutModal: React.FC = () => {
   const beforeTitle = React.memo((props) => {
     return (
       <div
-        className="rounded-full overflow-hidden w-24 h-24 shadow-lg mx-auto mb-8"
+        className="overflow-hidden mx-auto mb-8 w-24 h-24 rounded-full shadow-lg"
         {...props}
       >
         <NextImage src="/me.png" width="96" height="96" />
@@ -42,7 +42,7 @@ const AboutModal: React.FC = () => {
 
   const title = React.memo((props) => {
     return (
-      <h3 className="text-4xl font-bold text-center mb-4" {...props}>
+      <h3 className="mb-4 text-4xl font-bold text-center" {...props}>
         Hi, I'm Zach
       </h3>
     )
@@ -56,7 +56,7 @@ const AboutModal: React.FC = () => {
       open={open}
       setOpen={toggle}
     >
-      <div className="grid gap-4 auto-cols-min grid-flow-col justify-center mb-8">
+      <div className="grid grid-flow-col auto-cols-min gap-4 justify-center mb-8">
         <TextLink
           title="View my Twitter profile"
           href="https://twitter.com/zslabs"

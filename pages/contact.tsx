@@ -83,13 +83,13 @@ const ContactForm: React.FC = () => {
       )}
       {!response && (
         <form
-          className="grid gap-4 grid-cols-1"
+          className="grid grid-cols-1 gap-4"
           name="contact"
           noValidate
           onSubmit={handleSubmit(onSubmit)}
         >
           <input type="hidden" className="sr-only" {...register('_gotcha')} />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <Input
               label="Name"
               {...register('name')}
@@ -127,12 +127,12 @@ const Contact: NextPage = () => {
       <SEO title="Contact" />
 
       <Section>
-        <div className="grid grid-cols-1 md:grid-cols-3/4 justify-center relative">
+        <div className="grid relative grid-cols-1 justify-center md:grid-cols-3/4">
           <motion.header initial={fadeInDownInitial} animate={fadeInAnimate}>
             <SectionTitle title="Contact" variation="red" />
           </motion.header>
           <motion.main initial={fadeInUpInitial} animate={fadeInAnimate}>
-            <div className="text-center mb-8">
+            <div className="mb-8 text-center">
               <Prose>
                 <p>
                   Have a project you'd like me to be part of? Let's chat! You

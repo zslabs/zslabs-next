@@ -17,7 +17,7 @@ const FormLabel: React.FC<FormLabelProps> = ({
 }) => {
   return (
     <label
-      className="line-clamp-1 font-bold mb-1 ml-1 text-sm items-center gap-2 grid grid-flow-col justify-start auto-cols-auto cursor-default"
+      className="grid grid-flow-col auto-cols-auto gap-2 justify-start items-center mb-1 ml-1 text-sm font-bold cursor-default line-clamp-1"
       {...rest}
     >
       {children}

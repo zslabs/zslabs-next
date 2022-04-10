@@ -124,12 +124,12 @@ const BaseLayout: React.FC = ({ children }) => {
   return (
     <>
       <div
-        className="absolute opacity-10 -z-1 top-0 left-0 w-full dark:invert h-24 gradient-mask-b-0"
+        className="absolute top-0 left-0 -z-1 w-full h-24 opacity-10 dark:invert gradient-mask-b-0"
         style={bubblesStyles}
       />
       <Container>
         <Section as="header">
-          <div className="grid gap-4 auto-cols-fr grid-flow-col items-center">
+          <div className="grid grid-flow-col auto-cols-fr gap-4 items-center">
             <HeaderItemWrapper
               runAnimation={runAnimation}
               controls={controls}
@@ -139,7 +139,7 @@ const BaseLayout: React.FC = ({ children }) => {
               <TextLink
                 href="/"
                 title="ZS Labs"
-                className="duration-300 hover:scale-110 ease-bounce block"
+                className="block duration-300 ease-bounce hover:scale-110"
               >
                 <LogoSvg className="h-12 from-blue-500 to-blue-600 drop-shadow-md" />
               </TextLink>
@@ -171,14 +171,14 @@ const BaseLayout: React.FC = ({ children }) => {
           initial={runAnimation ? 'hidden' : false}
         >
           <div className="grid grid-cols-1 gap-4 justify-items-center">
-            <div className="bg-gradient-to-br from-indigo-700 to-blue-500 w-2/4 rounded-full h-0.5" />
-            <div className="bg-gradient-to-br from-indigo-700 to-blue-500 w-2/6 rounded-full h-0.5" />
-            <div className="grid gap-2 grid-cols-1 text-sm mt-4">
+            <div className="w-2/4 h-0.5 bg-gradient-to-br from-indigo-700 to-blue-500 rounded-full" />
+            <div className="w-2/6 h-0.5 bg-gradient-to-br from-indigo-700 to-blue-500 rounded-full" />
+            <div className="grid grid-cols-1 gap-2 mt-4 text-sm">
               <div className="text-slate-500 dark:text-slate-300">
                 Copyright &copy; {new Date().getFullYear()} Zach Schnackel.
                 Penalty is 🔥
               </div>
-              <div className="font-bold grid gap-4 grid-flow-col auto-cols-auto justify-center items-center">
+              <div className="grid grid-flow-col auto-cols-auto gap-4 justify-center items-center font-bold">
                 <div>
                   <LinkUnderline href="/contact">Contact</LinkUnderline>
                 </div>
@@ -217,7 +217,7 @@ const BaseLayout: React.FC = ({ children }) => {
         </Section>
       </Container>
       {mounted && (
-        <div className="fixed bottom-2 right-2 z-20">
+        <div className="fixed right-2 bottom-2 z-20">
           <IconButton variation="contrast" onClick={handleThemeToggleClick}>
             {theme === 'light' ? <DarkSvg /> : <LightSvg />}
           </IconButton>

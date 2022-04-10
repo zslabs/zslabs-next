@@ -37,22 +37,22 @@ export default function Code({
       language={language}
     >
       {({ className, tokens, getLineProps, getTokenProps }) => (
-        <aside className="relative bg-slate-800 font-mono rounded-conditional overflow-hidden shadow-md tracking-normal border border-slate-600 -mx-4">
-          <header className="relative border-b border-slate-600 grid auto-cols-auto grid-flow-col justify-start items-center">
-            <div className="p-4 grid gap-2 auto-cols-max grid-flow-col self-center">
-              <div className="w-3 h-3 rounded-full bg-rose-500" />
-              <div className="w-3 h-3 rounded-full bg-yellow-500" />
-              <div className="w-3 h-3 rounded-full bg-emerald-500" />
+        <aside className="overflow-hidden relative -mx-4 font-mono tracking-normal bg-slate-800 rounded-conditional border border-slate-600 shadow-md">
+          <header className="grid relative grid-flow-col auto-cols-auto justify-start items-center border-b border-slate-600">
+            <div className="grid grid-flow-col auto-cols-max gap-2 self-center p-4">
+              <div className="w-3 h-3 bg-rose-500 rounded-full" />
+              <div className="w-3 h-3 bg-yellow-500 rounded-full" />
+              <div className="w-3 h-3 bg-emerald-500 rounded-full" />
             </div>
             {filename && (
               <div className="relative">
                 <div className="p-4 text-sm text-slate-100 whitespace-nowrap">
                   {filename}
                 </div>
-                <div className="absolute bottom-0 left-0 w-full bg-gradient-to-br from-blue-500 to-indigo-700 h-0.5" />
+                <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-br from-blue-500 to-indigo-700" />
               </div>
             )}
-            <div className="text-slate-400 absolute right-4 top-1/2 -translate-y-1/2 text-2xl">
+            <div className="absolute top-1/2 right-4 text-2xl text-slate-400 -translate-y-1/2">
               {isCopied ? (
                 <ClipboardCheckSvg />
               ) : (
@@ -69,15 +69,15 @@ export default function Code({
             </div>
           </header>
           <pre className={className}>
-            <div className="grid grid-flow-col auto-cols-auto justify-start overflow-auto max-h-120">
-              <div className="p-4 rounded-bl-conditional bg-slate-800 border-slate-600 text-right text-slate-100/50 select-none sticky left-0 z-10">
+            <div className="grid overflow-auto grid-flow-col auto-cols-auto justify-start max-h-120">
+              <div className="sticky left-0 z-10 p-4 text-right text-slate-100/50 bg-slate-800 rounded-bl-conditional border-slate-600 select-none">
                 {tokens.map((_, i) => {
                   const lineKey = `line-${i}`
 
                   return <div key={lineKey}>{i + 1}</div>
                 })}
               </div>
-              <div className="text-slate-100 p-4">
+              <div className="p-4 text-slate-100">
                 {tokens.map((line, i) => {
                   const lineKey = `line-${i}`
 

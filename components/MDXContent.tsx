@@ -28,7 +28,7 @@ function Image({
 }: ImageProps & React.HTMLAttributes<HTMLDivElement>): React.ReactElement {
   return (
     <figure className="my-8 text-center">
-      <div className="mx-auto grid w-fit relative rounded-lg shadow">
+      <div className="grid relative mx-auto w-fit rounded-lg shadow">
         <div className="absolute -inset-2 bg-slate-200 dark:bg-slate-900 rounded-lg shadow-inner" />
         <NextImage
           src={src}

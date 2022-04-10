@@ -34,14 +34,14 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {label && <FormLabel htmlFor={id}>{label}</FormLabel>}
         <ControlWrapper>
           {prefixIcon && (
-            <div className="absolute z-10 left-3 top-1/2 -translate-y-1/2">
+            <div className="absolute top-1/2 left-3 z-10 -translate-y-1/2">
               {prefixIcon}
             </div>
           )}
           <input
             ref={ref}
             className={clsx(
-              'bg-transparent border-none focus:outline-none focus:ring-0 h-10 pr-4 w-full text-slate-900 dark:text-slate-100 leading-none rounded-lg',
+              'pr-4 w-full h-10 leading-none text-slate-900 dark:text-slate-100 bg-transparent rounded-lg border-none focus:outline-none focus:ring-0',
               {
                 'pl-10': prefixIcon,
                 'pl-4': !prefixIcon,

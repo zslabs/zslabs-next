@@ -69,7 +69,7 @@ const Modal: React.FC<ModalProps> = ({
                 initial="hidden"
                 animate="visible"
                 exit="hidden"
-                className="overflow-auto fixed inset-0 bg-slate-900/75 z-50 px-4 backdrop-blur-sm"
+                className="overflow-auto fixed inset-0 z-50 px-4 bg-slate-900/75 backdrop-blur-sm"
               >
                 <Dialog.Content
                   onCloseAutoFocus={handleOnCloseAutoFocus}
@@ -81,7 +81,7 @@ const Modal: React.FC<ModalProps> = ({
                     initial="hidden"
                     animate="visible"
                     exit="hidden"
-                    className="bg-slate-100 dark:bg-slate-800 rounded-xl shadow-lg z-20 my-4 md:my-8 mx-auto max-w-xl relative p-8"
+                    className="relative z-20 p-8 my-4 mx-auto max-w-xl bg-slate-100 dark:bg-slate-800 rounded-xl shadow-lg md:my-8"
                   >
                     {beforeTitle && <BeforeTitle />}
                     <Dialog.Title asChild>
@@ -93,7 +93,7 @@ const Modal: React.FC<ModalProps> = ({
                       </Dialog.Description>
                     )}
                     {children}
-                    <div className="absolute right-4 top-4">
+                    <div className="absolute top-4 right-4">
                       <Dialog.Close asChild>
                         <IconButton variation="default">
                           <CloseSvg />
