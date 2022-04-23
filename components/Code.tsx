@@ -65,7 +65,7 @@ export default function Code({ codeString, language, filename }: CodeProps) {
             </div>
           </header>
           <pre className={className}>
-            <div className="grid overflow-auto grid-flow-col auto-cols-auto justify-start max-h-120">
+            <div className="grid overflow-auto overscroll-contain grid-flow-col auto-cols-auto justify-start max-h-120">
               <div className="sticky left-0 z-10 p-4 text-right text-slate-100/50 bg-slate-800 rounded-bl-conditional border-slate-600 select-none">
                 {tokens.map((_, i) => {
                   const lineKey = `line-${i}`
