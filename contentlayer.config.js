@@ -24,7 +24,7 @@ export const Post = defineDocumentType(() => ({
   computedFields: {
     url: {
       type: 'string',
-      resolve: (post) => `/articles/${post._raw.flattenedPath}`, // eslint-disable-line no-underscore-dangle
+      resolve: (post) => `/articles/${post._raw.flattenedPath}`,
     },
   },
 }))

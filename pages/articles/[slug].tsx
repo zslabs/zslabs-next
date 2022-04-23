@@ -60,7 +60,7 @@ export default function PostSingle({ post }: PostSingleProps) {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const currentPost = allPosts.find(
-    (post) => post._raw.flattenedPath === params.slug // eslint-disable-line no-underscore-dangle
+    (post) => post._raw.flattenedPath === params.slug
   )
 
   return {

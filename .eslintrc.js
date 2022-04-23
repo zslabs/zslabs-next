@@ -37,6 +37,7 @@ module.exports = {
   rules: {
     // Global
     'global-require': 'off',
+    'no-underscore-dangle': 'off',
     // Typescript
     '@typescript-eslint/no-var-requires': 'off',
     '@typescript-eslint/consistent-type-imports': 'error',
