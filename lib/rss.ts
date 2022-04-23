@@ -1,4 +1,4 @@
-import type { Post } from './api'
+import type { Post } from 'contentlayer/generated'
 
 const blogPostsRssXml = (
   posts: Post[]
@@ -11,17 +11,15 @@ const blogPostsRssXml = (
   posts.forEach((post) => {
     rssItemsXml += `
       <item>
-        <title><![CDATA[${post.frontmatter.title}]]></title>
-        <link>https://zslabs.com/articles/${post.frontmatter.slug}</link>
-        <pubDate>${new Date(post.frontmatter.date).toUTCString()}</pubDate>
-        <guid isPermaLink="false">https://zslabs.com/articles/${
-          post.frontmatter.slug
-        }</guid>
+        <title><![CDATA[${post.title}]]></title>
+        <link>https://zslabs.com${post.url}</link>
+        <pubDate>${new Date(post.date).toUTCString()}</pubDate>
+        <guid isPermaLink="false">https://zslabs.com${post.url}</guid>
       </item>`
   })
 
   return {
-    latestPostDate: new Date(posts[0].frontmatter.date).toUTCString(),
+    latestPostDate: new Date(posts[0].date).toUTCString(),
     rssItemsXml,
   }
 }

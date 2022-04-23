@@ -33,10 +33,10 @@ const ArticleOffCanvas: React.FC = () => {
         <BubbleList>
           {posts.map((post) => (
             <BubbleListItem
-              key={post.frontmatter.title}
-              title={post.frontmatter.title}
-              link={`/articles/${post.frontmatter.slug}`}
-              sub={<>{dayjs(post.frontmatter.date).format('MMMM D, YYYY')}</>}
+              key={post.title}
+              title={post.title}
+              link={post.url}
+              sub={<>{dayjs(post.date).format('MMMM D, YYYY')}</>}
               onClick={toggle}
             />
           ))}

@@ -33,10 +33,7 @@ Router.events.on('routeChangeComplete', (url) => {
 
 Router.events.on('routeChangeError', () => NProgress.done())
 
-export default function MyApp({
-  Component,
-  pageProps,
-}: AppProps): React.ReactElement {
+export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <MotionConfig transition={spring}>
       <ThemeProvider attribute="class" defaultTheme="light">

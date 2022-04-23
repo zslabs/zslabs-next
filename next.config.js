@@ -1,6 +1,8 @@
 const path = require('path')
 
 const ESLintPlugin = require('eslint-webpack-plugin')
+const withPlugins = require('next-compose-plugins')
+const { withContentlayer } = require('next-contentlayer')
 
 const nextConfig = {
   eslint: {
@@ -35,4 +37,4 @@ const nextConfig = {
   },
 }
 
-module.exports = nextConfig
+module.exports = withPlugins([[withContentlayer, {}]], nextConfig)

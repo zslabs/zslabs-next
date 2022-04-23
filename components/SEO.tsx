@@ -8,7 +8,7 @@ interface SEOProps {
   title: string
 }
 
-export default function SEO({ title, ...rest }: SEOProps): React.ReactElement {
+export default function SEO({ title, ...rest }: SEOProps) {
   const router = useRouter()
 
   const openGraph: OpenGraph = React.useMemo(

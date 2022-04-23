@@ -1,3 +1,5 @@
+import type { Post } from 'contentlayer/generated'
+import { allPosts } from 'contentlayer/generated'
 import dayjs from 'dayjs'
 import { motion } from 'framer-motion'
 import type { GetStaticProps, GetStaticPaths } from 'next'
@@ -14,17 +16,15 @@ import {
   fadeInUpInitial,
 } from '~helpers/styles'
 import { ReactComponent as InfoCircleSvg } from '~icons/info-circle.svg'
-import { getAllPosts, getPostBySlug } from '~lib/api'
-import type { Post as PostProps } from '~lib/api'
 
-export default function Post({
-  post: { frontmatter, content },
-}: {
-  post: PostProps
-}): React.ReactElement {
+interface PostSingleProps {
+  post: Post
+}
+
+export default function PostSingle({ post }: PostSingleProps) {
   return (
     <Section>
-      <SEO title={frontmatter.title} />
+      <SEO title={post.title} />
 
       <article>
         <ScrollIndicator position="fixed" />
@@ -34,13 +34,13 @@ export default function Post({
           animate={fadeInAnimate}
         >
           <h1 className="mb-2 text-4xl font-bold text-center md:mb-4 md:text-5xl">
-            <TitleSkew title={frontmatter.title} />
+            <TitleSkew title={post.title} />
           </h1>
           <div className="grid grid-flow-col auto-cols-auto gap-2 justify-center items-center font-bold tracking-widest text-slate-500 dark:text-slate-300 uppercase">
-            <span>{dayjs(frontmatter.date).format('MMMM D, YYYY')}</span>
-            {frontmatter.dateModified && (
+            <span>{dayjs(post.date).format('MMMM D, YYYY')}</span>
+            {post.dateModified && (
               <div
-                title={`Last modified: ${dayjs(frontmatter.dateModified).format(
+                title={`Last modified: ${dayjs(post.dateModified).format(
                   'MMMM D, YYYY'
                 )}`}
               >
@@ -50,7 +50,7 @@ export default function Post({
           </div>
         </motion.header>
         <motion.div initial={fadeInUpInitial} animate={fadeInAnimate}>
-          <MDXContent content={content} />
+          <MDXContent content={post.body} />
         </motion.div>
       </article>
       <ViewSource path="articles/[slug].tsx" />
@@ -59,28 +59,22 @@ export default function Post({
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const post = await getPostBySlug({
-    slug: params.slug.toString(),
-  })
+  const currentPost = allPosts.find(
+    (post) => post._raw.flattenedPath === params.slug // eslint-disable-line no-underscore-dangle
+  )
 
   return {
     props: {
-      post,
+      post: currentPost,
     },
   }
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await getAllPosts(false)
+  const paths = allPosts.map((post) => post.url)
 
   return {
-    paths: posts.map((post) => {
-      return {
-        params: {
-          slug: post.frontmatter.slug,
-        },
-      }
-    }),
+    paths,
     fallback: false,
   }
 }

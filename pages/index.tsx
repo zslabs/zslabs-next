@@ -2,6 +2,8 @@ import fs from 'fs'
 
 import * as React from 'react'
 
+import type { Post } from 'contentlayer/generated'
+import { allPosts } from 'contentlayer/generated'
 import type { AnimationControls, AnimationProps, Variants } from 'framer-motion'
 import { motion, useAnimation } from 'framer-motion'
 import type { GetStaticProps, NextPage } from 'next'
@@ -14,8 +16,6 @@ import TextLink from '~components/TextLink'
 import ViewSource from '~components/ViewSource'
 import useArticlesOffCanvasState from '~hooks/useArticlesOffCanvasState'
 import useLayoutAnimationState from '~hooks/useLayoutAnimationState'
-import type { Post } from '~lib/api'
-import { getAllPosts } from '~lib/api'
 import { getRssXml } from '~lib/rss'
 import diagonalLines from '~media/diagonal-lines.svg'
 import dots from '~media/dots.svg'
@@ -243,7 +243,7 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
       >
         <div className="grid grid-cols-1 justify-items-center px-4">
           <TextLink
-            href={`/articles/${latestPost.frontmatter.slug}`}
+            href={latestPost.url}
             className="relative py-6 px-10 text-center duration-300 ease-bounce hover:scale-105"
           >
             <div className="absolute -top-2 -left-2 z-0 w-full h-full -skew-x-12">
@@ -254,9 +254,7 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
             <div className="absolute inset-0 z-0 bg-gradient-to-br from-slate-100 dark:from-slate-700 to-slate-200 dark:to-slate-800 rounded-lg shadow -skew-x-12" />
             <div className="relative z-10 space-y-1">
               <div>🎉 Check out my latest article!</div>
-              <div className="text-lg font-bold">
-                {latestPost.frontmatter.title}
-              </div>
+              <div className="text-lg font-bold">{latestPost.title}</div>
             </div>
           </TextLink>
         </div>
@@ -284,30 +282,46 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
 export default Home
 
 export const getStaticProps: GetStaticProps = async () => {
-  const allPosts = await getAllPosts()
+  const posts = allPosts.sort(
+    (post1, post2) => +new Date(post2.date) - +new Date(post1.date)
+  )
+
+  const reducedPosts = posts.reduce(
+    (acc, curr) =>
+      acc.concat({
+        title: curr.title,
+        date: curr.date,
+        url: curr.url,
+      }),
+    []
+  )
 
   const currentArticlesFile = fs.readFileSync('./data/articles.json', 'utf8')
 
   // If the stored article data file is not equal to the new query, replace
-  if (JSON.stringify(allPosts) !== currentArticlesFile) {
+  if (JSON.stringify(reducedPosts) !== currentArticlesFile) {
     // Rebuild articles file
-    fs.writeFile('./data/articles.json', JSON.stringify(allPosts), (err) => {
-      if (err) return console.log(err) // eslint-disable-line no-console
+    fs.writeFile(
+      './data/articles.json',
+      JSON.stringify(reducedPosts),
+      (err) => {
+        if (err) return console.log(err) // eslint-disable-line no-console
 
-      console.log('Global articles file updated') // eslint-disable-line no-console
+        console.log('Global articles file updated') // eslint-disable-line no-console
 
-      return true
-    })
+        return true
+      }
+    )
   }
 
   // Generate RSS feed
-  const rss = getRssXml(allPosts)
+  const rss = getRssXml(reducedPosts)
 
   fs.writeFileSync('./public/rss.xml', rss)
 
   return {
     props: {
-      latestPost: allPosts[0],
+      latestPost: reducedPosts[0],
     },
   }
 }

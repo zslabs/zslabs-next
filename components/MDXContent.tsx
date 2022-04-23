@@ -1,5 +1,6 @@
 import React from 'react'
 
+import type { MDX } from 'contentlayer/core'
 import { getMDXComponent } from 'mdx-bundler/client'
 import NextImage from 'next/image'
 
@@ -25,7 +26,7 @@ function Image({
   src,
   height,
   width,
-}: ImageProps & React.HTMLAttributes<HTMLDivElement>): React.ReactElement {
+}: ImageProps & React.HTMLAttributes<HTMLDivElement>) {
   return (
     <figure className="my-8 text-center">
       <div className="grid relative mx-auto w-fit rounded-lg shadow">
@@ -80,9 +81,12 @@ const components = {
 }
 
 const MDXContent: React.FC<{
-  content: string
+  content: MDX
 }> = ({ content }) => {
-  const Component = React.useMemo(() => getMDXComponent(content), [content])
+  const Component = React.useMemo(
+    () => getMDXComponent(content.code),
+    [content]
+  )
 
   return (
     <Prose>

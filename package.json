@@ -14,7 +14,7 @@
     "not op_mini all"
   ],
   "scripts": {
-    "dev": "next-remote-watch ./articles",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
@@ -45,6 +45,7 @@
     "await-to-js": "3.0.0",
     "babel-plugin-superjson-next": "0.4.3",
     "clsx": "1.1.1",
+    "contentlayer": "0.2.4",
     "dayjs": "1.11.0",
     "eslint": "8.13.0",
     "eslint-config-airbnb": "19.0.4",
@@ -62,8 +63,8 @@
     "mdx-bundler": "9.0.0",
     "next": "12.1.4",
     "next-compose-plugins": "2.2.1",
+    "next-contentlayer": "0.2.4",
     "next-images": "1.8.4",
-    "next-remote-watch": "1.0.0",
     "next-seo": "5.4.0",
     "next-themes": "0.1.1",
     "nprogress": "0.2.0",

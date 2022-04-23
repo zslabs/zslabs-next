@@ -13,11 +13,7 @@ interface CodeProps {
   filename?: string
 }
 
-export default function Code({
-  codeString,
-  language,
-  filename,
-}: CodeProps): React.ReactElement {
+export default function Code({ codeString, language, filename }: CodeProps) {
   const [isCopied, setCopied] = React.useState(false)
 
   // Reset icon after 3 seconds
