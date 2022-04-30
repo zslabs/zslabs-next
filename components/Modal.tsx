@@ -29,7 +29,7 @@ const modalVariants: AnimationProps['variants'] = {
 const modalDialogVariants: AnimationProps['variants'] = {
   hidden: {
     opacity: 0,
-    y: '8rem',
+    y: '2rem',
   },
   visible: {
     opacity: 1,
