@@ -11,7 +11,7 @@ const Alert = React.forwardRef<
   React.HTMLProps<HTMLDivElement> & AlertProps
 >(({ variation = 'primary', ...rest }, ref) => {
   return (
-    <aside
+    <div
       ref={ref}
       className={clsx('p-6 my-8 rounded-lg border-l-8 Alert', {
         'bg-blue-100 border-blue-500': variation === 'primary',

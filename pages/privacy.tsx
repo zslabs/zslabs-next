@@ -13,7 +13,7 @@ import SEO from '~components/SEO'
 import ViewSource from '~components/ViewSource'
 
 interface PrivacyProps {
-  content?: MDX
+  content: MDX
 }
 
 const Privacy: NextPage<PrivacyProps> = ({ content }) => {
