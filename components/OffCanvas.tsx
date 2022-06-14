@@ -73,7 +73,7 @@ const OffCanvas: React.FC<OffCanvasProps> = ({
                 initial="hidden"
                 animate="visible"
                 exit="hidden"
-                className="fixed inset-0 z-50 pr-4 bg-slate-900/75 backdrop-blur-sm"
+                className="fixed inset-0 z-50 pr-4 bg-slate-900/75"
               >
                 <Dialog.Content
                   onCloseAutoFocus={handleOnCloseAutoFocus}

@@ -187,7 +187,7 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
     <>
       <Section>
         <div className="grid gap-4 place-items-center">
-          <div className="font-bold tracking-widest text-slate-500 dark:text-slate-300 uppercase md:text-lg md:tracking-widest">
+          <div className="font-bold tracking-widest text-center text-slate-500 dark:text-slate-300 uppercase md:text-lg md:tracking-widest">
             {Array.from(introTitleSub).map((character, index) => {
               const key = `${character}-${index}`
 
