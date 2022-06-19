@@ -11,10 +11,19 @@ import { ReactComponent as CloseSvg } from '~icons/close.svg'
 interface ModalProps {
   open: boolean
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
-  trigger: React.NamedExoticComponent<object>
-  beforeTitle?: React.NamedExoticComponent<object>
-  title: React.NamedExoticComponent<object>
-  description?: React.NamedExoticComponent<object>
+  trigger(
+    props?: Dialog.DialogTriggerProps & React.RefAttributes<HTMLButtonElement>
+  ): React.ReactElement
+  beforeTitle?(
+    props?: Dialog.DialogTitleProps & React.RefAttributes<HTMLHeadingElement>
+  ): React.ReactElement
+  title(
+    props?: Dialog.DialogTitleProps & React.RefAttributes<HTMLHeadingElement>
+  ): React.ReactElement
+  description?(
+    props?: Dialog.DialogDescriptionProps &
+      React.RefAttributes<HTMLParagraphElement>
+  ): React.ReactElement
 }
 
 const modalVariants: AnimationProps['variants'] = {
@@ -38,10 +47,10 @@ const modalDialogVariants: AnimationProps['variants'] = {
 }
 
 const Modal: React.FC<ModalProps> = ({
-  trigger,
-  beforeTitle,
-  title,
-  description,
+  trigger: Trigger,
+  beforeTitle: BeforeTitle,
+  title: Title,
+  description: Description,
   children,
   open,
   setOpen,
@@ -49,11 +58,6 @@ const Modal: React.FC<ModalProps> = ({
   const handleOnCloseAutoFocus = React.useCallback((e: Event) => {
     e.preventDefault()
   }, [])
-
-  const [Trigger, Title] = [trigger, title]
-
-  const BeforeTitle = beforeTitle || React.memo(() => null)
-  const Description = description || React.memo(() => null)
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
@@ -83,11 +87,11 @@ const Modal: React.FC<ModalProps> = ({
                     exit="hidden"
                     className="relative z-20 p-8 my-4 mx-auto max-w-xl bg-slate-100 dark:bg-slate-800 rounded-xl shadow-lg md:my-8"
                   >
-                    {beforeTitle && <BeforeTitle />}
+                    {BeforeTitle && <BeforeTitle />}
                     <Dialog.Title asChild>
                       <Title />
                     </Dialog.Title>
-                    {description && (
+                    {Description && (
                       <Dialog.Description asChild>
                         <Description />
                       </Dialog.Description>

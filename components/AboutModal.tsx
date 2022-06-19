@@ -16,7 +16,7 @@ const AboutModal: React.FC = () => {
   const open = useAboutModalState((state) => state.open)
   const toggle = useAboutModalState((state) => state.toggle)
 
-  const trigger = React.memo((props) => {
+  const trigger = React.useCallback((props) => {
     return (
       <button
         type="button"
@@ -27,9 +27,9 @@ const AboutModal: React.FC = () => {
         <NextImage alt="Zach Schnackel" src="/me.png" width="48" height="48" />
       </button>
     )
-  })
+  }, [])
 
-  const beforeTitle = React.memo((props) => {
+  const beforeTitle = React.useCallback((props) => {
     return (
       <div
         className="overflow-hidden mx-auto mb-8 w-24 h-24 rounded-full shadow-lg"
@@ -38,15 +38,15 @@ const AboutModal: React.FC = () => {
         <NextImage src="/me.png" width="96" height="96" />
       </div>
     )
-  })
+  }, [])
 
-  const title = React.memo((props) => {
+  const title = React.useCallback((props) => {
     return (
       <h3 className="mb-4 text-4xl font-bold text-center" {...props}>
         Hi, I'm Zach
       </h3>
     )
-  })
+  }, [])
 
   return (
     <Modal

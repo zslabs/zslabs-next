@@ -15,17 +15,17 @@ const ArticleOffCanvas: React.FC = () => {
   const open = useArticlesOffCanvasState((state) => state.open)
   const toggle = useArticlesOffCanvasState((state) => state.toggle)
 
-  const trigger = React.memo((props) => {
+  const trigger = React.useCallback((props) => {
     return (
       <IconButton title="View articles" size="large" {...props}>
         <MenuSvg />
       </IconButton>
     )
-  })
+  }, [])
 
-  const title = React.memo((props) => {
+  const title = React.useCallback((props) => {
     return <SectionTitle title="Articles" variation="blue" {...props} />
-  })
+  }, [])
 
   return (
     <OffCanvas trigger={trigger} title={title} open={open} setOpen={toggle}>

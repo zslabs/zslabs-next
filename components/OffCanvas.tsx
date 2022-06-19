@@ -11,9 +11,16 @@ import { ReactComponent as CloseSvg } from '~icons/close.svg'
 interface OffCanvasProps {
   open: boolean
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
-  trigger: React.NamedExoticComponent<object>
-  title: React.NamedExoticComponent<object>
-  description?: React.NamedExoticComponent<object>
+  trigger(
+    props?: Dialog.DialogTriggerProps & React.RefAttributes<HTMLButtonElement>
+  ): React.ReactElement
+  title(
+    props?: Dialog.DialogTitleProps & React.RefAttributes<HTMLHeadingElement>
+  ): React.ReactElement
+  description?(
+    props?: Dialog.DialogDescriptionProps &
+      React.RefAttributes<HTMLParagraphElement>
+  ): React.ReactElement
 }
 
 const offCanvasVariants: AnimationProps['variants'] = {
@@ -37,9 +44,9 @@ const offCanvasDialogVariants: AnimationProps['variants'] = {
 }
 
 const OffCanvas: React.FC<OffCanvasProps> = ({
-  trigger,
-  title,
-  description,
+  trigger: Trigger,
+  title: Title,
+  description: Description,
   children,
   open,
   setOpen,
@@ -54,10 +61,6 @@ const OffCanvas: React.FC<OffCanvasProps> = ({
     }),
     []
   )
-
-  const [Trigger, Title] = [trigger, title]
-
-  const Description = description || React.memo(() => null)
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
@@ -91,7 +94,7 @@ const OffCanvas: React.FC<OffCanvasProps> = ({
                     <Dialog.Title asChild>
                       <Title />
                     </Dialog.Title>
-                    {description && (
+                    {Description && (
                       <Dialog.Description asChild>
                         <Description />
                       </Dialog.Description>
