@@ -13,9 +13,9 @@ const Alert = React.forwardRef<
   return (
     <div
       ref={ref}
-      className={clsx('p-6 my-8 rounded-lg border-l-8 Alert', {
-        'bg-blue-100 border-blue-500': variation === 'primary',
-        'bg-rose-100 border-rose-500': variation === 'danger',
+      className={clsx('Alert my-8 rounded-lg border-l-8 p-6', {
+        'border-blue-500 bg-blue-100': variation === 'primary',
+        'border-rose-500 bg-rose-100': variation === 'danger',
       })}
       {...rest}
     />

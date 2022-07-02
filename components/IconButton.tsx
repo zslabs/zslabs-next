@@ -24,12 +24,12 @@ const IconButton = React.forwardRef(
       <Component
         ref={ref}
         className={clsx(
-          'grid place-content-center rounded-full focus:outline-none disabled:opacity-50 duration-150 ease-bounce hover:scale-110 disabled:cursor-not-allowed',
+          'grid place-content-center rounded-full duration-150 ease-bounce hover:scale-110 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50',
           {
             'bg-slate-200 dark:bg-slate-700': variation === 'default',
-            'text-slate-100 bg-slate-900': variation === 'contrast',
-            'w-8 h-8 text-2xl': size === 'default',
-            'w-12 h-12 text-4xl': size === 'large',
+            'bg-slate-900 text-slate-100': variation === 'contrast',
+            'h-8 w-8 text-2xl': size === 'default',
+            'h-12 w-12 text-4xl': size === 'large',
           }
         )}
         {...(Component === 'button' && { type: rest.type })}

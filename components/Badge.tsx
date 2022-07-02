@@ -13,7 +13,7 @@ const Badge: React.FC<React.HTMLAttributes<HTMLDivElement> & BadgeProps> = ({
   return (
     <div
       className={clsx(
-        'inline-block py-1 px-2 text-xs font-bold tracking-wide text-slate-100 uppercase whitespace-nowrap bg-gradient-to-br rounded-full ring-2 select-none',
+        'inline-block select-none whitespace-nowrap rounded-full bg-gradient-to-br py-1 px-2 text-xs font-bold uppercase tracking-wide text-slate-100 ring-2',
         {
           'from-indigo-700 to-blue-500 ring-indigo-700/20':
             variation === 'primary',

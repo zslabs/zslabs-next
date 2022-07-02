@@ -30,7 +30,7 @@ const Experience: NextPage<ExperienceProps> = ({ data }) => {
     <>
       <SEO title="Experience" />
       <Section>
-        <div className="grid relative grid-cols-1 justify-center md:grid-cols-3/4">
+        <div className="relative grid grid-cols-1 justify-center md:grid-cols-3/4">
           <motion.header initial={fadeInDownInitial} animate={fadeInAnimate}>
             <SectionTitle title="Experience" variation="purple" />
           </motion.header>

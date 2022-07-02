@@ -34,37 +34,37 @@ export const BubbleListItem: React.FC<BubbleListItemProps> = ({
       whileInView="onscreen"
       variants={fadeInUp}
       viewport={viewportInViewOptions}
-      className="group grid relative z-20 grid-flow-col auto-cols-auto gap-5 justify-start"
+      className="group relative z-20 grid auto-cols-auto grid-flow-col justify-start gap-5"
       {...rest}
     >
       <div
         className={clsx(`
-          before:absolute
           relative
-          before:-inset-1
-          before:-z-10
           mt-2.5
-          w-4
           h-4
-          bg-slate-900
-          dark:bg-slate-100
-          before:bg-gradient-to-br before:from-indigo-700
-
-          before:to-blue-500
-          before:rounded-full
-
-          rounded-full border-2
+          w-4
+          rounded-full
+          border-2
           border-slate-100
-          dark:border-slate-800 ring-2 ring-slate-900
-          dark:ring-slate-100 before:opacity-0 group-hover:before:opacity-75
+          bg-slate-900
+          ring-2
+          ring-slate-900 duration-300
 
-          before:blur-md before:duration-300 duration-300
-          ease-bounce group-hover:before:scale-105 group-hover:scale-125
+          ease-bounce
           before:pointer-events-none
+
+          before:absolute before:-inset-1
+          before:-z-10
+          before:rounded-full before:bg-gradient-to-br before:from-indigo-700
+          before:to-blue-500 before:opacity-0 before:blur-md
+
+          before:duration-300 group-hover:scale-125 group-hover:before:scale-105
+          group-hover:before:opacity-75 dark:border-slate-800 dark:bg-slate-100
+          dark:ring-slate-100
         `)}
       />
       <div className="space-y-1">
-        <div className="grid grid-flow-col auto-cols-auto gap-4 items-center">
+        <div className="grid auto-cols-auto grid-flow-col items-center gap-4">
           <h3 className="text-2xl font-bold">
             {link ? (
               <LinkUnderline href={link} onClick={onClick}>
@@ -99,7 +99,7 @@ const BubbleList: React.FC = ({ children, ...rest }) => {
   return (
     <div className="relative" {...rest}>
       <div className="absolute top-0 left-2 z-10 h-full -translate-x-1/2">
-        <div className="w-1 h-full bg-slate-900 dark:bg-slate-100 rounded-full" />
+        <div className="h-full w-1 rounded-full bg-slate-900 dark:bg-slate-100" />
       </div>
       <motion.div
         className="grid grid-cols-1 gap-8 py-8"

@@ -9,7 +9,7 @@ const PageNotFound: NextPage = () => {
       <SEO title="Page not found" />
       <Container>
         <div className="text-center">
-          <h1 className="mb-8 text-9xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-emerald-400 to-cyan-500">
+          <h1 className="mb-8 bg-gradient-to-br from-emerald-400 to-cyan-500 bg-clip-text text-9xl font-extrabold text-transparent">
             404
           </h1>
           <p className="text-lg">It's probably something you did</p>

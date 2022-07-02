@@ -124,12 +124,12 @@ const BaseLayout: React.FC = ({ children }) => {
   return (
     <>
       <div
-        className="absolute top-0 left-0 -z-1 w-full h-24 opacity-10 dark:invert gradient-mask-b-0"
+        className="absolute top-0 left-0 -z-1 h-24 w-full opacity-10 gradient-mask-b-0 dark:invert"
         style={bubblesStyles}
       />
       <Container>
         <Section as="header">
-          <div className="grid grid-flow-col auto-cols-fr gap-4 items-center">
+          <div className="grid auto-cols-fr grid-flow-col items-center gap-4">
             <HeaderItemWrapper
               runAnimation={runAnimation}
               controls={controls}
@@ -170,15 +170,15 @@ const BaseLayout: React.FC = ({ children }) => {
           variants={footerVariants}
           initial={runAnimation ? 'hidden' : false}
         >
-          <div className="grid grid-cols-1 gap-4 justify-items-center">
-            <div className="w-2/4 h-0.5 bg-gradient-to-br from-indigo-700 to-blue-500 rounded-full" />
-            <div className="w-2/6 h-0.5 bg-gradient-to-br from-indigo-700 to-blue-500 rounded-full" />
-            <div className="grid grid-cols-1 gap-2 mt-4 text-sm">
+          <div className="grid grid-cols-1 justify-items-center gap-4">
+            <div className="h-0.5 w-2/4 rounded-full bg-gradient-to-br from-indigo-700 to-blue-500" />
+            <div className="h-0.5 w-2/6 rounded-full bg-gradient-to-br from-indigo-700 to-blue-500" />
+            <div className="mt-4 grid grid-cols-1 gap-2 text-sm">
               <div className="text-slate-500 dark:text-slate-300">
                 Copyright &copy; {new Date().getFullYear()} Zach Schnackel.
                 Penalty is 🔥
               </div>
-              <div className="grid grid-flow-col auto-cols-auto gap-4 justify-center items-center font-bold">
+              <div className="grid auto-cols-auto grid-flow-col items-center justify-center gap-4 font-bold">
                 <div>
                   <LinkUnderline href="/contact">Contact</LinkUnderline>
                 </div>

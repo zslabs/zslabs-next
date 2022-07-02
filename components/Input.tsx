@@ -41,7 +41,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           <input
             ref={ref}
             className={clsx(
-              'pr-4 w-full h-10 leading-none text-slate-900 dark:text-slate-100 bg-transparent rounded-lg border-none focus:outline-none focus:ring-0',
+              'h-10 w-full rounded-lg border-none bg-transparent pr-4 leading-none text-slate-900 focus:outline-none focus:ring-0 dark:text-slate-100',
               {
                 'pl-10': prefixIcon,
                 'pl-4': !prefixIcon,

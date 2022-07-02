@@ -21,51 +21,51 @@ const Button: React.FC<ButtonProps & React.HTMLProps<HTMLButtonElement>> = ({
     <Component
       className={clsx(
         `
-        inline-block
-        before:absolute
         relative
-        after:absolute
-        before:inset-0
-        after:-inset-1
-        before:-z-10
-        after:-z-10
+        inline-block
         h-12
-
+        rounded-full
+        border-2
+        border-slate-100
         text-sm
         font-bold
+        uppercase
 
-        tracking-widest uppercase before:bg-gradient-to-br
-        after:bg-gradient-to-br before:rounded-full rounded-full
-        after:rounded-full border-2 border-slate-100 dark:border-slate-800
-        before:opacity-0
-        hover:before:opacity-75
-
-        before:blur-md
-        before:duration-300
+        tracking-widest
         duration-150
+
+        before:pointer-events-none before:absolute before:inset-0
+        before:-z-10 before:rounded-full before:bg-gradient-to-br
+        before:opacity-0 before:blur-md before:duration-300 after:pointer-events-none
+        after:absolute
+        after:-inset-1
+
+        after:-z-10
+        after:rounded-full
+        after:bg-gradient-to-br
         hover:before:scale-105
-        before:pointer-events-none
-        after:pointer-events-none
+        hover:before:opacity-75
+        dark:border-slate-800
         `,
         {
-          'from-indigo-700 before:from-indigo-700 after:from-indigo-700 to-blue-500 before:to-blue-500 after:to-blue-500':
+          'from-indigo-700 to-blue-500 before:from-indigo-700 before:to-blue-500 after:from-indigo-700 after:to-blue-500':
             variation === 'primary',
-          'from-blue-500 before:from-blue-500 after:from-blue-500 to-emerald-500 before:to-emerald-700 after:to-emerald-500':
+          'from-blue-500 to-emerald-500 before:from-blue-500 before:to-emerald-700 after:from-blue-500 after:to-emerald-500':
             variation === 'secondary',
-          'from-rose-500 before:from-rose-500 after:from-rose-500 to-indigo-700 before:to-indigo-700 after:to-indigo-700':
+          'from-rose-500 to-indigo-700 before:from-rose-500 before:to-indigo-700 after:from-rose-500 after:to-indigo-700':
             variation === 'tertiary',
           'px-6': !iconOnly,
           'w-12': iconOnly,
-          'opacity-50 pointer-events-none': loading,
+          'pointer-events-none opacity-50': loading,
         }
       )}
       {...rest}
     >
       <span
         className={clsx(
-          `grid relative z-10
-          grid-flow-col gap-4 place-items-center h-full
-          text-slate-100 whitespace-nowrap`,
+          `relative z-10 grid
+          h-full grid-flow-col place-items-center gap-4
+          whitespace-nowrap text-slate-100`,
           {
             'auto-cols-min': !iconOnly,
             'auto-cols-auto': iconOnly,

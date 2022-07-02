@@ -45,7 +45,7 @@ const ScrollIndicator: React.FC<
     <svg
       viewBox="0 0 60 60"
       className={clsx({
-        'hidden fixed top-2 left-2 w-8 h-8 text-blue-500 md:block':
+        'fixed top-2 left-2 hidden h-8 w-8 text-blue-500 md:block':
           position === 'fixed',
       })}
       {...rest}

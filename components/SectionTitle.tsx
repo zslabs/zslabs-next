@@ -24,7 +24,7 @@ export const TitleSkew: React.FC<SectionTitle> = ({
           <span
             key={key}
             className={clsx(
-              'relative before:absolute before:inset-0 before:-z-1 before:-mx-2 before:bg-gradient-to-br before:from-slate-100 dark:before:from-slate-800 dark:before:to-slate-700 before:rounded-lg before:skew-x-8',
+              'relative before:absolute before:inset-0 before:-z-1 before:-mx-2 before:skew-x-8 before:rounded-lg before:bg-gradient-to-br before:from-slate-100 dark:before:from-slate-800 dark:before:to-slate-700',
               {
                 'before:to-slate-300': variation === 'default',
                 'before:to-blue-200': variation === 'blue',
@@ -49,7 +49,7 @@ const SectionTitle: React.FC<SectionTitle> = ({
   ...rest
 }) => {
   return (
-    <div className="grid place-content-center mb-12">
+    <div className="mb-12 grid place-content-center">
       <h2 className="relative text-4xl font-bold md:text-5xl" {...rest}>
         <TitleSkew title={title} variation={variation} />
       </h2>

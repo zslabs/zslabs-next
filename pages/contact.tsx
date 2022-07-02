@@ -127,7 +127,7 @@ const Contact: NextPage = () => {
       <SEO title="Contact" />
 
       <Section>
-        <div className="grid relative grid-cols-1 justify-center md:grid-cols-3/4">
+        <div className="relative grid grid-cols-1 justify-center md:grid-cols-3/4">
           <motion.header initial={fadeInDownInitial} animate={fadeInAnimate}>
             <SectionTitle title="Contact" variation="red" />
           </motion.header>

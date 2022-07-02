@@ -33,10 +33,10 @@ export default function PostSingle({ post }: PostSingleProps) {
           initial={fadeInDownInitial}
           animate={fadeInAnimate}
         >
-          <h1 className="mb-2 text-4xl font-bold text-center md:mb-4 md:text-5xl">
+          <h1 className="mb-2 text-center text-4xl font-bold md:mb-4 md:text-5xl">
             <TitleSkew title={post.title} />
           </h1>
-          <div className="grid grid-flow-col auto-cols-auto gap-2 justify-center items-center font-bold tracking-widest text-slate-500 dark:text-slate-300 uppercase">
+          <div className="grid auto-cols-auto grid-flow-col items-center justify-center gap-2 font-bold uppercase tracking-widest text-slate-500 dark:text-slate-300">
             <span>{dayjs(post.date).format('MMMM D, YYYY')}</span>
             {post.dateModified && (
               <div

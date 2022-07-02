@@ -186,8 +186,8 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
   return (
     <>
       <Section>
-        <div className="grid gap-4 place-items-center">
-          <div className="font-bold tracking-widest text-center text-slate-500 dark:text-slate-300 uppercase md:text-lg md:tracking-widest">
+        <div className="grid place-items-center gap-4">
+          <div className="text-center font-bold uppercase tracking-widest text-slate-500 dark:text-slate-300 md:text-lg md:tracking-widest">
             {Array.from(introTitleSub).map((character, index) => {
               const key = `${character}-${index}`
 
@@ -202,14 +202,14 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
             })}
           </div>
           <motion.h1
-            className="text-6xl font-bold text-center md:text-7xl"
+            className="text-center text-6xl font-bold md:text-7xl"
             initial="hidden"
             variants={introTitleVariants}
             animate={introTitleControls}
           >
             Zach Schnackel
           </motion.h1>
-          <div className="grid grid-flow-col auto-cols-auto gap-6 justify-items-center mt-4">
+          <div className="mt-4 grid auto-cols-auto grid-flow-col justify-items-center gap-6">
             <motion.div
               initial="hidden"
               variants={buttonVariants}
@@ -246,12 +246,12 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
             href={latestPost.url}
             className="relative py-6 px-10 text-center duration-300 ease-bounce hover:scale-105"
           >
-            <div className="absolute -top-2 -left-2 z-0 w-full h-full -skew-x-12">
-              <div className="absolute inset-0 bg-gradient-to-br from-indigo-700 to-blue-500 rounded-lg opacity-80" />
+            <div className="absolute -top-2 -left-2 z-0 h-full w-full -skew-x-12">
+              <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-indigo-700 to-blue-500 opacity-80" />
               <span className="absolute inset-0" style={diagonalLinesStyles} />
             </div>
 
-            <div className="absolute inset-0 z-0 bg-gradient-to-br from-slate-100 dark:from-slate-700 to-slate-200 dark:to-slate-800 rounded-lg shadow -skew-x-12" />
+            <div className="absolute inset-0 z-0 -skew-x-12 rounded-lg bg-gradient-to-br from-slate-100 to-slate-200 shadow dark:from-slate-700 dark:to-slate-800" />
             <div className="relative z-10 space-y-1">
               <div>🎉 Check out my latest article!</div>
               <div className="text-lg font-bold">{latestPost.title}</div>
@@ -260,7 +260,7 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
         </div>
       </Section>
       <Section>
-        <div className="grid grid-cols-1 gap-8 justify-center md:grid-cols-3/4 md:gap-16">
+        <div className="grid grid-cols-1 justify-center gap-8 md:grid-cols-3/4 md:gap-16">
           <span
             className="absolute inset-y-0 inset-x-1/2 -z-1 -mx-1/2-screen w-screen bg-auto/6 opacity-5 dark:invert"
             style={dotsStyles}
