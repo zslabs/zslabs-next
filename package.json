@@ -43,7 +43,7 @@
     "@typescript-eslint/parser": "5.30.3",
     "autoprefixer": "10.4.7",
     "await-to-js": "3.0.0",
-    "clsx": "1.1.1",
+    "clsx": "1.2.0",
     "contentlayer": "0.2.5",
     "dayjs": "1.11.3",
     "eslint": "8.18.0",
