@@ -89,6 +89,6 @@
     "@types/lodash": "4.14.182",
     "husky": "8.0.1",
     "lint-staged": "13.0.3",
-    "next-sitemap": "3.1.7"
+    "next-sitemap": "3.1.10"
   }
 }
