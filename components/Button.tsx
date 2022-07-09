@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import clsx from 'clsx'
+import ctl from '@netlify/classnames-template-literals'
 
 interface ButtonProps {
   as?: React.ElementType
@@ -19,8 +19,7 @@ const Button: React.FC<ButtonProps & React.HTMLProps<HTMLButtonElement>> = ({
 }) => {
   return (
     <Component
-      className={clsx(
-        `
+      className={ctl(`
         relative
         inline-block
         h-12
@@ -46,31 +45,32 @@ const Button: React.FC<ButtonProps & React.HTMLProps<HTMLButtonElement>> = ({
         hover:before:scale-105
         hover:before:opacity-75
         dark:border-slate-800
-        `,
-        {
-          'from-indigo-700 to-blue-500 before:from-indigo-700 before:to-blue-500 after:from-indigo-700 after:to-blue-500':
-            variation === 'primary',
-          'from-blue-500 to-emerald-500 before:from-blue-500 before:to-emerald-700 after:from-blue-500 after:to-emerald-500':
-            variation === 'secondary',
-          'from-rose-500 to-indigo-700 before:from-rose-500 before:to-indigo-700 after:from-rose-500 after:to-indigo-700':
-            variation === 'tertiary',
-          'px-6': !iconOnly,
-          'w-12': iconOnly,
-          'pointer-events-none opacity-50': loading,
+
+        ${
+          variation === 'primary' &&
+          'from-indigo-700 to-blue-500 before:from-indigo-700 before:to-blue-500 after:from-indigo-700 after:to-blue-500'
         }
-      )}
+        ${
+          variation === 'secondary' &&
+          'from-blue-500 to-emerald-500 before:from-blue-500 before:to-emerald-700 after:from-blue-500 after:to-emerald-500'
+        }
+        ${
+          variation === 'tertiary' &&
+          'from-rose-500 to-indigo-700 before:from-rose-500 before:to-indigo-700 after:from-rose-500 after:to-indigo-700'
+        }
+        ${iconOnly ? 'w-12' : 'px-6'}
+        ${loading && 'pointer-events-none opacity-50'}
+      `)}
       {...rest}
     >
       <span
-        className={clsx(
-          `relative z-10 grid
+        className={ctl(`
+          relative z-10 grid
           h-full grid-flow-col place-items-center gap-4
-          whitespace-nowrap text-slate-100`,
-          {
-            'auto-cols-min': !iconOnly,
-            'auto-cols-auto': iconOnly,
-          }
-        )}
+          whitespace-nowrap text-slate-100
+
+          ${iconOnly ? 'auto-cols-auto' : 'auto-cols-min'}
+        `)}
       >
         {children}
       </span>

@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import clsx from 'clsx'
+import ctl from '@netlify/classnames-template-literals'
 import type { AnimationProps } from 'framer-motion'
 import { motion } from 'framer-motion'
 
@@ -38,7 +38,7 @@ export const BubbleListItem: React.FC<BubbleListItemProps> = ({
       {...rest}
     >
       <div
-        className={clsx(`
+        className={ctl(`
           relative
           mt-2.5
           h-4

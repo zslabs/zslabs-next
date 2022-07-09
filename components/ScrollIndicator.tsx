@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import clsx from 'clsx'
+import ctl from '@netlify/classnames-template-literals'
 import type { AnimationProps, MotionStyle } from 'framer-motion'
 import {
   motion,
@@ -9,13 +9,7 @@ import {
   useViewportScroll,
 } from 'framer-motion'
 
-interface ScrollIndicatorProps {
-  position?: 'fixed'
-}
-
-const ScrollIndicator: React.FC<
-  React.SVGProps<SVGSVGElement> & ScrollIndicatorProps
-> = ({ position, ...rest }) => {
+const ScrollIndicator: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   const [isComplete, setIsComplete] = React.useState(false)
   const { scrollYProgress } = useViewportScroll()
   const yRange = useTransform(scrollYProgress, [0, 0.9], [0, 1])
@@ -44,11 +38,10 @@ const ScrollIndicator: React.FC<
   return (
     <svg
       viewBox="0 0 60 60"
-      className={clsx({
-        'fixed top-2 left-2 hidden h-8 w-8 text-blue-500 md:block':
-          position === 'fixed',
-      })}
-      {...rest}
+      className={ctl(
+        `fixed top-2 left-2 hidden h-8 w-8 text-blue-500 md:block`
+      )}
+      {...props}
     >
       <motion.path
         fill="none"

@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import clsx from 'clsx'
+import ctl from '@netlify/classnames-template-literals'
 
 interface AlertProps {
   variation?: 'primary' | 'danger'
@@ -13,10 +13,12 @@ const Alert = React.forwardRef<
   return (
     <div
       ref={ref}
-      className={clsx('Alert my-8 rounded-lg border-l-8 p-6', {
-        'border-blue-500 bg-blue-100': variation === 'primary',
-        'border-rose-500 bg-rose-100': variation === 'danger',
-      })}
+      className={ctl(`
+        Alert my-8 rounded-lg border-l-8 p-6
+
+        ${variation === 'primary' && 'border-blue-500 bg-blue-100'}
+        ${variation === 'danger' && 'border-rose-500 bg-rose-100'}
+      `)}
       {...rest}
     />
   )

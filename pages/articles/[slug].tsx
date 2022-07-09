@@ -27,7 +27,7 @@ export default function PostSingle({ post }: PostSingleProps) {
       <SEO title={post.title} />
 
       <article>
-        <ScrollIndicator position="fixed" />
+        <ScrollIndicator />
         <motion.header
           className="mb-8 md:mb-12"
           initial={fadeInDownInitial}

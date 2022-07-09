@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import clsx from 'clsx'
+import ctl from '@netlify/classnames-template-literals'
 import { v4 as uuidv4 } from 'uuid'
 
 import ControlWrapper from './ControlWrapper'
@@ -40,13 +40,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           )}
           <input
             ref={ref}
-            className={clsx(
-              'h-10 w-full rounded-lg border-none bg-transparent pr-4 leading-none text-slate-900 focus:outline-none focus:ring-0 dark:text-slate-100',
-              {
-                'pl-10': prefixIcon,
-                'pl-4': !prefixIcon,
-              }
-            )}
+            className={ctl(`
+              h-10 w-full rounded-lg border-none bg-transparent pr-4 leading-none text-slate-900 focus:outline-none focus:ring-0 dark:text-slate-100
+
+              ${prefixIcon ? 'pl-10' : 'pl-4'}
+            `)}
             type={type}
             id={id}
             name={name}

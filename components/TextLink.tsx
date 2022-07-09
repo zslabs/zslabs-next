@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import clsx from 'clsx'
+import ctl from '@netlify/classnames-template-literals'
 import Link from 'next/link'
 
 import { ReactComponent as GitHubSvg } from '~icons/logos/github.svg'
@@ -21,13 +21,13 @@ const TextLinkContentsIcon: React.FC<{ href: string; className?: string }> = ({
   className,
 }) => {
   if (href.includes('slack.com')) {
-    return <SlackSvg className={clsx(className)} />
+    return <SlackSvg className={className} />
   }
 
   if (href.includes('twitter.com')) {
     return (
       <TwitterSvg
-        className={clsx('text-slate-900 dark:text-slate-100', className)}
+        className={ctl(`text-slate-900 dark:text-slate-100 ${className}`)}
       />
     )
   }
@@ -35,7 +35,7 @@ const TextLinkContentsIcon: React.FC<{ href: string; className?: string }> = ({
   if (href.includes('github.com')) {
     return (
       <GitHubSvg
-        className={clsx('text-slate-900 dark:text-slate-100', className)}
+        className={ctl(`text-slate-900 dark:text-slate-100 ${className}`)}
       />
     )
   }
@@ -43,7 +43,7 @@ const TextLinkContentsIcon: React.FC<{ href: string; className?: string }> = ({
   if (href.includes('list.zslabs.com')) {
     return (
       <ListSvg
-        className={clsx('text-slate-900 dark:text-slate-100', className)}
+        className={ctl(`text-slate-900 dark:text-slate-100 ${className}`)}
       />
     )
   }
@@ -68,8 +68,8 @@ const TextLinkContents: React.FC<TextLinkContentsProps> = ({
   return (
     <span>
       <TextLinkContentsIcon
-        className="relative -top-0.5 mr-1 inline-block"
         href={href}
+        className="relative -top-0.5 mr-1 inline-block"
       />
       {children}
     </span>
