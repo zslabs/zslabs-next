@@ -5,7 +5,7 @@ const plugin = require('tailwindcss/plugin')
 // Calculates ideal letterSpacing for a given font size
 function dynamicTracking(fontSize) {
   const a = -0.0223
-  const b = 0.135 // 0.185 default
+  const b = 0.0 // 0.185 default
   const c = -0.1745
   // tracking = a + b * e ^ (c * fontSize)
   const value = a + b * Math.E ** (c * (fontSize * 16))
