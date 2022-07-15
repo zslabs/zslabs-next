@@ -12,9 +12,8 @@ import { useRouter } from 'next/router'
 
 import AboutModal from '~components/AboutModal'
 import ArticleOffCanvas from '~components/ArticleOffCanvas'
+import Button from '~components/Button'
 import Container from '~components/Container'
-import IconButton from '~components/IconButton'
-import LinkUnderline from '~components/LinkUnderline'
 import Section from '~components/Section'
 import TextLink from '~components/TextLink'
 import useLayoutAnimationState from '~hooks/useLayoutAnimationState'
@@ -141,7 +140,7 @@ const BaseLayout: React.FC = ({ children }) => {
                 title="ZS Labs"
                 className="block duration-300 ease-bounce hover:scale-110"
               >
-                <LogoSvg className="h-12 from-blue-500 to-blue-600 drop-shadow-md" />
+                <LogoSvg className="h-12 from-accent-9 to-primary-9 drop-shadow-md" />
               </TextLink>
             </HeaderItemWrapper>
             <HeaderItemWrapper
@@ -171,21 +170,21 @@ const BaseLayout: React.FC = ({ children }) => {
           initial={runAnimation ? 'hidden' : false}
         >
           <div className="grid grid-cols-1 justify-items-center gap-4">
-            <div className="h-0.5 w-2/4 rounded-full bg-gradient-to-br from-indigo-700 to-blue-500" />
-            <div className="h-0.5 w-2/6 rounded-full bg-gradient-to-br from-indigo-700 to-blue-500" />
+            <div className="h-0.5 w-2/4 rounded-full bg-gradient-to-br from-accent-9 to-primary-9" />
+            <div className="h-0.5 w-2/6 rounded-full bg-gradient-to-br from-accent-9 to-primary-9" />
             <div className="mt-4 grid grid-cols-1 gap-2 text-sm">
-              <div className="text-slate-500 dark:text-slate-300">
+              <div className="text-slate-11">
                 Copyright &copy; {new Date().getFullYear()} Zach Schnackel.
                 Penalty is 🔥
               </div>
               <div className="grid auto-cols-auto grid-flow-col items-center justify-center gap-4 font-bold">
                 <div>
-                  <LinkUnderline href="/contact">Contact</LinkUnderline>
+                  <TextLink href="/contact">Contact</TextLink>
                 </div>
                 <div>
-                  <LinkUnderline href="https://github.com/zslabs/zslabs-next">
+                  <TextLink href="https://github.com/zslabs/zslabs-next">
                     Source
-                  </LinkUnderline>
+                  </TextLink>
                 </div>
                 <div>
                   <TextLink
@@ -218,9 +217,9 @@ const BaseLayout: React.FC = ({ children }) => {
       </Container>
       {mounted && (
         <div className="fixed right-2 bottom-2 z-20">
-          <IconButton variation="contrast" onClick={handleThemeToggleClick}>
+          <Button variation="contrast" onClick={handleThemeToggleClick}>
             {theme === 'light' ? <DarkSvg /> : <LightSvg />}
-          </IconButton>
+          </Button>
         </div>
       )}
     </>

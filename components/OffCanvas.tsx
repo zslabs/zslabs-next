@@ -4,7 +4,7 @@ import * as Dialog from '@radix-ui/react-dialog'
 import type { AnimationProps, Transition } from 'framer-motion'
 import { motion, AnimatePresence } from 'framer-motion'
 
-import IconButton from './IconButton'
+import Button from './Button'
 
 import { ReactComponent as CloseSvg } from '~icons/close.svg'
 
@@ -76,7 +76,7 @@ const OffCanvas: React.FC<OffCanvasProps> = ({
                 initial="hidden"
                 animate="visible"
                 exit="hidden"
-                className="fixed inset-0 z-50 bg-slate-900/75 pr-4"
+                className="fixed inset-0 z-50 bg-blackA-11 pr-4"
               >
                 <Dialog.Content
                   onCloseAutoFocus={handleOnCloseAutoFocus}
@@ -88,7 +88,7 @@ const OffCanvas: React.FC<OffCanvasProps> = ({
                     initial="hidden"
                     animate="visible"
                     exit="hidden"
-                    className="relative top-0 left-0 z-20 h-full w-full overflow-auto rounded-tr-2xl bg-slate-100 px-8 pt-16 pb-8 shadow-lg dark:bg-slate-800 md:max-w-xs"
+                    className="relative top-0 left-0 z-20 h-full w-full overflow-auto rounded-tr-2xl bg-slate-1 px-8 pt-16 pb-8 shadow-lg md:max-w-xs"
                     transition={offCanvasTransition}
                   >
                     <Dialog.Title asChild>
@@ -102,9 +102,9 @@ const OffCanvas: React.FC<OffCanvasProps> = ({
                     {children}
                     <div className="absolute top-4 right-4">
                       <Dialog.Close asChild>
-                        <IconButton variation="default">
+                        <Button iconOnly variation="default">
                           <CloseSvg />
-                        </IconButton>
+                        </Button>
                       </Dialog.Close>
                     </div>
                   </motion.div>

@@ -13,20 +13,19 @@ const Badge: React.FC<React.HTMLAttributes<HTMLDivElement> & BadgeProps> = ({
   return (
     <div
       className={ctl(`
-        inline-block select-none whitespace-nowrap rounded-full bg-gradient-to-br py-1 px-2 text-xs font-bold uppercase tracking-wide text-slate-100 ring-2
+        inline-block select-none whitespace-nowrap rounded-full py-1 px-2 text-xs font-bold uppercase tracking-wide
 
         ${
           variation === 'primary' &&
-          'from-indigo-700 to-blue-500 ring-indigo-700/20'
+          'bg-primary-9 text-primary-1 dark:text-primary-12'
         }
-
         ${
           variation === 'secondary' &&
-          'from-blue-500 to-emerald-500 ring-blue-500/20'
+          'bg-secondary-9 text-secondary-1 dark:text-secondary-12'
         }
         ${
           variation === 'tertiary' &&
-          'from-slate-800 to-slate-600 ring-slate-800/20'
+          'bg-slate-12 text-slate-1 dark:bg-slate-1 dark:text-slate-12'
         }
       `)}
       {...rest}

@@ -61,7 +61,7 @@ const AboutModal: React.FC = () => {
           title="View my Twitter profile"
           href="https://twitter.com/zslabs"
         >
-          <Button as="div" iconOnly variation="primary">
+          <Button as="div" iconOnly variation="contrast">
             <TwitterSvg className="text-2xl" />
           </Button>
         </TextLink>
@@ -69,7 +69,7 @@ const AboutModal: React.FC = () => {
           title="View my GitHub profile"
           href="https://github.com/zslabs"
         >
-          <Button as="div" iconOnly variation="secondary">
+          <Button as="div" iconOnly variation="contrast">
             <GitHubSvg className="text-2xl" />
           </Button>
         </TextLink>
@@ -77,7 +77,7 @@ const AboutModal: React.FC = () => {
           title="View my CodePen profile"
           href="https://codepen.com/zslabs"
         >
-          <Button as="div" iconOnly variation="tertiary">
+          <Button as="div" iconOnly variation="contrast">
             <CodePenSvg className="text-2xl" />
           </Button>
         </TextLink>
@@ -85,12 +85,9 @@ const AboutModal: React.FC = () => {
       <Prose>
         <p>
           I'm part of the messaging team at{' '}
-          <TextLink href="https://www.slack.com" includeIcon>
-            Slack
-          </TextLink>
-          . I work with techologies like{' '}
-          <TextLink href="https://reactjs.org">React</TextLink>,{' '}
-          <TextLink href="https://nextjs.org">Next.js</TextLink>,{' '}
+          <TextLink href="https://www.slack.com">Slack</TextLink>. I work with
+          techologies like <TextLink href="https://reactjs.org">React</TextLink>
+          , <TextLink href="https://nextjs.org">Next.js</TextLink>,{' '}
           <TextLink href="https://gatsbyjs.org">Gatsby</TextLink>, and{' '}
           <TextLink href="https://nodejs.org">Node</TextLink>.{' '}
           <TextLink href="https://www.framer.com/motion/">

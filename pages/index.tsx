@@ -2,7 +2,6 @@ import fs from 'fs'
 
 import * as React from 'react'
 
-import type { Post } from 'contentlayer/generated'
 import { allPosts } from 'contentlayer/generated'
 import type { AnimationControls, AnimationProps, Variants } from 'framer-motion'
 import { motion, useAnimation } from 'framer-motion'
@@ -13,11 +12,9 @@ import Button from '~components/Button'
 import Section from '~components/Section'
 import SectionTitle from '~components/SectionTitle'
 import TextLink from '~components/TextLink'
-import ViewSource from '~components/ViewSource'
 import useArticlesOffCanvasState from '~hooks/useArticlesOffCanvasState'
 import useLayoutAnimationState from '~hooks/useLayoutAnimationState'
 import { getRssXml } from '~lib/rss'
-import diagonalLines from '~media/diagonal-lines.svg'
 import dots from '~media/dots.svg'
 
 const RecentProjects: React.FC = () => {
@@ -48,10 +45,6 @@ const RecentProjects: React.FC = () => {
       </BubbleList>
     </div>
   )
-}
-
-interface LatestPostProps {
-  latestPost: Post
 }
 
 interface IntroTitleSubCharacterProps {
@@ -125,17 +118,6 @@ const buttonTransition: AnimationProps['transition'] = {
   delay: 0.125,
 }
 
-const latestArticleVariants: Variants = {
-  hidden: {
-    scale: 0.5,
-    opacity: 0,
-  },
-  visible: {
-    scale: 1,
-    opacity: 1,
-  },
-}
-
 const projectsVariants: AnimationProps['variants'] = {
   hidden: {
     y: '2rem',
@@ -147,33 +129,26 @@ const projectsVariants: AnimationProps['variants'] = {
   },
 }
 
-const diagonalLinesStyles = {
-  backgroundImage: `url(${diagonalLines})`,
-}
-
 const dotsStyles = { backgroundImage: `url(${dots})` }
 
-const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
+const Home: NextPage = () => {
   const toggle = useArticlesOffCanvasState((state) => state.toggle)
   const done = useLayoutAnimationState((state) => state.done)
 
   const introTitleControls = useAnimation()
   const introTitleSubControls = useAnimation()
   const buttonControls = useAnimation()
-  const latestArticleControls = useAnimation()
   const projectsControls = useAnimation()
 
   const pageAnimation = React.useCallback(async () => {
     await introTitleControls.start('visible')
     await introTitleSubControls.start('visible')
     await buttonControls.start('visible')
-    await latestArticleControls.start('visible')
     await projectsControls.start('visible')
   }, [
     introTitleControls,
     introTitleSubControls,
     buttonControls,
-    latestArticleControls,
     projectsControls,
   ])
 
@@ -187,7 +162,7 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
     <>
       <Section>
         <div className="grid place-items-center gap-4">
-          <div className="text-center font-bold uppercase tracking-widest text-slate-500 dark:text-slate-300 md:text-lg md:tracking-widest">
+          <div className="text-center font-bold uppercase tracking-widest text-slate-11 md:text-lg md:tracking-widest">
             {Array.from(introTitleSub).map((character, index) => {
               const key = `${character}-${index}`
 
@@ -235,30 +210,6 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
           </div>
         </div>
       </Section>
-      <Section
-        as={motion.section}
-        initial="hidden"
-        variants={latestArticleVariants}
-        animate={latestArticleControls}
-      >
-        <div className="grid grid-cols-1 justify-items-center px-4">
-          <TextLink
-            href={latestPost.url}
-            className="relative py-6 px-10 text-center duration-300 ease-bounce hover:scale-105"
-          >
-            <div className="absolute -top-2 -left-2 z-0 h-full w-full -skew-x-12">
-              <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-indigo-700 to-blue-500 opacity-80" />
-              <span className="absolute inset-0" style={diagonalLinesStyles} />
-            </div>
-
-            <div className="absolute inset-0 z-0 -skew-x-12 rounded-lg bg-gradient-to-br from-slate-100 to-slate-200 shadow dark:from-slate-700 dark:to-slate-800" />
-            <div className="relative z-10 space-y-1">
-              <div>🎉 Check out my latest article!</div>
-              <div className="text-lg font-bold">{latestPost.title}</div>
-            </div>
-          </TextLink>
-        </div>
-      </Section>
       <Section>
         <div className="grid grid-cols-1 justify-center gap-8 md:grid-cols-3/4 md:gap-16">
           <span
@@ -274,7 +225,6 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
           </motion.div>
         </div>
       </Section>
-      <ViewSource path="index.tsx" />
     </>
   )
 }
@@ -320,8 +270,6 @@ export const getStaticProps: GetStaticProps = async () => {
   fs.writeFileSync('./public/rss.xml', rss)
 
   return {
-    props: {
-      latestPost: reducedPosts[0],
-    },
+    props: {},
   }
 }

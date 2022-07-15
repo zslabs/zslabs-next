@@ -10,7 +10,6 @@ import MDXContent from '~components/MDXContent'
 import Section from '~components/Section'
 import SectionTitle from '~components/SectionTitle'
 import SEO from '~components/SEO'
-import ViewSource from '~components/ViewSource'
 
 interface PrivacyProps {
   content: MDX
@@ -24,7 +23,6 @@ const Privacy: NextPage<PrivacyProps> = ({ content }) => {
         <SectionTitle title="Privacy" />
         <MDXContent content={content} />
       </Section>
-      <ViewSource path="privacy.tsx" />
     </>
   )
 }

@@ -17,7 +17,6 @@ import SectionTitle from '~components/SectionTitle'
 import SEO from '~components/SEO'
 import Textarea from '~components/Textarea'
 import TextLink from '~components/TextLink'
-import ViewSource from '~components/ViewSource'
 import {
   fadeInAnimate,
   fadeInDownInitial,
@@ -111,7 +110,7 @@ const ContactForm: React.FC = () => {
             required
           />
           <div className="mt-4 text-center">
-            <Button variation="tertiary" type="submit" loading={isSubmitting}>
+            <Button variation="secondary" type="submit" loading={isSubmitting}>
               Send message
             </Button>
           </div>
@@ -149,7 +148,6 @@ const Contact: NextPage = () => {
           </motion.main>
         </div>
       </Section>
-      <ViewSource path="contact.tsx" />
     </>
   )
 }

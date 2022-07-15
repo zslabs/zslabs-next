@@ -4,7 +4,7 @@ import * as Dialog from '@radix-ui/react-dialog'
 import type { AnimationProps } from 'framer-motion'
 import { motion, AnimatePresence } from 'framer-motion'
 
-import IconButton from './IconButton'
+import Button from './Button'
 
 import { ReactComponent as CloseSvg } from '~icons/close.svg'
 
@@ -73,7 +73,7 @@ const Modal: React.FC<ModalProps> = ({
                 initial="hidden"
                 animate="visible"
                 exit="hidden"
-                className="fixed inset-0 z-50 overflow-auto bg-slate-900/75 px-4"
+                className="fixed inset-0 z-50 overflow-auto bg-blackA-11 px-4"
               >
                 <Dialog.Content
                   onCloseAutoFocus={handleOnCloseAutoFocus}
@@ -85,7 +85,7 @@ const Modal: React.FC<ModalProps> = ({
                     initial="hidden"
                     animate="visible"
                     exit="hidden"
-                    className="relative z-20 my-4 mx-auto max-w-xl rounded-xl bg-slate-100 p-8 shadow-lg dark:bg-slate-800 md:my-8"
+                    className="relative z-20 my-4 mx-auto max-w-xl rounded-xl bg-slate-1 p-8 shadow-lg md:my-8"
                   >
                     {BeforeTitle && <BeforeTitle />}
                     <Dialog.Title asChild>
@@ -99,9 +99,9 @@ const Modal: React.FC<ModalProps> = ({
                     {children}
                     <div className="absolute top-4 right-4">
                       <Dialog.Close asChild>
-                        <IconButton variation="default">
+                        <Button iconOnly variation="default">
                           <CloseSvg />
-                        </IconButton>
+                        </Button>
                       </Dialog.Close>
                     </div>
                   </motion.div>

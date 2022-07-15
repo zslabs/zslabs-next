@@ -1,6 +1,5 @@
 import * as React from 'react'
 
-import ctl from '@netlify/classnames-template-literals'
 import type { AnimationProps, MotionStyle } from 'framer-motion'
 import {
   motion,
@@ -38,9 +37,7 @@ const ScrollIndicator: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   return (
     <svg
       viewBox="0 0 60 60"
-      className={ctl(
-        `fixed top-2 left-2 hidden h-8 w-8 text-blue-500 md:block`
-      )}
+      className="fixed top-2 left-2 hidden h-8 w-8 text-primary-9 md:block"
       {...props}
     >
       <motion.path

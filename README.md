@@ -1,28 +1,21 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [create-next-app](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Introduction
 
-## Getting Started
+Portfolio site for myself. Built with [Next.js](https://nextjs.org).
 
-First, run the development server:
+## Color scale
 
-```bash
-npm run dev
-```
+https://www.radix-ui.com/docs/colors/palette-composition/understanding-the-scale
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Step : Use Case
+1 : App background
+2 : Subtle background
+3 : UI element background
+4 : Hovered UI element background
+5 : Active / Selected UI element background
+6 : Subtle borders and separators
+7 : UI element border and focus rings
+8 : Hovered UI element border
+9 : Solid backgrounds
+10 : Hovered solid backgrounds
+11 : Low-contrast text
+12 : High-contrast text
