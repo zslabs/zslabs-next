@@ -101,7 +101,7 @@
     background: theme('colors.primary.9');
     border-radius: theme('borderRadius.full');
 
-    @apply ring-2 ring-primary-9 md:top-3;
+    @apply ring-2 ring-primary-6 md:top-3;
   }
 
   code {
