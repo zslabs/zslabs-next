@@ -13,8 +13,6 @@ import { useRouter } from 'next/router'
 import AboutModal from '~components/AboutModal'
 import ArticleOffCanvas from '~components/ArticleOffCanvas'
 import Container from '~components/Container'
-import IconButton from '~components/IconButton'
-import LinkUnderline from '~components/LinkUnderline'
 import Section from '~components/Section'
 import TextLink from '~components/TextLink'
 import useLayoutAnimationState from '~hooks/useLayoutAnimationState'
@@ -64,6 +62,23 @@ const HeaderItemWrapper: React.FC<
       transition={transition}
       {...rest}
     />
+  )
+}
+
+function FooterLink({
+  href,
+  children,
+}: {
+  href: string
+  children: React.ReactNode
+}) {
+  return (
+    <TextLink
+      href={href}
+      className="underline decoration-dotted underline-offset-4"
+    >
+      {children}
+    </TextLink>
   )
 }
 
@@ -129,7 +144,7 @@ const BaseLayout: React.FC = ({ children }) => {
       />
       <Container>
         <Section as="header">
-          <div className="grid auto-cols-fr grid-flow-col items-center gap-4">
+          <div className="flex items-center justify-between gap-4">
             <HeaderItemWrapper
               runAnimation={runAnimation}
               controls={controls}
@@ -141,7 +156,7 @@ const BaseLayout: React.FC = ({ children }) => {
                 title="ZS Labs"
                 className="block duration-300 ease-bounce hover:scale-110"
               >
-                <LogoSvg className="h-12 from-blue-500 to-blue-600 drop-shadow-md" />
+                <LogoSvg className="h-12 from-accent-9 to-primary-9 drop-shadow-md" />
               </TextLink>
             </HeaderItemWrapper>
             <HeaderItemWrapper
@@ -164,28 +179,28 @@ const BaseLayout: React.FC = ({ children }) => {
         </Section>
 
         {children}
-        <Section
-          as={motion.footer}
-          animate={controls}
-          variants={footerVariants}
-          initial={runAnimation ? 'hidden' : false}
-        >
-          <div className="grid grid-cols-1 justify-items-center gap-4">
-            <div className="h-0.5 w-2/4 rounded-full bg-gradient-to-br from-indigo-700 to-blue-500" />
-            <div className="h-0.5 w-2/6 rounded-full bg-gradient-to-br from-indigo-700 to-blue-500" />
-            <div className="mt-4 grid grid-cols-1 gap-2 text-sm">
-              <div className="text-slate-500 dark:text-slate-300">
+      </Container>
+      <motion.section
+        animate={controls}
+        variants={footerVariants}
+        initial={runAnimation ? 'hidden' : false}
+        className="bg-slate-3 py-8 shadow-inner md:py-12"
+      >
+        <Container>
+          <div className="grid grid-cols-1 gap-4">
+            <div className="grid grid-cols-1 justify-center gap-2 text-center text-sm">
+              <div>
                 Copyright &copy; {new Date().getFullYear()} Zach Schnackel.
                 Penalty is 🔥
               </div>
-              <div className="grid auto-cols-auto grid-flow-col items-center justify-center gap-4 font-bold">
+              <div className="flex flex-wrap items-center justify-center gap-4">
                 <div>
-                  <LinkUnderline href="/contact">Contact</LinkUnderline>
+                  <FooterLink href="/contact">Contact</FooterLink>
                 </div>
                 <div>
-                  <LinkUnderline href="https://github.com/zslabs/zslabs-next">
+                  <FooterLink href="https://github.com/zslabs/zslabs-next">
                     Source
-                  </LinkUnderline>
+                  </FooterLink>
                 </div>
                 <div>
                   <TextLink
@@ -211,18 +226,20 @@ const BaseLayout: React.FC = ({ children }) => {
                     <GitHubSvg className="text-lg" />
                   </TextLink>
                 </div>
+                {mounted && (
+                  <button type="button" onClick={handleThemeToggleClick}>
+                    {theme === 'light' ? (
+                      <DarkSvg className="text-xl" />
+                    ) : (
+                      <LightSvg className="text-xl" />
+                    )}
+                  </button>
+                )}
               </div>
             </div>
           </div>
-        </Section>
-      </Container>
-      {mounted && (
-        <div className="fixed right-2 bottom-2 z-20">
-          <IconButton variation="contrast" onClick={handleThemeToggleClick}>
-            {theme === 'light' ? <DarkSvg /> : <LightSvg />}
-          </IconButton>
-        </div>
-      )}
+        </Container>
+      </motion.section>
     </>
   )
 }

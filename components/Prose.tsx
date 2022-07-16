@@ -1,9 +1,17 @@
 import * as React from 'react'
 
-import type * as Polymorphic from '@reach/utils/polymorphic'
+import { motion } from 'framer-motion'
 
-const Prose = React.forwardRef(({ as: Component = 'div', ...rest }, ref) => {
-  return <Component ref={ref} className="prose" {...rest} />
-}) as Polymorphic.ForwardRefComponent<'div'>
+interface ProseProps {
+  children: React.ReactNode
+}
+
+const Prose = ({ children, ...rest }: ProseProps, ref) => {
+  return (
+    <motion.div ref={ref} {...rest} className="prose text-base md:text-lg">
+      {children}
+    </motion.div>
+  )
+}
 
 export default Prose

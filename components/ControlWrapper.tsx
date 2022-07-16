@@ -1,9 +1,13 @@
 import * as React from 'react'
 
+import ctl from '@netlify/classnames-template-literals'
+
 const ControlWrapper: React.FC = (props) => {
   return (
     <div
-      className="relative rounded-lg border border-slate-300 bg-white text-slate-500 shadow-sm focus-within:border-blue-500 focus-within:text-blue-500 dark:border-slate-500 dark:bg-slate-800 dark:text-slate-300 dark:focus-within:border-blue-500 dark:focus-within:text-blue-500"
+      className={ctl(
+        `relative rounded-lg border-2 border-slate-7 bg-slate-1 text-slate-12 focus-within:border-primary-7 focus-within:text-primary-11`
+      )}
       {...props}
     />
   )

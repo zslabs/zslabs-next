@@ -10,7 +10,6 @@ import MDXContent from '~components/MDXContent'
 import Section from '~components/Section'
 import SectionTitle from '~components/SectionTitle'
 import SEO from '~components/SEO'
-import ViewSource from '~components/ViewSource'
 
 interface TermsProps {
   content: MDX
@@ -24,7 +23,6 @@ const Terms: NextPage<TermsProps> = ({ content }) => {
         <SectionTitle title="Terms" />
         <MDXContent content={content} />
       </Section>
-      <ViewSource path="terms.tsx" />
     </>
   )
 }

@@ -13,7 +13,6 @@ import Button from '~components/Button'
 import Section from '~components/Section'
 import SectionTitle from '~components/SectionTitle'
 import TextLink from '~components/TextLink'
-import ViewSource from '~components/ViewSource'
 import useArticlesOffCanvasState from '~hooks/useArticlesOffCanvasState'
 import useLayoutAnimationState from '~hooks/useLayoutAnimationState'
 import { getRssXml } from '~lib/rss'
@@ -22,8 +21,8 @@ import dots from '~media/dots.svg'
 
 const RecentProjects: React.FC = () => {
   return (
-    <div>
-      <SectionTitle title="Recent projects" variation="purple" />
+    <div className="relative grid grid-cols-1 justify-center md:grid-cols-3/4">
+      <SectionTitle title="Recent projects" />
       <BubbleList>
         <BubbleListItem title="List" link="https://list.zslabs.com/">
           The best experience for monitoring activity on multiple eBay search
@@ -186,8 +185,8 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
   return (
     <>
       <Section>
-        <div className="grid place-items-center gap-4">
-          <div className="text-center font-bold uppercase tracking-widest text-slate-500 dark:text-slate-300 md:text-lg md:tracking-widest">
+        <div className="grid grid-cols-1 gap-4 text-center">
+          <div className="font-bold uppercase tracking-widest text-slate-11 md:text-lg md:tracking-widest">
             {Array.from(introTitleSub).map((character, index) => {
               const key = `${character}-${index}`
 
@@ -202,14 +201,14 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
             })}
           </div>
           <motion.h1
-            className="text-center text-6xl font-bold md:text-7xl"
+            className="text-6xl font-bold md:text-7xl"
             initial="hidden"
             variants={introTitleVariants}
             animate={introTitleControls}
           >
             Zach Schnackel
           </motion.h1>
-          <div className="mt-4 grid auto-cols-auto grid-flow-col justify-items-center gap-6">
+          <div className="mt-4 flex justify-center gap-4">
             <motion.div
               initial="hidden"
               variants={buttonVariants}
@@ -227,7 +226,7 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
               transition={buttonTransition}
             >
               <TextLink href="/experience">
-                <Button as="div" variation="secondary">
+                <Button as="div" variation="contrast">
                   Experience
                 </Button>
               </TextLink>
@@ -247,11 +246,11 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
             className="relative py-6 px-10 text-center duration-300 ease-bounce hover:scale-105"
           >
             <div className="absolute -top-2 -left-2 z-0 h-full w-full -skew-x-12">
-              <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-indigo-700 to-blue-500 opacity-80" />
+              <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-accent-9 to-primary-11 opacity-80" />
               <span className="absolute inset-0" style={diagonalLinesStyles} />
             </div>
 
-            <div className="absolute inset-0 z-0 -skew-x-12 rounded-lg bg-gradient-to-br from-slate-100 to-slate-200 shadow dark:from-slate-700 dark:to-slate-800" />
+            <div className="absolute inset-0 z-0 -skew-x-12 rounded-lg bg-gradient-to-br from-slate-1 to-slate-3 shadow" />
             <div className="relative z-10 space-y-1">
               <div>🎉 Check out my latest article!</div>
               <div className="text-lg font-bold">{latestPost.title}</div>
@@ -260,7 +259,7 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
         </div>
       </Section>
       <Section>
-        <div className="grid grid-cols-1 justify-center gap-8 md:grid-cols-3/4 md:gap-16">
+        <div className="grid grid-cols-1 gap-8 md:gap-16">
           <span
             className="absolute inset-y-0 inset-x-1/2 -z-1 -mx-1/2-screen w-screen bg-auto/6 opacity-5 dark:invert"
             style={dotsStyles}
@@ -274,7 +273,6 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
           </motion.div>
         </div>
       </Section>
-      <ViewSource path="index.tsx" />
     </>
   )
 }

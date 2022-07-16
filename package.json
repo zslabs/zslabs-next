@@ -29,19 +29,19 @@
     }
   },
   "dependencies": {
-    "@hookform/resolvers": "2.9.5",
+    "@hookform/resolvers": "2.9.6",
     "@netlify/classnames-template-literals": "1.0.3",
     "@radix-ui/react-dialog": "0.1.7",
     "@reach/utils": "0.17.0",
     "@tailwindcss/line-clamp": "0.4.0",
     "@types/gtag.js": "0.0.10",
-    "@types/node": "18.0.3",
+    "@types/node": "18.0.4",
     "@types/nprogress": "0.2.0",
     "@types/react": "17.0.41",
     "@types/react-copy-to-clipboard": "5.0.3",
     "@types/uuid": "8.3.4",
-    "@typescript-eslint/eslint-plugin": "5.30.5",
-    "@typescript-eslint/parser": "5.30.5",
+    "@typescript-eslint/eslint-plugin": "5.30.6",
+    "@typescript-eslint/parser": "5.30.6",
     "autoprefixer": "10.4.7",
     "await-to-js": "3.0.0",
     "contentlayer": "0.2.6",
@@ -57,7 +57,7 @@
     "eslint-plugin-react-perf": "3.3.1",
     "eslint-plugin-tailwindcss": "3.6.0",
     "eslint-webpack-plugin": "3.2.0",
-    "framer-motion": "6.4.3",
+    "framer-motion": "6.5.1",
     "lodash": "4.17.21",
     "mdx-bundler": "9.0.1",
     "next": "12.2.2",
@@ -78,7 +78,7 @@
     "react-use": "17.4.0",
     "redaxios": "0.5.0",
     "slugify": "1.6.5",
-    "tailwindcss": "3.1.5",
+    "tailwindcss": "3.1.6",
     "typescript": "4.7.4",
     "uuid": "8.3.2",
     "zod": "3.17.3",
@@ -89,6 +89,6 @@
     "@types/lodash": "4.14.182",
     "husky": "8.0.1",
     "lint-staged": "13.0.3",
-    "next-sitemap": "3.1.10"
+    "next-sitemap": "3.1.11"
   }
 }

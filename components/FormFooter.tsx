@@ -1,25 +1,30 @@
 import * as React from 'react'
 
-interface FormFooterProps {
+import ctl from '@netlify/classnames-template-literals'
+
+interface FormFooterPropsPrimitive {
   explanationMessage?: string
   validationMessage?: string
 }
 
-const FormFooter: React.FC<
-  React.HTMLProps<HTMLDivElement> & FormFooterProps
-> = ({ explanationMessage, validationMessage, ...rest }) => {
+type FormFooterProps = React.HTMLProps<HTMLDivElement> &
+  FormFooterPropsPrimitive
+
+const FormFooter: React.FC<FormFooterProps> = ({
+  explanationMessage,
+  validationMessage,
+  ...rest
+}) => {
   return explanationMessage || validationMessage ? (
     <div
-      className="mt-1 grid auto-cols-fr grid-flow-col gap-2 px-2 text-sm"
+      className={ctl(`mt-1 grid auto-cols-fr grid-flow-col gap-2 px-2 text-sm`)}
       {...rest}
     >
       {explanationMessage && (
-        <div className="text-slate-500 dark:text-slate-400">
-          {explanationMessage}
-        </div>
+        <div className={ctl(`text-slate-11`)}>{explanationMessage}</div>
       )}
       {validationMessage && (
-        <div className="text-right text-rose-500 dark:text-slate-400">
+        <div className={ctl(`text-right text-danger-11`)}>
           {validationMessage}
         </div>
       )}

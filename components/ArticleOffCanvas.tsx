@@ -3,7 +3,7 @@ import * as React from 'react'
 import dayjs from 'dayjs'
 
 import BubbleList, { BubbleListItem } from './BubbleList'
-import IconButton from './IconButton'
+import Button from './Button'
 import OffCanvas from './OffCanvas'
 import SectionTitle from './SectionTitle'
 
@@ -17,14 +17,14 @@ const ArticleOffCanvas: React.FC = () => {
 
   const trigger = React.useCallback((props) => {
     return (
-      <IconButton title="View articles" size="large" {...props}>
-        <MenuSvg />
-      </IconButton>
+      <Button variation="blank" iconOnly title="View articles" {...props}>
+        <MenuSvg className="text-4xl" />
+      </Button>
     )
   }, [])
 
   const title = React.useCallback((props) => {
-    return <SectionTitle title="Articles" variation="blue" {...props} />
+    return <SectionTitle title="Articles" {...props} />
   }, [])
 
   return (

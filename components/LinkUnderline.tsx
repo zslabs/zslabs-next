@@ -12,7 +12,7 @@ const LinkUnderline: React.FC<
 > = (props) => {
   return (
     <TextLink
-      className="bg-gradient-to-br from-slate-200 to-slate-200 bg-0/6 bg-left-bottom bg-no-repeat transition-background-size duration-150 ease-bounce hover:bg-100/6 dark:from-slate-600 dark:to-slate-600"
+      className="bg-gradient-to-br from-slate-5 to-slate-5 bg-0/6 bg-left-bottom bg-no-repeat transition-background-size duration-300 ease-bounce hocus:bg-100/6"
       {...props}
     />
   )

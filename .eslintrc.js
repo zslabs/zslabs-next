@@ -97,12 +97,7 @@ module.exports = {
     // Next.js <Link> component doesn't play nice with anchor validation
     'jsx-a11y/anchor-is-valid': 0,
     'jsx-a11y/anchor-has-content': 0,
-    // TailwindCSS
-    'tailwindcss/no-custom-classname': [
-      'error',
-      {
-        whitelist: ['gradient\\-mask\\-b\\-0'],
-      },
-    ],
+    // Tailwind CSS
+    'tailwindcss/no-custom-classname': ['error'],
   },
 }

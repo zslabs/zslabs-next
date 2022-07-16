@@ -9,7 +9,6 @@ import BubbleList, { BubbleListItem } from '~components/BubbleList'
 import Section from '~components/Section'
 import SectionTitle from '~components/SectionTitle'
 import SEO from '~components/SEO'
-import ViewSource from '~components/ViewSource'
 import {
   fadeInAnimate,
   fadeInDownInitial,
@@ -42,7 +41,7 @@ const Experience: NextPage<ExperienceProps> = ({ data }) => {
                   title={partial.company}
                   sub={partial.title}
                   badge={partial.badge}
-                  badgeVariant={index === 0 ? 'secondary' : 'tertiary'}
+                  badgeVariant={index === 0 ? 'primary' : 'contrast'}
                 >
                   {partial.blurb}
                 </BubbleListItem>
@@ -51,7 +50,6 @@ const Experience: NextPage<ExperienceProps> = ({ data }) => {
           </motion.main>
         </div>
       </Section>
-      <ViewSource path="experience.tsx" />
     </>
   )
 }

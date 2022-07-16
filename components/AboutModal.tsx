@@ -7,9 +7,11 @@ import Modal from './Modal'
 import Prose from './Prose'
 import TextLink from './TextLink'
 
+import InlineIconWrapper from '~components/InlineIconWrapper'
 import useAboutModalState from '~hooks/useAboutModalState'
 import { ReactComponent as CodePenSvg } from '~icons/logos/codepen.svg'
 import { ReactComponent as GitHubSvg } from '~icons/logos/github.svg'
+import { ReactComponent as SlackSvg } from '~icons/logos/slack.svg'
 import { ReactComponent as TwitterSvg } from '~icons/logos/twitter.svg'
 
 const AboutModal: React.FC = () => {
@@ -61,43 +63,38 @@ const AboutModal: React.FC = () => {
           title="View my Twitter profile"
           href="https://twitter.com/zslabs"
         >
-          <Button as="div" iconOnly variation="primary">
-            <TwitterSvg className="text-2xl" />
+          <Button as="div" iconOnly variation="hover-default">
+            <TwitterSvg />
           </Button>
         </TextLink>
         <TextLink
           title="View my GitHub profile"
           href="https://github.com/zslabs"
         >
-          <Button as="div" iconOnly variation="secondary">
-            <GitHubSvg className="text-2xl" />
+          <Button as="div" iconOnly variation="hover-default">
+            <GitHubSvg />
           </Button>
         </TextLink>
         <TextLink
           title="View my CodePen profile"
           href="https://codepen.com/zslabs"
         >
-          <Button as="div" iconOnly variation="tertiary">
-            <CodePenSvg className="text-2xl" />
+          <Button as="div" iconOnly variation="hover-default">
+            <CodePenSvg />
           </Button>
         </TextLink>
       </div>
       <Prose>
         <p>
-          I'm part of the messaging team at{' '}
-          <TextLink href="https://www.slack.com" includeIcon>
+          I'm part of the design infrastructure team at{' '}
+          <TextLink href="https://www.slack.com">
+            <InlineIconWrapper>
+              <SlackSvg />
+            </InlineIconWrapper>{' '}
             Slack
           </TextLink>
-          . I work with techologies like{' '}
-          <TextLink href="https://reactjs.org">React</TextLink>,{' '}
-          <TextLink href="https://nextjs.org">Next.js</TextLink>,{' '}
-          <TextLink href="https://gatsbyjs.org">Gatsby</TextLink>, and{' '}
-          <TextLink href="https://nodejs.org">Node</TextLink>.{' '}
-          <TextLink href="https://www.framer.com/motion/">
-            Framer Motion
-          </TextLink>{' '}
-          and <TextLink href="https://greensock.com/">GSAP</TextLink> are my
-          go-to animation utilities.
+          , building tools to help designers and engineers collaborate more
+          efficiently.
         </p>
         <p>
           My background involves pushing the limits of what we can build on the

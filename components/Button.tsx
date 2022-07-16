@@ -1,81 +1,67 @@
 import * as React from 'react'
 
 import ctl from '@netlify/classnames-template-literals'
+import type * as Polymorphic from '@reach/utils/polymorphic'
 
-interface ButtonProps {
+interface ButtonPropsPrimitive {
   as?: React.ElementType
-  variation: 'primary' | 'secondary' | 'tertiary'
-  iconOnly?: boolean
+  variation?: 'hover-default' | 'primary' | 'secondary' | 'blank' | 'contrast'
   loading?: boolean
+  iconOnly?: boolean
+  type?: 'submit' | 'button'
 }
 
-const Button: React.FC<ButtonProps & React.HTMLProps<HTMLButtonElement>> = ({
-  as: Component = 'button',
-  children,
-  variation,
-  iconOnly,
-  loading,
-  ...rest
-}) => {
-  return (
-    <Component
-      className={ctl(`
-        relative
-        inline-block
-        h-12
-        rounded-full
-        border-2
-        border-slate-100
-        text-sm
-        font-bold
-        uppercase
+type ButtonProps = React.ComponentPropsWithoutRef<'button'> &
+  ButtonPropsPrimitive
 
-        tracking-widest
-        duration-150
-
-        before:pointer-events-none before:absolute before:inset-0
-        before:-z-10 before:rounded-full before:bg-gradient-to-br
-        before:opacity-0 before:blur-md before:duration-300 after:pointer-events-none
-        after:absolute
-        after:-inset-1
-
-        after:-z-10
-        after:rounded-full
-        after:bg-gradient-to-br
-        hover:before:scale-105
-        hover:before:opacity-75
-        dark:border-slate-800
-
-        ${
-          variation === 'primary' &&
-          'from-indigo-700 to-blue-500 before:from-indigo-700 before:to-blue-500 after:from-indigo-700 after:to-blue-500'
-        }
-        ${
-          variation === 'secondary' &&
-          'from-blue-500 to-emerald-500 before:from-blue-500 before:to-emerald-700 after:from-blue-500 after:to-emerald-500'
-        }
-        ${
-          variation === 'tertiary' &&
-          'from-rose-500 to-indigo-700 before:from-rose-500 before:to-indigo-700 after:from-rose-500 after:to-indigo-700'
-        }
-        ${iconOnly ? 'w-12' : 'px-6'}
-        ${loading && 'pointer-events-none opacity-50'}
-      `)}
-      {...rest}
-    >
-      <span
+const Button = React.forwardRef(
+  (
+    { children, variation = 'blank', iconOnly, loading, type, ...rest },
+    forwardedRef
+  ) => {
+    return (
+      <button
+        ref={forwardedRef}
+        // eslint-disable-next-line react/button-has-type
+        type={rest.as ? undefined : type}
         className={ctl(`
-          relative z-10 grid
-          h-full grid-flow-col place-items-center gap-4
-          whitespace-nowrap text-slate-100
+          inline-block h-12 font-bold duration-150 focus:outline-none
 
-          ${iconOnly ? 'auto-cols-auto' : 'auto-cols-min'}
+          ${variation === 'hover-default' && `hocus:bg-slate-3`}
+          ${
+            variation === 'primary' &&
+            `bg-gradient-to-br from-primary-9 to-primary-11 text-primary-1 dark:bg-gradient-to-tl dark:text-primary-12`
+          }
+
+          ${variation === 'contrast' && 'bg-slate-12 text-slate-1'}
+
+          ${
+            iconOnly
+              ? 'w-12 rounded-full text-2xl'
+              : 'rounded-full px-6 text-sm uppercase tracking-widest'
+          }
+          ${
+            !['blank', 'hover-default'].includes(variation) &&
+            'shadow-lg hocus:shadow-xl hocus:brightness-105'
+          }
+          ${loading && `pointer-events-none opacity-50`}
         `)}
+        {...rest}
       >
-        {children}
-      </span>
-    </Component>
-  )
-}
+        <span
+          className={ctl(`
+            relative z-10 grid h-full grid-flow-col place-items-center gap-4 whitespace-nowrap
+
+            ${iconOnly ? 'auto-cols-auto' : 'auto-cols-min'}
+          `)}
+        >
+          {children}
+        </span>
+      </button>
+    )
+  }
+) as Polymorphic.ForwardRefComponent<'button', ButtonProps>
+
+Button.displayName = 'Button'
 
 export default Button

@@ -59,7 +59,7 @@
 
 .token.important,
 .token.bold {
-  @apply font-bold;
+  font-weight: theme('fontWeight.bold');
 }
 
 .token.entity {

@@ -30,7 +30,7 @@ function Image({
   return (
     <figure className="my-8 text-center">
       <div className="relative mx-auto grid w-fit rounded-lg shadow">
-        <div className="absolute -inset-2 rounded-lg bg-slate-200 shadow-inner dark:bg-slate-900" />
+        <div className="absolute -inset-2 rounded-lg bg-slate-3 shadow-inner" />
         <NextImage
           src={src}
           height={height}
@@ -39,7 +39,7 @@ function Image({
         />
       </div>
       {caption && (
-        <figcaption className="mt-4 text-sm text-slate-500 dark:text-slate-400">
+        <figcaption className="mt-4 text-sm text-slate-11">
           {caption}
         </figcaption>
       )}
@@ -53,7 +53,7 @@ const components = {
   CodePen,
   Tweet,
   TextLink,
-  a: (props) => <TextLink includeIcon {...props} />,
+  a: (props) => <TextLink {...props} />,
   blockquote: (props) => <Blockquote {...props} />,
   h1: (props) => <AutoLinkHeader as="h1" {...props} />,
   h2: (props) => <AutoLinkHeader as="h2" {...props} />,
