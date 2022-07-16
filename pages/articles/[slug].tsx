@@ -7,6 +7,7 @@ import type { GetStaticProps, GetStaticPaths } from 'next'
 import MDXContent from '~components/MDXContent'
 import ScrollIndicator from '~components/ScrollIndicator'
 import Section from '~components/Section'
+import { TitleSkew } from '~components/SectionTitle'
 import SEO from '~components/SEO'
 import {
   fadeInAnimate,
@@ -32,7 +33,7 @@ export default function PostSingle({ post }: PostSingleProps) {
           animate={fadeInAnimate}
         >
           <h1 className="mb-2 text-center text-4xl font-bold md:mb-4 md:text-5xl">
-            {post.title}
+            <TitleSkew title={post.title} />
           </h1>
           <div className="grid auto-cols-auto grid-flow-col items-center justify-center gap-2 font-bold uppercase tracking-widest text-slate-11">
             <span>{dayjs(post.date).format('MMMM D, YYYY')}</span>

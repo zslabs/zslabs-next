@@ -22,7 +22,7 @@ import dots from '~media/dots.svg'
 const RecentProjects: React.FC = () => {
   return (
     <div className="relative grid grid-cols-1 justify-center md:grid-cols-3/4">
-      <SectionTitle title="Recent projects" />
+      <SectionTitle title="Recent projects" variation="danger" />
       <BubbleList>
         <BubbleListItem title="List" link="https://list.zslabs.com/">
           The best experience for monitoring activity on multiple eBay search

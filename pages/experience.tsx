@@ -31,7 +31,7 @@ const Experience: NextPage<ExperienceProps> = ({ data }) => {
       <Section>
         <div className="relative grid grid-cols-1 justify-center md:grid-cols-3/4">
           <motion.header initial={fadeInDownInitial} animate={fadeInAnimate}>
-            <SectionTitle title="Experience" variation="purple" />
+            <SectionTitle title="Experience" variation="accent" />
           </motion.header>
           <motion.main initial={fadeInUpInitial} animate={fadeInAnimate}>
             <BubbleList>

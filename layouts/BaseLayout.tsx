@@ -75,7 +75,7 @@ function FooterLink({
   return (
     <TextLink
       href={href}
-      className="underline decoration-dotted underline-offset-4"
+      className="font-bold underline decoration-dotted underline-offset-4"
     >
       {children}
     </TextLink>

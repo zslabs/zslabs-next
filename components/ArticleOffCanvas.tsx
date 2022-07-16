@@ -24,7 +24,7 @@ const ArticleOffCanvas: React.FC = () => {
   }, [])
 
   const title = React.useCallback((props) => {
-    return <SectionTitle title="Articles" {...props} />
+    return <SectionTitle title="Articles" variation="accent" {...props} />
   }, [])
 
   return (

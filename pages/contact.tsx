@@ -128,7 +128,7 @@ const Contact: NextPage = () => {
       <Section>
         <div className="relative grid grid-cols-1 justify-center md:grid-cols-3/4">
           <motion.header initial={fadeInDownInitial} animate={fadeInAnimate}>
-            <SectionTitle title="Contact" />
+            <SectionTitle title="Contact" variation="primary" />
           </motion.header>
           <motion.main initial={fadeInUpInitial} animate={fadeInAnimate}>
             <div className="mb-8">
