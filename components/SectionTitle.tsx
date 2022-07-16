@@ -1,11 +1,26 @@
+import ctl from '@netlify/classnames-template-literals'
+
 interface SectionTitle extends React.HTMLAttributes<HTMLDivElement> {
   title: string
   variation?: 'default' | 'blue' | 'red' | 'purple'
+  align?: 'left' | 'center'
 }
 
-const SectionTitle: React.FC<SectionTitle> = ({ title, ...rest }) => {
+const SectionTitle: React.FC<SectionTitle> = ({
+  align = 'center',
+  title,
+  ...rest
+}) => {
   return (
-    <h2 className="mb-12 text-4xl font-bold md:text-5xl" {...rest}>
+    <h2
+      {...rest}
+      className={ctl(`
+        mb-12 text-5xl font-bold
+
+        ${align === 'left' && 'text-left'}
+        ${align === 'center' && 'text-center'}
+      `)}
+    >
       {title}
     </h2>
   )

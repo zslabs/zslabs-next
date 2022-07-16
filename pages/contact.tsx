@@ -128,11 +128,11 @@ const Contact: NextPage = () => {
       <Section>
         <div className="relative grid grid-cols-1 justify-center md:grid-cols-3/4">
           <motion.header initial={fadeInDownInitial} animate={fadeInAnimate}>
-            <SectionTitle title="Contact" variation="red" />
+            <SectionTitle title="Contact" />
           </motion.header>
           <motion.main initial={fadeInUpInitial} animate={fadeInAnimate}>
             <div className="mb-8">
-              <Prose size="large">
+              <Prose>
                 <p>
                   Have a project you'd like me to be part of? Let's chat! You
                   can either{' '}

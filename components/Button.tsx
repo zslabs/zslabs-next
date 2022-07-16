@@ -30,19 +30,19 @@ const Button = React.forwardRef(
           ${variation === 'hover-default' && `hocus:bg-slate-3`}
           ${
             variation === 'primary' &&
-            `bg-gradient-to-br from-primary-9 to-primary-11 text-primary-1 hocus:shadow-xl hocus:brightness-105 dark:bg-gradient-to-tl dark:to-primary-9 dark:text-primary-12`
-          }
-          ${
-            variation === 'secondary' &&
-            `text-accent-12 shadow-secondary-outline`
+            `bg-gradient-to-br from-primary-9 to-primary-11 text-primary-1 dark:bg-gradient-to-tl dark:text-primary-12`
           }
 
           ${variation === 'contrast' && 'bg-slate-12 text-slate-1'}
 
           ${
             iconOnly
-              ? 'w-12 rounded-full text-3xl'
-              : 'rounded-lg px-4 text-lg shadow-lg'
+              ? 'w-12 rounded-full text-2xl'
+              : 'rounded-full px-6 text-sm uppercase tracking-widest'
+          }
+          ${
+            !['blank', 'hover-default'].includes(variation) &&
+            'shadow-lg hocus:shadow-xl hocus:brightness-105'
           }
           ${loading && `pointer-events-none opacity-50`}
         `)}

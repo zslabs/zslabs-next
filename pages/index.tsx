@@ -2,6 +2,7 @@ import fs from 'fs'
 
 import * as React from 'react'
 
+import type { Post } from 'contentlayer/generated'
 import { allPosts } from 'contentlayer/generated'
 import type { AnimationControls, AnimationProps, Variants } from 'framer-motion'
 import { motion, useAnimation } from 'framer-motion'
@@ -15,12 +16,13 @@ import TextLink from '~components/TextLink'
 import useArticlesOffCanvasState from '~hooks/useArticlesOffCanvasState'
 import useLayoutAnimationState from '~hooks/useLayoutAnimationState'
 import { getRssXml } from '~lib/rss'
+import diagonalLines from '~media/diagonal-lines.svg'
 import dots from '~media/dots.svg'
 
 const RecentProjects: React.FC = () => {
   return (
     <div className="relative grid grid-cols-1 justify-center md:grid-cols-3/4">
-      <SectionTitle title="Recent projects" variation="purple" />
+      <SectionTitle title="Recent projects" />
       <BubbleList>
         <BubbleListItem title="List" link="https://list.zslabs.com/">
           The best experience for monitoring activity on multiple eBay search
@@ -45,6 +47,10 @@ const RecentProjects: React.FC = () => {
       </BubbleList>
     </div>
   )
+}
+
+interface LatestPostProps {
+  latestPost: Post
 }
 
 interface IntroTitleSubCharacterProps {
@@ -118,6 +124,17 @@ const buttonTransition: AnimationProps['transition'] = {
   delay: 0.125,
 }
 
+const latestArticleVariants: Variants = {
+  hidden: {
+    scale: 0.5,
+    opacity: 0,
+  },
+  visible: {
+    scale: 1,
+    opacity: 1,
+  },
+}
+
 const projectsVariants: AnimationProps['variants'] = {
   hidden: {
     y: '2rem',
@@ -129,26 +146,33 @@ const projectsVariants: AnimationProps['variants'] = {
   },
 }
 
+const diagonalLinesStyles = {
+  backgroundImage: `url(${diagonalLines})`,
+}
+
 const dotsStyles = { backgroundImage: `url(${dots})` }
 
-const Home: NextPage = () => {
+const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
   const toggle = useArticlesOffCanvasState((state) => state.toggle)
   const done = useLayoutAnimationState((state) => state.done)
 
   const introTitleControls = useAnimation()
   const introTitleSubControls = useAnimation()
   const buttonControls = useAnimation()
+  const latestArticleControls = useAnimation()
   const projectsControls = useAnimation()
 
   const pageAnimation = React.useCallback(async () => {
     await introTitleControls.start('visible')
     await introTitleSubControls.start('visible')
     await buttonControls.start('visible')
+    await latestArticleControls.start('visible')
     await projectsControls.start('visible')
   }, [
     introTitleControls,
     introTitleSubControls,
     buttonControls,
+    latestArticleControls,
     projectsControls,
   ])
 
@@ -202,12 +226,36 @@ const Home: NextPage = () => {
               transition={buttonTransition}
             >
               <TextLink href="/experience">
-                <Button as="div" variation="secondary">
+                <Button as="div" variation="contrast">
                   Experience
                 </Button>
               </TextLink>
             </motion.div>
           </div>
+        </div>
+      </Section>
+      <Section
+        as={motion.section}
+        initial="hidden"
+        variants={latestArticleVariants}
+        animate={latestArticleControls}
+      >
+        <div className="grid grid-cols-1 justify-items-center px-4">
+          <TextLink
+            href={latestPost.url}
+            className="relative py-6 px-10 text-center duration-300 ease-bounce hover:scale-105"
+          >
+            <div className="absolute -top-2 -left-2 z-0 h-full w-full -skew-x-12">
+              <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-accent-9 to-primary-11 opacity-80" />
+              <span className="absolute inset-0" style={diagonalLinesStyles} />
+            </div>
+
+            <div className="absolute inset-0 z-0 -skew-x-12 rounded-lg bg-gradient-to-br from-slate-1 to-slate-3 shadow" />
+            <div className="relative z-10 space-y-1">
+              <div>🎉 Check out my latest article!</div>
+              <div className="text-lg font-bold">{latestPost.title}</div>
+            </div>
+          </TextLink>
         </div>
       </Section>
       <Section>
@@ -270,6 +318,8 @@ export const getStaticProps: GetStaticProps = async () => {
   fs.writeFileSync('./public/rss.xml', rss)
 
   return {
-    props: {},
+    props: {
+      latestPost: reducedPosts[0],
+    },
   }
 }

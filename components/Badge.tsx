@@ -7,7 +7,7 @@ interface BadgeProps {
 }
 
 const Badge: React.FC<React.HTMLAttributes<HTMLDivElement> & BadgeProps> = ({
-  variation = 'tertiary',
+  variation = 'contrast',
   ...rest
 }) => {
   return (
@@ -17,7 +17,7 @@ const Badge: React.FC<React.HTMLAttributes<HTMLDivElement> & BadgeProps> = ({
 
         ${
           variation === 'primary' &&
-          'bg-primary-9 text-primary-1 dark:text-primary-12'
+          'bg-gradient-to-br from-primary-9 to-primary-11 text-primary-1 dark:bg-gradient-to-tl dark:text-primary-12'
         }
         ${variation === 'contrast' && 'bg-slate-12 text-slate-1'}
       `)}

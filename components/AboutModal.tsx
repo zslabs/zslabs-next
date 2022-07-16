@@ -63,24 +63,24 @@ const AboutModal: React.FC = () => {
           title="View my Twitter profile"
           href="https://twitter.com/zslabs"
         >
-          <Button as="div" iconOnly variation="contrast">
-            <TwitterSvg className="text-2xl" />
+          <Button as="div" iconOnly variation="hover-default">
+            <TwitterSvg />
           </Button>
         </TextLink>
         <TextLink
           title="View my GitHub profile"
           href="https://github.com/zslabs"
         >
-          <Button as="div" iconOnly variation="contrast">
-            <GitHubSvg className="text-2xl" />
+          <Button as="div" iconOnly variation="hover-default">
+            <GitHubSvg />
           </Button>
         </TextLink>
         <TextLink
           title="View my CodePen profile"
           href="https://codepen.com/zslabs"
         >
-          <Button as="div" iconOnly variation="contrast">
-            <CodePenSvg className="text-2xl" />
+          <Button as="div" iconOnly variation="hover-default">
+            <CodePenSvg />
           </Button>
         </TextLink>
       </div>

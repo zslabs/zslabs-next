@@ -18,10 +18,11 @@
     margin-bottom: 0;
   }
 
-  a:not([class]) > span {
+  a:not([class]) {
     font-weight: theme('fontWeight.bold');
     text-decoration: underline;
-    text-underline-style: dotted;
+    text-decoration-style: dotted;
+    text-underline-offset: theme('space.1');
     color: theme('colors.primary.9');
   }
 

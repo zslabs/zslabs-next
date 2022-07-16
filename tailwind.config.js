@@ -179,13 +179,12 @@ module.exports = {
     },
     extend: {
       backgroundSize: {
+        '0/6': '0% 6px',
+        '100/6': '100% 6px',
         'auto/6': 'auto 6px',
       },
       borderColor: {
         current: 'currentColor',
-      },
-      boxShadow: {
-        'secondary-outline': 'inset 0 0 0 2px var(--violet9)',
       },
       fontFamily: {
         sans: ['ZS Sans', ...defaultTheme.fontFamily.sans],
@@ -216,6 +215,9 @@ module.exports = {
       },
       skew: {
         8: '8deg',
+      },
+      transitionProperty: {
+        'background-size': 'background-size',
       },
       transitionTimingFunction: {
         bounce: 'cubic-bezier(0.680, -0.550, 0.265, 1.550)',

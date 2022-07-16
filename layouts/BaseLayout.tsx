@@ -65,6 +65,23 @@ const HeaderItemWrapper: React.FC<
   )
 }
 
+function FooterLink({
+  href,
+  children,
+}: {
+  href: string
+  children: React.ReactNode
+}) {
+  return (
+    <TextLink
+      href={href}
+      className="underline decoration-dotted underline-offset-4"
+    >
+      {children}
+    </TextLink>
+  )
+}
+
 const BaseLayout: React.FC = ({ children }) => {
   const [mounted, setMounted] = React.useState(false)
 
@@ -163,27 +180,27 @@ const BaseLayout: React.FC = ({ children }) => {
 
         {children}
       </Container>
-      <motion.footer
+      <motion.section
         animate={controls}
         variants={footerVariants}
         initial={runAnimation ? 'hidden' : false}
-        className="bg-slate-12 text-slate-2 dark:bg-slate-1 dark:text-slate-11"
+        className="bg-slate-3 py-8 shadow-inner md:py-12"
       >
         <Container>
           <div className="grid grid-cols-1 gap-4">
-            <div className="grid grid-cols-1 gap-2 text-sm">
+            <div className="grid grid-cols-1 justify-center gap-2 text-center text-sm">
               <div>
                 Copyright &copy; {new Date().getFullYear()} Zach Schnackel.
                 Penalty is 🔥
               </div>
-              <div className="grid auto-cols-auto grid-flow-col items-center justify-start gap-4 font-bold">
+              <div className="flex flex-wrap items-center justify-center gap-4">
                 <div>
-                  <TextLink href="/contact">Contact</TextLink>
+                  <FooterLink href="/contact">Contact</FooterLink>
                 </div>
                 <div>
-                  <TextLink href="https://github.com/zslabs/zslabs-next">
+                  <FooterLink href="https://github.com/zslabs/zslabs-next">
                     Source
-                  </TextLink>
+                  </FooterLink>
                 </div>
                 <div>
                   <TextLink
@@ -209,18 +226,20 @@ const BaseLayout: React.FC = ({ children }) => {
                     <GitHubSvg className="text-lg" />
                   </TextLink>
                 </div>
+                {mounted && (
+                  <button type="button" onClick={handleThemeToggleClick}>
+                    {theme === 'light' ? (
+                      <DarkSvg className="text-xl" />
+                    ) : (
+                      <LightSvg className="text-xl" />
+                    )}
+                  </button>
+                )}
               </div>
             </div>
-            {mounted && (
-              <div>
-                <button type="button" onClick={handleThemeToggleClick}>
-                  {theme === 'light' ? <DarkSvg /> : <LightSvg />}
-                </button>
-              </div>
-            )}
           </div>
         </Container>
-      </motion.footer>
+      </motion.section>
     </>
   )
 }

@@ -57,14 +57,14 @@ export default function Code({ codeString, language }: CodeProps) {
           </header>
           <pre className={className}>
             <div className="grid max-h-120 auto-cols-auto grid-flow-col justify-start overflow-auto overscroll-contain">
-              <div className="sticky left-0 z-10 select-none rounded-bl-lg border-slate-11 bg-slate-12 p-4 text-right text-slate-2 dark:border-slate-7 dark:bg-slate-1 dark:text-slate-11">
+              <div className="sticky left-0 z-10 select-none rounded-bl-lg border-r border-r-slate-11 bg-slate-12 p-4 text-right text-slate-8 dark:border-slate-7 dark:bg-slate-1 dark:text-slate-11">
                 {tokens.map((_, i) => {
                   const lineKey = `line-${i}`
 
                   return <div key={lineKey}>{i + 1}</div>
                 })}
               </div>
-              <div className="p-4 text-slate-2 dark:text-slate-11">
+              <div className="p-4 text-slate-4 dark:text-slate-11">
                 {tokens.map((line, i) => {
                   const lineKey = `line-${i}`
 

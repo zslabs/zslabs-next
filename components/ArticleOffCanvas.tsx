@@ -18,13 +18,13 @@ const ArticleOffCanvas: React.FC = () => {
   const trigger = React.useCallback((props) => {
     return (
       <Button variation="blank" iconOnly title="View articles" {...props}>
-        <MenuSvg />
+        <MenuSvg className="text-4xl" />
       </Button>
     )
   }, [])
 
   const title = React.useCallback((props) => {
-    return <SectionTitle title="Articles" variation="blue" {...props} />
+    return <SectionTitle title="Articles" {...props} />
   }, [])
 
   return (

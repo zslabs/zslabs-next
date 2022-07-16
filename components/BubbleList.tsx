@@ -5,7 +5,7 @@ import type { AnimationProps } from 'framer-motion'
 import { motion } from 'framer-motion'
 
 import Badge from './Badge'
-import TextLink from './TextLink'
+import LinkUnderline from './LinkUnderline'
 
 import { fadeInUp, viewportInViewOptions } from '~helpers/styles'
 
@@ -57,9 +57,9 @@ export const BubbleListItem: React.FC<BubbleListItemProps> = ({
         <div className="grid auto-cols-auto grid-flow-col items-center gap-4">
           <h3 className="text-2xl font-bold">
             {link ? (
-              <TextLink href={link} onClick={onClick}>
+              <LinkUnderline href={link} onClick={onClick}>
                 {title}
-              </TextLink>
+              </LinkUnderline>
             ) : (
               title
             )}
