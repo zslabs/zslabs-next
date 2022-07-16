@@ -9,14 +9,11 @@ import type { GetStaticProps, NextPage } from 'next'
 
 import BubbleList, { BubbleListItem } from '~components/BubbleList'
 import Button from '~components/Button'
-import InlineIconWrapper from '~components/InlineIconWrapper'
-import Prose from '~components/Prose'
 import Section from '~components/Section'
 import SectionTitle from '~components/SectionTitle'
 import TextLink from '~components/TextLink'
 import useArticlesOffCanvasState from '~hooks/useArticlesOffCanvasState'
 import useLayoutAnimationState from '~hooks/useLayoutAnimationState'
-import { ReactComponent as SlackSvg } from '~icons/logos/slack.svg'
 import { getRssXml } from '~lib/rss'
 import dots from '~media/dots.svg'
 
@@ -164,7 +161,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Section>
-        <div className="grid grid-cols-1 gap-4">
+        <div className="grid grid-cols-1 gap-4 text-center">
           <div className="font-bold uppercase tracking-widest text-slate-11 md:text-lg md:tracking-widest">
             {Array.from(introTitleSub).map((character, index) => {
               const key = `${character}-${index}`
@@ -180,38 +177,20 @@ const Home: NextPage = () => {
             })}
           </div>
           <motion.h1
-            className="font-serif text-6xl font-extrabold md:text-7xl"
+            className="text-6xl font-bold md:text-7xl"
             initial="hidden"
             variants={introTitleVariants}
             animate={introTitleControls}
           >
             Zach Schnackel
           </motion.h1>
-          <Prose size="large">
-            <p>
-              I'm part of the design infrastructure team at{' '}
-              <TextLink href="https://www.slack.com">
-                <InlineIconWrapper>
-                  <SlackSvg />
-                </InlineIconWrapper>{' '}
-                Slack
-              </TextLink>
-              , building tools to help designers and engineers collaborate more
-              efficiently. .
-            </p>
-            <p>
-              My background involves pushing the limits of what we can build on
-              the backend and how we can experience it on the frontend. My
-              passions are perfecting process and educating those around me.
-            </p>
-          </Prose>
-          <div className="mt-4 grid auto-cols-auto grid-flow-col justify-start gap-4">
+          <div className="mt-4 flex justify-center gap-4">
             <motion.div
               initial="hidden"
               variants={buttonVariants}
               animate={buttonControls}
             >
-              <Button type="button" variation="contrast" onClick={toggle}>
+              <Button type="button" variation="primary" onClick={toggle}>
                 Articles
               </Button>
             </motion.div>
@@ -223,7 +202,7 @@ const Home: NextPage = () => {
               transition={buttonTransition}
             >
               <TextLink href="/experience">
-                <Button as="div" variation="contrast">
+                <Button as="div" variation="secondary">
                   Experience
                 </Button>
               </TextLink>

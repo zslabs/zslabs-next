@@ -31,7 +31,7 @@ export default function PostSingle({ post }: PostSingleProps) {
           initial={fadeInDownInitial}
           animate={fadeInAnimate}
         >
-          <h1 className="mb-2 text-center font-serif text-4xl font-extrabold md:mb-4 md:text-5xl">
+          <h1 className="mb-2 text-center text-4xl font-bold md:mb-4 md:text-5xl">
             {post.title}
           </h1>
           <div className="grid auto-cols-auto grid-flow-col items-center justify-center gap-2 font-bold uppercase tracking-widest text-slate-11">

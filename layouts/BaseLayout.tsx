@@ -10,8 +10,8 @@ import { motion, useAnimation } from 'framer-motion'
 import { useTheme } from 'next-themes'
 import { useRouter } from 'next/router'
 
+import AboutModal from '~components/AboutModal'
 import ArticleOffCanvas from '~components/ArticleOffCanvas'
-import Button from '~components/Button'
 import Container from '~components/Container'
 import Section from '~components/Section'
 import TextLink from '~components/TextLink'
@@ -127,7 +127,7 @@ const BaseLayout: React.FC = ({ children }) => {
       />
       <Container>
         <Section as="header">
-          <div className="grid auto-cols-fr grid-flow-col items-center gap-4">
+          <div className="flex items-center justify-between gap-4">
             <HeaderItemWrapper
               runAnimation={runAnimation}
               controls={controls}
@@ -150,21 +150,29 @@ const BaseLayout: React.FC = ({ children }) => {
             >
               <ArticleOffCanvas />
             </HeaderItemWrapper>
+            <HeaderItemWrapper
+              runAnimation={runAnimation}
+              controls={controls}
+              custom={3}
+              className="justify-self-end"
+            >
+              <AboutModal />
+            </HeaderItemWrapper>
           </div>
         </Section>
 
         {children}
       </Container>
-      <Section
-        as={motion.footer}
+      <motion.footer
         animate={controls}
         variants={footerVariants}
         initial={runAnimation ? 'hidden' : false}
+        className="bg-slate-12 text-slate-2 dark:bg-slate-1 dark:text-slate-11"
       >
         <Container>
           <div className="grid grid-cols-1 gap-4">
             <div className="grid grid-cols-1 gap-2 text-sm">
-              <div className="text-slate-11">
+              <div>
                 Copyright &copy; {new Date().getFullYear()} Zach Schnackel.
                 Penalty is 🔥
               </div>
@@ -203,20 +211,16 @@ const BaseLayout: React.FC = ({ children }) => {
                 </div>
               </div>
             </div>
+            {mounted && (
+              <div>
+                <button type="button" onClick={handleThemeToggleClick}>
+                  {theme === 'light' ? <DarkSvg /> : <LightSvg />}
+                </button>
+              </div>
+            )}
           </div>
         </Container>
-      </Section>
-      {mounted && (
-        <div className="fixed right-2 bottom-2 z-20">
-          <Button
-            iconOnly
-            variation="contrast"
-            onClick={handleThemeToggleClick}
-          >
-            {theme === 'light' ? <DarkSvg /> : <LightSvg />}
-          </Button>
-        </div>
-      )}
+      </motion.footer>
     </>
   )
 }

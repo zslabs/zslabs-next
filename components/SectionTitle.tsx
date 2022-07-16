@@ -5,7 +5,7 @@ interface SectionTitle extends React.HTMLAttributes<HTMLDivElement> {
 
 const SectionTitle: React.FC<SectionTitle> = ({ title, ...rest }) => {
   return (
-    <h2 className="mb-12 font-serif text-6xl font-bold md:text-7xl" {...rest}>
+    <h2 className="mb-12 text-4xl font-bold md:text-5xl" {...rest}>
       {title}
     </h2>
   )

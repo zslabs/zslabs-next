@@ -99,7 +99,7 @@ const Modal: React.FC<ModalProps> = ({
                     {children}
                     <div className="absolute top-4 right-4">
                       <Dialog.Close asChild>
-                        <Button iconOnly variation="default">
+                        <Button iconOnly variation="hover-default">
                           <CloseSvg />
                         </Button>
                       </Dialog.Close>

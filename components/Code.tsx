@@ -64,7 +64,7 @@ export default function Code({ codeString, language }: CodeProps) {
                   return <div key={lineKey}>{i + 1}</div>
                 })}
               </div>
-              <div className="p-4 text-slate-12 dark:text-slate-1">
+              <div className="p-4 text-slate-2 dark:text-slate-11">
                 {tokens.map((line, i) => {
                   const lineKey = `line-${i}`
 

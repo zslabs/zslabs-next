@@ -1,49 +1,67 @@
 import * as React from 'react'
 
 import ctl from '@netlify/classnames-template-literals'
+import type * as Polymorphic from '@reach/utils/polymorphic'
 
-interface ButtonProps {
+interface ButtonPropsPrimitive {
   as?: React.ElementType
-  variation: 'contrast' | 'default'
-  iconOnly?: boolean
+  variation?: 'hover-default' | 'primary' | 'secondary' | 'blank' | 'contrast'
   loading?: boolean
+  iconOnly?: boolean
+  type?: 'submit' | 'button'
 }
 
-const Button: React.FC<ButtonProps & React.HTMLProps<HTMLButtonElement>> = ({
-  as: Component = 'button',
-  children,
-  variation,
-  iconOnly,
-  loading,
-  ...rest
-}) => {
-  return (
-    <Component
-      className={ctl(`
-        inline-block h-12 rounded-full font-bold duration-150
+type ButtonProps = React.ComponentPropsWithoutRef<'button'> &
+  ButtonPropsPrimitive
 
-        ${variation === 'default' && `hocus:bg-slate-3`}
-        ${
-          variation === 'contrast' && 'bg-slate-12 text-slate-1 shadow-slate-12'
-        }
-        ${iconOnly ? 'w-12 text-3xl' : 'px-6 text-lg font-bold'}
-        ${!iconOnly && variation === 'contrast' && 'shadow-lg shadow-slate-8'}
-        ${loading && 'pointer-events-none opacity-50'}
-      `)}
-      {...rest}
-    >
-      <span
+const Button = React.forwardRef(
+  (
+    { children, variation = 'blank', iconOnly, loading, type, ...rest },
+    forwardedRef
+  ) => {
+    return (
+      <button
+        ref={forwardedRef}
+        // eslint-disable-next-line react/button-has-type
+        type={rest.as ? undefined : type}
         className={ctl(`
-          relative z-10 grid h-full
-          grid-flow-col place-items-center gap-4 whitespace-nowrap
+          inline-block h-12 font-bold duration-150 focus:outline-none
 
-          ${iconOnly ? 'auto-cols-auto' : 'auto-cols-min'}
+          ${variation === 'hover-default' && `hocus:bg-slate-3`}
+          ${
+            variation === 'primary' &&
+            `bg-gradient-to-br from-primary-9 to-primary-11 text-primary-1 hocus:shadow-xl hocus:brightness-105 dark:bg-gradient-to-tl dark:to-primary-9 dark:text-primary-12`
+          }
+          ${
+            variation === 'secondary' &&
+            `text-accent-12 shadow-secondary-outline`
+          }
+
+          ${variation === 'contrast' && 'bg-slate-12 text-slate-1'}
+
+          ${
+            iconOnly
+              ? 'w-12 rounded-full text-3xl'
+              : 'rounded-lg px-4 text-lg shadow-lg'
+          }
+          ${loading && `pointer-events-none opacity-50`}
         `)}
+        {...rest}
       >
-        {children}
-      </span>
-    </Component>
-  )
-}
+        <span
+          className={ctl(`
+            relative z-10 grid h-full grid-flow-col place-items-center gap-4 whitespace-nowrap
+
+            ${iconOnly ? 'auto-cols-auto' : 'auto-cols-min'}
+          `)}
+        >
+          {children}
+        </span>
+      </button>
+    )
+  }
+) as Polymorphic.ForwardRefComponent<'button', ButtonProps>
+
+Button.displayName = 'Button'
 
 export default Button

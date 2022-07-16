@@ -184,9 +184,11 @@ module.exports = {
       borderColor: {
         current: 'currentColor',
       },
+      boxShadow: {
+        'secondary-outline': 'inset 0 0 0 2px var(--violet9)',
+      },
       fontFamily: {
         sans: ['ZS Sans', ...defaultTheme.fontFamily.sans],
-        serif: ['Playfair Display', ...defaultTheme.fontFamily.serif],
         mono: ['JetBrains Mono', ...defaultTheme.fontFamily.mono],
       },
       gridTemplateColumns: {
