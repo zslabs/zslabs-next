@@ -9,17 +9,20 @@ import type { GetStaticProps, NextPage } from 'next'
 
 import BubbleList, { BubbleListItem } from '~components/BubbleList'
 import Button from '~components/Button'
+import InlineIconWrapper from '~components/InlineIconWrapper'
+import Prose from '~components/Prose'
 import Section from '~components/Section'
 import SectionTitle from '~components/SectionTitle'
 import TextLink from '~components/TextLink'
 import useArticlesOffCanvasState from '~hooks/useArticlesOffCanvasState'
 import useLayoutAnimationState from '~hooks/useLayoutAnimationState'
+import { ReactComponent as SlackSvg } from '~icons/logos/slack.svg'
 import { getRssXml } from '~lib/rss'
 import dots from '~media/dots.svg'
 
 const RecentProjects: React.FC = () => {
   return (
-    <div>
+    <div className="relative grid grid-cols-1 justify-center md:grid-cols-3/4">
       <SectionTitle title="Recent projects" variation="purple" />
       <BubbleList>
         <BubbleListItem title="List" link="https://list.zslabs.com/">
@@ -161,8 +164,8 @@ const Home: NextPage = () => {
   return (
     <>
       <Section>
-        <div className="grid place-items-center gap-4">
-          <div className="text-center font-bold uppercase tracking-widest text-slate-11 md:text-lg md:tracking-widest">
+        <div className="grid grid-cols-1 gap-4">
+          <div className="font-bold uppercase tracking-widest text-slate-11 md:text-lg md:tracking-widest">
             {Array.from(introTitleSub).map((character, index) => {
               const key = `${character}-${index}`
 
@@ -177,20 +180,38 @@ const Home: NextPage = () => {
             })}
           </div>
           <motion.h1
-            className="text-center text-6xl font-bold md:text-7xl"
+            className="font-serif text-6xl font-extrabold md:text-7xl"
             initial="hidden"
             variants={introTitleVariants}
             animate={introTitleControls}
           >
             Zach Schnackel
           </motion.h1>
-          <div className="mt-4 grid auto-cols-auto grid-flow-col justify-items-center gap-6">
+          <Prose size="large">
+            <p>
+              I'm part of the design infrastructure team at{' '}
+              <TextLink href="https://www.slack.com">
+                <InlineIconWrapper>
+                  <SlackSvg />
+                </InlineIconWrapper>{' '}
+                Slack
+              </TextLink>
+              , building tools to help designers and engineers collaborate more
+              efficiently. .
+            </p>
+            <p>
+              My background involves pushing the limits of what we can build on
+              the backend and how we can experience it on the frontend. My
+              passions are perfecting process and educating those around me.
+            </p>
+          </Prose>
+          <div className="mt-4 grid auto-cols-auto grid-flow-col justify-start gap-4">
             <motion.div
               initial="hidden"
               variants={buttonVariants}
               animate={buttonControls}
             >
-              <Button type="button" variation="primary" onClick={toggle}>
+              <Button type="button" variation="contrast" onClick={toggle}>
                 Articles
               </Button>
             </motion.div>
@@ -202,7 +223,7 @@ const Home: NextPage = () => {
               transition={buttonTransition}
             >
               <TextLink href="/experience">
-                <Button as="div" variation="secondary">
+                <Button as="div" variation="contrast">
                   Experience
                 </Button>
               </TextLink>
@@ -211,7 +232,7 @@ const Home: NextPage = () => {
         </div>
       </Section>
       <Section>
-        <div className="grid grid-cols-1 justify-center gap-8 md:grid-cols-3/4 md:gap-16">
+        <div className="grid grid-cols-1 gap-8 md:gap-16">
           <span
             className="absolute inset-y-0 inset-x-1/2 -z-1 -mx-1/2-screen w-screen bg-auto/6 opacity-5 dark:invert"
             style={dotsStyles}

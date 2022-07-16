@@ -1,6 +1,4 @@
 .prose {
-  @apply md:text-lg;
-
   * + p,
   * + ul,
   * + ol,
@@ -13,15 +11,18 @@
   }
 
   > :first-child {
-    @apply mt-0;
+    margin-top: 0;
   }
 
   > :last-child {
-    @apply mb-0;
+    margin-bottom: 0;
   }
 
   a:not([class]) > span {
-    @apply font-bold text-blue-500 duration-150 bg-gradient-to-br from-blue-100 to-blue-100 transition-all bg-left-bottom bg-no-repeat bg-100/6;
+    font-weight: theme('fontWeight.bold');
+    text-decoration: underline;
+    text-underline-style: dotted;
+    color: theme('colors.primary.9');
   }
 
   h2,
@@ -29,6 +30,7 @@
   h4,
   h5 {
     font-weight: theme('fontWeight.extrabold');
+    font-family: theme('fontFamily.serif');
   }
 
   * + h2,
@@ -38,7 +40,7 @@
 
   * + h4,
   * + h5 {
-    @apply mt-4;
+    margin-top: theme('space.4');
   }
 
   h2 {
@@ -58,66 +60,56 @@
   }
 
   ol {
-    @apply pl-4;
-
+    padding-left: theme('spacing.4');
     counter-reset: list-counter;
 
     > li {
-      @apply relative pl-7;
-
+      position: relative;
+      padding-left: theme('spacing.7');
       counter-increment: list-counter;
     }
   }
 
   ol > li::before {
     content: counter(list-counter) '.';
-
-    @apply absolute left-1 font-bold text-blue-500;
+    position: absolute;
+    left: theme('inset.1');
+    fontweight: theme('fontWeight.bold');
+    color: theme('colors.primary.9');
   }
 
   li {
-    @apply my-2;
+    margin-block: theme('space.2');
   }
 
   ul {
-    @apply pl-4;
+    padding-left: theme('spacing.4');
   }
 
   ul > li {
-    @apply pl-7 relative;
+    position: relative;
+    padding-left: theme('spacing.7');
   }
 
   ul > li::before {
     content: '';
+    position: absolute;
+    left: theme('inset.1');
+    top: theme('inset.2');
+    width: theme('width.2');
+    height: theme('height.2');
+    background: theme('colors.primary.9');
+    border-radius: theme('borderRadius.full');
 
-    @apply absolute left-1 top-2 w-2 h-2 md:top-3 bg-blue-500 ring-2 ring-blue-200 rounded-full;
+    @apply ring-2 ring-primary-9;
   }
 
   code {
-    @apply text-sm md:text-base px-1 py-0.5 rounded-lg bg-slate-200;
+    background: theme('colors.slate.3');
+    padding-inline: theme('spacing.1');
+    padding-block: theme('spacing.[0.5]');
+    border-radius: theme('borderRadius.lg');
+
+    @apply text-base md:text-lg;
   }
-
-  /* Revert any elements with custom classes to their base styles; most likely is a React component */
-  [class*='no-prose'],
-  [class*='no-prose'] * {
-    all: inherit;
-  }
-}
-
-/* @NOTE Workaround for some screwy PostCSS and dark mode styles inside of prose */
-
-.prose a:not([class]) > span {
-  @apply dark:from-slate-600 dark:to-slate-600 dark:text-slate-100;
-}
-
-.prose ul > li::before {
-  @apply dark:bg-slate-500 dark:ring-slate-700;
-}
-
-.prose ol > li::before {
-  @apply dark:text-slate-500;
-}
-
-.prose code {
-  @apply dark:bg-slate-700;
 }

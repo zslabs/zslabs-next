@@ -17,7 +17,7 @@ const ArticleOffCanvas: React.FC = () => {
 
   const trigger = React.useCallback((props) => {
     return (
-      <Button variation="default" title="View articles" size="large" {...props}>
+      <Button variation="default" iconOnly title="View articles" {...props}>
         <MenuSvg />
       </Button>
     )

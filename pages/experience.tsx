@@ -41,7 +41,7 @@ const Experience: NextPage<ExperienceProps> = ({ data }) => {
                   title={partial.company}
                   sub={partial.title}
                   badge={partial.badge}
-                  badgeVariant={index === 0 ? 'secondary' : 'tertiary'}
+                  badgeVariant={index === 0 ? 'primary' : 'contrast'}
                 >
                   {partial.blurb}
                 </BubbleListItem>

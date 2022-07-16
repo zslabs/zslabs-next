@@ -3,7 +3,7 @@ import * as React from 'react'
 import ctl from '@netlify/classnames-template-literals'
 
 interface BadgeProps {
-  variation?: 'primary' | 'secondary' | 'tertiary'
+  variation?: 'primary' | 'contrast'
 }
 
 const Badge: React.FC<React.HTMLAttributes<HTMLDivElement> & BadgeProps> = ({
@@ -19,14 +19,7 @@ const Badge: React.FC<React.HTMLAttributes<HTMLDivElement> & BadgeProps> = ({
           variation === 'primary' &&
           'bg-primary-9 text-primary-1 dark:text-primary-12'
         }
-        ${
-          variation === 'secondary' &&
-          'bg-secondary-9 text-secondary-1 dark:text-secondary-12'
-        }
-        ${
-          variation === 'tertiary' &&
-          'bg-slate-12 text-slate-1 dark:bg-slate-1 dark:text-slate-12'
-        }
+        ${variation === 'contrast' && 'bg-slate-12 text-slate-1'}
       `)}
       {...rest}
     />

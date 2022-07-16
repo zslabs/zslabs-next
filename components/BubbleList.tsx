@@ -14,7 +14,7 @@ interface BubbleListItemProps {
   sub?: React.ReactNode
   link?: string
   badge?: string
-  badgeVariant?: 'primary' | 'secondary' | 'tertiary'
+  badgeVariant?: 'primary' | 'contrast'
   onClick?: () => void
 }
 

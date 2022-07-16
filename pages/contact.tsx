@@ -110,7 +110,7 @@ const ContactForm: React.FC = () => {
             required
           />
           <div className="mt-4 text-center">
-            <Button variation="secondary" type="submit" loading={isSubmitting}>
+            <Button variation="contrast" type="submit" loading={isSubmitting}>
               Send message
             </Button>
           </div>
@@ -131,8 +131,8 @@ const Contact: NextPage = () => {
             <SectionTitle title="Contact" variation="red" />
           </motion.header>
           <motion.main initial={fadeInUpInitial} animate={fadeInAnimate}>
-            <div className="mb-8 text-center">
-              <Prose>
+            <div className="mb-8">
+              <Prose size="large">
                 <p>
                   Have a project you'd like me to be part of? Let's chat! You
                   can either{' '}

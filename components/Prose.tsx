@@ -1,9 +1,27 @@
 import * as React from 'react'
 
-import type * as Polymorphic from '@reach/utils/polymorphic'
+import ctl from '@netlify/classnames-template-literals'
+import { motion } from 'framer-motion'
 
-const Prose = React.forwardRef(({ as: Component = 'div', ...rest }, ref) => {
-  return <Component ref={ref} className="prose" {...rest} />
-}) as Polymorphic.ForwardRefComponent<'div'>
+interface ProseProps {
+  size?: 'base' | 'large'
+  children: React.ReactNode
+}
+
+const Prose = ({ size = 'base', children, ...rest }: ProseProps, ref) => {
+  return (
+    <motion.div
+      ref={ref}
+      {...rest}
+      className={ctl(`
+        prose
+
+        ${size === 'large' ? 'text-lg md:text-xl' : 'text-base md:text-lg'}
+      `)}
+    >
+      {children}
+    </motion.div>
+  )
+}
 
 export default Prose

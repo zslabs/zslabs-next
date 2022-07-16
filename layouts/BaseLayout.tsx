@@ -10,7 +10,6 @@ import { motion, useAnimation } from 'framer-motion'
 import { useTheme } from 'next-themes'
 import { useRouter } from 'next/router'
 
-import AboutModal from '~components/AboutModal'
 import ArticleOffCanvas from '~components/ArticleOffCanvas'
 import Button from '~components/Button'
 import Container from '~components/Container'
@@ -151,33 +150,25 @@ const BaseLayout: React.FC = ({ children }) => {
             >
               <ArticleOffCanvas />
             </HeaderItemWrapper>
-            <HeaderItemWrapper
-              runAnimation={runAnimation}
-              controls={controls}
-              custom={3}
-              className="justify-self-end"
-            >
-              <AboutModal />
-            </HeaderItemWrapper>
           </div>
         </Section>
 
         {children}
-        <Section
-          as={motion.footer}
-          animate={controls}
-          variants={footerVariants}
-          initial={runAnimation ? 'hidden' : false}
-        >
-          <div className="grid grid-cols-1 justify-items-center gap-4">
-            <div className="h-0.5 w-2/4 rounded-full bg-gradient-to-br from-accent-9 to-primary-9" />
-            <div className="h-0.5 w-2/6 rounded-full bg-gradient-to-br from-accent-9 to-primary-9" />
-            <div className="mt-4 grid grid-cols-1 gap-2 text-sm">
+      </Container>
+      <Section
+        as={motion.footer}
+        animate={controls}
+        variants={footerVariants}
+        initial={runAnimation ? 'hidden' : false}
+      >
+        <Container>
+          <div className="grid grid-cols-1 gap-4">
+            <div className="grid grid-cols-1 gap-2 text-sm">
               <div className="text-slate-11">
                 Copyright &copy; {new Date().getFullYear()} Zach Schnackel.
                 Penalty is 🔥
               </div>
-              <div className="grid auto-cols-auto grid-flow-col items-center justify-center gap-4 font-bold">
+              <div className="grid auto-cols-auto grid-flow-col items-center justify-start gap-4 font-bold">
                 <div>
                   <TextLink href="/contact">Contact</TextLink>
                 </div>
@@ -213,11 +204,15 @@ const BaseLayout: React.FC = ({ children }) => {
               </div>
             </div>
           </div>
-        </Section>
-      </Container>
+        </Container>
+      </Section>
       {mounted && (
         <div className="fixed right-2 bottom-2 z-20">
-          <Button variation="contrast" onClick={handleThemeToggleClick}>
+          <Button
+            iconOnly
+            variation="contrast"
+            onClick={handleThemeToggleClick}
+          >
             {theme === 'light' ? <DarkSvg /> : <LightSvg />}
           </Button>
         </div>

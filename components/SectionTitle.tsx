@@ -5,11 +5,9 @@ interface SectionTitle extends React.HTMLAttributes<HTMLDivElement> {
 
 const SectionTitle: React.FC<SectionTitle> = ({ title, ...rest }) => {
   return (
-    <div className="mb-12 grid place-content-center">
-      <h2 className="font-serif text-4xl font-extrabold md:text-5xl" {...rest}>
-        {title}
-      </h2>
-    </div>
+    <h2 className="mb-12 font-serif text-6xl font-bold md:text-7xl" {...rest}>
+      {title}
+    </h2>
   )
 }
 

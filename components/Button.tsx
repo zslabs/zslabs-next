@@ -4,7 +4,7 @@ import ctl from '@netlify/classnames-template-literals'
 
 interface ButtonProps {
   as?: React.ElementType
-  variation: 'primary' | 'secondary' | 'contrast' | 'default'
+  variation: 'contrast' | 'default'
   iconOnly?: boolean
   loading?: boolean
 }
@@ -24,18 +24,10 @@ const Button: React.FC<ButtonProps & React.HTMLProps<HTMLButtonElement>> = ({
 
         ${variation === 'default' && `hocus:bg-slate-3`}
         ${
-          variation === 'primary' &&
-          'bg-gradient-to-br from-accent-9 to-primary-9 text-accent-1 shadow-accent-9 dark:text-accent-12'
+          variation === 'contrast' && 'bg-slate-12 text-slate-1 shadow-slate-12'
         }
-        ${
-          variation === 'secondary' &&
-          'bg-gradient-to-br from-primary-9 to-secondary-9 text-primary-1 shadow-primary-9 dark:text-primary-12'
-        }
-        ${
-          variation === 'contrast' &&
-          'bg-slate-12 text-slate-1 shadow-slate-12 dark:text-slate-12'
-        }
-        ${iconOnly ? 'w-12' : 'px-6 shadow-sm'}
+        ${iconOnly ? 'w-12 text-3xl' : 'px-6 text-lg font-bold'}
+        ${!iconOnly && variation === 'contrast' && 'shadow-lg shadow-slate-8'}
         ${loading && 'pointer-events-none opacity-50'}
       `)}
       {...rest}
