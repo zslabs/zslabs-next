@@ -156,7 +156,7 @@ const BaseLayout: React.FC = ({ children }) => {
                 title="ZS Labs"
                 className="block duration-300 ease-bounce hover:scale-110"
               >
-                <LogoSvg className="h-12 from-accent-9 to-primary-9 drop-shadow-md" />
+                <LogoSvg className="h-12 from-accent-9 to-primary-11 drop-shadow-md" />
               </TextLink>
             </HeaderItemWrapper>
             <HeaderItemWrapper

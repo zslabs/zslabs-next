@@ -226,7 +226,7 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
               transition={buttonTransition}
             >
               <TextLink href="/experience">
-                <Button as="div" variation="contrast">
+                <Button as="div" variation="secondary">
                   Experience
                 </Button>
               </TextLink>

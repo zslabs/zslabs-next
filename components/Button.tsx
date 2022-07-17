@@ -30,7 +30,12 @@ const Button = React.forwardRef(
           ${variation === 'hover-default' && `hocus:bg-slate-3`}
           ${
             variation === 'primary' &&
-            `bg-gradient-to-br from-primary-9 to-primary-11 text-primary-1 dark:bg-gradient-to-tl dark:text-primary-12`
+            `bg-gradient-to-br from-accent-9 to-primary-9 text-primary-1 dark:bg-gradient-to-tl dark:text-primary-12`
+          }
+
+          ${
+            variation === 'secondary' &&
+            `bg-gradient-to-br from-primary-9 to-secondary-9 text-secondary-1 dark:bg-gradient-to-tl dark:text-secondary-12`
           }
 
           ${variation === 'contrast' && 'bg-slate-12 text-slate-1'}
