@@ -23,14 +23,21 @@ const tttenStyles = {
 
 const Button = React.forwardRef(
   (
-    { children, variation = 'blank', iconOnly, loading, type, ...rest },
+    {
+      as: Component = 'button',
+      children,
+      variation = 'blank',
+      iconOnly,
+      loading,
+      ...rest
+    },
     forwardedRef
   ) => {
     return (
-      <button
+      <Component
         ref={forwardedRef}
         // eslint-disable-next-line react/button-has-type
-        type={rest.as ? undefined : type}
+        type={Component === 'button' ? 'button' : undefined}
         className={ctl(`
           relative inline-block h-12 overflow-hidden font-bold duration-150 focus:outline-none
 
@@ -72,7 +79,7 @@ const Button = React.forwardRef(
         >
           {children}
         </span>
-      </button>
+      </Component>
     )
   }
 ) as Polymorphic.ForwardRefComponent<'button', ButtonProps>
