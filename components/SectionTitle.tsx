@@ -27,10 +27,22 @@ export const TitleSkew: React.FC<SectionTitle> = ({
               relative before:absolute before:inset-0 before:-z-1 before:-mx-2 before:skew-x-8 before:rounded-lg before:bg-gradient-to-br before:from-slate-1
 
               ${variation === 'default' && 'before:to-slate-4'}
-              ${variation === 'primary' && 'before:to-primary-4'}
-              ${variation === 'accent' && 'before:to-accent-4'}
-              ${variation === 'danger' && 'before:to-danger-4'}
-              ${variation === 'secondary' && 'before:to-secondary-4'}
+              ${
+                variation === 'primary' &&
+                'before:to-primary-4 dark:before:to-slate-4'
+              }
+              ${
+                variation === 'accent' &&
+                'before:to-accent-4 dark:before:to-slate-4'
+              }
+              ${
+                variation === 'danger' &&
+                'before:to-danger-4 dark:before:to-slate-4'
+              }
+              ${
+                variation === 'secondary' &&
+                'before:to-secondary-4 dark:before:to-slate-4'
+              }
             `)}
           >
             {character.trim().length > 0 ? character : '\u00a0'}

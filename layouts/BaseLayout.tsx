@@ -180,7 +180,7 @@ const BaseLayout: React.FC = ({ children }) => {
 
         {children}
       </Container>
-      <motion.section
+      <motion.footer
         animate={controls}
         variants={footerVariants}
         initial={runAnimation ? 'hidden' : false}
@@ -239,7 +239,7 @@ const BaseLayout: React.FC = ({ children }) => {
             </div>
           </div>
         </Container>
-      </motion.section>
+      </motion.footer>
     </>
   )
 }
