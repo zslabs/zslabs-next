@@ -24,7 +24,7 @@ export const TitleSkew: React.FC<SectionTitle> = ({
           <span
             key={key}
             className={ctl(`
-              relative before:absolute before:inset-0 before:-z-1 before:-mx-2 before:skew-x-8 before:rounded-lg before:bg-gradient-to-br before:from-slate-1
+              relative overflow-hidden before:absolute before:inset-0 before:-z-1 before:-mx-2 before:skew-x-8 before:rounded-lg before:bg-gradient-to-br before:from-slate-1
 
               ${variation === 'default' && 'before:to-slate-4'}
               ${

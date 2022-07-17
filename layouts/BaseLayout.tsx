@@ -82,39 +82,33 @@ function FooterLink({
   )
 }
 
+const footerVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: '2rem',
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+  },
+}
+
+const bubblesStyles = {
+  backgroundImage: `url(${bubbles})`,
+}
+
+const bubblesInitial = { opacity: 0 }
+const bubblesAnimate = { opacity: 0.2 } // Matches TW style
+
 const BaseLayout: React.FC = ({ children }) => {
   const [mounted, setMounted] = React.useState(false)
 
   const { theme, setTheme } = useTheme()
-
   const { pathname } = useRouter()
-
   const controls = useAnimation()
-
   const setDone = useLayoutAnimationState((state) => state.setDone)
 
   const runAnimation = pathname === '/'
-
-  const footerVariants: Variants = React.useMemo(
-    () => ({
-      hidden: {
-        opacity: 0,
-        y: '2rem',
-      },
-      visible: {
-        opacity: 1,
-        y: 0,
-      },
-    }),
-    []
-  )
-
-  const bubblesStyles = React.useMemo(
-    () => ({
-      backgroundImage: `url(${bubbles})`,
-    }),
-    []
-  )
 
   const handleThemeToggleClick = React.useCallback(
     () => setTheme(theme === 'dark' ? 'light' : 'dark'),
@@ -138,53 +132,57 @@ const BaseLayout: React.FC = ({ children }) => {
 
   return (
     <>
-      <div
-        className="absolute top-0 left-0 -z-1 h-24 w-full opacity-10 gradient-mask-b-0 dark:invert"
+      <motion.div
+        initial={bubblesInitial}
+        animate={bubblesAnimate}
+        className="pointer-events-none absolute top-0 left-0 z-0 h-24 w-full opacity-20 gradient-mask-b-0"
         style={bubblesStyles}
       />
-      <Container>
-        <Section as="header">
-          <div className="flex items-center justify-between gap-4">
-            <HeaderItemWrapper
-              runAnimation={runAnimation}
-              controls={controls}
-              custom={1}
-              className="justify-self-start"
-            >
-              <TextLink
-                href="/"
-                title="ZS Labs"
-                className="block duration-300 ease-bounce hover:scale-110"
+      <div className="rounded-b-2xl bg-slate-1 shadow">
+        <Container>
+          <Section as="header">
+            <div className="flex items-center justify-between gap-4">
+              <HeaderItemWrapper
+                runAnimation={runAnimation}
+                controls={controls}
+                custom={1}
+                className="justify-self-start"
               >
-                <LogoSvg className="h-12 from-accent-9 to-primary-11 drop-shadow-md" />
-              </TextLink>
-            </HeaderItemWrapper>
-            <HeaderItemWrapper
-              runAnimation={runAnimation}
-              controls={controls}
-              custom={2}
-              className="justify-self-center"
-            >
-              <ArticleOffCanvas />
-            </HeaderItemWrapper>
-            <HeaderItemWrapper
-              runAnimation={runAnimation}
-              controls={controls}
-              custom={3}
-              className="justify-self-end"
-            >
-              <AboutModal />
-            </HeaderItemWrapper>
-          </div>
-        </Section>
+                <TextLink
+                  href="/"
+                  title="ZS Labs"
+                  className="block duration-300 ease-bounce hover:scale-110"
+                >
+                  <LogoSvg className="h-12 from-accent-9 to-primary-11 drop-shadow-md" />
+                </TextLink>
+              </HeaderItemWrapper>
+              <HeaderItemWrapper
+                runAnimation={runAnimation}
+                controls={controls}
+                custom={2}
+                className="justify-self-center"
+              >
+                <ArticleOffCanvas />
+              </HeaderItemWrapper>
+              <HeaderItemWrapper
+                runAnimation={runAnimation}
+                controls={controls}
+                custom={3}
+                className="justify-self-end"
+              >
+                <AboutModal />
+              </HeaderItemWrapper>
+            </div>
+          </Section>
 
-        {children}
-      </Container>
+          {children}
+        </Container>
+      </div>
       <motion.footer
         animate={controls}
         variants={footerVariants}
         initial={runAnimation ? 'hidden' : false}
-        className="bg-slate-3 py-8 shadow-inner md:py-12"
+        className="py-8 md:py-12"
       >
         <Container>
           <div className="grid grid-cols-1 gap-4">
