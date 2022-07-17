@@ -87,6 +87,13 @@ const Modal: React.FC<ModalProps> = ({
                     exit="hidden"
                     className="relative z-20 my-4 mx-auto max-w-xl rounded-xl bg-slate-1 p-8 shadow-lg md:my-8"
                   >
+                    <div className="absolute top-4 right-4">
+                      <Dialog.Close asChild>
+                        <Button iconOnly variation="hover-default">
+                          <CloseSvg />
+                        </Button>
+                      </Dialog.Close>
+                    </div>
                     {BeforeTitle && <BeforeTitle />}
                     <Dialog.Title asChild>
                       <Title />
@@ -97,13 +104,6 @@ const Modal: React.FC<ModalProps> = ({
                       </Dialog.Description>
                     )}
                     {children}
-                    <div className="absolute top-4 right-4">
-                      <Dialog.Close asChild>
-                        <Button iconOnly variation="hover-default">
-                          <CloseSvg />
-                        </Button>
-                      </Dialog.Close>
-                    </div>
                   </motion.div>
                 </Dialog.Content>
               </motion.div>

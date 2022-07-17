@@ -43,7 +43,7 @@ export default function PostSingle({ post }: PostSingleProps) {
                   'MMMM D, YYYY'
                 )}`}
               >
-                <InfoCircleSvg className="text-2xl" />
+                <InfoCircleSvg className="text-xl" />
               </div>
             )}
           </div>

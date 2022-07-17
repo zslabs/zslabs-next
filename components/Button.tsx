@@ -3,6 +3,8 @@ import * as React from 'react'
 import ctl from '@netlify/classnames-template-literals'
 import type * as Polymorphic from '@reach/utils/polymorphic'
 
+import diagonalLines from '~media/diagonal-lines.svg'
+
 interface ButtonPropsPrimitive {
   as?: React.ElementType
   variation?: 'hover-default' | 'primary' | 'secondary' | 'blank' | 'contrast'
@@ -13,6 +15,10 @@ interface ButtonPropsPrimitive {
 
 type ButtonProps = React.ComponentPropsWithoutRef<'button'> &
   ButtonPropsPrimitive
+
+const diagonalLinesStyles = {
+  backgroundImage: `url(${diagonalLines})`,
+}
 
 const Button = React.forwardRef(
   (
@@ -25,7 +31,7 @@ const Button = React.forwardRef(
         // eslint-disable-next-line react/button-has-type
         type={rest.as ? undefined : type}
         className={ctl(`
-          inline-block h-12 font-bold duration-150 focus:outline-none
+          relative inline-block h-12 overflow-hidden font-bold duration-150 focus:outline-none
 
           ${variation === 'hover-default' && `hocus:bg-slate-3`}
           ${
@@ -42,7 +48,7 @@ const Button = React.forwardRef(
 
           ${
             iconOnly
-              ? 'w-12 rounded-full text-2xl'
+              ? 'w-12 rounded-full text-2xl ease-bounce hocus:scale-105'
               : 'rounded-full px-6 text-sm uppercase tracking-widest'
           }
           ${
@@ -53,6 +59,9 @@ const Button = React.forwardRef(
         `)}
         {...rest}
       >
+        {!['blank', 'hover-default'].includes(variation) && (
+          <span className="absolute inset-0" style={diagonalLinesStyles} />
+        )}
         <span
           className={ctl(`
             relative z-10 grid h-full grid-flow-col place-items-center gap-4 whitespace-nowrap
