@@ -199,6 +199,16 @@
   }
 
   @font-face {
+    font-family: 'Clash Display';
+    src: url('/fonts/ClashDisplay[wght].woff2') format('woff2-variations');
+    font-style: normal;
+    font-variation-ligatures: normal;
+    font-weight: 600;
+    font-display: swap;
+    font-kerning: normal;
+  }
+
+  @font-face {
     font-family: 'ZS Sans';
     src: url('/fonts/Manrope[wght].woff2') format('woff2-variations');
     font-style: normal;

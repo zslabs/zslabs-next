@@ -44,7 +44,10 @@ const AboutModal: React.FC = () => {
 
   const title = React.useCallback((props) => {
     return (
-      <h3 className="mb-4 text-center text-4xl font-bold" {...props}>
+      <h3
+        className="mb-4 text-center font-heading text-4xl font-semibold"
+        {...props}
+      >
         Hi, I'm Zach
       </h3>
     )

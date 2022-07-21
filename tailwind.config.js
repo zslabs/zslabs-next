@@ -187,6 +187,7 @@ module.exports = {
         current: 'currentColor',
       },
       fontFamily: {
+        heading: ['Clash Display', ...defaultTheme.fontFamily.sans],
         sans: ['ZS Sans', ...defaultTheme.fontFamily.sans],
         mono: ['JetBrains Mono', ...defaultTheme.fontFamily.mono],
       },
@@ -246,6 +247,11 @@ module.exports = {
       addUtilities({
         '.gradient-mask-b-0': {
           'mask-image': 'linear-gradient(180deg, #000 0, transparent)',
+        },
+        '.sssquiggly-bg': {
+          'background-image': 'url("/media/sssquiggly.svg")',
+          'background-size': '125% auto',
+          'background-position': 'center center',
         },
       })
     }),

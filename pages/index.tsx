@@ -17,7 +17,6 @@ import useArticlesOffCanvasState from '~hooks/useArticlesOffCanvasState'
 import useLayoutAnimationState from '~hooks/useLayoutAnimationState'
 import { getRssXml } from '~lib/rss'
 import dots from '~media/dots.svg'
-import ttten from '~media/ttten.svg'
 
 const RecentProjects: React.FC = () => {
   return (
@@ -146,11 +145,6 @@ const projectsVariants: AnimationProps['variants'] = {
   },
 }
 
-const tttenStyles = {
-  backgroundImage: `url(${ttten})`,
-  backgroundSize: '150px 150px',
-}
-
 const dotsStyles = { backgroundImage: `url(${dots})` }
 
 const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
@@ -202,7 +196,7 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
             })}
           </div>
           <motion.h1
-            className="text-6xl font-bold md:text-7xl"
+            className="font-heading text-6xl font-semibold md:text-7xl"
             initial="hidden"
             variants={introTitleVariants}
             animate={introTitleControls}
@@ -248,7 +242,7 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
           >
             <div className="absolute -top-2 -left-2 z-0 h-full w-full -skew-x-12">
               <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-accent-9 to-primary-11 opacity-80" />
-              <span className="absolute inset-0" style={tttenStyles} />
+              <span className="absolute inset-0 sssquiggly-bg" />
             </div>
 
             <div className="absolute inset-0 z-0 -skew-x-12 rounded-lg bg-gradient-to-br from-slate-1 to-slate-3 shadow" />

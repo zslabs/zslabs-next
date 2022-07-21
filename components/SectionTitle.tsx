@@ -62,7 +62,10 @@ const SectionTitle: React.FC<SectionTitle> = ({
 }) => {
   return (
     <div className="mb-12 grid place-content-center">
-      <h2 className="relative z-1 text-5xl font-bold" {...rest}>
+      <h2
+        className="relative z-1 font-heading text-5xl font-semibold"
+        {...rest}
+      >
         <TitleSkew title={title} variation={variation} />
       </h2>
     </div>

@@ -3,8 +3,6 @@ import * as React from 'react'
 import ctl from '@netlify/classnames-template-literals'
 import type * as Polymorphic from '@reach/utils/polymorphic'
 
-import ttten from '~media/ttten.svg'
-
 interface ButtonPropsPrimitive {
   as?: React.ElementType
   variation?: 'hover-default' | 'primary' | 'secondary' | 'blank' | 'contrast'
@@ -15,11 +13,6 @@ interface ButtonPropsPrimitive {
 
 type ButtonProps = React.ComponentPropsWithoutRef<'button'> &
   ButtonPropsPrimitive
-
-const tttenStyles = {
-  backgroundImage: `url(${ttten})`,
-  backgroundSize: '150px 150px',
-}
 
 const Button = React.forwardRef(
   (
@@ -68,7 +61,7 @@ const Button = React.forwardRef(
         {...rest}
       >
         {!['blank', 'hover-default'].includes(variation) && (
-          <span className="absolute inset-0" style={tttenStyles} />
+          <span className="absolute inset-0 sssquiggly-bg" />
         )}
         <span
           className={ctl(`

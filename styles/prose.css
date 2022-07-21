@@ -30,7 +30,8 @@
   h3,
   h4,
   h5 {
-    font-weight: theme('fontWeight.bold');
+    font-weight: theme('fontWeight.semibold');
+    font-family: theme('fontFamily.heading');
   }
 
   * + h2,

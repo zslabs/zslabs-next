@@ -18,6 +18,13 @@ class MyDocument extends Document {
         <Head>
           <link
             rel="preload"
+            href="/fonts/ClashDisplay[wght].woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preload"
             href="/fonts/Manrope[wght].woff2"
             as="font"
             type="font/woff2"
