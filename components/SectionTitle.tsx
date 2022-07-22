@@ -61,7 +61,7 @@ const SectionTitle: React.FC<SectionTitle> = ({
   ...rest
 }) => {
   return (
-    <div className="mb-12 grid place-content-center">
+    <div className="mb-12 grid place-content-center text-center">
       <h2
         className="relative z-1 font-heading text-5xl font-semibold"
         {...rest}
