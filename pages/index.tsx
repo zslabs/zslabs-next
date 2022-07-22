@@ -23,6 +23,27 @@ const RecentProjects: React.FC = () => {
     <div className="relative grid grid-cols-1 justify-center md:grid-cols-3/4">
       <SectionTitle title="Recent projects" variation="danger" />
       <BubbleList>
+        <BubbleListItem title="Design tokens" badge="Internal">
+          Build tool that works alongside{' '}
+          <TextLink href="https://www.figma.com/community/plugin/843461159747178978/Figma-Tokens">
+            Figma Tokens
+          </TextLink>{' '}
+          and{' '}
+          <TextLink href="https://amzn.github.io/style-dictionary/">
+            Style Dictionary
+          </TextLink>{' '}
+          to create a{' '}
+          <TextLink href="https://tailwindcss.com/">Tailwind CSS</TextLink>{' '}
+          driven system that scales to desktop, iOS, and Android.
+        </BubbleListItem>
+        <BubbleListItem title="Icon automation library" badge="Internal">
+          Build tool that integrates with{' '}
+          <TextLink href="https://www.figma.com/developers/api">
+            Figma API
+          </TextLink>{' '}
+          to extract and create SVG icons for use across desktop, iOS, and
+          Android.
+        </BubbleListItem>
         <BubbleListItem title="List" link="https://list.zslabs.com/">
           The best experience for monitoring activity on multiple eBay search
           terms.
@@ -35,13 +56,6 @@ const RecentProjects: React.FC = () => {
           link="https://www.saoscapital.com/"
         >
           Financial planning and advisory services to the stars.
-        </BubbleListItem>
-        <BubbleListItem title="ChaosKit" link="https://chaoskit.netlify.app/">
-          A lightweight and modular front-end framework for developing fast and
-          powerful interfaces within Gremlin.
-        </BubbleListItem>
-        <BubbleListItem title="Gremlin" link="https://www.gremlin.com/">
-          Marketing site for Chaos.
         </BubbleListItem>
       </BubbleList>
     </div>

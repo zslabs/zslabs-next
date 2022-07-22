@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 
 import Badge from './Badge'
 import LinkUnderline from './LinkUnderline'
+import Prose from './Prose'
 
 import { fadeInUp, viewportInViewOptions } from '~helpers/styles'
 
@@ -71,7 +72,7 @@ export const BubbleListItem: React.FC<BubbleListItemProps> = ({
           )}
         </div>
         {sub && <div className="text-slate-11">{sub}</div>}
-        {children && <div className="text-lg">{children}</div>}
+        {children && <Prose variation="large">{children}</Prose>}
       </div>
     </motion.div>
   )
