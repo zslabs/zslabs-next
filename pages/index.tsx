@@ -16,7 +16,6 @@ import TextLink from '~components/TextLink'
 import useArticlesOffCanvasState from '~hooks/useArticlesOffCanvasState'
 import useLayoutAnimationState from '~hooks/useLayoutAnimationState'
 import { getRssXml } from '~lib/rss'
-import dots from '~media/dots.svg'
 
 const RecentProjects: React.FC = () => {
   return (
@@ -159,8 +158,6 @@ const projectsVariants: AnimationProps['variants'] = {
   },
 }
 
-const dotsStyles = { backgroundImage: `url(${dots})` }
-
 const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
   const toggle = useArticlesOffCanvasState((state) => state.toggle)
   const done = useLayoutAnimationState((state) => state.done)
@@ -256,7 +253,7 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
           >
             <div className="absolute -top-2 -left-2 z-0 h-full w-full -skew-x-12">
               <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-accent-9 to-primary-11 opacity-80" />
-              <span className="absolute inset-0 sssquiggly-bg" />
+              <span className="absolute inset-0 dots-bg-invert" />
             </div>
 
             <div className="absolute inset-0 z-0 -skew-x-12 rounded-lg bg-gradient-to-br from-slate-1 to-slate-3 shadow" />
@@ -269,10 +266,7 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
       </Section>
       <Section>
         <div className="grid grid-cols-1 gap-8 md:gap-16">
-          <span
-            className="absolute inset-y-0 inset-x-1/2 -z-1 -mx-1/2-screen w-screen bg-auto/6 opacity-5 dark:invert"
-            style={dotsStyles}
-          />
+          <span className="pointer-events-none absolute inset-y-0 inset-x-1/2 -mx-1/2-screen w-screen dots-bg dark:dots-bg-invert" />
           <motion.div
             initial="hidden"
             variants={projectsVariants}

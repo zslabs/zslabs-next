@@ -1,16 +1,11 @@
 import * as React from 'react'
 
 import type { AnimationProps, MotionStyle } from 'framer-motion'
-import {
-  motion,
-  useSpring,
-  useTransform,
-  useViewportScroll,
-} from 'framer-motion'
+import { motion, useSpring, useTransform, useScroll } from 'framer-motion'
 
 const ScrollIndicator: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   const [isComplete, setIsComplete] = React.useState(false)
-  const { scrollYProgress } = useViewportScroll()
+  const { scrollYProgress } = useScroll()
   const yRange = useTransform(scrollYProgress, [0, 0.9], [0, 1])
   const pathLength = useSpring(yRange, { stiffness: 400, damping: 90 })
 
@@ -42,7 +37,7 @@ const ScrollIndicator: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
     >
       <motion.path
         fill="none"
-        strokeWidth="5"
+        strokeWidth="4"
         stroke="currentColor"
         strokeDasharray="0 1"
         d="M 0, 20 a 20, 20 0 1,0 40,0 a 20, 20 0 1,0 -40,0"
@@ -50,7 +45,7 @@ const ScrollIndicator: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
       />
       <motion.path
         fill="none"
-        strokeWidth="5"
+        strokeWidth="4"
         stroke="currentColor"
         d="M14,26 L 22,33 L 35,16"
         initial={false}

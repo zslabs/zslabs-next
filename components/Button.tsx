@@ -61,7 +61,13 @@ const Button = React.forwardRef(
         {...rest}
       >
         {!['blank', 'hover-default'].includes(variation) && (
-          <span className="absolute inset-0 sssquiggly-bg" />
+          <span
+            className={ctl(
+              `absolute inset-0 dots-bg-invert ${
+                variation === 'contrast' && 'dark:dots-bg'
+              }`
+            )}
+          />
         )}
         <span
           className={ctl(`

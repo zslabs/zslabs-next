@@ -138,7 +138,7 @@ const BaseLayout: React.FC = ({ children }) => {
         className="pointer-events-none absolute top-0 left-0 z-0 h-24 w-full opacity-20 gradient-mask-b-0"
         style={bubblesStyles}
       />
-      <div className="rounded-b-2xl bg-slate-1 shadow">
+      <div className="overflow-hidden rounded-b-3xl bg-slate-1 shadow">
         <Container>
           <Section as="header">
             <div className="flex items-center justify-between gap-4">

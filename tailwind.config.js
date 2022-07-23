@@ -248,10 +248,13 @@ module.exports = {
         '.gradient-mask-b-0': {
           'mask-image': 'linear-gradient(180deg, #000 0, transparent)',
         },
-        '.sssquiggly-bg': {
-          'background-image': 'url("/media/sssquiggly.svg")',
-          'background-size': '125% auto',
-          'background-position': 'center center',
+        '.dots-bg': {
+          'background-image': `url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23222' fill-opacity='0.0725' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E%0A")`,
+          'background-size': 'auto 6px',
+        },
+        '.dots-bg-invert': {
+          'background-image': `url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23fff' fill-opacity='0.125' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E%0A")`,
+          'background-size': 'auto 6px',
         },
       })
     }),
