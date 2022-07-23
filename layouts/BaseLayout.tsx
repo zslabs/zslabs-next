@@ -225,7 +225,11 @@ const BaseLayout: React.FC = ({ children }) => {
                   </TextLink>
                 </div>
                 {mounted && (
-                  <button type="button" onClick={handleThemeToggleClick}>
+                  <button
+                    type="button"
+                    title="Toggle theme"
+                    onClick={handleThemeToggleClick}
+                  >
                     {theme === 'light' ? (
                       <DarkSvg className="text-xl" />
                     ) : (
