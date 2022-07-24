@@ -1,11 +1,12 @@
 import * as React from 'react'
 
 import { ReactComponent as QuoteSvg } from '~icons/quote.svg'
+import type { ChildrenOnlyProps } from '~types/custom'
 
-const Blockquote: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
-  children,
-  ...rest
-}) => {
+export type BlockquoteProps = ChildrenOnlyProps &
+  React.BlockquoteHTMLAttributes<HTMLQuoteElement>
+
+const Blockquote: React.FC<BlockquoteProps> = ({ children, ...rest }) => {
   return (
     <blockquote
       className="relative my-8 rounded-lg border-2 border-slate-7 bg-slate-1 p-6"

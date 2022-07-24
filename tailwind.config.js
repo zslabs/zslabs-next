@@ -13,6 +13,7 @@ function dynamicTracking(fontSize) {
   return `${value.toFixed(3)}em`
 }
 
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: 'class',
   theme: {

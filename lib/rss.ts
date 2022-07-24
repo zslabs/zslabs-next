@@ -1,7 +1,7 @@
 import type { Post } from 'contentlayer/generated'
 
 const blogPostsRssXml = (
-  posts: Post[]
+  posts: Pick<Post, 'title' | 'url' | 'date'>[]
 ): {
   latestPostDate: string
   rssItemsXml: string
@@ -25,7 +25,9 @@ const blogPostsRssXml = (
 }
 
 // eslint-disable-next-line import/prefer-default-export
-export const getRssXml = (posts: Post[]): string => {
+export const getRssXml = (
+  posts: Pick<Post, 'title' | 'url' | 'date'>[]
+): string => {
   const { rssItemsXml, latestPostDate } = blogPostsRssXml(posts)
 
   return `<?xml version="1.0" ?>

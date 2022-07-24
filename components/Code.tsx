@@ -9,7 +9,7 @@ import { ReactComponent as ClipboardSvg } from '~icons/clipboard.svg'
 
 interface CodeProps {
   codeString: string
-  language?: Language
+  language: Language
 }
 
 export default function Code({ codeString, language }: CodeProps) {

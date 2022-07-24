@@ -8,10 +8,9 @@ interface ProseProps {
   variation?: 'base' | 'large'
 }
 
-const Prose = ({ children, variation, ...rest }: ProseProps, ref) => {
+const Prose = ({ children, variation, ...rest }: ProseProps) => {
   return (
     <motion.div
-      ref={ref}
       {...rest}
       className={ctl(
         `prose ${variation === 'base' ? 'text-base md:text-lg' : 'text-lg'}`

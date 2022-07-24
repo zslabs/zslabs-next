@@ -9,8 +9,9 @@ import LinkUnderline from './LinkUnderline'
 import Prose from './Prose'
 
 import { fadeInUp, viewportInViewOptions } from '~helpers/styles'
+import type { ChildrenOnlyProps, PartialBy } from '~types/custom'
 
-interface BubbleListItemProps {
+interface BubbleListItemProps extends PartialBy<ChildrenOnlyProps, 'children'> {
   title: string
   sub?: React.ReactNode
   link?: string
@@ -78,7 +79,7 @@ export const BubbleListItem: React.FC<BubbleListItemProps> = ({
   )
 }
 
-const BubbleList: React.FC = ({ children, ...rest }) => {
+const BubbleList: React.FC<ChildrenOnlyProps> = ({ children, ...rest }) => {
   const container: AnimationProps['variants'] = React.useMemo(
     () => ({
       hidden: { opacity: 0 },

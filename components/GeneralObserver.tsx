@@ -7,7 +7,9 @@ import React from 'react'
 
 import { noop } from 'lodash'
 
-interface IGeneralObserverProps {
+import type { ChildrenOnlyProps } from '~types/custom'
+
+interface IGeneralObserverProps extends ChildrenOnlyProps {
   /** Fires when IntersectionObserver enters viewport */
   onEnter?: (id?: string) => void
   /** The height of the placeholder div before the component renders in */

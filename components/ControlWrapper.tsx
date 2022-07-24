@@ -2,7 +2,9 @@ import * as React from 'react'
 
 import ctl from '@netlify/classnames-template-literals'
 
-const ControlWrapper: React.FC = (props) => {
+import type { ChildrenOnlyProps } from '~types/custom'
+
+const ControlWrapper: React.FC<ChildrenOnlyProps> = (props) => {
   return (
     <div
       className={ctl(

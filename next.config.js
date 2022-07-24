@@ -4,6 +4,9 @@ const ESLintPlugin = require('eslint-webpack-plugin')
 const withPlugins = require('next-compose-plugins')
 const { withContentlayer } = require('next-contentlayer')
 
+/**
+ * @type {import('next').NextConfig}
+ */
 const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,

@@ -1,5 +1,6 @@
 import * as React from 'react'
 
+import type * as Dialog from '@radix-ui/react-dialog'
 import dayjs from 'dayjs'
 
 import BubbleList, { BubbleListItem } from './BubbleList'
@@ -15,7 +16,7 @@ const ArticleOffCanvas: React.FC = () => {
   const open = useArticlesOffCanvasState((state) => state.open)
   const toggle = useArticlesOffCanvasState((state) => state.toggle)
 
-  const trigger = React.useCallback((props) => {
+  const trigger = React.useCallback((props: Dialog.DialogTriggerProps) => {
     return (
       <Button variation="blank" iconOnly title="View articles" {...props}>
         <MenuSvg className="text-4xl" />
@@ -23,7 +24,7 @@ const ArticleOffCanvas: React.FC = () => {
     )
   }, [])
 
-  const title = React.useCallback((props) => {
+  const title = React.useCallback((props: Dialog.DialogTitleProps) => {
     return <SectionTitle title="Articles" variation="accent" {...props} />
   }, [])
 

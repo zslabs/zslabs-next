@@ -1,5 +1,6 @@
 import * as React from 'react'
 
+import type * as Dialog from '@radix-ui/react-dialog'
 import NextImage from 'next/image'
 
 import Button from './Button'
@@ -18,7 +19,7 @@ const AboutModal: React.FC = () => {
   const open = useAboutModalState((state) => state.open)
   const toggle = useAboutModalState((state) => state.toggle)
 
-  const trigger = React.useCallback((props) => {
+  const trigger = React.useCallback((props: Dialog.DialogTriggerProps) => {
     return (
       <button
         type="button"
@@ -31,7 +32,7 @@ const AboutModal: React.FC = () => {
     )
   }, [])
 
-  const beforeTitle = React.useCallback((props) => {
+  const beforeTitle = React.useCallback((props: React.ReactElement) => {
     return (
       <div
         className="mx-auto mb-8 h-24 w-24 overflow-hidden rounded-full shadow-lg"
@@ -42,7 +43,7 @@ const AboutModal: React.FC = () => {
     )
   }, [])
 
-  const title = React.useCallback((props) => {
+  const title = React.useCallback((props: Dialog.DialogTitleProps) => {
     return (
       <h3
         className="mb-4 text-center font-heading text-4xl font-semibold"

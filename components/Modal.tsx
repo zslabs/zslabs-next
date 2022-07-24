@@ -7,15 +7,16 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Button from './Button'
 
 import { ReactComponent as CloseSvg } from '~icons/close.svg'
+import type { ChildrenOnlyProps } from '~types/custom'
 
-interface ModalProps {
+interface ModalProps extends ChildrenOnlyProps {
   open: boolean
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
   trigger(
     props?: Dialog.DialogTriggerProps & React.RefAttributes<HTMLButtonElement>
   ): React.ReactElement
   beforeTitle?(
-    props?: Dialog.DialogTitleProps & React.RefAttributes<HTMLHeadingElement>
+    props?: React.RefAttributes<HTMLHeadingElement>
   ): React.ReactElement
   title(
     props?: Dialog.DialogTitleProps & React.RefAttributes<HTMLHeadingElement>

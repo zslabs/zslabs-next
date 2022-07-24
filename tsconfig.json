@@ -11,13 +11,14 @@
       "~lib/*": ["lib/*"],
       "~media/*": ["media/*"],
       "~styles/*": ["styles/*"],
+      "~types/*": ["types/*"],
       "contentlayer/generated": ["./.contentlayer/generated"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": false,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
@@ -34,5 +35,6 @@
     "**/*.tsx",
     ".contentlayer/generated"
   ],
+  "types": ["types"],
   "exclude": ["node_modules"]
 }

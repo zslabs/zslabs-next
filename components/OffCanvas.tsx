@@ -7,8 +7,9 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Button from './Button'
 
 import { ReactComponent as CloseSvg } from '~icons/close.svg'
+import type { ChildrenOnlyProps } from '~types/custom'
 
-interface OffCanvasProps {
+interface OffCanvasProps extends ChildrenOnlyProps {
   open: boolean
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
   trigger(

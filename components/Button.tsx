@@ -8,7 +8,7 @@ interface ButtonPropsPrimitive {
   variation?: 'hover-default' | 'primary' | 'secondary' | 'blank' | 'contrast'
   loading?: boolean
   iconOnly?: boolean
-  type?: 'submit' | 'button'
+  type?: 'submit' | 'button' | 'reset'
 }
 
 type ButtonProps = React.ComponentPropsWithoutRef<'button'> &

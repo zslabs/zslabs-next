@@ -287,15 +287,13 @@ export const getStaticProps: GetStaticProps = async () => {
     (post1, post2) => +new Date(post2.date) - +new Date(post1.date)
   )
 
-  const reducedPosts = posts.reduce(
-    (acc, curr) =>
-      acc.concat({
-        title: curr.title,
-        date: curr.date,
-        url: curr.url,
-      }),
-    []
-  )
+  const reducedPosts = posts.map((post) => {
+    return {
+      title: post.title,
+      date: post.date,
+      url: post.url,
+    }
+  })
 
   const currentArticlesFile = fs.readFileSync('./data/articles.json', 'utf8')
 

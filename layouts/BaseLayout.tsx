@@ -23,6 +23,7 @@ import { ReactComponent as ListLogoSvg } from '~icons/logos/list.svg'
 import { ReactComponent as TwitterSvg } from '~icons/logos/twitter.svg'
 import bubbles from '~media/bubbles.svg'
 import { ReactComponent as LogoSvg } from '~media/logo.svg'
+import type { ChildrenOnlyProps } from '~types/custom'
 
 interface HeaderItemWrapperProps {
   runAnimation: boolean
@@ -100,7 +101,7 @@ const bubblesStyles = {
 const bubblesInitial = { opacity: 0 }
 const bubblesAnimate = { opacity: 0.2 } // Matches TW style
 
-const BaseLayout: React.FC = ({ children }) => {
+const BaseLayout: React.FC<ChildrenOnlyProps> = ({ children }) => {
   const [mounted, setMounted] = React.useState(false)
 
   const { theme, setTheme } = useTheme()

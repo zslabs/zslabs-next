@@ -6,10 +6,10 @@ interface AutoLinkHeaderProps {
 
 const AutoLinkHeader: React.FC<
   AutoLinkHeaderProps & React.HTMLAttributes<HTMLHeadingElement>
-> = ({ as: Component, children, ...rest }) => {
+> = ({ as: Component = 'h1', children, ...rest }) => {
   return (
     <Component
-      id={slugify(children.toString(), {
+      id={slugify((children as string).toString(), {
         lower: true,
         locale: 'en',
       })}
