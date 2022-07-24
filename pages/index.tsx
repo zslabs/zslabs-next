@@ -241,7 +241,6 @@ const Home: NextPage<LatestPostProps> = ({ latestPost }) => {
         </div>
       </Section>
       <Section
-        as={motion.section}
         initial="hidden"
         variants={latestArticleVariants}
         animate={latestArticleControls}

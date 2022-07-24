@@ -32,7 +32,6 @@
     "@hookform/resolvers": "2.9.6",
     "@netlify/classnames-template-literals": "1.0.3",
     "@radix-ui/react-dialog": "1.0.0",
-    "@reach/utils": "0.17.0",
     "@tailwindcss/line-clamp": "0.4.0",
     "@types/gtag.js": "0.0.10",
     "@types/node": "18.0.6",

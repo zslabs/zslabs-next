@@ -1,37 +1,31 @@
 import * as React from 'react'
 
 import ctl from '@netlify/classnames-template-literals'
-import type * as Polymorphic from '@reach/utils/polymorphic'
 
-interface ButtonPropsPrimitive {
-  as?: React.ElementType
+interface ButtonPropsPrimitive<T extends React.ElementType> {
+  as?: T
   variation?: 'hover-default' | 'primary' | 'secondary' | 'blank' | 'contrast'
   loading?: boolean
   iconOnly?: boolean
   type?: 'submit' | 'button' | 'reset'
+  children?: React.ReactNode
 }
 
-type ButtonProps = React.ComponentPropsWithoutRef<'button'> &
-  ButtonPropsPrimitive
+function Button<T extends React.ElementType = 'button'>({
+  as,
+  children,
+  variation = 'blank',
+  iconOnly,
+  loading,
+  ...rest
+}: ButtonPropsPrimitive<T> &
+  Omit<React.ComponentPropsWithoutRef<T>, keyof ButtonPropsPrimitive<T>>) {
+  const Component = as || 'button'
 
-const Button = React.forwardRef(
-  (
-    {
-      as: Component = 'button',
-      children,
-      variation = 'blank',
-      iconOnly,
-      loading,
-      ...rest
-    },
-    forwardedRef
-  ) => {
-    return (
-      <Component
-        ref={forwardedRef}
-        // eslint-disable-next-line react/button-has-type
-        type={Component === 'button' ? 'button' : undefined}
-        className={ctl(`
+  return (
+    <Component
+      type={Component === 'button' ? 'button' : undefined}
+      className={ctl(`
           relative inline-block h-12 overflow-hidden font-bold duration-150 focus:outline-none
 
           ${variation === 'hover-default' && `hocus:bg-slate-3`}
@@ -58,31 +52,28 @@ const Button = React.forwardRef(
           }
           ${loading && `pointer-events-none opacity-50`}
         `)}
-        {...rest}
-      >
-        {!['blank', 'hover-default'].includes(variation) && (
-          <span
-            className={ctl(
-              `absolute inset-0 dots-bg-invert ${
-                variation === 'contrast' && 'dark:dots-bg'
-              }`
-            )}
-          />
-        )}
+      {...rest}
+    >
+      {!['blank', 'hover-default'].includes(variation) && (
         <span
-          className={ctl(`
+          className={ctl(
+            `absolute inset-0 dots-bg-invert ${
+              variation === 'contrast' && 'dark:dots-bg'
+            }`
+          )}
+        />
+      )}
+      <span
+        className={ctl(`
             relative z-10 grid h-full grid-flow-col place-items-center gap-4 whitespace-nowrap
 
             ${iconOnly ? 'auto-cols-auto' : 'auto-cols-min'}
           `)}
-        >
-          {children}
-        </span>
-      </Component>
-    )
-  }
-) as Polymorphic.ForwardRefComponent<'button', ButtonProps>
-
-Button.displayName = 'Button'
+      >
+        {children}
+      </span>
+    </Component>
+  )
+}
 
 export default Button
