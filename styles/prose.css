@@ -20,10 +20,8 @@
 
   a:not([class]) {
     font-weight: theme('fontWeight.bold');
-    text-decoration: underline;
-    text-decoration-style: dotted;
-    text-underline-offset: theme('space.1');
-    color: theme('colors.primary.9');
+
+    @apply bg-gradient-to-r dark:bg-gradient-to-l from-primary-9 to-primary-11 bg-clip-text text-transparent;
   }
 
   h2,
