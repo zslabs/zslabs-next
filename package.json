@@ -81,7 +81,7 @@
     "typescript": "4.7.4",
     "uuid": "8.3.2",
     "zod": "3.17.10",
-    "zustand": "3.7.2"
+    "zustand": "4.0.0"
   },
   "devDependencies": {
     "@svgr/webpack": "6.3.1",
